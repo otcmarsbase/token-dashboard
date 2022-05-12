@@ -1,7 +1,7 @@
 import React, {ReactNode} from "react"
-import { DICT } from "../data"
+import { DICT, LocalizedDictionary } from "../data"
 
-export const DictionaryContext = React.createContext<any>(DICT.en)
+export const DictionaryContext = React.createContext<LocalizedDictionary>(DICT.en)
 
 export const DictionaryProvider: React.FC<{children: ReactNode, lang: keyof typeof DICT }> = props =>
 {

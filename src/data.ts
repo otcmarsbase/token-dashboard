@@ -1,5 +1,6 @@
 import { INft } from "./components/organisms/NftTable"
 
+export type LocalizedDictionary = typeof DICT[keyof typeof DICT]
 export const DICT = {
 	en: {
 		nft: {
@@ -41,7 +42,37 @@ export const DICT = {
 	ru: {
 		nft: {
 			dashboard: {
-				page_title: "Токен Дашборд"
+				page_title: "Панель токенов",
+				how_to_use: "Как использовать?",
+				page_description: "Новый децентрализованный. Мы представляем уникальную фармацию",
+				sell_with_premium_btn: (token: string) => `Продать ${token} с премиумом`,
+				buy_now_btn: (token: string) => `Купить ${token} сейчас`,
+				summary: {
+					header: "Распределение",
+					desc: "Введите параметры части постоянного запроса"
+				},
+				claim_all: {
+					total_unclaimed: "Всего необходимо заключить",
+					claim_all_btn: "Заключить все"
+				},
+				nft_table: {
+					headers: ["Лот NFT", "Прогресс", "Доступно для заключения"],
+					nft_card: {
+						price_label: "Цена:",
+						unvest_start_date_label: "Начало",
+						locked_caption: "Заблокировано",
+						claim_btn: "Заключить",
+						actions_btn: "Действия"
+					}
+				},
+				pagination: {
+					prev: "Предыдущий",
+					next: "Следующий"
+				},
+				distribution_video: {
+					header: "Как распределяется?",
+					description: "Для первого раза, крипто ОТС деск и даже"
+				}
 			}
 		}
 	}
