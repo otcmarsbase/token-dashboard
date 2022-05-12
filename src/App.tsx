@@ -1,3 +1,5 @@
+import React from "react"
+
 import TokenDashboard from "./components/pages/TokenDashboard"
 
 import { AppStateProvider } from "./contexts/AppStateContext"

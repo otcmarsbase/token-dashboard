@@ -1,3 +1,5 @@
+import React from "react"
+
 import {
 	TokenDashboardTemplate,
 	Header as TDTHeader,

@@ -1,3 +1,5 @@
+import React from "react"
+
 import {ButtonHTMLAttributes, FC, ReactNode} from "react"
 import {style} from "typestyle"
 

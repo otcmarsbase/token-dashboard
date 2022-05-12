@@ -1,3 +1,5 @@
+import React from "react"
+
 import { FC, ReactNode, useContext } from "react"
 import { TextRed, BodyText, Button, ButtonRed } from "../atoms"
 import { style } from "typestyle"

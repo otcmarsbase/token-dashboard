@@ -1,3 +1,5 @@
+import React from "react"
+
 import { FC, ReactNode, useContext } from "react"
 import { Title, BodyText } from "../atoms"
 import { DictionaryContext } from "../../contexts/DictionaryContext"

@@ -1,3 +1,5 @@
+import React from "react"
+
 import { SummaryDestributionWrapper, SummaryTotalUnclaimedWrapper } from "../molecules"
 import { style } from "typestyle"
 import { useContext } from "react"

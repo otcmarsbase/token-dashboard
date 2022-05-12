@@ -1,3 +1,5 @@
+import React from "react"
+
 import { DetailedHTMLProps, FC, ReactNode, SourceHTMLAttributes, VideoHTMLAttributes } from "react"
 import { style } from "typestyle"
 import { TitleMedium, BodyText } from "../atoms"

@@ -1,3 +1,5 @@
+import React from "react"
+
 import { useContext, FC, ReactNode } from "react"
 import { DictionaryContext } from "../../contexts/DictionaryContext"
 import {
