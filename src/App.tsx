@@ -6,8 +6,6 @@ import { MetaMaskProvider } from "metamask-react"
 
 import "./styles.css"
 
-import { Ethereum } from "./types"
-
 declare global {
 	interface Window {
 		ethereum: any
