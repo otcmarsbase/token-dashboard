@@ -1,10 +1,11 @@
 import React from "react"
 
 import { FC, ReactNode, useContext } from "react"
-import { TextRed, BodyText, Button, ButtonRed } from "../atoms"
+import { TextRed, BodyText, Button } from "../atoms"
 import { style } from "typestyle"
 import { NftOverviewLocalized } from "./NftOverview"
 import { DictionaryContext } from "../../contexts/DictionaryContext"
+import PlasmicButton from "../Button"
 
 interface NftAvailableClaimProps {
 	amount: ReactNode
@@ -16,6 +17,20 @@ interface NftAvailableClaimProps {
 	onActions: () => void
 }
 
+const contentAmount = style({
+	display: "flex",
+	flexDirection: "column"
+})
+
+const content = style({
+	display: "flex",
+	gap: "10px"
+})
+
+const contentActions = style({
+	display: "flex",
+	gap: "10px"
+})
 export const NftAvailableClaim: FC<NftAvailableClaimProps> = ({
 	amount,
 	amountUsd,
@@ -25,21 +40,6 @@ export const NftAvailableClaim: FC<NftAvailableClaimProps> = ({
 	onClaim,
 	onActions
 }) => {
-	const contentAmount = style({
-		display: "flex",
-		flexDirection: "column"
-	})
-
-	const content = style({
-		display: "flex",
-		gap: "10px"
-	})
-
-	const contentActions = style({
-		display: "flex",
-		gap: "10px"
-	})
-
 	return (
 		<div className={content}>
 			<div className={contentAmount}>
@@ -47,7 +47,7 @@ export const NftAvailableClaim: FC<NftAvailableClaimProps> = ({
 				<BodyText>{amountUsd}</BodyText>
 			</div>
 			<div className={contentActions}>
-				<ButtonRed onClick={onClaim}>{btnClaimText}</ButtonRed>
+				<PlasmicButton size="xs" colors="standart" onClick={onClaim}>{btnClaimText}</PlasmicButton>
 				<Button onClick={onActions}>{btnActionsText}</Button>
 			</div>
 		</div>

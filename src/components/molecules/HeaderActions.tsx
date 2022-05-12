@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Button, ButtonRed, ButtonGradient } from "../atoms"
+import { Button, ButtonGradient } from "../atoms"
 import { style } from "typestyle"
 import { FC, ReactNode, useContext } from "react"
 import { DictionaryContext } from "../../contexts/DictionaryContext"

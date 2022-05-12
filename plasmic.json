@@ -1,0 +1,315 @@
+{
+  "platform": "react",
+  "code": {
+    "lang": "ts",
+    "scheme": "blackbox",
+    "reactRuntime": "classic"
+  },
+  "style": {
+    "scheme": "css-modules",
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
+  },
+  "images": {
+    "scheme": "inlined",
+    "publicDir": "../public",
+    "publicUrlPrefix": "/static/"
+  },
+  "tokens": {
+    "scheme": "theo",
+    "tokensFilePath": "plasmic-tokens.theo.json"
+  },
+  "srcDir": "src/components",
+  "defaultPlasmicDir": "./plasmic",
+  "projects": [
+    {
+      "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+      "projectApiToken": "by9MzFv4CZ9NrEu1pRetbG2pX0JoYZW4vbkycULqq4SMmvDvvJH7WsvJMWGLt1cSgY8vHgiua0qc0AxEoMesg",
+      "projectName": "Marsbase Components",
+      "version": "latest",
+      "cssFilePath": "plasmic/marsbase_components/plasmic_marsbase_components.module.css",
+      "components": [
+        {
+          "id": "QvSVaYnti4Is",
+          "name": "Homepage",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicHomepage.tsx",
+          "importSpec": {
+            "modulePath": "Homepage.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicHomepage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "IDy-UAQYMv",
+          "name": "Button",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicButton.tsx",
+          "importSpec": {
+            "modulePath": "Button.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "sIxKMhfpOf",
+          "name": "Text",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicText.tsx",
+          "importSpec": {
+            "modulePath": "Text.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicText.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "ArKwfI2osU",
+          "name": "Count",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicCount.tsx",
+          "importSpec": {
+            "modulePath": "Count.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicCount.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "uSh1_um7XN",
+          "name": "TokenDashboardHeader",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicTokenDashboardHeader.tsx",
+          "importSpec": {
+            "modulePath": "TokenDashboardHeader.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicTokenDashboardHeader.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "O93YgHOHgbm",
+          "name": "NftTableSummary",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftTableSummary.tsx",
+          "importSpec": {
+            "modulePath": "NftTableSummary.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicNftTableSummary.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "E1FwFPFP4L",
+          "name": "Icon",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicIcon.tsx",
+          "importSpec": {
+            "modulePath": "Icon.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicIcon.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "EHa0voQ-C0",
+          "name": "SummaryDescription",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicSummaryDescription.tsx",
+          "importSpec": {
+            "modulePath": "SummaryDescription.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicSummaryDescription.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "HBTbJNVG66",
+          "name": "SummaryTotalUnclaimed",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicSummaryTotalUnclaimed.tsx",
+          "importSpec": {
+            "modulePath": "SummaryTotalUnclaimed.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicSummaryTotalUnclaimed.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "zvfx6kR6ll",
+          "name": "Label",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicLabel.tsx",
+          "importSpec": {
+            "modulePath": "Label.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicLabel.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "5SbWwwlAWA",
+          "name": "HeaderOverview",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicHeaderOverview.tsx",
+          "importSpec": {
+            "modulePath": "HeaderOverview.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicHeaderOverview.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "mWUFULV0cz",
+          "name": "HeaderActions",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicHeaderActions.tsx",
+          "importSpec": {
+            "modulePath": "HeaderActions.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicHeaderActions.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "S7FYhea1xT",
+          "name": "NftTable",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftTable.tsx",
+          "importSpec": {
+            "modulePath": "NftTable.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicNftTable.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "tVe3iw2rzS",
+          "name": "ColumnSorter",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicColumnSorter.tsx",
+          "importSpec": {
+            "modulePath": "ColumnSorter.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicColumnSorter.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "DRx7njHNsy",
+          "name": "Buttons",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicButtons.tsx",
+          "importSpec": {
+            "modulePath": "Buttons.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicButtons.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "a7WqxJ4ZPn",
+          "name": "NftOverview",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftOverview.tsx",
+          "importSpec": {
+            "modulePath": "NftOverview.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicNftOverview.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "YHwpijO3GT",
+          "name": "NftProgress",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftProgress.tsx",
+          "importSpec": {
+            "modulePath": "NftProgress.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicNftProgress.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "OiFeVBevre",
+          "name": "Progress",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicProgress.tsx",
+          "importSpec": {
+            "modulePath": "Progress.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicProgress.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "Wiffry2Q-b",
+          "name": "NftAvailableClaim",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftAvailableClaim.tsx",
+          "importSpec": {
+            "modulePath": "NftAvailableClaim.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicNftAvailableClaim.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        }
+      ],
+      "icons": [
+        {
+          "id": "zwmcUxC4SL1",
+          "name": "ChecksvgIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__Checksvg.tsx"
+        },
+        {
+          "id": "1qknBLYfAX-",
+          "name": "IconIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__Icon.tsx"
+        },
+        {
+          "id": "_dC4dQZVmK",
+          "name": "ShibaInusvgIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__ShibaInusvg.tsx"
+        }
+      ],
+      "images": [],
+      "indirect": false,
+      "globalContextsFilePath": "",
+      "codeComponents": []
+    }
+  ],
+  "globalVariants": {
+    "variantGroups": [
+      {
+        "id": "3lOXnHZSFmncl",
+        "name": "Screen",
+        "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+        "contextFilePath": "plasmic/marsbase_components/PlasmicGlobalVariant__Screen.tsx"
+      }
+    ]
+  },
+  "wrapPagesWithGlobalContexts": true,
+  "cliVersion": "0.1.178",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.178/dist/plasmic.schema.json"
+}

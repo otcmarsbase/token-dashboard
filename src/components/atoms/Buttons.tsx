@@ -1,17 +1,7 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 
 import {ButtonHTMLAttributes, FC, ReactNode} from "react"
 import {style} from "typestyle"
-
-const styledButtonRed = style({
-    padding: "5px",
-    backgroundColor: "darkred",
-    borderRadius: "5px",
-    color: "white"
-})
-export const ButtonRed: FC<{ children: ReactNode, onClick: () => void }> = ({children, onClick}) => {
-    return <button onClick={onClick} className={styledButtonRed}>{children}</button>
-}
 
 const styledButton = style({
     padding: "5px",

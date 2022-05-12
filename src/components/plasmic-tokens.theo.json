@@ -1,0 +1,29 @@
+{
+  "props": [
+    {
+      "name": "RedColor",
+      "type": "color",
+      "value": "#9A2C33",
+      "category": "color",
+      "meta": {
+        "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+        "id": "tutIzSayz"
+      }
+    },
+    {
+      "name": "StandartColor",
+      "type": "color",
+      "value": "#BC401C",
+      "category": "color",
+      "meta": {
+        "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+        "id": "MfCyf2DBW"
+      }
+    }
+  ],
+  "global": {
+    "meta": {
+      "source": "plasmic.app"
+    }
+  }
+}

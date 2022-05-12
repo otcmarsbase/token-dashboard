@@ -1,0 +1,48 @@
+.root {
+  flex-direction: column;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  min-width: 0;
+  min-height: 0;
+  padding: 42px 24px 96px;
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+  margin-top: calc(0px - 16px);
+  height: calc(100% + 16px);
+}
+.root > :global(.__wab_flex-container) > *,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.root > :global(.__wab_flex-container) > picture > img,
+.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
+  margin-top: 16px;
+}
+.tokenDashboardHeader:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  margin-right: 0px;
+  width: 1056px;
+  height: 98px;
+  flex-shrink: 0;
+}
+.text:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.nftTableSummary:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  width: 1054px;
+}
+.nftTable:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  width: 1059px;
+}

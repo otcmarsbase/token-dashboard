@@ -1,0 +1,32 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+.freeBox {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 196px;
+  height: auto;
+  max-width: 100%;
+}
+.text__cJFzq:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.text__dfdvM:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.text__nqbXl:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  align-self: flex-start;
+}

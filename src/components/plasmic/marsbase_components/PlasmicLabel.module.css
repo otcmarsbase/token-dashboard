@@ -1,0 +1,54 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+  height: auto;
+  justify-content: flex-start;
+  align-items: center;
+  background: #c8c8c8;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+.rootcolors_purple {
+  background: #8c56dc80;
+}
+.rootcolors_cyan {
+  background: #5ec5e880;
+}
+.rootcolors_green {
+  background: #09c78180;
+}
+.text__nUuYh {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 800px;
+  margin-right: 8px;
+}
+.textcolors_purple__nUuYhV2VbN {
+  color: #8c56dc;
+}
+.textcolors_cyan__nUuYhmc0Lq {
+  color: #5ec5e8;
+}
+.textcolors_green__nUuYh7XQkz {
+  color: #09c781;
+}
+.text___0EiWf {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  font-weight: 500;
+  min-width: 0;
+}
+.textcolors_purple___0EiWfv2VbN {
+  color: #8c56dc;
+}
+.textcolors_cyan___0EiWFmc0Lq {
+  color: #5ec5e8;
+}
+.textcolors_green___0EiWf7XQkz {
+  color: #09c781;
+}
