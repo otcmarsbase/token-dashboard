@@ -15,11 +15,11 @@ import { useJsonRpc } from "../../use"
 
 const TokenDashboard = () => {
 	const { data, handlers } = useContext(AppStateContext)
-	const { blockNumber, status } = useJsonRpc()
+	const { blockNumber, status } = useJsonRpc();
 
 	return (
 		<TokenDashboardTemplate>
-			<div>{blockNumber}</div>
+			<div>blockNumber: {blockNumber}</div>
 			<div>{status}</div>
 			<TDTHeader>
 				<ConnectWithMetamask />
