@@ -10,11 +10,11 @@ import {
 	TablePaginationWrapper
 } from "../molecules"
 import { Table, TableRow, TableHead, TableData, TableFooter } from "../templates/TokenDashboardTemplate"
-import { TagLabelColor } from "../atoms"
+import { TagLabelColors } from "../atoms"
 
 export interface INft {
 	id: string
-	kind: TagLabelColor
+	kind: TagLabelColors
 	amount: number
 	amountUsd: number
 	token: string
