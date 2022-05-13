@@ -293,10 +293,27 @@
           "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__ShibaInusvg.tsx"
         }
       ],
-      "images": [],
+      "images": [
+        {
+          "id": "70V1wYZW_",
+          "name": "Home3.jpg",
+          "filePath": "plasmic/marsbase_components/images/home3Jpg.jpeg"
+        }
+      ],
       "indirect": false,
       "globalContextsFilePath": "",
-      "codeComponents": []
+      "codeComponents": [
+        {
+          "id": "Pmrdfs2RXn",
+          "name": "NftOverviewWrapper",
+          "componentImportPath": "./components/molecules/NftOverview"
+        },
+        {
+          "id": "DPnJaDhsFE",
+          "name": "SummaryDestributionWrapper",
+          "componentImportPath": "./components/molecules/SummaryDestribution"
+        }
+      ]
     }
   ],
   "globalVariants": {

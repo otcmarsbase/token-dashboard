@@ -172,6 +172,21 @@ function PlasmicText__RenderFunc(props: {
                 "colors",
                 "red"
               ),
+              [sty.textsize__10__jNzuzPsPn]: hasVariant(
+                variants,
+                "size",
+                "_10"
+              ),
+              [sty.textsize__11__jNzuzK8ScW]: hasVariant(
+                variants,
+                "size",
+                "_11"
+              ),
+              [sty.textsize__12__jNzuzUSiNm]: hasVariant(
+                variants,
+                "size",
+                "_12"
+              ),
               [sty.textsize__14__jNzuzMoCq]: hasVariant(
                 variants,
                 "size",

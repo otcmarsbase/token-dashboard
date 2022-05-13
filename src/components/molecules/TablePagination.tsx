@@ -2,7 +2,7 @@ import React from "react"
 
 import { FC, ReactNode, useContext } from "react"
 import { style } from "typestyle"
-import { BodyText } from "../atoms"
+import { Text } from "../atoms"
 import { DictionaryContext } from "../../contexts/DictionaryContext"
 
 interface TablePaginationProps {
@@ -17,15 +17,15 @@ export const TablePagination: FC<TablePaginationProps> = ({ prevText, nextText, 
 
 	return (
 		<div className={container}>
-			<BodyText>{prevText}</BodyText>
+			<Text>{prevText}</Text>
 			{startNumbers?.map((prevNumber, index) => (
-				<BodyText key={index}>{prevNumber}</BodyText>
+				<Text key={index}>{prevNumber}</Text>
 			))}
-			<BodyText>...</BodyText>
+			<Text>...</Text>
 			{endNumbers?.map((prevNumber, index) => (
-				<BodyText key={index}>{prevNumber}</BodyText>
+				<Text key={index}>{prevNumber}</Text>
 			))}
-			<BodyText>{nextText}</BodyText>
+			<Text>{nextText}</Text>
 		</div>
 	)
 }

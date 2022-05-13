@@ -1,7 +1,7 @@
 import React from "react"
 
 import { FC, ReactNode, useContext } from "react"
-import { Title, BodyText } from "../atoms"
+import { Text } from "../atoms"
 import { DictionaryContext } from "../../contexts/DictionaryContext"
 
 interface HeaderOverviewProps {
@@ -13,10 +13,10 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({ title, subTitle }) => {
 	return (
 		<div>
 			<div>
-				<Title>{title}</Title>
+				<Text title>{title}</Text>
 			</div>
 			<div>
-				<BodyText>{subTitle}</BodyText>
+				<Text>{subTitle}</Text>
 			</div>
 		</div>
 	)

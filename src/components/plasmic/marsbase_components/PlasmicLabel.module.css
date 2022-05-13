@@ -6,7 +6,7 @@
   height: auto;
   justify-content: flex-start;
   align-items: center;
-  background: #c8c8c8;
+  background: #0e0d0d80;
   border-radius: 8px;
   padding: 5px 10px;
 }
@@ -19,12 +19,16 @@
 .rootcolors_green {
   background: #09c78180;
 }
+.rootcolors_yellow {
+  background: #f4ff0080;
+}
 .text__nUuYh {
   position: relative;
   width: auto;
   height: auto;
   max-width: 800px;
   margin-right: 8px;
+  color: #ffffff;
 }
 .textcolors_purple__nUuYhV2VbN {
   color: #8c56dc;
@@ -35,12 +39,16 @@
 .textcolors_green__nUuYh7XQkz {
   color: #09c781;
 }
+.textcolors_yellow__nUuYhWtyBg {
+  color: #acb300;
+}
 .text___0EiWf {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 800px;
   font-weight: 500;
+  color: #ffffff;
   min-width: 0;
 }
 .textcolors_purple___0EiWfv2VbN {
@@ -51,4 +59,7 @@
 }
 .textcolors_green___0EiWf7XQkz {
   color: #09c781;
+}
+.textcolors_yellow___0EiWfwtyBg {
+  color: #acb300;
 }

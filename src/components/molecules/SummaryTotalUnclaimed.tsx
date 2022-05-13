@@ -3,7 +3,7 @@ import React from "react"
 import { FC, ReactNode, useContext } from "react"
 import { style } from "typestyle"
 import { DictionaryContext } from "../../contexts/DictionaryContext"
-import { TitleMedium, TextRed } from "../atoms"
+import { Text } from "../atoms"
 
 import Button from "../Button"
 
@@ -29,11 +29,11 @@ export const SummaryTotalUnclaimed: FC<SummaryTotalUnclaimedProps> = ({ title, u
 	return (
 		<div className={container}>
 			<div className={content}>
-				<TitleMedium>{title}</TitleMedium>
-				<TextRed>{`${unclaimedAmount} ${token}`}</TextRed>
+				<Text weight={"medium"}>{title}</Text>
+				<Text colors={"red"}>{`${unclaimedAmount} ${token}`}</Text>
 			</div>
 			<div>
-				<Button size="sm" colors="standart" onClick={onClaimAll}>{buttonText}</Button>
+				<Button size="xl" colors="standart" onClick={onClaimAll}>{buttonText}</Button>
 			</div>
 		</div>
 	)

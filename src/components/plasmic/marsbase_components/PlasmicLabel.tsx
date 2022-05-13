@@ -38,11 +38,11 @@ import projectcss from "./plasmic_marsbase_components.module.css"; // plasmic-im
 import sty from "./PlasmicLabel.module.css"; // plasmic-import: zvfx6kR6ll/css
 
 export type PlasmicLabel__VariantMembers = {
-  colors: "purple" | "cyan" | "green";
+  colors: "purple" | "cyan" | "green" | "yellow";
 };
 
 export type PlasmicLabel__VariantsArgs = {
-  colors?: SingleChoiceArg<"purple" | "cyan" | "green">;
+  colors?: SingleChoiceArg<"purple" | "cyan" | "green" | "yellow">;
 };
 
 type VariantPropType = keyof PlasmicLabel__VariantsArgs;
@@ -57,7 +57,7 @@ export type PlasmicLabel__OverridesType = {
 };
 
 export interface DefaultLabelProps {
-  colors?: SingleChoiceArg<"purple" | "cyan" | "green">;
+  colors?: SingleChoiceArg<"purple" | "cyan" | "green" | "yellow">;
   className?: string;
 }
 
@@ -87,7 +87,8 @@ function PlasmicLabel__RenderFunc(props: {
         {
           [sty.rootcolors_cyan]: hasVariant(variants, "colors", "cyan"),
           [sty.rootcolors_green]: hasVariant(variants, "colors", "green"),
-          [sty.rootcolors_purple]: hasVariant(variants, "colors", "purple")
+          [sty.rootcolors_purple]: hasVariant(variants, "colors", "purple"),
+          [sty.rootcolors_yellow]: hasVariant(variants, "colors", "yellow")
         }
       )}
     >
@@ -111,6 +112,11 @@ function PlasmicLabel__RenderFunc(props: {
               variants,
               "colors",
               "purple"
+            ),
+            [sty.textcolors_yellow__nUuYhWtyBg]: hasVariant(
+              variants,
+              "colors",
+              "yellow"
             )
           }
         )}
@@ -138,6 +144,11 @@ function PlasmicLabel__RenderFunc(props: {
               variants,
               "colors",
               "purple"
+            ),
+            [sty.textcolors_yellow___0EiWfwtyBg]: hasVariant(
+              variants,
+              "colors",
+              "yellow"
             )
           }
         )}

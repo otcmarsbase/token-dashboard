@@ -2,7 +2,7 @@ import React from "react"
 
 import { DetailedHTMLProps, FC, ReactNode, SourceHTMLAttributes, VideoHTMLAttributes } from "react"
 import { style } from "typestyle"
-import { TitleMedium, BodyText } from "../atoms"
+import { Text } from "../atoms"
 
 interface LearningBlockProps {
 	titleText: ReactNode
@@ -39,8 +39,8 @@ export const LearningBlock: FC<LearningBlockProps> = ({ titleText, subtitleText,
 	return (
 		<div className={container}>
 			<div className={header}>
-				<TitleMedium>{titleText}</TitleMedium>
-				<BodyText>{subtitleText}</BodyText>
+				<Text weight={'medium'}>{titleText}</Text>
+				<Text colors={"gray"}>{subtitleText}</Text>
 			</div>
 			<div>
 				<video className={video} {...videoAttributes}>

@@ -1,11 +1,9 @@
 import React from "react"
 
 import { FC, ReactNode, useContext } from "react"
-import { TextRed, BodyText, Button } from "../atoms"
+import { Text, Button } from "../atoms"
 import { style } from "typestyle"
-import { NftOverviewLocalized } from "./NftOverview"
 import { DictionaryContext } from "../../contexts/DictionaryContext"
-import PlasmicButton from "../Button"
 
 interface NftAvailableClaimProps {
 	amount: ReactNode
@@ -43,12 +41,12 @@ export const NftAvailableClaim: FC<NftAvailableClaimProps> = ({
 	return (
 		<div className={content}>
 			<div className={contentAmount}>
-				<TextRed>{`${amount} ${token}`}</TextRed>
-				<BodyText>{amountUsd}</BodyText>
+				<Text colors={"red"}>{`${amount} ${token}`}</Text>
+				<Text>{amountUsd}</Text>
 			</div>
 			<div className={contentActions}>
-				<PlasmicButton size="xs" colors="standart" onClick={onClaim}>{btnClaimText}</PlasmicButton>
-				<Button onClick={onActions}>{btnActionsText}</Button>
+				<Button size={'md'} onClick={onClaim}>{btnClaimText}</Button>
+				<Button size={'md'} colors={'defaultStroke'} onClick={onActions}>{btnActionsText}</Button>
 			</div>
 		</div>
 	)

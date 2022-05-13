@@ -35,6 +35,8 @@ import TokenDashboardHeader from "../../TokenDashboardHeader"; // plasmic-import
 import Text from "../../Text"; // plasmic-import: sIxKMhfpOf/component
 import NftTableSummary from "../../NftTableSummary"; // plasmic-import: O93YgHOHgbm/component
 import NftTable from "../../NftTable"; // plasmic-import: S7FYhea1xT/component
+import { NftOverviewWrapper } from "../../../../components/molecules/NftOverview"; // plasmic-import: Pmrdfs2RXn/codeComponent
+import { SummaryDestributionWrapper } from "../../../../components/molecules/SummaryDestribution"; // plasmic-import: DPnJaDhsFE/codeComponent
 
 import { useScreenVariants as useScreenVariants_3LOXnHzsFmncl } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: 3lOXnHZSFmncl/globalVariant
 
@@ -59,6 +61,8 @@ export type PlasmicHomepage__OverridesType = {
   text?: p.Flex<typeof Text>;
   nftTableSummary?: p.Flex<typeof NftTableSummary>;
   nftTable?: p.Flex<typeof NftTable>;
+  nftOverviewWrapper?: p.Flex<typeof NftOverviewWrapper>;
+  summaryDestributionWrapper?: p.Flex<typeof SummaryDestributionWrapper>;
 };
 
 export interface DefaultHomepageProps {
@@ -130,6 +134,22 @@ function PlasmicHomepage__RenderFunc(props: {
             data-plasmic-override={overrides.nftTable}
             className={classNames("__wab_instance", sty.nftTable)}
           />
+
+          <NftOverviewWrapper
+            data-plasmic-name={"nftOverviewWrapper"}
+            data-plasmic-override={overrides.nftOverviewWrapper}
+            buyPrice={12341234 as const}
+            className={classNames("__wab_instance", sty.nftOverviewWrapper)}
+          />
+
+          <SummaryDestributionWrapper
+            data-plasmic-name={"summaryDestributionWrapper"}
+            data-plasmic-override={overrides.summaryDestributionWrapper}
+            className={classNames(
+              "__wab_instance",
+              sty.summaryDestributionWrapper
+            )}
+          />
         </p.Stack>
       </div>
     </React.Fragment>
@@ -137,11 +157,21 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "tokenDashboardHeader", "text", "nftTableSummary", "nftTable"],
+  root: [
+    "root",
+    "tokenDashboardHeader",
+    "text",
+    "nftTableSummary",
+    "nftTable",
+    "nftOverviewWrapper",
+    "summaryDestributionWrapper"
+  ],
   tokenDashboardHeader: ["tokenDashboardHeader", "text"],
   text: ["text"],
   nftTableSummary: ["nftTableSummary"],
-  nftTable: ["nftTable"]
+  nftTable: ["nftTable"],
+  nftOverviewWrapper: ["nftOverviewWrapper"],
+  summaryDestributionWrapper: ["summaryDestributionWrapper"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -152,6 +182,8 @@ type NodeDefaultElementType = {
   text: typeof Text;
   nftTableSummary: typeof NftTableSummary;
   nftTable: typeof NftTable;
+  nftOverviewWrapper: typeof NftOverviewWrapper;
+  summaryDestributionWrapper: typeof SummaryDestributionWrapper;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -215,6 +247,8 @@ export const PlasmicHomepage = Object.assign(
     text: makeNodeComponent("text"),
     nftTableSummary: makeNodeComponent("nftTableSummary"),
     nftTable: makeNodeComponent("nftTable"),
+    nftOverviewWrapper: makeNodeComponent("nftOverviewWrapper"),
+    summaryDestributionWrapper: makeNodeComponent("summaryDestributionWrapper"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

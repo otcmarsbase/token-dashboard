@@ -3,7 +3,7 @@ import React from "react"
 import { FC, ReactNode, useContext } from "react"
 import { style } from "typestyle"
 import { DictionaryContext } from "../../contexts/DictionaryContext"
-import { BodyText, Icon, TitleMedium, CountRed } from "../atoms"
+import { Text, Icon, Count } from "../atoms"
 
 interface SummaryDestributionProps {
 	icon?: ReactNode
@@ -32,10 +32,10 @@ const SummaryDestribution: FC<SummaryDestributionProps> = ({ title, subTitle, co
 			<Icon />
 			<div className={content}>
 				<div className={contentHeader}>
-					<TitleMedium>{title}</TitleMedium>
-					<CountRed>{count}</CountRed>
+					<Text weight={'medium'}>{title}</Text>
+					<Count>{count}</Count>
 				</div>
-				<BodyText>{subTitle}</BodyText>
+				<Text>{subTitle}</Text>
 			</div>
 		</div>
 	)

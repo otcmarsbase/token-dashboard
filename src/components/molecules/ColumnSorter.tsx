@@ -2,7 +2,7 @@ import React from "react"
 
 import { FC, ReactNode } from "react"
 import { style } from "typestyle"
-import { BodyText, IconExtraSmall } from "../atoms"
+import {IconExtraSmall, Text} from "../atoms"
 
 interface ColumnSorterProps {
 	text: ReactNode
@@ -17,7 +17,7 @@ export const ColumnSorter: FC<ColumnSorterProps> = ({ text }) => {
 
 	return (
 		<div className={container}>
-			<BodyText>{text}</BodyText>
+			<Text colors={'red'}>{text}</Text>
 			<IconExtraSmall />
 		</div>
 	)

@@ -46,3 +46,11 @@
   position: relative;
   width: 1059px;
 }
+.nftOverviewWrapper:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.summaryDestributionWrapper:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
