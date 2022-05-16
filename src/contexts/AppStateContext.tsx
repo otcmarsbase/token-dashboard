@@ -14,14 +14,12 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
         handlers: HANDLERS,
     }), [])
 
-    const [provider, setProvider] = useState<Signer | ethers.providers.Provider>();
+    const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    const [provider, setProvider] = useState<Signer | ethers.providers.Provider>(web3Provider);
     const getProvider = async () => {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signerProvider = await provider.send("eth_requestAccounts", []);
-        if (!signerProvider) {
-            return provider;
-        }
-        return provider.getSigner();
+        await web3Provider.send("eth_requestAccounts", []);
+        return web3Provider.getSigner();
     }
 
     useEffect(() => {
@@ -32,7 +30,7 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
         return createApi(
             "0xCcb684ACA4068D75692f3414328A65A65BBc2A09",
             "0xcFE1A80bc0de6723c955fB496520cEF3f52072C0",
-            provider!)
+            provider)
     }, [provider])
 
     state.handlers.onClaim = api.requestClaimOneSignature
