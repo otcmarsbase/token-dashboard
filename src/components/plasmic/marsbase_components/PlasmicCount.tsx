@@ -31,18 +31,27 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import Text from "../../Text"; // plasmic-import: sIxKMhfpOf/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic_marsbase_components.module.css"; // plasmic-import: ujWBNnbL2n4RZDdiZiYFdw/projectcss
 import sty from "./PlasmicCount.module.css"; // plasmic-import: ArKwfI2osU/css
 
-export type PlasmicCount__VariantMembers = {};
+export type PlasmicCount__VariantMembers = {
+  colors: "gradient" | "gray";
+  size: "unnamedVariant";
+};
 
-export type PlasmicCount__VariantsArgs = {};
+export type PlasmicCount__VariantsArgs = {
+  colors?: SingleChoiceArg<"gradient" | "gray">;
+  size?: SingleChoiceArg<"unnamedVariant">;
+};
+
 type VariantPropType = keyof PlasmicCount__VariantsArgs;
-export const PlasmicCount__VariantProps = new Array<VariantPropType>();
+export const PlasmicCount__VariantProps = new Array<VariantPropType>(
+  "colors",
+  "size"
+);
 
 export type PlasmicCount__ArgsType = {};
 type ArgPropType = keyof PlasmicCount__ArgsType;
@@ -50,10 +59,12 @@ export const PlasmicCount__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCount__OverridesType = {
   root?: p.Flex<"div">;
-  text?: p.Flex<typeof Text>;
+  text?: p.Flex<"div">;
 };
 
 export interface DefaultCountProps {
+  colors?: SingleChoiceArg<"gradient" | "gray">;
+  size?: SingleChoiceArg<"unnamedVariant">;
   className?: string;
 }
 
@@ -79,15 +90,27 @@ function PlasmicCount__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
-        sty.root
+        sty.root,
+        {
+          [sty.rootcolors_gradient]: hasVariant(variants, "colors", "gradient"),
+          [sty.rootcolors_gray]: hasVariant(variants, "colors", "gray"),
+          [sty.rootsize_unnamedVariant]: hasVariant(
+            variants,
+            "size",
+            "unnamedVariant"
+          )
+        }
       )}
     >
-      <Text
+      <div
         data-plasmic-name={"text"}
         data-plasmic-override={overrides.text}
-        className={classNames("__wab_instance", sty.text)}
-        weight={"semiBold" as const}
-      />
+        className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
+          [sty.textcolors_gray]: hasVariant(variants, "colors", "gray")
+        })}
+      >
+        {"1"}
+      </div>
     </div>
   ) as React.ReactElement | null;
 }
@@ -101,7 +124,7 @@ type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  text: typeof Text;
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";

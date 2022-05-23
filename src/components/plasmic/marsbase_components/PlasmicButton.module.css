@@ -47,6 +47,12 @@
   flex-direction: row;
   flex-row-gap: 0px;
 }
+.buttonпрозрачность__10 {
+  background: linear-gradient(#ffffff1a, #ffffff1a), #bc401c;
+}
+.buttonпрозрачность__20 {
+  background: linear-gradient(#ffffff33, #ffffff33), #bc401c;
+}
 .buttonsize_sm {
   padding: 6px 12px;
 }

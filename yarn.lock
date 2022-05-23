@@ -859,10 +859,10 @@
     react-ssr-prepass "^1.4.0"
     swr ">1.0.0"
 
-"@plasmicapp/react-web@^0.2.96":
-  version "0.2.96"
-  resolved "https://registry.yarnpkg.com/@plasmicapp/react-web/-/react-web-0.2.96.tgz#28aafdeb75b73d1b692768dca31ed0bcdcda271e"
-  integrity sha512-v4evCKOJZh+VcF6NPxzrC7MZbp9kc5MRK108YwEVHEz+FiK3JuOMyMFHw4mgqvOg1tv4ThZ0RAjs/dfb9ruVkQ==
+"@plasmicapp/react-web@^0.2.97":
+  version "0.2.97"
+  resolved "https://registry.yarnpkg.com/@plasmicapp/react-web/-/react-web-0.2.97.tgz#15ac6d800855cf0a46596a8268c4631a49bd2552"
+  integrity sha512-5EyhaVIvPy6DFRYQkfyCISyltgvMKwdbQtPXDLlfESTM6eMET9vFidFRJtoXlvc7zoSy/7nawuHAtmqah7pX/Q==
   dependencies:
     "@react-aria/checkbox" "^3.3.4"
     "@react-aria/focus" "^3.5.5"

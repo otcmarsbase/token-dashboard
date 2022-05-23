@@ -52,6 +52,7 @@ export type PlasmicButton__VariantMembers = {
   isDisable: "isDisable";
   showStartIcon: "showStartIcon";
   showEndIcon: "showEndIcon";
+  прозрачность: "_10" | "_20";
 };
 
 export type PlasmicButton__VariantsArgs = {
@@ -68,6 +69,7 @@ export type PlasmicButton__VariantsArgs = {
   isDisable?: SingleBooleanChoiceArg<"isDisable">;
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
+  прозрачность?: SingleChoiceArg<"_10" | "_20">;
 };
 
 type VariantPropType = keyof PlasmicButton__VariantsArgs;
@@ -76,7 +78,8 @@ export const PlasmicButton__VariantProps = new Array<VariantPropType>(
   "colors",
   "isDisable",
   "showStartIcon",
-  "showEndIcon"
+  "showEndIcon",
+  "прозрачность"
 );
 
 export type PlasmicButton__ArgsType = {
@@ -106,6 +109,7 @@ export interface DefaultButtonProps {
   isDisable?: SingleBooleanChoiceArg<"isDisable">;
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
+  прозрачность?: SingleChoiceArg<"_10" | "_20">;
   className?: string;
 }
 
@@ -181,7 +185,17 @@ function PlasmicButton__RenderFunc(props: {
           [sty.buttonsize_md]: hasVariant(variants, "size", "md"),
           [sty.buttonsize_sm]: hasVariant(variants, "size", "sm"),
           [sty.buttonsize_xl]: hasVariant(variants, "size", "xl"),
-          [sty.buttonsize_xxl]: hasVariant(variants, "size", "xxl")
+          [sty.buttonsize_xxl]: hasVariant(variants, "size", "xxl"),
+          [sty.buttonпрозрачность__10]: hasVariant(
+            variants,
+            "прозрачность",
+            "_10"
+          ),
+          [sty.buttonпрозрачность__20]: hasVariant(
+            variants,
+            "прозрачность",
+            "_20"
+          )
         })}
         disabled={
           hasVariant(variants, "isDisable", "isDisable") ? true : undefined

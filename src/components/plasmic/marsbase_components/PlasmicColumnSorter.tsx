@@ -87,7 +87,6 @@ function PlasmicColumnSorter__RenderFunc(props: {
         data-plasmic-override={overrides.text}
         className={classNames("__wab_instance", sty.text)}
         colors={"gray" as const}
-        withIconRight={true}
       />
     </div>
   ) as React.ReactElement | null;

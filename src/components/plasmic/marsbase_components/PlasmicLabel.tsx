@@ -48,15 +48,20 @@ export type PlasmicLabel__VariantsArgs = {
 type VariantPropType = keyof PlasmicLabel__VariantsArgs;
 export const PlasmicLabel__VariantProps = new Array<VariantPropType>("colors");
 
-export type PlasmicLabel__ArgsType = {};
+export type PlasmicLabel__ArgsType = {
+  children?: React.ReactNode;
+};
+
 type ArgPropType = keyof PlasmicLabel__ArgsType;
-export const PlasmicLabel__ArgProps = new Array<ArgPropType>();
+export const PlasmicLabel__ArgProps = new Array<ArgPropType>("children");
 
 export type PlasmicLabel__OverridesType = {
   root?: p.Flex<"div">;
+  freeBox?: p.Flex<"div">;
 };
 
 export interface DefaultLabelProps {
+  children?: React.ReactNode;
   colors?: SingleChoiceArg<"purple" | "cyan" | "green" | "yellow">;
   className?: string;
 }
@@ -93,80 +98,56 @@ function PlasmicLabel__RenderFunc(props: {
       )}
     >
       <div
-        className={classNames(
-          projectcss.all,
-          projectcss.__wab_text,
-          sty.text__nUuYh,
-          {
-            [sty.textcolors_cyan__nUuYhmc0Lq]: hasVariant(
+        data-plasmic-name={"freeBox"}
+        data-plasmic-override={overrides.freeBox}
+        className={classNames(projectcss.all, sty.freeBox, {
+          [sty.freeBoxcolors_cyan]: hasVariant(variants, "colors", "cyan"),
+          [sty.freeBoxcolors_green]: hasVariant(variants, "colors", "green"),
+          [sty.freeBoxcolors_purple]: hasVariant(variants, "colors", "purple"),
+          [sty.freeBoxcolors_yellow]: hasVariant(variants, "colors", "yellow")
+        })}
+      >
+        {p.renderPlasmicSlot({
+          defaultContents: "Price",
+          value: args.children,
+          className: classNames(sty.slotTargetChildren, {
+            [sty.slotTargetChildrencolors_cyan]: hasVariant(
               variants,
               "colors",
               "cyan"
             ),
-            [sty.textcolors_green__nUuYh7XQkz]: hasVariant(
+            [sty.slotTargetChildrencolors_green]: hasVariant(
               variants,
               "colors",
               "green"
             ),
-            [sty.textcolors_purple__nUuYhV2VbN]: hasVariant(
+            [sty.slotTargetChildrencolors_purple]: hasVariant(
               variants,
               "colors",
               "purple"
             ),
-            [sty.textcolors_yellow__nUuYhWtyBg]: hasVariant(
+            [sty.slotTargetChildrencolors_yellow]: hasVariant(
               variants,
               "colors",
               "yellow"
             )
-          }
-        )}
-      >
-        {"Price"}
-      </div>
-
-      <div
-        className={classNames(
-          projectcss.all,
-          projectcss.__wab_text,
-          sty.text___0EiWf,
-          {
-            [sty.textcolors_cyan___0EiWFmc0Lq]: hasVariant(
-              variants,
-              "colors",
-              "cyan"
-            ),
-            [sty.textcolors_green___0EiWf7XQkz]: hasVariant(
-              variants,
-              "colors",
-              "green"
-            ),
-            [sty.textcolors_purple___0EiWfv2VbN]: hasVariant(
-              variants,
-              "colors",
-              "purple"
-            ),
-            [sty.textcolors_yellow___0EiWfwtyBg]: hasVariant(
-              variants,
-              "colors",
-              "yellow"
-            )
-          }
-        )}
-      >
-        {"0.0035"}
+          })
+        })}
       </div>
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "freeBox"],
+  freeBox: ["freeBox"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  freeBox: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -226,6 +207,7 @@ export const PlasmicLabel = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicLabel
     internalVariantProps: PlasmicLabel__VariantProps,

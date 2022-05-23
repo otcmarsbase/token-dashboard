@@ -2,9 +2,7 @@ import React from "react"
 
 import {
 	TokenDashboardTemplate,
-	Header as TDTHeader,
 	Summary as TDTSummary,
-	Table as TDTTable
 } from "../templates/TokenDashboardTemplate"
 import { NftTableSummary, TokenDashboardHeader } from "../organisms"
 import { NftTableWrapper } from "../organisms/NftTable"
@@ -12,6 +10,7 @@ import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
 import { useJsonRpc } from "../../use"
+import {Header} from "../templates";
 
 const TokenDashboard = () => {
 	const { data, handlers } = useContext(AppStateContext)
@@ -21,10 +20,10 @@ const TokenDashboard = () => {
 		<TokenDashboardTemplate>
 			<div>blockNumber: {blockNumber}</div>
 			<div>{status}</div>
-			<TDTHeader>
+			<Header>
 				<ConnectWithMetamask />
 				<TokenDashboardHeader />
-			</TDTHeader>
+			</Header>
 			<TDTSummary>
 				<NftTableSummary />
 			</TDTSummary>

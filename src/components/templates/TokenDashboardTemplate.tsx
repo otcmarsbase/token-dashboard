@@ -1,10 +1,6 @@
 import React, {FC, ReactNode} from "react"
 import { style } from "typestyle"
 
-export const Header: FC<{children: ReactNode}> = ({ children }) => {
-	return <div>{children}</div>
-}
-
 export const Summary: FC<{children: ReactNode}> = ({ children }) => <div>{children}</div>
 
 export const Table: FC<{children: ReactNode}> = ({ children }) => {

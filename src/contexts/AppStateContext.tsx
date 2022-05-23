@@ -17,6 +17,7 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
     const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const [provider, setProvider] = useState<Signer | ethers.providers.Provider>(web3Provider);
+
     const getProvider = async () => {
         await web3Provider.send("eth_requestAccounts", []);
         return web3Provider.getSigner();

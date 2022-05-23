@@ -274,6 +274,88 @@
           "cssFilePath": "plasmic/marsbase_components/PlasmicNftAvailableClaim.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "ILn7OfVdq5H",
+          "name": "TextNew",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicTextNew.tsx",
+          "importSpec": {
+            "modulePath": "TextNew.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicTextNew.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "4QNW70LTh7g",
+          "name": "TextNew2",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicTextNew2.tsx",
+          "importSpec": {
+            "modulePath": "TextNew2.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicTextNew2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "1GKZ90I6Fyh",
+          "name": "Button2",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicButton2.tsx",
+          "importSpec": {
+            "modulePath": "Button2.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicButton2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        },
+        {
+          "id": "BSYLE2hLSu5",
+          "name": "TextInput",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicTextInput.tsx",
+          "importSpec": {
+            "modulePath": "TextInput.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicTextInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "text-input"
+        },
+        {
+          "id": "cZub4IJft_7",
+          "name": "Input",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicInput.tsx",
+          "importSpec": {
+            "modulePath": "Input.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "text-input"
+        },
+        {
+          "id": "IjNkWnGbwja",
+          "name": "Checkbox",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicCheckbox.tsx",
+          "importSpec": {
+            "modulePath": "Checkbox.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicCheckbox.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "checkbox"
         }
       ],
       "icons": [
@@ -291,6 +373,31 @@
           "id": "_dC4dQZVmK",
           "name": "ShibaInusvgIcon",
           "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__ShibaInusvg.tsx"
+        },
+        {
+          "id": "s91taWCHpvC",
+          "name": "SearchsvgIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__Searchsvg.tsx"
+        },
+        {
+          "id": "BV79k7uJA",
+          "name": "Gold1SvgIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__Gold1Svg.tsx"
+        },
+        {
+          "id": "3bzqFFAPEMn",
+          "name": "SquaresvgIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__Squaresvg.tsx"
+        },
+        {
+          "id": "Hxf4GrNJ68-",
+          "name": "SquareCheckFilledsvgIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__SquareCheckFilledsvg.tsx"
+        },
+        {
+          "id": "Ay5eqH8tOag",
+          "name": "SquareMinussvgIcon",
+          "moduleFilePath": "plasmic/marsbase_components/icons/PlasmicIcon__SquareMinussvg.tsx"
         }
       ],
       "images": [
@@ -298,6 +405,11 @@
           "id": "70V1wYZW_",
           "name": "Home3.jpg",
           "filePath": "plasmic/marsbase_components/images/home3Jpg.jpeg"
+        },
+        {
+          "id": "1pKVoNq5c",
+          "name": "gold-1.png",
+          "filePath": "plasmic/marsbase_components/images/gold1Png.png"
         }
       ],
       "indirect": false,

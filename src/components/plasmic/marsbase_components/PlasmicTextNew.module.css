@@ -1,0 +1,139 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  min-width: auto;
+  max-width: none;
+}
+.rootwithIconLeft {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-row-gap: 0px;
+  min-width: 0;
+}
+.text__ecrDq {
+  position: relative;
+  width: auto;
+  height: auto;
+  align-self: center;
+  color: #000000;
+}
+.textweight_medium__ecrDqpyjW {
+  font-weight: 500;
+}
+.textwithIconLeft__ecrDq0LNYb {
+  width: auto;
+  white-space: pre-wrap;
+  max-width: none;
+  align-self: auto;
+  text-align: justify;
+  text-decoration-line: none;
+  display: none;
+}
+.texttitle__ecrDqRiF4N {
+  display: none;
+}
+.textcolors_gray__ecrDq9TY4 {
+  color: #989898;
+}
+.textcolors_red__ecrDqn3Gdi {
+  color: var(--token-MfCyf2DBW);
+}
+.textcolors_white__ecrDqYGbX {
+  color: #ffffff;
+}
+.textweight_semiBold__ecrDqkC6Cr {
+  font-weight: 600;
+}
+.textsize__10__ecrDqyJsWu {
+  font-size: 10px;
+}
+.textsize__11__ecrDqVashr {
+  font-size: 11px;
+}
+.textsize__12__ecrDqFJdLx {
+  font-size: 12px;
+}
+.textsize__14__ecrDqeAQ2 {
+  font-size: 14px;
+}
+.textsize__24__ecrDqDKeTy {
+  font-size: 24px;
+}
+.textsize__28__ecrDqjUSf {
+  font-size: 28px;
+}
+.freeBox {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.freeBoxwithIconLeft {
+  display: none;
+}
+.freeBoxtitle {
+  display: none;
+}
+.icon__pIlNq:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  display: none;
+}
+.h1 {
+  position: relative;
+  flex-direction: row;
+  display: none;
+}
+.text__g0Phb {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: normal;
+}
+.icon__vDpIn:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  height: 27px;
+  margin-right: 7px;
+  flex-shrink: 0;
+  display: none;
+}
+.iconwithIconLeft__vDpIn0LNYb:global(.__wab_instance) {
+  display: flex;
+}
+.text__wTM3 {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 800px;
+  display: none;
+}
+.textwithIconLeft__wTM30LNYb {
+  display: block;
+}
+.text___629Xb {
+  position: relative;
+  width: 100%;
+  height: auto;
+  font-size: 28px;
+  font-weight: 600;
+  min-width: 0;
+  display: none;
+}
+.texttitle___629XbRiF4N {
+  display: block;
+}

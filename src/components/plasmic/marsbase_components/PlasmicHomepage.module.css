@@ -35,6 +35,8 @@
 .text:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
+  width: 100%;
+  min-width: 0;
 }
 .nftTableSummary:global(.__wab_instance) {
   max-width: 100%;
@@ -53,4 +55,21 @@
 .summaryDestributionWrapper:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
+}
+.input:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+  width: 334px;
+}
+.svg__kRlY7 {
+  position: relative;
+  object-fit: cover;
+  width: 1em;
+  height: 1em;
+}
+.svg__rC7ZU {
+  position: relative;
+  object-fit: cover;
+  width: 1em;
+  height: 1em;
 }

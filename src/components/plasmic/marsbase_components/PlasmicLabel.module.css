@@ -4,9 +4,9 @@
   position: relative;
   width: auto;
   height: auto;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  background: #0e0d0d80;
+  background: #dddddd1a;
   border-radius: 8px;
   padding: 5px 10px;
 }
@@ -14,52 +14,37 @@
   background: #8c56dc80;
 }
 .rootcolors_cyan {
-  background: #5ec5e880;
+  background: #73fff71a;
 }
 .rootcolors_green {
   background: #09c78180;
 }
 .rootcolors_yellow {
-  background: #f4ff0080;
+  background: #ffce511a;
 }
-.text__nUuYh {
+.freeBox {
   position: relative;
   width: auto;
   height: auto;
   max-width: 800px;
-  margin-right: 8px;
+  display: flex;
+  flex-direction: row;
+}
+.freeBoxcolors_yellow {
+  margin-right: 0px;
+}
+.slotTargetChildren {
   color: #ffffff;
 }
-.textcolors_purple__nUuYhV2VbN {
+.slotTargetChildrencolors_purple {
   color: #8c56dc;
 }
-.textcolors_cyan__nUuYhmc0Lq {
-  color: #5ec5e8;
+.slotTargetChildrencolors_cyan {
+  color: #73fff7;
 }
-.textcolors_green__nUuYh7XQkz {
+.slotTargetChildrencolors_green {
   color: #09c781;
 }
-.textcolors_yellow__nUuYhWtyBg {
-  color: #acb300;
-}
-.text___0EiWf {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 800px;
-  font-weight: 500;
-  color: #ffffff;
-  min-width: 0;
-}
-.textcolors_purple___0EiWfv2VbN {
-  color: #8c56dc;
-}
-.textcolors_cyan___0EiWFmc0Lq {
-  color: #5ec5e8;
-}
-.textcolors_green___0EiWf7XQkz {
-  color: #09c781;
-}
-.textcolors_yellow___0EiWfwtyBg {
-  color: #acb300;
+.slotTargetChildrencolors_yellow {
+  color: #ffce51;
 }

@@ -44,6 +44,7 @@
   max-width: 100%;
   position: relative;
   align-self: flex-start;
+  width: auto;
 }
 .text__bzpLk:global(.__wab_instance) {
   max-width: 100%;

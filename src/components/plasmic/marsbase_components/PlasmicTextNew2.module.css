@@ -1,0 +1,47 @@
+.root {
+  width: auto;
+  height: auto;
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+}
+.roottitle {
+  display: none;
+}
+.text {
+  position: relative;
+  color: #000000;
+}
+.textweight_medium {
+  font-weight: 500;
+}
+.textcolors_gray {
+  color: #989898;
+}
+.textcolors_red {
+  color: var(--token-MfCyf2DBW);
+}
+.textcolors_white {
+  color: #ffffff;
+}
+.textweight_semiBold {
+  font-weight: 600;
+}
+.textsize__10 {
+  font-size: 10px;
+}
+.textsize__11 {
+  font-size: 11px;
+}
+.textsize__12 {
+  font-size: 12px;
+}
+.textsize__14 {
+  font-size: 14px;
+}
+.textsize__24 {
+  font-size: 24px;
+}
+.textsize__28 {
+  font-size: 28px;
+}

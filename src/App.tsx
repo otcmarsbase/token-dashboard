@@ -7,6 +7,7 @@ import { DictionaryProvider } from "./contexts/DictionaryContext"
 import { MetaMaskProvider } from "metamask-react"
 
 import "./styles.css"
+import VestingSplit from "./components/pages/VestingSplit";
 
 declare global {
 	interface Window {
@@ -19,7 +20,8 @@ export default function App() {
 		<DictionaryProvider lang="en">
 			<AppStateProvider>
 				<MetaMaskProvider>
-					<TokenDashboard />
+					{/*<TokenDashboard />*/}
+					<VestingSplit/>
 				</MetaMaskProvider>
 			</AppStateProvider>
 		</DictionaryProvider>

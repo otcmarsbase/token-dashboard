@@ -104,10 +104,7 @@ function PlasmicHeaderOverview__RenderFunc(props: {
           value: args.children
         })}
 
-        <Text
-          className={classNames("__wab_instance", sty.text__dfdvM)}
-          withIconLeft={true}
-        />
+        <Text className={classNames("__wab_instance", sty.text__dfdvM)} />
       </div>
 
       <Text className={classNames("__wab_instance", sty.text__nqbXl)} />

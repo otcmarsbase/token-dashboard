@@ -1,9 +1,8 @@
-import {BigNumber, BigNumberish, ethers} from "ethers"
+import {BigNumber, BigNumberish, Contract, ethers} from "ethers"
 import {INft} from "./components/organisms/NftTable"
 import {MarsbaseVesting__factory, MarsbaseVesting} from "@otcmarsbase/token-contract-types"
 
 type NftData = Awaited<ReturnType<MarsbaseVesting["getVestingRecord"]>>
-
 
 export function createApi(mbaseAddress: string, vestingAddress: string, provider: ethers.Signer | ethers.providers.Provider) {
     let vest = MarsbaseVesting__factory.connect(vestingAddress, provider)
@@ -43,10 +42,6 @@ export function calculateClaimableTokens(nft: NftData): BigNumber {
 }
 
 export async function requestClaimOneSignature(nftId: string, vest: MarsbaseVesting): Promise<boolean> {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const address = await requestMetamaskConnect();
-    const signer = provider.getSigner(address);
-    const signerAddress = await signer.getAddress();
 
     const tx = await vest["unvest(uint256)"](nftId)
 
