@@ -59,15 +59,16 @@
 .input:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
-  width: 334px;
 }
-.svg__kRlY7 {
+.svg__gXss4 {
   position: relative;
   object-fit: cover;
+  max-width: 100%;
+  margin-right: 0px;
   width: 1em;
   height: 1em;
 }
-.svg__rC7ZU {
+.svg__skMyA {
   position: relative;
   object-fit: cover;
   width: 1em;

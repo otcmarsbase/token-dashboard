@@ -54,6 +54,7 @@ export type PlasmicButton__VariantMembers = {
   showEndIcon: "showEndIcon";
   прозрачность: "_10" | "_20";
   auto: "auto";
+  unnamedGroupOfVariants: "unnamedVariant";
 };
 
 export type PlasmicButton__VariantsArgs = {
@@ -72,6 +73,7 @@ export type PlasmicButton__VariantsArgs = {
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   прозрачность?: SingleChoiceArg<"_10" | "_20">;
   auto?: SingleBooleanChoiceArg<"auto">;
+  unnamedGroupOfVariants?: SingleChoiceArg<"unnamedVariant">;
 };
 
 type VariantPropType = keyof PlasmicButton__VariantsArgs;
@@ -82,7 +84,8 @@ export const PlasmicButton__VariantProps = new Array<VariantPropType>(
   "showStartIcon",
   "showEndIcon",
   "прозрачность",
-  "auto"
+  "auto",
+  "unnamedGroupOfVariants"
 );
 
 export type PlasmicButton__ArgsType = {
@@ -114,6 +117,7 @@ export interface DefaultButtonProps {
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   прозрачность?: SingleChoiceArg<"_10" | "_20">;
   auto?: SingleBooleanChoiceArg<"auto">;
+  unnamedGroupOfVariants?: SingleChoiceArg<"unnamedVariant">;
   className?: string;
 }
 

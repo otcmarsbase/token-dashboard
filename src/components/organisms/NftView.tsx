@@ -10,7 +10,7 @@ const NftView = () => {
             <div>
                 <div className={viewHeader}>
                     <Text>VIEW</Text>
-                    <Text title colors={'red'}>NFT Details</Text>
+                    <Text title={"_1"} colors={'red'}>NFT Details</Text>
                 </div>
                 <div className={detailsContainer}>
                     <NftDetailsItem/>

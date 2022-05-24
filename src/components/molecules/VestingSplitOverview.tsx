@@ -6,11 +6,11 @@ const container = style({
     width: '500px'
 })
 
-const VestingOverview = () => {
+const VestingSplitOverview = () => {
     return (
         <div className={container}>
             <div>
-                <Text title>Vesting split</Text>
+                <Text title={"_1"}>Vesting split</Text>
                 <Text colors={"red"}>How to use?</Text>
             </div>
             <Text colors={'gray'} size={'_14'}>
@@ -21,4 +21,4 @@ const VestingOverview = () => {
     );
 };
 
-export default VestingOverview;
+export default VestingSplitOverview;

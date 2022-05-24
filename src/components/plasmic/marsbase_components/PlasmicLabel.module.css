@@ -6,21 +6,22 @@
   height: auto;
   justify-content: center;
   align-items: center;
-  background: #dddddd1a;
+  background: #dddddd2e;
   border-radius: 8px;
   padding: 5px 10px;
-}
-.rootcolors_purple {
-  background: #8c56dc80;
 }
 .rootcolors_cyan {
   background: #73fff71a;
 }
-.rootcolors_green {
-  background: #09c78180;
-}
 .rootcolors_yellow {
   background: #ffce511a;
+}
+.rootcolors_red {
+  background: #fea4831a;
+}
+.rootdisabled {
+  background: #686a6e1a;
+  cursor: not-allowed;
 }
 .freeBox {
   position: relative;
@@ -36,15 +37,15 @@
 .slotTargetChildren {
   color: #ffffff;
 }
-.slotTargetChildrencolors_purple {
-  color: #8c56dc;
-}
 .slotTargetChildrencolors_cyan {
   color: #73fff7;
 }
-.slotTargetChildrencolors_green {
-  color: #09c781;
-}
 .slotTargetChildrencolors_yellow {
   color: #ffce51;
+}
+.slotTargetChildrencolors_red {
+  color: #fea483;
+}
+.slotTargetChildrendisabled {
+  color: #686a6e;
 }

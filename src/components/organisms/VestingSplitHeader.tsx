@@ -1,5 +1,5 @@
 import React from 'react';
-import VestingOverview from "../molecules/VestingOverview";
+import VestingSplitOverview from "../molecules/VestingSplitOverview";
 import VestingActions from "../molecules/VestingActions";
 import {style} from 'typestyle';
 
@@ -13,7 +13,7 @@ const container = style({
 const VestingSplitHeader = () => {
     return (
         <div className={container}>
-            <VestingOverview/>
+            <VestingSplitOverview/>
             <VestingActions/>
         </div>
     );

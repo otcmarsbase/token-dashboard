@@ -1,107 +1,119 @@
 .root {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   height: auto;
   align-items: center;
   justify-content: flex-start;
-  background: #ffffff;
+  background: none;
   position: sticky;
   min-width: 0;
-  border-radius: 6px;
-  padding: 7px 11px;
-  border: 1px solid #dbdbd7;
 }
-.rootcolor_dark {
-  background: #232320;
-  border-color: #717069;
-}
-.rootcolor_darkStroke {
+.rootcolor_stroke {
   background: none;
   border-width: 2px;
   border-color: #ffffff80;
 }
-.root:hover {
-  border-color: #c8c7c1;
-}
-.root:focus-within {
-  box-shadow: 0px 0px 0px 3px #96c7f2;
-  outline: none;
-  border-radius: 6px;
-}
-.root___focusVisibleWithin {
-  box-shadow: 0px 0px 0px 3px #96c7f2;
-  outline: none;
-  border-radius: 6px;
-}
-.startIconContainer {
-  position: relative;
+.freeBox__vVoNl {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  left: 2px;
+  top: -25px;
   flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-  left: auto;
-  top: auto;
-  margin-right: 8px;
+  min-width: 0;
   display: none;
 }
-.startIconContainershowStartIcon {
+.freeBox__m0GJu {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  flex-direction: row;
+  min-width: 0;
+  display: none;
+}
+.freeBox___1CoBj {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  flex-direction: row;
+  min-width: 0;
+  display: none;
+}
+.freeBoxshowUpLabel___1CoBjIbSqa {
   display: flex;
 }
-.root .startIconContainer___focusVisibleWithin {
-  outline: none;
+.freeBox__wGoC3 {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: #51546066;
+  min-width: 0;
+  border-radius: 8px;
+  padding: 10px;
 }
-.slotTargetStartIconshowStartIcon {
-  color: #90908c;
+.freeBoxcolor_stroke__wGoC32UsIv {
+  background: none;
+  border: 2px solid #00000080;
 }
-.slotTargetStartIconcolor_dark {
-  color: #ffffff;
+.freeBoxcolor_whiteStroke__wGoC3Dz2Fr {
+  background: none;
+  border: 2px solid #ffffff80;
 }
-.svg__muCx0 {
+.freeBox__vmHw {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin-right: 6px;
+  display: none;
+}
+.freeBoxshowStartIcon__vmHwtsmAw {
+  display: flex;
+}
+.svg__ycKlt {
   position: relative;
   object-fit: cover;
+  max-width: 100%;
+  margin-right: 0px;
   width: 1em;
   height: 1em;
   flex-shrink: 0;
 }
 .input {
+  position: relative;
   width: 100%;
-  left: auto;
-  top: auto;
+  height: 100%;
+  max-width: 100%;
+  color: #ffffff;
   background: #ffffff00;
+  font-size: 14px;
+  align-self: center;
   min-width: 0;
+  min-height: 0;
   padding: 0px;
-  border-width: 0px;
+  border-width: 1px;
+  border-style: none;
 }
-.inputisDisabled {
-  cursor: not-allowed;
+.inputcolor_stroke {
+  color: #000000;
 }
-.inputcolor_dark {
-  color: #ffffff;
-  background: #ffffff00;
-}
-.inputcolor_darkStroke {
+.root .input::placeholder {
   color: #ffffff;
 }
-.root:focus-within .input {
-  outline: none;
-}
-.root .input___focusVisibleWithin {
-  outline: none;
-}
-.root .input:focus {
-  outline: none;
-}
-.root:focus-within .input:focus {
-  outline: none;
-}
-.rootcolor_dark .inputcolor_dark::placeholder {
-  color: #c8c7c1;
-}
-.rootcolor_darkStroke .inputcolor_darkStroke::placeholder {
-  color: #ffffff;
-}
-.root:focus-within .input::placeholder {
-  outline: none;
+.rootcolor_stroke .inputcolor_stroke::placeholder {
+  color: #000000;
 }
 .endIconContainer {
   position: relative;
@@ -114,18 +126,40 @@
   display: none;
 }
 .endIconContainershowEndIcon {
+  left: auto;
+  top: auto;
+  align-items: center;
+  justify-content: center;
   display: flex;
 }
 .slotTargetEndIconshowEndIcon {
   color: #90908c;
 }
-.slotTargetEndIconcolor_dark {
-  color: #ffffff;
-}
-.svg__p4QO7 {
+.svg__ol9RF {
   position: relative;
   object-fit: cover;
   width: 1em;
   height: 1em;
   flex-shrink: 0;
+}
+.freeBox__docmu {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  flex-direction: row;
+  min-width: 0;
+  display: none;
+}
+.freeBoxshowDownLabel__docmup175Y {
+  display: flex;
+}
+.freeBox__wm62Y {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  flex-direction: row;
+  min-width: 0;
+  display: none;
 }

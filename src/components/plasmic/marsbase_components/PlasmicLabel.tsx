@@ -38,15 +38,20 @@ import projectcss from "./plasmic_marsbase_components.module.css"; // plasmic-im
 import sty from "./PlasmicLabel.module.css"; // plasmic-import: zvfx6kR6ll/css
 
 export type PlasmicLabel__VariantMembers = {
-  colors: "purple" | "cyan" | "green" | "yellow";
+  colors: "cyan" | "yellow" | "red";
+  disabled: "disabled";
 };
 
 export type PlasmicLabel__VariantsArgs = {
-  colors?: SingleChoiceArg<"purple" | "cyan" | "green" | "yellow">;
+  colors?: SingleChoiceArg<"cyan" | "yellow" | "red">;
+  disabled?: SingleBooleanChoiceArg<"disabled">;
 };
 
 type VariantPropType = keyof PlasmicLabel__VariantsArgs;
-export const PlasmicLabel__VariantProps = new Array<VariantPropType>("colors");
+export const PlasmicLabel__VariantProps = new Array<VariantPropType>(
+  "colors",
+  "disabled"
+);
 
 export type PlasmicLabel__ArgsType = {
   children?: React.ReactNode;
@@ -62,7 +67,8 @@ export type PlasmicLabel__OverridesType = {
 
 export interface DefaultLabelProps {
   children?: React.ReactNode;
-  colors?: SingleChoiceArg<"purple" | "cyan" | "green" | "yellow">;
+  colors?: SingleChoiceArg<"cyan" | "yellow" | "red">;
+  disabled?: SingleBooleanChoiceArg<"disabled">;
   className?: string;
 }
 
@@ -94,9 +100,9 @@ function PlasmicLabel__RenderFunc(props: {
         sty.root,
         {
           [sty.rootcolors_cyan]: hasVariant(variants, "colors", "cyan"),
-          [sty.rootcolors_green]: hasVariant(variants, "colors", "green"),
-          [sty.rootcolors_purple]: hasVariant(variants, "colors", "purple"),
-          [sty.rootcolors_yellow]: hasVariant(variants, "colors", "yellow")
+          [sty.rootcolors_red]: hasVariant(variants, "colors", "red"),
+          [sty.rootcolors_yellow]: hasVariant(variants, "colors", "yellow"),
+          [sty.rootdisabled]: hasVariant(variants, "disabled", "disabled")
         }
       )}
     >
@@ -105,8 +111,6 @@ function PlasmicLabel__RenderFunc(props: {
         data-plasmic-override={overrides.freeBox}
         className={classNames(projectcss.all, sty.freeBox, {
           [sty.freeBoxcolors_cyan]: hasVariant(variants, "colors", "cyan"),
-          [sty.freeBoxcolors_green]: hasVariant(variants, "colors", "green"),
-          [sty.freeBoxcolors_purple]: hasVariant(variants, "colors", "purple"),
           [sty.freeBoxcolors_yellow]: hasVariant(variants, "colors", "yellow")
         })}
       >
@@ -119,20 +123,20 @@ function PlasmicLabel__RenderFunc(props: {
               "colors",
               "cyan"
             ),
-            [sty.slotTargetChildrencolors_green]: hasVariant(
+            [sty.slotTargetChildrencolors_red]: hasVariant(
               variants,
               "colors",
-              "green"
-            ),
-            [sty.slotTargetChildrencolors_purple]: hasVariant(
-              variants,
-              "colors",
-              "purple"
+              "red"
             ),
             [sty.slotTargetChildrencolors_yellow]: hasVariant(
               variants,
               "colors",
               "yellow"
+            ),
+            [sty.slotTargetChildrendisabled]: hasVariant(
+              variants,
+              "disabled",
+              "disabled"
             )
           })
         })}

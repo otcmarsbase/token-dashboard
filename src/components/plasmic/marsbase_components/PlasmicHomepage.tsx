@@ -37,7 +37,7 @@ import NftTableSummary from "../../NftTableSummary"; // plasmic-import: O93YgHOH
 import NftTable from "../../NftTable"; // plasmic-import: S7FYhea1xT/component
 import { NftOverviewWrapper } from "../../../../components/molecules/NftOverview"; // plasmic-import: Pmrdfs2RXn/codeComponent
 import { SummaryDestributionWrapper } from "../../../../components/molecules/SummaryDestribution"; // plasmic-import: DPnJaDhsFE/codeComponent
-import Input from "../../Input"; // plasmic-import: cZub4IJft_7/component
+import Input from "../../Input"; // plasmic-import: HA02ocYHIWR/component
 
 import { useScreenVariants as useScreenVariants_3LOXnHzsFmncl } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: 3lOXnHZSFmncl/globalVariant
 
@@ -127,7 +127,6 @@ function PlasmicHomepage__RenderFunc(props: {
               data-plasmic-name={"text"}
               data-plasmic-override={overrides.text}
               className={classNames("__wab_instance", sty.text)}
-              title={true}
             />
           </TokenDashboardHeader>
 
@@ -163,7 +162,6 @@ function PlasmicHomepage__RenderFunc(props: {
             data-plasmic-name={"input"}
             data-plasmic-override={overrides.input}
             className={classNames("__wab_instance", sty.input)}
-            color={"darkStroke" as const}
           />
         </p.Stack>
       </div>

@@ -101,7 +101,6 @@ function PlasmicNftOverview__RenderFunc(props: {
           data-plasmic-name={"label"}
           data-plasmic-override={overrides.label}
           className={classNames("__wab_instance", sty.label)}
-          colors={"purple" as const}
         />
 
         <Text

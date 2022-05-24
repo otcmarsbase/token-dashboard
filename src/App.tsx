@@ -12,6 +12,7 @@ import { useMetamask } from "use-metamask"
 import { EthersSignerFakeProvider, JrpcProviderPrivnet } from "./hooks/jrpc-provider"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
 import { PRIVNET } from "./config"
+import VestingSplit from "./components/pages/VestingSplit";
 
 declare global {
 	interface Window {
@@ -30,6 +31,7 @@ export default function App() {
 							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
 								<AppStateProvider>
 									<TokenDashboard />
+									<VestingSplit/>
 								</AppStateProvider>
 							</MarsbaseVestingProvider>
 						</MarsbaseTokenProvider>

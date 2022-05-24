@@ -25,7 +25,7 @@ const VestingStepCard = () => {
                 <Text weight={'medium'} size={'_24'}>1</Text>
             </Count>
             <div className={body}>
-                <Text font={'euro'} size={'_18'} weight={'medium'}>Parameters</Text>
+                <Text title={'_2'}>Parameters</Text>
                 <Text colors={'gray'} size={'_14'}>Set suitable conditions</Text>
             </div>
         </div>

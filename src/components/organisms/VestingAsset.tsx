@@ -1,10 +1,69 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, Button} from '../atoms'
 import {style} from "typestyle";
 import gold1 from '../../assets/gold-1.svg'
 import silver2 from '../../assets/silver-2.svg'
 import Input from "../Input";
 import Checkbox from "../Checkbox";
+import VestingSplitSectionOverview from "../molecules/VestingSplitSectionOverview";
+
+const VestingAsset = () => {
+    const [state, setState] = useState('18,000,000.00')
+    return (
+        <div className={container}>
+            <div className={header}>
+                <div style={{padding: '28px 21px 45px 21px'}}>
+                    <div className={vestingAsset}>
+                        <VestingSplitSectionOverview/>
+                    </div>
+                    <div className={toSplit}>
+                        <Input
+                            onChange={event => setState(event.target.value)}
+                            value={state}
+                            startIcon={<img src={gold1} alt=""/>}
+                            showStartIcon
+                        />
+                        <Button size={'xl'} onClick={() => null}>Change</Button>
+                    </div>
+                </div>
+            </div>
+            <div className={headerBody}>
+                <VestingSplitSectionOverview/>
+                <Input
+                    onChange={event => setState(event.target.value)}
+                    value={state}
+                    showStartIcon
+                    startIcon={<img src={silver2} alt=""/>}
+                    color={'whiteStroke'}
+                    showUpLabel
+                    upLabel={<Text size={'_14'}>Proportion</Text>}
+                    showDownLabel
+                    downLabel={<Text size={'_12'}>Fee: 14,000 MBase (1%) ~10,000 $ </Text>}
+                />
+                <Input
+                    onChange={event => console.log(event.target.value)}
+                    showStartIcon
+                    startIcon={<img src={silver2} alt=""/>}
+                    value={state}
+                    color={'whiteStroke'}
+                    showUpLabel
+                    upLabel={<Text size={'_14'}>Proportion</Text>}
+                    showDownLabel
+                    downLabel={<Text size={'_12'}>Fee: 14,000 MBase (1%) ~10,000 $ </Text>}
+                />
+            </div>
+            <div className={footer}>
+                <Button auto size={'lg'} onClick={() => null}>
+                    <Text weight={'medium'}>SPLIT</Text>
+                </Button>
+                <div>
+                    <Text>Fee:</Text>
+                    <Text weight={'medium'} colors={'red'}>36,000 MBS (1%)</Text>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const container = style({
     border: '3px solid rgba(138, 103, 255, 1)',
@@ -20,13 +79,14 @@ const header = style({
     width: '100%',
     flexDirection: 'column',
     gap: '20px',
-    backgroundColor: '#1f1f1f',
+    backgroundColor: '#1B1B1C',
     borderRadius: '10px 10px 0 0',
 })
 
 const vestingAsset = style({
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginBottom: '25px'
 })
 
 const toSplit = style({
@@ -47,77 +107,5 @@ const footer = style({
     padding: '24px',
     borderRadius: '0 0 10px 10px',
 })
-
-const VestingAsset = () => {
-    return (
-        <div className={container}>
-            <div className={header}>
-                <div style={{padding: '20px'}}>
-                    <div className={vestingAsset}>
-                        <div>
-                            <Text size={'_18'}>Сhoose vesting asset</Text>
-                            <Text size={'_12'} colors={'gray'}>Set the parameters you need to suggest the best trading conditions</Text>
-                        </div>
-                        <Text colors={'red'} size={'_14'}>How to use?</Text>
-                    </div>
-                    <div className={toSplit}>
-                        <div style={{width: '100%'}}>
-                            <Text>To split</Text>
-                            <Input color={'dark'} startIcon={<img src={gold1} alt=""/>} showStartIcon/>
-                        </div>
-                        <Button size={'xl'} onClick={() => null}>Change</Button>
-                    </div>
-                </div>
-
-            </div>
-            <div className={headerBody}>
-                <div>
-                    <Text>Split parameters</Text>
-                    <Text>Сhoose the best strategy for exchanging your funds</Text>
-                </div>
-                <div>
-                    <Text>Proportion</Text>
-                    <Input
-                        onChange={event => console.log(event.target.value)}
-                        showStartIcon
-                        startIcon={<img src={silver2} alt=""/>}
-                        value={'18,000,000.00'}
-                        color={'darkStroke'}
-                    />
-                </div>
-                <div>
-                    <Text>Proportion</Text>
-                    <Input
-                        onChange={event => console.log(event.target.value)}
-                        showStartIcon
-                        startIcon={<img src={silver2} alt=""/>}
-                        color={'darkStroke'}
-                    />
-                    <Checkbox children={'Send to another wallet'}/>
-                </div>
-                <div>
-                    <Text>Proportion</Text>
-                    <Input
-                        onChange={event => console.log(event.target.value)}
-                        showStartIcon
-                        startIcon={<img src={silver2} alt=""/>}
-                        color={'darkStroke'}
-                    />
-                    <Checkbox children={'Send to another wallet'}/>
-                </div>
-            </div>
-            <div className={footer}>
-                <Button auto size={'lg'} onClick={() => null}>
-                    <Text weight={'medium'}>SPLIT</Text>
-                </Button>
-                <div>
-                    <Text>Fee:</Text>
-                    <Text weight={'medium'} colors={'red'}>36,000 MBS (1%)</Text>
-                </div>
-
-            </div>
-        </div>
-    );
-};
 
 export default VestingAsset;

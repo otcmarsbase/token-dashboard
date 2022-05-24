@@ -41,9 +41,9 @@ import sty from "./PlasmicText.module.css"; // plasmic-import: sIxKMhfpOf/css
 export type PlasmicText__VariantMembers = {
   weight: "medium" | "semiBold";
   size: "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18";
-  title: "title";
   colors: "gray" | "red" | "white";
-  font: "euro";
+  opacity: "_10";
+  title: "_1" | "_2";
 };
 
 export type PlasmicText__VariantsArgs = {
@@ -51,18 +51,18 @@ export type PlasmicText__VariantsArgs = {
   size?: SingleChoiceArg<
     "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18"
   >;
-  title?: SingleBooleanChoiceArg<"title">;
   colors?: SingleChoiceArg<"gray" | "red" | "white">;
-  font?: SingleChoiceArg<"euro">;
+  opacity?: SingleChoiceArg<"_10">;
+  title?: SingleChoiceArg<"_1" | "_2">;
 };
 
 type VariantPropType = keyof PlasmicText__VariantsArgs;
 export const PlasmicText__VariantProps = new Array<VariantPropType>(
   "weight",
   "size",
-  "title",
   "colors",
-  "font"
+  "opacity",
+  "title"
 );
 
 export type PlasmicText__ArgsType = {
@@ -83,9 +83,9 @@ export interface DefaultTextProps {
   size?: SingleChoiceArg<
     "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18"
   >;
-  title?: SingleBooleanChoiceArg<"title">;
   colors?: SingleChoiceArg<"gray" | "red" | "white">;
-  font?: SingleChoiceArg<"euro">;
+  opacity?: SingleChoiceArg<"_10">;
+  title?: SingleChoiceArg<"_1" | "_2">;
   className?: string;
 }
 
@@ -114,8 +114,7 @@ function PlasmicText__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
-        sty.root,
-        { [sty.roottitle]: hasVariant(variants, "title", "title") }
+        sty.root
       )}
     >
       <div
@@ -165,11 +164,6 @@ function PlasmicText__RenderFunc(props: {
             "size",
             "_28"
           ),
-          [sty.freeBoxtitle___4Jz6KQXncF]: hasVariant(
-            variants,
-            "title",
-            "title"
-          ),
           [sty.freeBoxweight_medium___4Jz6KcKDv1]: hasVariant(
             variants,
             "weight",
@@ -196,10 +190,10 @@ function PlasmicText__RenderFunc(props: {
               "colors",
               "red"
             ),
-            [sty.slotTargetChildrenfont_euro]: hasVariant(
+            [sty.slotTargetChildrenopacity__10]: hasVariant(
               variants,
-              "font",
-              "euro"
+              "opacity",
+              "_10"
             ),
             [sty.slotTargetChildrensize__10]: hasVariant(
               variants,
@@ -241,10 +235,15 @@ function PlasmicText__RenderFunc(props: {
               "size",
               "_28"
             ),
-            [sty.slotTargetChildrentitle]: hasVariant(
+            [sty.slotTargetChildrentitle__1]: hasVariant(
               variants,
               "title",
-              "title"
+              "_1"
+            ),
+            [sty.slotTargetChildrentitle__2]: hasVariant(
+              variants,
+              "title",
+              "_2"
             ),
             [sty.slotTargetChildrenweight_medium]: hasVariant(
               variants,
@@ -260,66 +259,52 @@ function PlasmicText__RenderFunc(props: {
         })}
       </div>
 
-      {(hasVariant(variants, "title", "title") ? true : true) ? (
-        <div
-          className={classNames(projectcss.all, sty.freeBox__lzUj9, {
-            [sty.freeBoxsize__10__lzUj9PsPn]: hasVariant(
-              variants,
-              "size",
-              "_10"
-            ),
-            [sty.freeBoxsize__11__lzUj9K8ScW]: hasVariant(
-              variants,
-              "size",
-              "_11"
-            ),
-            [sty.freeBoxsize__12__lzUj9USiNm]: hasVariant(
-              variants,
-              "size",
-              "_12"
-            ),
-            [sty.freeBoxsize__14__lzUj9MoCq]: hasVariant(
-              variants,
-              "size",
-              "_14"
-            ),
-            [sty.freeBoxsize__16__lzUj9ZvWcY]: hasVariant(
-              variants,
-              "size",
-              "_16"
-            ),
-            [sty.freeBoxsize__24__lzUj924T4X]: hasVariant(
-              variants,
-              "size",
-              "_24"
-            ),
-            [sty.freeBoxsize__28__lzUj9NH4ED]: hasVariant(
-              variants,
-              "size",
-              "_28"
-            ),
-            [sty.freeBoxtitle__lzUj9QXncF]: hasVariant(
-              variants,
-              "title",
-              "title"
-            ),
-            [sty.freeBoxweight_medium__lzUj9CKDv1]: hasVariant(
-              variants,
-              "weight",
-              "medium"
-            ),
-            [sty.freeBoxweight_semiBold__lzUj99KhyJ]: hasVariant(
-              variants,
-              "weight",
-              "semiBold"
-            )
-          })}
-        >
-          {true ? (
-            <Icon className={classNames("__wab_instance", sty.icon__aKwMs)} />
-          ) : null}
-        </div>
-      ) : null}
+      <div
+        className={classNames(projectcss.all, sty.freeBox__lzUj9, {
+          [sty.freeBoxsize__10__lzUj9PsPn]: hasVariant(variants, "size", "_10"),
+          [sty.freeBoxsize__11__lzUj9K8ScW]: hasVariant(
+            variants,
+            "size",
+            "_11"
+          ),
+          [sty.freeBoxsize__12__lzUj9USiNm]: hasVariant(
+            variants,
+            "size",
+            "_12"
+          ),
+          [sty.freeBoxsize__14__lzUj9MoCq]: hasVariant(variants, "size", "_14"),
+          [sty.freeBoxsize__16__lzUj9ZvWcY]: hasVariant(
+            variants,
+            "size",
+            "_16"
+          ),
+          [sty.freeBoxsize__24__lzUj924T4X]: hasVariant(
+            variants,
+            "size",
+            "_24"
+          ),
+          [sty.freeBoxsize__28__lzUj9NH4ED]: hasVariant(
+            variants,
+            "size",
+            "_28"
+          ),
+          [sty.freeBoxweight_medium__lzUj9CKDv1]: hasVariant(
+            variants,
+            "weight",
+            "medium"
+          ),
+          [sty.freeBoxweight_semiBold__lzUj99KhyJ]: hasVariant(
+            variants,
+            "weight",
+            "semiBold"
+          )
+        })}
+      >
+        {true ? (
+          <Icon className={classNames("__wab_instance", sty.icon__aKwMs)} />
+        ) : null}
+      </div>
+
       {true ? (
         <h1
           data-plasmic-name={"h1"}

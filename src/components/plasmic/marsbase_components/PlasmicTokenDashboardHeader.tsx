@@ -121,7 +121,6 @@ function PlasmicTokenDashboardHeader__RenderFunc(props: {
               defaultContents: (
                 <Text
                   className={classNames("__wab_instance", sty.text__bzpLk)}
-                  title={true}
                 />
               ),
 

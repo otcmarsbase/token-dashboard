@@ -99,10 +99,7 @@ function PlasmicHeaderOverview__RenderFunc(props: {
       >
         {p.renderPlasmicSlot({
           defaultContents: (
-            <Text
-              className={classNames("__wab_instance", sty.text__cJFzq)}
-              title={true}
-            />
+            <Text className={classNames("__wab_instance", sty.text__cJFzq)} />
           ),
 
           value: args.children

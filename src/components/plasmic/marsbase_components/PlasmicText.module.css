@@ -24,19 +24,24 @@
 .slotTargetChildrensize__18 {
   font-size: 18px;
 }
-.slotTargetChildrentitle {
-  font-size: 32px;
-  font-weight: 600;
-  font-family: "EurofontExtendedC";
-}
 .slotTargetChildrencolors_gray {
   color: #7b7b7b;
 }
 .slotTargetChildrencolors_red {
   color: var(--token-MfCyf2DBW);
 }
-.slotTargetChildrenfont_euro {
+.slotTargetChildrenopacity__10 {
+  color: #ffffff1a;
+}
+.slotTargetChildrentitle__1 {
+  font-size: 32px;
+  font-weight: 600;
   font-family: var(--token-t77KRyK74);
+}
+.slotTargetChildrentitle__2 {
+  font-size: 18px;
+  font-family: var(--token-t77KRyK74);
+  font-weight: 600;
 }
 .slotTargetChildrenweight_semiBold {
   font-weight: 600;
@@ -68,9 +73,6 @@
   display: flex;
   flex-direction: row;
   min-width: 0;
-}
-.freeBoxtitle__lzUj9QXncF {
-  display: none;
 }
 .icon__aKwMs:global(.__wab_instance) {
   max-width: 100%;
