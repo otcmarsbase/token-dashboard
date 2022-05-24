@@ -5,7 +5,7 @@ on:
       - 'v*'
 
 env:
-  deployment_name: token-dashboard-dev
+  deployment_name: token-dashboard
 
 jobs:
   push_to_registry:
