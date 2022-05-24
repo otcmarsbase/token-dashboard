@@ -6,7 +6,7 @@
     "@babel/runtime": "^7.17.9",
     "@otcmarsbase/token-contract-types": "^0.1.1",
     "@plasmicapp/loader-react": "^1.0.54",
-    "@plasmicapp/react-web": "^0.2.97",
+    "@plasmicapp/react-web": "^0.2.96",
     "babel-polyfill": "^6.26.0",
     "ethers": "^5.6.4",
     "metamask-react": "^2.3.0",

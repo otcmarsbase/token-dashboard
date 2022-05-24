@@ -1,0 +1,32 @@
+name: Build latest image
+on: 
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  push_to_registry:
+    name: Build & upload to GitHub registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Build and Push
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+          repository: ${{ github.repository }}
+          tags: latest
+          cache_froms: ${{ github.repository }}:latest
+
+      - name: Tag new version
+        uses: pkgdeps/action-package-version-to-git-tag@v1.5.0
+        with:
+          github_token: ${{ secrets.MB_GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
