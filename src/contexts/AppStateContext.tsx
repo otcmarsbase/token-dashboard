@@ -1,7 +1,7 @@
 import React, {ReactNode, useEffect, useState} from "react"
-import {createApi} from "../api"
 import {SCREEN_DATA, HANDLERS} from "../data"
-import {ethers, Signer} from "ethers";
+import { useEthersAccount } from "../hooks/jrpc-provider"
+import { useMarsbaseContracts } from "../hooks/mbase-contract"
 
 export const AppStateContext = React.createContext({
     data: SCREEN_DATA,
@@ -14,27 +14,20 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
         handlers: HANDLERS,
     }), [])
 
-    const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+	let account = useEthersAccount()
 
-    const [provider, setProvider] = useState<Signer | ethers.providers.Provider>(web3Provider);
+	let contracts = useMarsbaseContracts()
 
-    const getProvider = async () => {
-        await web3Provider.send("eth_requestAccounts", []);
-        return web3Provider.getSigner();
-    }
+	if (!account)
+		return <>Not Logged in</>
 
-    useEffect(() => {
-        getProvider().then(provider => setProvider(provider));
-    }, [])
+	let acc = account
 
-    let api = React.useMemo(() => {
-        return createApi(
-            "0xCcb684ACA4068D75692f3414328A65A65BBc2A09",
-            "0xcFE1A80bc0de6723c955fB496520cEF3f52072C0",
-            provider)
-    }, [provider])
-
-    state.handlers.onClaim = api.requestClaimOneSignature
+    state.handlers.onClaim = async nftId =>
+	{
+		let tx = await contracts.vesting.populateTransaction["unvest(uint256)"](nftId)
+		acc.signAndSendTx(tx)
+	}
     // state.handlers.onClaimAll = api.requestClaimAllSignature
 
     return (

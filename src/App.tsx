@@ -8,6 +8,11 @@ import { MetaMaskProvider } from "metamask-react"
 
 import "./styles.css"
 
+import { useMetamask } from "use-metamask"
+import { EthersSignerFakeProvider, JrpcProviderPrivnet } from "./hooks/jrpc-provider"
+import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
+import { PRIVNET } from "./config"
+
 declare global {
 	interface Window {
 		ethereum: any
@@ -17,11 +22,20 @@ declare global {
 export default function App() {
 	return (
 		<DictionaryProvider lang="en">
-			<AppStateProvider>
-				<MetaMaskProvider>
-					<TokenDashboard />
-				</MetaMaskProvider>
-			</AppStateProvider>
+			<MetaMaskProvider>
+				{/* <TokenDashboard /> */}
+				<JrpcProviderPrivnet>
+					<EthersSignerFakeProvider address="0x60c56553495612d4b93b6BC1deffE937223eaF51">
+						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
+							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
+								<AppStateProvider>
+									<TokenDashboard />
+								</AppStateProvider>
+							</MarsbaseVestingProvider>
+						</MarsbaseTokenProvider>
+					</EthersSignerFakeProvider>
+				</JrpcProviderPrivnet>
+			</MetaMaskProvider>
 		</DictionaryProvider>
 	)
 }
