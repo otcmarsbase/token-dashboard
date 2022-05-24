@@ -3,14 +3,13 @@ import React from 'react';
 import VestingSplitHeader from "../organisms/VestingSplitHeader";
 import VestingSplitSteps from "../organisms/VestingSplitSteps";
 import {style} from "typestyle";
-import NftDetails from "../organisms/NftDetails";
+import NftView from "../organisms/NftView";
 import VestingAsset from "../organisms/VestingAsset";
 
 const container = style({
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    maxWidth: '1200px',
+    maxWidth: '1433px',
     width: '100%',
     margin: 'auto'
 })
@@ -26,7 +25,7 @@ const VestingSplit = () => {
             <VestingSplitHeader/>
             <VestingSplitSteps/>
             <div className={body}>
-                <NftDetails/>
+                <NftView/>
                 <VestingAsset/>
             </div>
         </div>

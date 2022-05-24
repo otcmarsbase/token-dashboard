@@ -31,7 +31,6 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
-import TextNew2 from "../../TextNew2"; // plasmic-import: 4QNW70LTh7g/component
 import Icon from "../../Icon"; // plasmic-import: E1FwFPFP4L/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -41,16 +40,20 @@ import sty from "./PlasmicText.module.css"; // plasmic-import: sIxKMhfpOf/css
 
 export type PlasmicText__VariantMembers = {
   weight: "medium" | "semiBold";
-  size: "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28";
+  size: "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18";
   title: "title";
   colors: "gray" | "red" | "white";
+  font: "euro";
 };
 
 export type PlasmicText__VariantsArgs = {
   weight?: SingleChoiceArg<"medium" | "semiBold">;
-  size?: SingleChoiceArg<"_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28">;
+  size?: SingleChoiceArg<
+    "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18"
+  >;
   title?: SingleBooleanChoiceArg<"title">;
   colors?: SingleChoiceArg<"gray" | "red" | "white">;
+  font?: SingleChoiceArg<"euro">;
 };
 
 type VariantPropType = keyof PlasmicText__VariantsArgs;
@@ -58,27 +61,35 @@ export const PlasmicText__VariantProps = new Array<VariantPropType>(
   "weight",
   "size",
   "title",
-  "colors"
+  "colors",
+  "font"
 );
 
-export type PlasmicText__ArgsType = {};
+export type PlasmicText__ArgsType = {
+  children?: React.ReactNode;
+};
+
 type ArgPropType = keyof PlasmicText__ArgsType;
-export const PlasmicText__ArgProps = new Array<ArgPropType>();
+export const PlasmicText__ArgProps = new Array<ArgPropType>("children");
 
 export type PlasmicText__OverridesType = {
   root?: p.Flex<"div">;
-  textNew2?: p.Flex<typeof TextNew2>;
-  freeBox?: p.Flex<"div">;
   h1?: p.Flex<"h1">;
 };
 
 export interface DefaultTextProps {
+  children?: React.ReactNode;
   weight?: SingleChoiceArg<"medium" | "semiBold">;
-  size?: SingleChoiceArg<"_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28">;
+  size?: SingleChoiceArg<
+    "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18"
+  >;
   title?: SingleBooleanChoiceArg<"title">;
   colors?: SingleChoiceArg<"gray" | "red" | "white">;
+  font?: SingleChoiceArg<"euro">;
   className?: string;
 }
+
+export const defaultText__Args: Partial<PlasmicText__ArgsType> = {};
 
 function PlasmicText__RenderFunc(props: {
   variants: PlasmicText__VariantsArgs;
@@ -87,8 +98,9 @@ function PlasmicText__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultText__Args, props.args);
+  const $props = args;
 
   return (
     <div
@@ -106,85 +118,197 @@ function PlasmicText__RenderFunc(props: {
         { [sty.roottitle]: hasVariant(variants, "title", "title") }
       )}
     >
-      {(hasVariant(variants, "title", "title") ? true : true) ? (
-        <TextNew2
-          data-plasmic-name={"textNew2"}
-          data-plasmic-override={overrides.textNew2}
-          className={classNames("__wab_instance", sty.textNew2, {
-            [sty.textNew2colors_gray]: hasVariant(variants, "colors", "gray"),
-            [sty.textNew2colors_red]: hasVariant(variants, "colors", "red"),
-            [sty.textNew2colors_white]: hasVariant(variants, "colors", "white"),
-            [sty.textNew2size__10]: hasVariant(variants, "size", "_10"),
-            [sty.textNew2size__11]: hasVariant(variants, "size", "_11"),
-            [sty.textNew2size__12]: hasVariant(variants, "size", "_12"),
-            [sty.textNew2size__14]: hasVariant(variants, "size", "_14"),
-            [sty.textNew2size__24]: hasVariant(variants, "size", "_24"),
-            [sty.textNew2size__28]: hasVariant(variants, "size", "_28"),
-            [sty.textNew2title]: hasVariant(variants, "title", "title"),
-            [sty.textNew2weight_medium]: hasVariant(
+      <div
+        className={classNames(projectcss.all, sty.freeBox___4Jz6K, {
+          [sty.freeBoxcolors_gray___4Jz6KB4PsL]: hasVariant(
+            variants,
+            "colors",
+            "gray"
+          ),
+          [sty.freeBoxcolors_red___4Jz6K2GLuJ]: hasVariant(
+            variants,
+            "colors",
+            "red"
+          ),
+          [sty.freeBoxcolors_white___4Jz6KNxEhm]: hasVariant(
+            variants,
+            "colors",
+            "white"
+          ),
+          [sty.freeBoxsize__10___4Jz6KPsPn]: hasVariant(
+            variants,
+            "size",
+            "_10"
+          ),
+          [sty.freeBoxsize__11___4Jz6KK8ScW]: hasVariant(
+            variants,
+            "size",
+            "_11"
+          ),
+          [sty.freeBoxsize__12___4Jz6KUSiNm]: hasVariant(
+            variants,
+            "size",
+            "_12"
+          ),
+          [sty.freeBoxsize__14___4Jz6KMoCq]: hasVariant(
+            variants,
+            "size",
+            "_14"
+          ),
+          [sty.freeBoxsize__24___4Jz6K24T4X]: hasVariant(
+            variants,
+            "size",
+            "_24"
+          ),
+          [sty.freeBoxsize__28___4Jz6KnH4ED]: hasVariant(
+            variants,
+            "size",
+            "_28"
+          ),
+          [sty.freeBoxtitle___4Jz6KQXncF]: hasVariant(
+            variants,
+            "title",
+            "title"
+          ),
+          [sty.freeBoxweight_medium___4Jz6KcKDv1]: hasVariant(
+            variants,
+            "weight",
+            "medium"
+          ),
+          [sty.freeBoxweight_semiBold___4Jz6K9KhyJ]: hasVariant(
+            variants,
+            "weight",
+            "semiBold"
+          )
+        })}
+      >
+        {p.renderPlasmicSlot({
+          defaultContents: null,
+          value: args.children,
+          className: classNames(sty.slotTargetChildren, {
+            [sty.slotTargetChildrencolors_gray]: hasVariant(
+              variants,
+              "colors",
+              "gray"
+            ),
+            [sty.slotTargetChildrencolors_red]: hasVariant(
+              variants,
+              "colors",
+              "red"
+            ),
+            [sty.slotTargetChildrenfont_euro]: hasVariant(
+              variants,
+              "font",
+              "euro"
+            ),
+            [sty.slotTargetChildrensize__10]: hasVariant(
+              variants,
+              "size",
+              "_10"
+            ),
+            [sty.slotTargetChildrensize__11]: hasVariant(
+              variants,
+              "size",
+              "_11"
+            ),
+            [sty.slotTargetChildrensize__12]: hasVariant(
+              variants,
+              "size",
+              "_12"
+            ),
+            [sty.slotTargetChildrensize__14]: hasVariant(
+              variants,
+              "size",
+              "_14"
+            ),
+            [sty.slotTargetChildrensize__16]: hasVariant(
+              variants,
+              "size",
+              "_16"
+            ),
+            [sty.slotTargetChildrensize__18]: hasVariant(
+              variants,
+              "size",
+              "_18"
+            ),
+            [sty.slotTargetChildrensize__24]: hasVariant(
+              variants,
+              "size",
+              "_24"
+            ),
+            [sty.slotTargetChildrensize__28]: hasVariant(
+              variants,
+              "size",
+              "_28"
+            ),
+            [sty.slotTargetChildrentitle]: hasVariant(
+              variants,
+              "title",
+              "title"
+            ),
+            [sty.slotTargetChildrenweight_medium]: hasVariant(
               variants,
               "weight",
               "medium"
             ),
-            [sty.textNew2weight_semiBold]: hasVariant(
+            [sty.slotTargetChildrenweight_semiBold]: hasVariant(
               variants,
               "weight",
               "semiBold"
             )
-          })}
-          colors={
-            hasVariant(variants, "colors", "white")
-              ? ("white" as const)
-              : hasVariant(variants, "colors", "red")
-              ? ("red" as const)
-              : hasVariant(variants, "colors", "gray")
-              ? ("gray" as const)
-              : undefined
-          }
-          size={
-            hasVariant(variants, "size", "_28")
-              ? ("_28" as const)
-              : hasVariant(variants, "size", "_24")
-              ? ("_24" as const)
-              : hasVariant(variants, "size", "_14")
-              ? ("_14" as const)
-              : hasVariant(variants, "size", "_12")
-              ? ("_12" as const)
-              : hasVariant(variants, "size", "_11")
-              ? ("_11" as const)
-              : hasVariant(variants, "size", "_10")
-              ? ("_10" as const)
-              : undefined
-          }
-          title={hasVariant(variants, "title", "title") ? true : undefined}
-          weight={
-            hasVariant(variants, "weight", "semiBold")
-              ? ("semiBold" as const)
-              : hasVariant(variants, "weight", "medium")
-              ? ("medium" as const)
-              : undefined
-          }
-        />
-      ) : null}
+          })
+        })}
+      </div>
+
       {(hasVariant(variants, "title", "title") ? true : true) ? (
         <div
-          data-plasmic-name={"freeBox"}
-          data-plasmic-override={overrides.freeBox}
-          className={classNames(projectcss.all, sty.freeBox, {
-            [sty.freeBoxsize__10]: hasVariant(variants, "size", "_10"),
-            [sty.freeBoxsize__11]: hasVariant(variants, "size", "_11"),
-            [sty.freeBoxsize__12]: hasVariant(variants, "size", "_12"),
-            [sty.freeBoxsize__14]: hasVariant(variants, "size", "_14"),
-            [sty.freeBoxsize__16]: hasVariant(variants, "size", "_16"),
-            [sty.freeBoxsize__24]: hasVariant(variants, "size", "_24"),
-            [sty.freeBoxsize__28]: hasVariant(variants, "size", "_28"),
-            [sty.freeBoxtitle]: hasVariant(variants, "title", "title"),
-            [sty.freeBoxweight_medium]: hasVariant(
+          className={classNames(projectcss.all, sty.freeBox__lzUj9, {
+            [sty.freeBoxsize__10__lzUj9PsPn]: hasVariant(
+              variants,
+              "size",
+              "_10"
+            ),
+            [sty.freeBoxsize__11__lzUj9K8ScW]: hasVariant(
+              variants,
+              "size",
+              "_11"
+            ),
+            [sty.freeBoxsize__12__lzUj9USiNm]: hasVariant(
+              variants,
+              "size",
+              "_12"
+            ),
+            [sty.freeBoxsize__14__lzUj9MoCq]: hasVariant(
+              variants,
+              "size",
+              "_14"
+            ),
+            [sty.freeBoxsize__16__lzUj9ZvWcY]: hasVariant(
+              variants,
+              "size",
+              "_16"
+            ),
+            [sty.freeBoxsize__24__lzUj924T4X]: hasVariant(
+              variants,
+              "size",
+              "_24"
+            ),
+            [sty.freeBoxsize__28__lzUj9NH4ED]: hasVariant(
+              variants,
+              "size",
+              "_28"
+            ),
+            [sty.freeBoxtitle__lzUj9QXncF]: hasVariant(
+              variants,
+              "title",
+              "title"
+            ),
+            [sty.freeBoxweight_medium__lzUj9CKDv1]: hasVariant(
               variants,
               "weight",
               "medium"
             ),
-            [sty.freeBoxweight_semiBold]: hasVariant(
+            [sty.freeBoxweight_semiBold__lzUj99KhyJ]: hasVariant(
               variants,
               "weight",
               "semiBold"
@@ -227,32 +351,12 @@ function PlasmicText__RenderFunc(props: {
           {"Enter some text"}
         </div>
       ) : null}
-      {(hasVariant(variants, "title", "title") ? true : true) ? (
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__diNrz,
-            {
-              [sty.texttitle__diNrzqXncF]: hasVariant(
-                variants,
-                "title",
-                "title"
-              )
-            }
-          )}
-        >
-          {"Enter some text"}
-        </div>
-      ) : null}
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "textNew2", "freeBox", "h1"],
-  textNew2: ["textNew2"],
-  freeBox: ["freeBox"],
+  root: ["root", "h1"],
   h1: ["h1"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -260,8 +364,6 @@ type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  textNew2: typeof TextNew2;
-  freeBox: "div";
   h1: "h1";
 };
 
@@ -322,8 +424,6 @@ export const PlasmicText = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    textNew2: makeNodeComponent("textNew2"),
-    freeBox: makeNodeComponent("freeBox"),
     h1: makeNodeComponent("h1"),
 
     // Metadata about props expected for PlasmicText

@@ -57,6 +57,9 @@ export interface DefaultColumnSorterProps {
   className?: string;
 }
 
+export const defaultColumnSorter__Args: Partial<PlasmicColumnSorter__ArgsType> =
+  {};
+
 function PlasmicColumnSorter__RenderFunc(props: {
   variants: PlasmicColumnSorter__VariantsArgs;
   args: PlasmicColumnSorter__ArgsType;
@@ -64,8 +67,9 @@ function PlasmicColumnSorter__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultColumnSorter__Args, props.args);
+  const $props = args;
 
   return (
     <div

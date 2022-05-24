@@ -58,6 +58,8 @@ export interface DefaultIconProps {
   className?: string;
 }
 
+export const defaultIcon__Args: Partial<PlasmicIcon__ArgsType> = {};
+
 function PlasmicIcon__RenderFunc(props: {
   variants: PlasmicIcon__VariantsArgs;
   args: PlasmicIcon__ArgsType;
@@ -65,8 +67,9 @@ function PlasmicIcon__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultIcon__Args, props.args);
+  const $props = args;
 
   return (
     <div

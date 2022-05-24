@@ -58,6 +58,9 @@ export interface DefaultNftProgressProps {
   className?: string;
 }
 
+export const defaultNftProgress__Args: Partial<PlasmicNftProgress__ArgsType> =
+  {};
+
 function PlasmicNftProgress__RenderFunc(props: {
   variants: PlasmicNftProgress__VariantsArgs;
   args: PlasmicNftProgress__ArgsType;
@@ -65,8 +68,9 @@ function PlasmicNftProgress__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultNftProgress__Args, props.args);
+  const $props = args;
 
   return (
     <div

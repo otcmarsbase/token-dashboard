@@ -55,6 +55,8 @@ export interface DefaultButtonsProps {
   className?: string;
 }
 
+export const defaultButtons__Args: Partial<PlasmicButtons__ArgsType> = {};
+
 function PlasmicButtons__RenderFunc(props: {
   variants: PlasmicButtons__VariantsArgs;
   args: PlasmicButtons__ArgsType;
@@ -62,8 +64,9 @@ function PlasmicButtons__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultButtons__Args, props.args);
+  const $props = args;
 
   return (
     <React.Fragment>

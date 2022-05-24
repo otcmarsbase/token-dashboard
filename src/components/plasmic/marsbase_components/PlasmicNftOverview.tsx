@@ -58,6 +58,9 @@ export interface DefaultNftOverviewProps {
   className?: string;
 }
 
+export const defaultNftOverview__Args: Partial<PlasmicNftOverview__ArgsType> =
+  {};
+
 function PlasmicNftOverview__RenderFunc(props: {
   variants: PlasmicNftOverview__VariantsArgs;
   args: PlasmicNftOverview__ArgsType;
@@ -65,8 +68,9 @@ function PlasmicNftOverview__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultNftOverview__Args, props.args);
+  const $props = args;
 
   return (
     <div

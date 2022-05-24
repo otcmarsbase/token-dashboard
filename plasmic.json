@@ -276,32 +276,6 @@
           "componentType": "component"
         },
         {
-          "id": "ILn7OfVdq5H",
-          "name": "TextNew",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicTextNew.tsx",
-          "importSpec": {
-            "modulePath": "TextNew.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicTextNew.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "4QNW70LTh7g",
-          "name": "TextNew2",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicTextNew2.tsx",
-          "importSpec": {
-            "modulePath": "TextNew2.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicTextNew2.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "1GKZ90I6Fyh",
           "name": "Button2",
           "type": "managed",

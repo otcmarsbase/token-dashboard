@@ -6,7 +6,8 @@ import {style} from 'typestyle';
 const container = style({
     width: '100%',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginBottom: '32px'
 })
 
 const VestingSplitHeader = () => {

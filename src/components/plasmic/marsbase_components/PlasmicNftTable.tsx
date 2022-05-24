@@ -63,6 +63,8 @@ export interface DefaultNftTableProps {
   className?: string;
 }
 
+export const defaultNftTable__Args: Partial<PlasmicNftTable__ArgsType> = {};
+
 function PlasmicNftTable__RenderFunc(props: {
   variants: PlasmicNftTable__VariantsArgs;
   args: PlasmicNftTable__ArgsType;
@@ -70,8 +72,9 @@ function PlasmicNftTable__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultNftTable__Args, props.args);
+  const $props = args;
 
   return (
     <div

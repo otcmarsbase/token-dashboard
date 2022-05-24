@@ -55,6 +55,8 @@ export interface DefaultProgressProps {
   className?: string;
 }
 
+export const defaultProgress__Args: Partial<PlasmicProgress__ArgsType> = {};
+
 function PlasmicProgress__RenderFunc(props: {
   variants: PlasmicProgress__VariantsArgs;
   args: PlasmicProgress__ArgsType;
@@ -62,8 +64,9 @@ function PlasmicProgress__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultProgress__Args, props.args);
+  const $props = args;
 
   return (
     <div

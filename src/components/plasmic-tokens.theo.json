@@ -1,6 +1,16 @@
 {
   "props": [
     {
+      "name": "EurofontExtendedC",
+      "type": "fontfamily",
+      "value": "EurofontExtendedC",
+      "category": "fontfamily",
+      "meta": {
+        "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+        "id": "t77KRyK74"
+      }
+    },
+    {
       "name": "RedColor",
       "type": "color",
       "value": "#9A2C33",

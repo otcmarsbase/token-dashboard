@@ -10,7 +10,8 @@ const container = style({
     border: '3px solid rgba(138, 103, 255, 1)',
     borderRadius: '10px',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '100%',
 })
 
 const header = style({
@@ -42,7 +43,9 @@ const headerBody = style({
 })
 
 const footer = style({
-    backgroundColor: '#74250E'
+    backgroundColor: '#74250E',
+    padding: '24px',
+    borderRadius: '0 0 10px 10px',
 })
 
 const VestingAsset = () => {
@@ -52,10 +55,10 @@ const VestingAsset = () => {
                 <div style={{padding: '20px'}}>
                     <div className={vestingAsset}>
                         <div>
-                            <Text>Сhoose vesting asset</Text>
-                            <Text>Set the parameters you need to suggest the best trading conditions</Text>
+                            <Text size={'_18'}>Сhoose vesting asset</Text>
+                            <Text size={'_12'} colors={'gray'}>Set the parameters you need to suggest the best trading conditions</Text>
                         </div>
-                        <Text>How to use?</Text>
+                        <Text colors={'red'} size={'_14'}>How to use?</Text>
                     </div>
                     <div className={toSplit}>
                         <div style={{width: '100%'}}>
@@ -104,6 +107,13 @@ const VestingAsset = () => {
                 </div>
             </div>
             <div className={footer}>
+                <Button auto size={'lg'} onClick={() => null}>
+                    <Text weight={'medium'}>SPLIT</Text>
+                </Button>
+                <div>
+                    <Text>Fee:</Text>
+                    <Text weight={'medium'} colors={'red'}>36,000 MBS (1%)</Text>
+                </div>
 
             </div>
         </div>

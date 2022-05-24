@@ -53,20 +53,26 @@ export const PlasmicCount__VariantProps = new Array<VariantPropType>(
   "size"
 );
 
-export type PlasmicCount__ArgsType = {};
+export type PlasmicCount__ArgsType = {
+  children?: React.ReactNode;
+};
+
 type ArgPropType = keyof PlasmicCount__ArgsType;
-export const PlasmicCount__ArgProps = new Array<ArgPropType>();
+export const PlasmicCount__ArgProps = new Array<ArgPropType>("children");
 
 export type PlasmicCount__OverridesType = {
   root?: p.Flex<"div">;
-  text?: p.Flex<"div">;
+  freeBox?: p.Flex<"div">;
 };
 
 export interface DefaultCountProps {
+  children?: React.ReactNode;
   colors?: SingleChoiceArg<"gradient" | "gray">;
   size?: SingleChoiceArg<"unnamedVariant">;
   className?: string;
 }
+
+export const defaultCount__Args: Partial<PlasmicCount__ArgsType> = {};
 
 function PlasmicCount__RenderFunc(props: {
   variants: PlasmicCount__VariantsArgs;
@@ -75,8 +81,9 @@ function PlasmicCount__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultCount__Args, props.args);
+  const $props = args;
 
   return (
     <div
@@ -103,28 +110,29 @@ function PlasmicCount__RenderFunc(props: {
       )}
     >
       <div
-        data-plasmic-name={"text"}
-        data-plasmic-override={overrides.text}
-        className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
-          [sty.textcolors_gray]: hasVariant(variants, "colors", "gray")
-        })}
+        data-plasmic-name={"freeBox"}
+        data-plasmic-override={overrides.freeBox}
+        className={classNames(projectcss.all, sty.freeBox)}
       >
-        {"1"}
+        {p.renderPlasmicSlot({
+          defaultContents: null,
+          value: args.children
+        })}
       </div>
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "text"],
-  text: ["text"]
+  root: ["root", "freeBox"],
+  freeBox: ["freeBox"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  text: "div";
+  freeBox: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -184,7 +192,7 @@ export const PlasmicCount = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    text: makeNodeComponent("text"),
+    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicCount
     internalVariantProps: PlasmicCount__VariantProps,

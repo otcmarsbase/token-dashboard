@@ -63,6 +63,9 @@ export interface DefaultHeaderOverviewProps {
   className?: string;
 }
 
+export const defaultHeaderOverview__Args: Partial<PlasmicHeaderOverview__ArgsType> =
+  {};
+
 function PlasmicHeaderOverview__RenderFunc(props: {
   variants: PlasmicHeaderOverview__VariantsArgs;
   args: PlasmicHeaderOverview__ArgsType;
@@ -70,8 +73,9 @@ function PlasmicHeaderOverview__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultHeaderOverview__Args, props.args);
+  const $props = args;
 
   return (
     <div

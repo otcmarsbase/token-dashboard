@@ -66,6 +66,9 @@ export interface DefaultSummaryDescriptionProps {
   className?: string;
 }
 
+export const defaultSummaryDescription__Args: Partial<PlasmicSummaryDescription__ArgsType> =
+  {};
+
 function PlasmicSummaryDescription__RenderFunc(props: {
   variants: PlasmicSummaryDescription__VariantsArgs;
   args: PlasmicSummaryDescription__ArgsType;
@@ -73,8 +76,9 @@ function PlasmicSummaryDescription__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultSummaryDescription__Args, props.args);
+  const $props = args;
 
   return (
     <div

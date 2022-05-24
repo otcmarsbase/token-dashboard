@@ -66,6 +66,8 @@ export interface DefaultLabelProps {
   className?: string;
 }
 
+export const defaultLabel__Args: Partial<PlasmicLabel__ArgsType> = {};
+
 function PlasmicLabel__RenderFunc(props: {
   variants: PlasmicLabel__VariantsArgs;
   args: PlasmicLabel__ArgsType;
@@ -73,8 +75,9 @@ function PlasmicLabel__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultLabel__Args, props.args);
+  const $props = args;
 
   return (
     <div

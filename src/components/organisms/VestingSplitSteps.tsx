@@ -5,7 +5,9 @@ import {style} from "typestyle";
 const container = style({
     width: '100%',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    gap: '32px',
+    marginBottom: '66px'
 })
 
 const VestingSplitSteps = () => {

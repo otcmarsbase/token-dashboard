@@ -59,6 +59,9 @@ export interface DefaultSummaryTotalUnclaimedProps {
   className?: string;
 }
 
+export const defaultSummaryTotalUnclaimed__Args: Partial<PlasmicSummaryTotalUnclaimed__ArgsType> =
+  {};
+
 function PlasmicSummaryTotalUnclaimed__RenderFunc(props: {
   variants: PlasmicSummaryTotalUnclaimed__VariantsArgs;
   args: PlasmicSummaryTotalUnclaimed__ArgsType;
@@ -66,8 +69,13 @@ function PlasmicSummaryTotalUnclaimed__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign(
+    {},
+    defaultSummaryTotalUnclaimed__Args,
+    props.args
+  );
+  const $props = args;
 
   return (
     <div

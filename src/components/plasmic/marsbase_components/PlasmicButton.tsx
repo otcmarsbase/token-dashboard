@@ -53,6 +53,7 @@ export type PlasmicButton__VariantMembers = {
   showStartIcon: "showStartIcon";
   showEndIcon: "showEndIcon";
   прозрачность: "_10" | "_20";
+  auto: "auto";
 };
 
 export type PlasmicButton__VariantsArgs = {
@@ -70,6 +71,7 @@ export type PlasmicButton__VariantsArgs = {
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   прозрачность?: SingleChoiceArg<"_10" | "_20">;
+  auto?: SingleBooleanChoiceArg<"auto">;
 };
 
 type VariantPropType = keyof PlasmicButton__VariantsArgs;
@@ -79,7 +81,8 @@ export const PlasmicButton__VariantProps = new Array<VariantPropType>(
   "isDisable",
   "showStartIcon",
   "showEndIcon",
-  "прозрачность"
+  "прозрачность",
+  "auto"
 );
 
 export type PlasmicButton__ArgsType = {
@@ -110,8 +113,11 @@ export interface DefaultButtonProps {
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   прозрачность?: SingleChoiceArg<"_10" | "_20">;
+  auto?: SingleBooleanChoiceArg<"auto">;
   className?: string;
 }
+
+export const defaultButton__Args: Partial<PlasmicButton__ArgsType> = {};
 
 function PlasmicButton__RenderFunc(props: {
   variants: PlasmicButton__VariantsArgs;
@@ -120,8 +126,9 @@ function PlasmicButton__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultButton__Args, props.args);
+  const $props = args;
 
   return (
     <div
@@ -136,13 +143,17 @@ function PlasmicButton__RenderFunc(props: {
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         sty.root,
-        { [sty.rootisDisable]: hasVariant(variants, "isDisable", "isDisable") }
+        {
+          [sty.rootauto]: hasVariant(variants, "auto", "auto"),
+          [sty.rootisDisable]: hasVariant(variants, "isDisable", "isDisable")
+        }
       )}
     >
       <button
         data-plasmic-name={"button"}
         data-plasmic-override={overrides.button}
         className={classNames(projectcss.all, projectcss.button, sty.button, {
+          [sty.buttonauto]: hasVariant(variants, "auto", "auto"),
           [sty.buttoncolors_dark]: hasVariant(variants, "colors", "dark"),
           [sty.buttoncolors_defaultStroke]: hasVariant(
             variants,

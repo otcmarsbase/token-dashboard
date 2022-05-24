@@ -35,34 +35,34 @@ import {
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic_marsbase_components.module.css"; // plasmic-import: ujWBNnbL2n4RZDdiZiYFdw/projectcss
-import sty from "./PlasmicInput.module.css"; // plasmic-import: cZub4IJft_7/css
+import sty from "./PlasmicInputNew.module.css"; // plasmic-import: cZub4IJft_7/css
 
 import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: s91taWCHpvC/icon
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: zwmcUxC4SL1/icon
 
-export type PlasmicInput__VariantMembers = {
+export type PlasmicInputNew__VariantMembers = {
   showStartIcon: "showStartIcon";
   showEndIcon: "showEndIcon";
   isDisabled: "isDisabled";
-  color: "dark" | "darkStroke";
+  color: "dark";
 };
 
-export type PlasmicInput__VariantsArgs = {
+export type PlasmicInputNew__VariantsArgs = {
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   isDisabled?: SingleBooleanChoiceArg<"isDisabled">;
-  color?: SingleChoiceArg<"dark" | "darkStroke">;
+  color?: SingleChoiceArg<"dark">;
 };
 
-type VariantPropType = keyof PlasmicInput__VariantsArgs;
-export const PlasmicInput__VariantProps = new Array<VariantPropType>(
+type VariantPropType = keyof PlasmicInputNew__VariantsArgs;
+export const PlasmicInputNew__VariantProps = new Array<VariantPropType>(
   "showStartIcon",
   "showEndIcon",
   "isDisabled",
   "color"
 );
 
-export type PlasmicInput__ArgsType = {
+export type PlasmicInputNew__ArgsType = {
   placeholder?: string;
   endIcon?: React.ReactNode;
   startIcon?: React.ReactNode;
@@ -73,8 +73,8 @@ export type PlasmicInput__ArgsType = {
   "aria-labelledby"?: string;
 };
 
-type ArgPropType = keyof PlasmicInput__ArgsType;
-export const PlasmicInput__ArgProps = new Array<ArgPropType>(
+type ArgPropType = keyof PlasmicInputNew__ArgsType;
+export const PlasmicInputNew__ArgProps = new Array<ArgPropType>(
   "placeholder",
   "endIcon",
   "startIcon",
@@ -85,37 +85,32 @@ export const PlasmicInput__ArgProps = new Array<ArgPropType>(
   "aria-labelledby"
 );
 
-export type PlasmicInput__OverridesType = {
+export type PlasmicInputNew__OverridesType = {
   root?: p.Flex<"div">;
   startIconContainer?: p.Flex<"div">;
   input?: p.Flex<"input">;
   endIconContainer?: p.Flex<"div">;
 };
 
-export interface DefaultInputProps extends pp.BaseTextInputProps {
+export interface DefaultInputNewProps extends pp.BaseTextInputProps {
   placeholder?: string;
   value?: any;
   name?: string;
   required?: boolean;
   "aria-label"?: string;
   "aria-labelledby"?: string;
-  color?: SingleChoiceArg<"dark" | "darkStroke">;
+  color?: SingleChoiceArg<"dark">;
 }
 
-export const defaultInput__Args: Partial<PlasmicInput__ArgsType> = {
-  placeholder: "Enter something…" as const
-};
-
-function PlasmicInput__RenderFunc(props: {
-  variants: PlasmicInput__VariantsArgs;
-  args: PlasmicInput__ArgsType;
-  overrides: PlasmicInput__OverridesType;
+function PlasmicInputNew__RenderFunc(props: {
+  variants: PlasmicInputNew__VariantsArgs;
+  args: PlasmicInputNew__ArgsType;
+  overrides: PlasmicInputNew__OverridesType;
 
   forNode?: string;
 }) {
-  const { variants, overrides, forNode } = props;
-  const args = Object.assign({}, defaultInput__Args, props.args);
-  const $props = args;
+  const { variants, args, overrides, forNode } = props;
+  const $props = props.args;
 
   const [isRootFocusVisibleWithin, triggerRootFocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {
@@ -141,11 +136,6 @@ function PlasmicInput__RenderFunc(props: {
         sty.root,
         {
           [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,
-          [sty.rootcolor_darkStroke]: hasVariant(
-            variants,
-            "color",
-            "darkStroke"
-          ),
           [sty.rootcolor_dark]: hasVariant(variants, "color", "dark"),
           [sty.rootisDisabled]: hasVariant(
             variants,
@@ -219,11 +209,6 @@ function PlasmicInput__RenderFunc(props: {
         aria-labelledby={args["aria-labelledby"]}
         className={classNames(projectcss.all, projectcss.input, sty.input, {
           [sty.input___focusVisibleWithin]: triggers.focusVisibleWithin_root,
-          [sty.inputcolor_darkStroke]: hasVariant(
-            variants,
-            "color",
-            "darkStroke"
-          ),
           [sty.inputcolor_dark]: hasVariant(variants, "color", "dark"),
           [sty.inputisDisabled]: hasVariant(
             variants,
@@ -240,7 +225,11 @@ function PlasmicInput__RenderFunc(props: {
           hasVariant(variants, "isDisabled", "isDisabled") ? true : undefined
         }
         name={args.name}
-        placeholder={args.placeholder}
+        placeholder={
+          args.placeholder !== undefined
+            ? args.placeholder
+            : ("Enter something…" as const)
+        }
         required={args.required}
         type={"text" as const}
         value={args.value}
@@ -295,8 +284,8 @@ function useBehavior<P extends pp.BaseTextInputProps>(
   props: P,
   ref: pp.TextInputRef
 ) {
-  return pp.useTextInput<P, typeof PlasmicInput>(
-    PlasmicInput,
+  return pp.useTextInput<P, typeof PlasmicInputNew>(
+    PlasmicInputNew,
     props,
     {
       showStartIconVariant: {
@@ -333,18 +322,18 @@ type NodeDefaultElementType = {
 
 type ReservedPropsType = "variants" | "args" | "overrides";
 type NodeOverridesType<T extends NodeNameType> = Pick<
-  PlasmicInput__OverridesType,
+  PlasmicInputNew__OverridesType,
   DescendantsType<T>
 >;
 type NodeComponentProps<T extends NodeNameType> =
   // Explicitly specify variants, args, and overrides as objects
   {
-    variants?: PlasmicInput__VariantsArgs;
-    args?: PlasmicInput__ArgsType;
+    variants?: PlasmicInputNew__VariantsArgs;
+    args?: PlasmicInputNew__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicInput__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } & Omit<PlasmicInputNew__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
     // Specify args directly as props
-    Omit<PlasmicInput__ArgsType, ReservedPropsType> &
+    Omit<PlasmicInputNew__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
     Omit<
       NodeOverridesType<T>,
@@ -364,11 +353,11 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
     const { variants, args, overrides } = deriveRenderOpts(props, {
       name: nodeName,
       descendantNames: [...PlasmicDescendants[nodeName]],
-      internalArgPropNames: PlasmicInput__ArgProps,
-      internalVariantPropNames: PlasmicInput__VariantProps
+      internalArgPropNames: PlasmicInputNew__ArgProps,
+      internalVariantPropNames: PlasmicInputNew__VariantProps
     });
 
-    return PlasmicInput__RenderFunc({
+    return PlasmicInputNew__RenderFunc({
       variants,
       args,
       overrides,
@@ -376,15 +365,15 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
     });
   };
   if (nodeName === "root") {
-    func.displayName = "PlasmicInput";
+    func.displayName = "PlasmicInputNew";
   } else {
-    func.displayName = `PlasmicInput.${nodeName}`;
+    func.displayName = `PlasmicInputNew.${nodeName}`;
   }
   return func;
 }
 
-export const PlasmicInput = Object.assign(
-  // Top-level PlasmicInput renders the root element
+export const PlasmicInputNew = Object.assign(
+  // Top-level PlasmicInputNew renders the root element
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
@@ -392,13 +381,13 @@ export const PlasmicInput = Object.assign(
     input: makeNodeComponent("input"),
     endIconContainer: makeNodeComponent("endIconContainer"),
 
-    // Metadata about props expected for PlasmicInput
-    internalVariantProps: PlasmicInput__VariantProps,
-    internalArgProps: PlasmicInput__ArgProps,
+    // Metadata about props expected for PlasmicInputNew
+    internalVariantProps: PlasmicInputNew__VariantProps,
+    internalArgProps: PlasmicInputNew__ArgProps,
 
     useBehavior
   }
 );
 
-export default PlasmicInput;
+export default PlasmicInputNew;
 /* prettier-ignore-end */

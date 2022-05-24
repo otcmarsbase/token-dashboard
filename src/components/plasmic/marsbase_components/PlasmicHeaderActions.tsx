@@ -56,6 +56,9 @@ export interface DefaultHeaderActionsProps {
   className?: string;
 }
 
+export const defaultHeaderActions__Args: Partial<PlasmicHeaderActions__ArgsType> =
+  {};
+
 function PlasmicHeaderActions__RenderFunc(props: {
   variants: PlasmicHeaderActions__VariantsArgs;
   args: PlasmicHeaderActions__ArgsType;
@@ -63,8 +66,9 @@ function PlasmicHeaderActions__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultHeaderActions__Args, props.args);
+  const $props = args;
 
   return (
     <div

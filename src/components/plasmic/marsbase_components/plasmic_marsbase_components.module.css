@@ -5,6 +5,8 @@
   --plasmic-token-red-color: var(--token-tutIzSayz);
   --token-MfCyf2DBW: #bc401c;
   --plasmic-token-standart-color: var(--token-MfCyf2DBW);
+  --token-t77KRyK74: EurofontExtendedC;
+  --plasmic-token-eurofont-extended-c: var(--token-t77KRyK74);
 }
 
 .plasmic_default_styles {

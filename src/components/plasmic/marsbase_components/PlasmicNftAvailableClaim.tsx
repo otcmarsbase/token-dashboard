@@ -58,6 +58,9 @@ export interface DefaultNftAvailableClaimProps {
   className?: string;
 }
 
+export const defaultNftAvailableClaim__Args: Partial<PlasmicNftAvailableClaim__ArgsType> =
+  {};
+
 function PlasmicNftAvailableClaim__RenderFunc(props: {
   variants: PlasmicNftAvailableClaim__VariantsArgs;
   args: PlasmicNftAvailableClaim__ArgsType;
@@ -65,8 +68,9 @@ function PlasmicNftAvailableClaim__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultNftAvailableClaim__Args, props.args);
+  const $props = args;
 
   return (
     <div
