@@ -9,8 +9,8 @@ import { NftTableWrapper } from "../organisms/NftTable"
 import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
-import { useJsonRpc } from "../../use"
-import {Header} from "../templates";
+import { useJsonRpc } from "../../hooks"
+import {Header} from "../templates"
 
 const TokenDashboard = () => {
 	const { data, handlers } = useContext(AppStateContext)
