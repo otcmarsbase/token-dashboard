@@ -1,6 +1,8 @@
-import {BigNumber, BigNumberish, Contract, ethers} from "ethers"
-import {INft} from "./components/organisms/NftTable"
-import {MarsbaseVesting__factory, MarsbaseVesting} from "@otcmarsbase/token-contract-types"
+import { BigNumber, BigNumberish, Contract, ethers } from "ethers"
+import { INft } from "./components/organisms/NftTable"
+import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcmarsbase/token-contract-types"
+import { useContext } from "react"
+import { MarsbaseTokenContext } from "./hooks/mbase-contract"
 
 type NftData = Awaited<ReturnType<MarsbaseVesting["getVestingRecord"]>>
 
@@ -19,7 +21,7 @@ export async function requestMetamaskConnect(): Promise<string | undefined> {
         return
     }
 
-    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
 
     return accounts[0]
 }
@@ -56,4 +58,31 @@ export async function requestClaimAllSignature(nfts: INft[], vest: MarsbaseVesti
     await tx.wait()
 
     return true
+}
+
+export async function nftDataToView(nfts: NftData[], token: MarsbaseToken): Promise<INft[]> {
+    let result: INft[] = []
+    const decimals = await token?.decimals()
+    for (let i = 0; i < nfts.length; i++) {
+        let nftView: INft = {
+            id: i.toString(),
+            kind: 'purple',
+            amount: nfts[i].initialAmount.toNumber(),
+            amountUsd: 0,
+            token: await token.symbol(), 
+            started: new Date(nfts[i].initialStart.toNumber() * 1000).toString(),
+            /* пока что взято из мока --> */
+            locked: 14_500_780,
+            unclaimed: 1_500_780,
+            percentComplete: 0.951,
+            timePassed: "299 days",
+            timeLeft: "66 days",
+            /* <-- */
+            price: 0,
+            available: 6656.77,
+            availableUsd: 0
+        }
+        result.push(nftView)
+    }
+    return result
 }

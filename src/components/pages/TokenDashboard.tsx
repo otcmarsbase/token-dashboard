@@ -1,19 +1,31 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import {
 	TokenDashboardTemplate,
 	Summary as TDTSummary,
 } from "../templates/TokenDashboardTemplate"
 import { NftTableSummary, TokenDashboardHeader } from "../organisms"
-import { NftTableWrapper } from "../organisms/NftTable"
+import { INft, NftTableWrapper } from "../organisms/NftTable"
 import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
-import {Header} from "../templates"
+import { Header } from "../templates"
+import { useNfts } from "../../hooks/useNfts"
+import { useEthAddress } from "../../hooks/jrpc-provider"
+import { nftDataToView } from "../../api"
+import { useMarsbaseContracts } from "../../hooks/mbase-contract"
 
 const TokenDashboard = () => {
+	const address = useEthAddress()
+	const { token } = useMarsbaseContracts()
 	const { data, handlers } = useContext(AppStateContext)
-	// const { blockNumber, status } = useJsonRpc();
+	let { nfts } = useNfts(address)
+	const [renderNfts, setRenderNfts] = useState<INft[]>([])
+	
+	if (renderNfts.length != nfts.length) {
+		nftDataToView(nfts, token)
+			.then(res => setRenderNfts(res))	
+	} 
 
 	return (
 		<TokenDashboardTemplate>
@@ -24,7 +36,8 @@ const TokenDashboard = () => {
 			<TDTSummary>
 				<NftTableSummary />
 			</TDTSummary>
-			<NftTableWrapper nfts={data.nfts} onClaim={handlers.onClaim} onActions={handlers.onActions} />
+
+			<NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim} onActions={handlers.onActions} />
 		</TokenDashboardTemplate>
 	)
 }
