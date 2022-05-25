@@ -1,15 +1,36 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Text} from "../atoms";
 import {style} from "typestyle";
+import question from '../../assets/question.png'
 
-const VestingSplitSectionOverview = () => {
+interface VestingSplitSectionOverviewProps {
+    title: string;
+    subTitle: string;
+    howToUse?: string
+}
+
+const VestingSplitSectionOverview: FC<VestingSplitSectionOverviewProps> = (
+    {
+        title,
+        subTitle,
+        howToUse
+    }) => {
     return (
         <div className={container}>
             <div className={left}>
-                <Text title={'_2'}>To split</Text>
-                <Text size={'_12'} colors={'gray'}>Set the parameters you need to suggest the best trading conditions</Text>
+                <Text title={'_2'}>{title}</Text>
+                <Text size={'_12'} colors={'gray'}>{subTitle}</Text>
             </div>
-            <Text colors={'red'} size={'_14'}>How to use?</Text>
+            {howToUse && (
+                <Text
+                    colors={'red'}
+                    size={'_14'}
+                    withIconLeft
+                    iconLeft={<img style={{height: '18px'}} src={question} alt=""/>}
+                >
+                    <span style={{whiteSpace: 'nowrap'}}>{howToUse}</span>
+                </Text>
+            )}
         </div>
     );
 };
@@ -17,7 +38,8 @@ const VestingSplitSectionOverview = () => {
 const container = style({
     display: 'flex',
     width: '100%',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginBottom: '25px'
 })
 
 const left = style({

@@ -13,7 +13,7 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({ title, subTitle }) => {
 	return (
 		<div>
 			<div>
-				<Text title>{title}</Text>
+				<Text title={'_1'}>{title}</Text>
 			</div>
 			<div>
 				<Text>{subTitle}</Text>

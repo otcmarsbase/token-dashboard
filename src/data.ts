@@ -36,6 +36,14 @@ export const DICT = {
 					header: "How is distribution done?",
 					description: "For the first time, a crypto OTC desk and even"
 				}
+			},
+			vestingSplit: {
+				page_title: "Vesting split",
+				how_to_use: "How to use?",
+				page_description: "The perfect place for making large volume deals with hundreds of altcoins \n" +
+					"without slippage or market price impact",
+				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
+				buy_now_btn: (token: string) => `Buy ${token} now`,
 			}
 		}
 	},
@@ -73,6 +81,14 @@ export const DICT = {
 					header: "Как распределяется?",
 					description: "Для первого раза, крипто ОТС деск и даже"
 				}
+			},
+			vestingSplit: {
+				page_title: "Vesting split",
+				how_to_use: "How to use?",
+				page_description: "The perfect place for making large volume deals with hundreds of altcoins \n" +
+					"without slippage or market price impact",
+				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
+				buy_now_btn: (token: string) => `Buy ${token} now`,
 			}
 		}
 	}

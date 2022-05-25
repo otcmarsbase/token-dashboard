@@ -11,11 +11,26 @@ const container = style({
 })
 
 const VestingSplitSteps = () => {
+    const steps = [
+        {
+            active: true,
+            title: 'Parameters',
+            subTitle: 'Set suitable conditions'
+        },
+        {
+            active: false,
+            title: 'Split details',
+            subTitle: 'Verify and approve the offer'
+        },
+        {
+            active: false,
+            title: 'Publication',
+            subTitle: 'Send the offer to the market'
+        }
+    ]
     return (
         <div className={container}>
-            <VestingStepCard/>
-            <VestingStepCard/>
-            <VestingStepCard/>
+            {steps.map((step, index) => <VestingStepCard key={index} index={index + 1} {...step}/>)}
         </div>
     );
 };

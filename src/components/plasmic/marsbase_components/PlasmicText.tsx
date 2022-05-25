@@ -38,22 +38,28 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_marsbase_components.module.css"; // plasmic-import: ujWBNnbL2n4RZDdiZiYFdw/projectcss
 import sty from "./PlasmicText.module.css"; // plasmic-import: sIxKMhfpOf/css
 
+import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: zwmcUxC4SL1/icon
+
 export type PlasmicText__VariantMembers = {
-  weight: "medium" | "semiBold";
+  weight: "medium" | "semiBold" | "light";
   size: "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18";
-  colors: "gray" | "red" | "white";
+  colors: "gray" | "red" | "white" | "lightGray" | "blue";
   opacity: "_10";
-  title: "_1" | "_2";
+  title: "_1" | "_2" | "_3";
+  withIconRight: "withIconRight";
+  withIconLeft: "withIconLeft";
 };
 
 export type PlasmicText__VariantsArgs = {
-  weight?: SingleChoiceArg<"medium" | "semiBold">;
+  weight?: SingleChoiceArg<"medium" | "semiBold" | "light">;
   size?: SingleChoiceArg<
     "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18"
   >;
-  colors?: SingleChoiceArg<"gray" | "red" | "white">;
+  colors?: SingleChoiceArg<"gray" | "red" | "white" | "lightGray" | "blue">;
   opacity?: SingleChoiceArg<"_10">;
-  title?: SingleChoiceArg<"_1" | "_2">;
+  title?: SingleChoiceArg<"_1" | "_2" | "_3">;
+  withIconRight?: SingleBooleanChoiceArg<"withIconRight">;
+  withIconLeft?: SingleBooleanChoiceArg<"withIconLeft">;
 };
 
 type VariantPropType = keyof PlasmicText__VariantsArgs;
@@ -62,15 +68,23 @@ export const PlasmicText__VariantProps = new Array<VariantPropType>(
   "size",
   "colors",
   "opacity",
-  "title"
+  "title",
+  "withIconRight",
+  "withIconLeft"
 );
 
 export type PlasmicText__ArgsType = {
   children?: React.ReactNode;
+  iconRight?: React.ReactNode;
+  iconLeft?: React.ReactNode;
 };
 
 type ArgPropType = keyof PlasmicText__ArgsType;
-export const PlasmicText__ArgProps = new Array<ArgPropType>("children");
+export const PlasmicText__ArgProps = new Array<ArgPropType>(
+  "children",
+  "iconRight",
+  "iconLeft"
+);
 
 export type PlasmicText__OverridesType = {
   root?: p.Flex<"div">;
@@ -79,13 +93,17 @@ export type PlasmicText__OverridesType = {
 
 export interface DefaultTextProps {
   children?: React.ReactNode;
-  weight?: SingleChoiceArg<"medium" | "semiBold">;
+  iconRight?: React.ReactNode;
+  iconLeft?: React.ReactNode;
+  weight?: SingleChoiceArg<"medium" | "semiBold" | "light">;
   size?: SingleChoiceArg<
     "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18"
   >;
-  colors?: SingleChoiceArg<"gray" | "red" | "white">;
+  colors?: SingleChoiceArg<"gray" | "red" | "white" | "lightGray" | "blue">;
   opacity?: SingleChoiceArg<"_10">;
-  title?: SingleChoiceArg<"_1" | "_2">;
+  title?: SingleChoiceArg<"_1" | "_2" | "_3">;
+  withIconRight?: SingleBooleanChoiceArg<"withIconRight">;
+  withIconLeft?: SingleBooleanChoiceArg<"withIconLeft">;
   className?: string;
 }
 
@@ -114,15 +132,56 @@ function PlasmicText__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
-        sty.root
+        sty.root,
+        {
+          [sty.roottitle__2]: hasVariant(variants, "title", "_2"),
+          [sty.rootwithIconLeft]: hasVariant(
+            variants,
+            "withIconLeft",
+            "withIconLeft"
+          ),
+          [sty.rootwithIconRight]: hasVariant(
+            variants,
+            "withIconRight",
+            "withIconRight"
+          )
+        }
       )}
     >
+      {(hasVariant(variants, "withIconLeft", "withIconLeft") ? true : true) ? (
+        <div
+          className={classNames(projectcss.all, sty.freeBox__ifxz4, {
+            [sty.freeBoxwithIconLeft__ifxz4SLg5G]: hasVariant(
+              variants,
+              "withIconLeft",
+              "withIconLeft"
+            )
+          })}
+        >
+          {p.renderPlasmicSlot({
+            defaultContents: (
+              <ChecksvgIcon
+                className={classNames(projectcss.all, sty.svg__v7Hqz)}
+                role={"img"}
+              />
+            ),
+
+            value: args.iconLeft
+          })}
+        </div>
+      ) : null}
+
       <div
         className={classNames(projectcss.all, sty.freeBox___4Jz6K, {
           [sty.freeBoxcolors_gray___4Jz6KB4PsL]: hasVariant(
             variants,
             "colors",
             "gray"
+          ),
+          [sty.freeBoxcolors_lightGray___4Jz6KX0IYe]: hasVariant(
+            variants,
+            "colors",
+            "lightGray"
           ),
           [sty.freeBoxcolors_red___4Jz6K2GLuJ]: hasVariant(
             variants,
@@ -164,6 +223,11 @@ function PlasmicText__RenderFunc(props: {
             "size",
             "_28"
           ),
+          [sty.freeBoxtitle__2___4Jz6KwDoKp]: hasVariant(
+            variants,
+            "title",
+            "_2"
+          ),
           [sty.freeBoxweight_medium___4Jz6KcKDv1]: hasVariant(
             variants,
             "weight",
@@ -173,6 +237,16 @@ function PlasmicText__RenderFunc(props: {
             variants,
             "weight",
             "semiBold"
+          ),
+          [sty.freeBoxwithIconLeft___4Jz6KsLg5G]: hasVariant(
+            variants,
+            "withIconLeft",
+            "withIconLeft"
+          ),
+          [sty.freeBoxwithIconRight___4Jz6KOZp1U]: hasVariant(
+            variants,
+            "withIconRight",
+            "withIconRight"
           )
         })}
       >
@@ -180,10 +254,20 @@ function PlasmicText__RenderFunc(props: {
           defaultContents: null,
           value: args.children,
           className: classNames(sty.slotTargetChildren, {
+            [sty.slotTargetChildrencolors_blue]: hasVariant(
+              variants,
+              "colors",
+              "blue"
+            ),
             [sty.slotTargetChildrencolors_gray]: hasVariant(
               variants,
               "colors",
               "gray"
+            ),
+            [sty.slotTargetChildrencolors_lightGray]: hasVariant(
+              variants,
+              "colors",
+              "lightGray"
             ),
             [sty.slotTargetChildrencolors_red]: hasVariant(
               variants,
@@ -245,6 +329,16 @@ function PlasmicText__RenderFunc(props: {
               "title",
               "_2"
             ),
+            [sty.slotTargetChildrentitle__3]: hasVariant(
+              variants,
+              "title",
+              "_3"
+            ),
+            [sty.slotTargetChildrenweight_light]: hasVariant(
+              variants,
+              "weight",
+              "light"
+            ),
             [sty.slotTargetChildrenweight_medium]: hasVariant(
               variants,
               "weight",
@@ -254,6 +348,16 @@ function PlasmicText__RenderFunc(props: {
               variants,
               "weight",
               "semiBold"
+            ),
+            [sty.slotTargetChildrenwithIconLeft]: hasVariant(
+              variants,
+              "withIconLeft",
+              "withIconLeft"
+            ),
+            [sty.slotTargetChildrenwithIconRight]: hasVariant(
+              variants,
+              "withIconRight",
+              "withIconRight"
             )
           })
         })}
@@ -297,6 +401,11 @@ function PlasmicText__RenderFunc(props: {
             variants,
             "weight",
             "semiBold"
+          ),
+          [sty.freeBoxwithIconRight__lzUj9OZp1U]: hasVariant(
+            variants,
+            "withIconRight",
+            "withIconRight"
           )
         })}
       >
@@ -334,6 +443,30 @@ function PlasmicText__RenderFunc(props: {
           )}
         >
           {"Enter some text"}
+        </div>
+      ) : null}
+      {(
+        hasVariant(variants, "withIconRight", "withIconRight") ? true : true
+      ) ? (
+        <div
+          className={classNames(projectcss.all, sty.freeBox__g95C7, {
+            [sty.freeBoxwithIconRight__g95C7OZp1U]: hasVariant(
+              variants,
+              "withIconRight",
+              "withIconRight"
+            )
+          })}
+        >
+          {p.renderPlasmicSlot({
+            defaultContents: (
+              <ChecksvgIcon
+                className={classNames(projectcss.all, sty.svg__hbDas)}
+                role={"img"}
+              />
+            ),
+
+            value: args.iconRight
+          })}
         </div>
       ) : null}
     </div>

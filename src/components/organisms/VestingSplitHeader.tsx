@@ -1,7 +1,8 @@
 import React from 'react';
-import VestingSplitOverview from "../molecules/VestingSplitOverview";
-import VestingActions from "../molecules/VestingActions";
+import {VestingSplitOverviewWrapper} from "../molecules/VestingSplitOverview";
+
 import {style} from 'typestyle';
+import {VestingActionsWrapper} from "../molecules/VestingActions";
 
 const container = style({
     width: '100%',
@@ -13,8 +14,8 @@ const container = style({
 const VestingSplitHeader = () => {
     return (
         <div className={container}>
-            <VestingSplitOverview/>
-            <VestingActions/>
+            <VestingSplitOverviewWrapper/>
+            <VestingActionsWrapper token={'MBase'} onBuyNow={() => null} onSellWithPremium={() => null}/>
         </div>
     );
 };

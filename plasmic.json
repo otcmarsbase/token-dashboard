@@ -29,19 +29,6 @@
       "cssFilePath": "plasmic/marsbase_components/plasmic_marsbase_components.module.css",
       "components": [
         {
-          "id": "QvSVaYnti4Is",
-          "name": "Homepage",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicHomepage.tsx",
-          "importSpec": {
-            "modulePath": "Homepage.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicHomepage.module.css",
-          "scheme": "blackbox",
-          "componentType": "page"
-        },
-        {
           "id": "IDy-UAQYMv",
           "name": "Button",
           "type": "managed",
@@ -81,32 +68,6 @@
           "componentType": "component"
         },
         {
-          "id": "uSh1_um7XN",
-          "name": "TokenDashboardHeader",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicTokenDashboardHeader.tsx",
-          "importSpec": {
-            "modulePath": "TokenDashboardHeader.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicTokenDashboardHeader.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "O93YgHOHgbm",
-          "name": "NftTableSummary",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftTableSummary.tsx",
-          "importSpec": {
-            "modulePath": "NftTableSummary.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicNftTableSummary.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "E1FwFPFP4L",
           "name": "Icon",
           "type": "managed",
@@ -116,32 +77,6 @@
             "modulePath": "Icon.tsx"
           },
           "cssFilePath": "plasmic/marsbase_components/PlasmicIcon.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "EHa0voQ-C0",
-          "name": "SummaryDescription",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicSummaryDescription.tsx",
-          "importSpec": {
-            "modulePath": "SummaryDescription.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicSummaryDescription.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "HBTbJNVG66",
-          "name": "SummaryTotalUnclaimed",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicSummaryTotalUnclaimed.tsx",
-          "importSpec": {
-            "modulePath": "SummaryTotalUnclaimed.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicSummaryTotalUnclaimed.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         },
@@ -159,97 +94,6 @@
           "componentType": "component"
         },
         {
-          "id": "5SbWwwlAWA",
-          "name": "HeaderOverview",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicHeaderOverview.tsx",
-          "importSpec": {
-            "modulePath": "HeaderOverview.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicHeaderOverview.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "mWUFULV0cz",
-          "name": "HeaderActions",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicHeaderActions.tsx",
-          "importSpec": {
-            "modulePath": "HeaderActions.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicHeaderActions.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "S7FYhea1xT",
-          "name": "NftTable",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftTable.tsx",
-          "importSpec": {
-            "modulePath": "NftTable.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicNftTable.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "tVe3iw2rzS",
-          "name": "ColumnSorter",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicColumnSorter.tsx",
-          "importSpec": {
-            "modulePath": "ColumnSorter.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicColumnSorter.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "DRx7njHNsy",
-          "name": "Buttons",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicButtons.tsx",
-          "importSpec": {
-            "modulePath": "Buttons.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicButtons.module.css",
-          "scheme": "blackbox",
-          "componentType": "page"
-        },
-        {
-          "id": "a7WqxJ4ZPn",
-          "name": "NftOverview",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftOverview.tsx",
-          "importSpec": {
-            "modulePath": "NftOverview.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicNftOverview.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "YHwpijO3GT",
-          "name": "NftProgress",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftProgress.tsx",
-          "importSpec": {
-            "modulePath": "NftProgress.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicNftProgress.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "OiFeVBevre",
           "name": "Progress",
           "type": "managed",
@@ -261,33 +105,6 @@
           "cssFilePath": "plasmic/marsbase_components/PlasmicProgress.module.css",
           "scheme": "blackbox",
           "componentType": "component"
-        },
-        {
-          "id": "Wiffry2Q-b",
-          "name": "NftAvailableClaim",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicNftAvailableClaim.tsx",
-          "importSpec": {
-            "modulePath": "NftAvailableClaim.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicNftAvailableClaim.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "1GKZ90I6Fyh",
-          "name": "Button2",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicButton2.tsx",
-          "importSpec": {
-            "modulePath": "Button2.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicButton2.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "button"
         },
         {
           "id": "BSYLE2hLSu5",
