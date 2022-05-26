@@ -21,12 +21,12 @@ const TokenDashboard = () => {
 	const { data, handlers } = useContext(AppStateContext)
 	let { nfts } = useNfts(address)
 	const [renderNfts, setRenderNfts] = useState<INft[]>([])
-	
-	if (renderNfts.length != nfts.length) {
-		nftDataToView(nfts, token)
-			.then(res => setRenderNfts(res))	
-	} 
 
+	useEffect(() => {
+		nftDataToView(nfts, token)
+			.then(res => setRenderNfts(res))
+	}, [nfts])
+	
 	return (
 		<TokenDashboardTemplate>
 			<Header>

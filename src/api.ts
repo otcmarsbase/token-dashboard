@@ -62,6 +62,7 @@ export async function requestClaimAllSignature(nfts: INft[], vest: MarsbaseVesti
 
 export async function nftDataToView(nfts: NftData[], token: MarsbaseToken): Promise<INft[]> {
     let result: INft[] = []
+    console.log("convert")
     const decimals = await token?.decimals()
     for (let i = 0; i < nfts.length; i++) {
         let nftView: INft = {
