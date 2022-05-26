@@ -45,7 +45,7 @@ export type PlasmicText__VariantMembers = {
   size: "_10" | "_11" | "_12" | "_14" | "_16" | "_24" | "_28" | "_18";
   colors: "gray" | "red" | "white" | "lightGray" | "blue";
   opacity: "_10";
-  title: "_1" | "_2" | "_3";
+  title: "_1" | "_2" | "_3" | "_4";
   withIconRight: "withIconRight";
   withIconLeft: "withIconLeft";
 };
@@ -57,7 +57,7 @@ export type PlasmicText__VariantsArgs = {
   >;
   colors?: SingleChoiceArg<"gray" | "red" | "white" | "lightGray" | "blue">;
   opacity?: SingleChoiceArg<"_10">;
-  title?: SingleChoiceArg<"_1" | "_2" | "_3">;
+  title?: SingleChoiceArg<"_1" | "_2" | "_3" | "_4">;
   withIconRight?: SingleBooleanChoiceArg<"withIconRight">;
   withIconLeft?: SingleBooleanChoiceArg<"withIconLeft">;
 };
@@ -101,7 +101,7 @@ export interface DefaultTextProps {
   >;
   colors?: SingleChoiceArg<"gray" | "red" | "white" | "lightGray" | "blue">;
   opacity?: SingleChoiceArg<"_10">;
-  title?: SingleChoiceArg<"_1" | "_2" | "_3">;
+  title?: SingleChoiceArg<"_1" | "_2" | "_3" | "_4">;
   withIconRight?: SingleBooleanChoiceArg<"withIconRight">;
   withIconLeft?: SingleBooleanChoiceArg<"withIconLeft">;
   className?: string;
@@ -333,6 +333,11 @@ function PlasmicText__RenderFunc(props: {
               variants,
               "title",
               "_3"
+            ),
+            [sty.slotTargetChildrentitle__4]: hasVariant(
+              variants,
+              "title",
+              "_4"
             ),
             [sty.slotTargetChildrenweight_light]: hasVariant(
               variants,

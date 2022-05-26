@@ -1,19 +1,42 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import Input from "../Input";
 import silver2 from "../../assets/silver-2.svg";
 import {Button, Text} from "../atoms";
 import info from '../../assets/info.png'
+import {ISplitParametr} from "../organisms/VestingToSplit";
 
 interface VestingSplitParametrProps {
-
+    id: string;
+    proportion: number;
+    percent: number;
+    handleAdd: () => void;
+    handleDelete: (id: string) => () => void;
+    handleEdit: (id: string, value: number, key: keyof ISplitParametr) => void;
+    position: number;
+    parametersLength: number;
 }
 
-const VestingSplitParametr: FC<VestingSplitParametrProps> = () => {
+const VestingSplitParametr: FC<VestingSplitParametrProps> = (
+    {
+        id,
+        proportion,
+        percent,
+        handleAdd,
+        position,
+        parametersLength,
+        handleDelete,
+        handleEdit
+    }) => {
+    const isLast = (parametersLength - 1) === position;
+    const notTheFirstAndLast = position !== 0 && !isLast;
+
     return (
         <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
             <div style={{display: 'flex', alignItems: 'flex-start', width: '100%', gap: '12px'}}>
                 <Input
-                    value={'18,000,000.00'}
+                    type={'number'}
+                    onChange={event => handleEdit(id, parseFloat(event.target.value), 'proportion')}
+                    value={proportion}
                     showStartIcon
                     startIcon={<img src={silver2} alt=""/>}
                     color={'whiteStroke'}
@@ -30,7 +53,8 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = () => {
                     tokenName={<Text colors={'red'} size={'_14'}>MBase</Text>}
                 />
                 <Input
-                    value={'33%'}
+                    onChange={event => handleEdit(id, parseFloat(event.target.value), 'percent')}
+                    value={percent}
                     color={'whiteStroke'}
                     showUpLabel
                     upLabel={
@@ -44,7 +68,10 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = () => {
                     percent
                 />
             </div>
-            <Button size={'xl'} onClick={() => null}>+</Button>
+            {notTheFirstAndLast && <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
+                <Text weight={'medium'}>-</Text>
+            </Button>}
+            {isLast && <Button onClick={handleAdd} size={'lg'}><Text weight={'medium'}>+</Text></Button>}
         </div>
     );
 };

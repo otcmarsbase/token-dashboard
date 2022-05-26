@@ -13,12 +13,12 @@ const container = style({
 const VestingSplitSteps = () => {
     const steps = [
         {
-            active: true,
+            active: false,
             title: 'Parameters',
             subTitle: 'Set suitable conditions'
         },
         {
-            active: false,
+            active: true,
             title: 'Split details',
             subTitle: 'Verify and approve the offer'
         },

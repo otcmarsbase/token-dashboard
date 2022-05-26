@@ -4,7 +4,11 @@ import VestingSplitHeader from "../organisms/VestingSplitHeader";
 import VestingSplitSteps from "../organisms/VestingSplitSteps";
 import {style} from "typestyle";
 import NftView from "../organisms/NftView";
-import VestingAsset from "../organisms/VestingAsset";
+import VestingSplitDetails from "../organisms/VestingSplitDetails";
+import IsBeingSplitted from "../molecules/IsBeingSplitted";
+import VestingToSplit from "../organisms/VestingToSplit";
+import SplitError from "../molecules/SplitError";
+import SuccessfullySplitted from "../molecules/SuccessfullySplitted";
 
 const container = style({
     display: 'flex',
@@ -24,10 +28,14 @@ const VestingSplit = () => {
         <div className={container}>
             <VestingSplitHeader/>
             <VestingSplitSteps/>
-            <div className={body}>
-                <NftView/>
-                <VestingAsset/>
-            </div>
+            {/*<IsBeingSplitted/>*/}
+            {/*<SplitError/>*/}
+            <SuccessfullySplitted/>
+            {/*<div className={body}>*/}
+            {/*    <NftView/>*/}
+            {/*    <VestingToSplit/>*/}
+            {/*    <VestingSplitDetails/>*/}
+            {/*</div>*/}
         </div>
     );
 };

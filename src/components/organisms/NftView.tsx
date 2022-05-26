@@ -26,6 +26,10 @@ const NftView = () => {
                 start: '16.05.2022 20:00 UTC',
                 end: '16.05.2023 20:00 UTC',
             }
+        },
+        {
+            title: 'vesting contract',
+            amount: '0xfeE335B...c1b166dEB11'
         }
     ]
     return (
