@@ -12,13 +12,14 @@ import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
 import { Header } from "../templates"
 import { useNfts } from "../../hooks/useNfts"
 import { useEthAddress } from "../../hooks/jrpc-provider"
-import { nftDataToView } from "../../api"
+import { calculateKind, nftDataToView } from "../../api"
 import { useMarsbaseContracts } from "../../hooks/mbase-contract"
+import { BigNumber } from "ethers"
 
 const TokenDashboard = () => {
 	const address = useEthAddress()
 	const { token } = useMarsbaseContracts()
-	const { data, handlers } = useContext(AppStateContext)
+	const { handlers } = useContext(AppStateContext)
 	let { nfts } = useNfts(address)
 	const [renderNfts, setRenderNfts] = useState<INft[]>([])
 
@@ -26,7 +27,7 @@ const TokenDashboard = () => {
 		nftDataToView(nfts, token)
 			.then(res => setRenderNfts(res))
 	}, [nfts])
-	
+
 	return (
 		<TokenDashboardTemplate>
 			<Header>
