@@ -1,6 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 import {Label, Text} from '../atoms';
 import {style} from "typestyle";
+import {useMediaQuery} from "../../hooks/mediaQuery";
 
 interface IDates {
     activation: string;
@@ -10,9 +11,9 @@ interface IDates {
 
 interface NftDetailsItemProps {
     title: string;
-    amount?: string;
-    usd?: string;
-    buyPrice?: string;
+    amount?: number;
+    usd?: number;
+    buyPrice?: number;
     token?: string;
     dates?: IDates
 }
@@ -26,9 +27,10 @@ const NftDetailsItem: FC<NftDetailsItemProps> = (
         buyPrice,
         token
     }) => {
+    const isMobile = useMediaQuery('(max-width: 375px)');
 
     return (
-        <div className={styledContainer}>
+        <div className={styledContainer(isMobile)}>
             <div className={styledHeader}>
                 <Text colors={'gray'}>{title}</Text>
                 {buyPrice && (
@@ -55,22 +57,23 @@ const NftDetailsItem: FC<NftDetailsItemProps> = (
                             {`${amount} ${token}`}
                         </Text>
                     )}
-
+                {usd && (
+                    <div className={styledFooter}>
+                        <Text colors={'gray'}>
+                            {`${usd} $`}
+                        </Text>
+                    </div>
+                )}
             </div>
-            {usd && (
-                <div className={styledFooter}>
-                    <Text colors={'gray'}>
-                        {`${usd} $`}
-                    </Text>
-                </div>
-            )}
+
         </div>
     );
 };
 
-const styledContainer = style({
+const styledContainer = (isMobile: boolean) => style({
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: isMobile ? 'row' : 'column',
+    justifyContent: isMobile ? 'space-between' : '',
     gap: '5px',
     width: '100%'
 })

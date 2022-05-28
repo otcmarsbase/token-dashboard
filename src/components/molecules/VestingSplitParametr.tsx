@@ -4,6 +4,8 @@ import silver2 from "../../assets/silver-2.svg";
 import {Button, Text} from "../atoms";
 import info from '../../assets/info.png'
 import {ISplitParametr} from "../organisms/VestingToSplit";
+import {useMediaQuery} from "../../hooks/mediaQuery";
+import {style} from "typestyle";
 
 interface VestingSplitParametrProps {
     id: string;
@@ -30,9 +32,12 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
     const isLast = (parametersLength - 1) === position;
     const notTheFirstAndLast = position !== 0 && !isLast;
 
+    const isMobile = useMediaQuery('(max-width: 375px)');
+    const isTablet = useMediaQuery('(max-width: 768px)')
+
     return (
-        <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-            <div style={{display: 'flex', alignItems: 'flex-start', width: '100%', gap: '12px'}}>
+        <div className={container}>
+            <div className={body(isMobile)}>
                 <Input
                     type={'number'}
                     onChange={event => handleEdit(id, parseFloat(event.target.value), 'proportion')}
@@ -52,28 +57,57 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
                     showTokenName
                     tokenName={<Text colors={'red'} size={'_14'}>MBase</Text>}
                 />
-                <Input
-                    onChange={event => handleEdit(id, parseFloat(event.target.value), 'percent')}
-                    value={percent}
-                    color={'whiteStroke'}
-                    showUpLabel
-                    upLabel={
-                        <Text
-                            withIconRight
-                            iconRight={<img height={'14px'} src={info} alt=""/>}
-                            size={'_14'}>
-                            Percent
-                        </Text>
-                    }
-                    percent
-                />
+                <div style={{display: 'flex', width: '100%', alignItems: 'flex-end'}}>
+                    <Input
+                        type={'number'}
+                        onChange={event => handleEdit(id, parseFloat(event.target.value), 'percent')}
+                        value={percent}
+                        color={'whiteStroke'}
+                        showUpLabel
+                        upLabel={
+                            <Text
+                                withIconRight
+                                iconRight={<img height={'14px'} src={info} alt=""/>}
+                                size={'_14'}>
+                                Percent
+                            </Text>
+                        }
+                        percent={!isMobile}
+                    />
+                    {isMobile
+                        ? isLast
+                            ? <Button onClick={handleAdd} size={'lg'}><Text weight={'medium'}>+</Text></Button>
+                            : notTheFirstAndLast && <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
+                            <Text weight={'medium'}>-</Text>
+                        </Button>
+                        : <></>}
+                </div>
+
             </div>
-            {notTheFirstAndLast && <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
-                <Text weight={'medium'}>-</Text>
-            </Button>}
-            {isLast && <Button onClick={handleAdd} size={'lg'}><Text weight={'medium'}>+</Text></Button>}
+            {!isMobile && <>
+                {notTheFirstAndLast && <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
+                    <Text weight={'medium'}>-</Text>
+                </Button>}
+            </>}
+            {!isMobile && <>
+                {isLast && <Button onClick={handleAdd} size={'lg'}><Text weight={'medium'}>+</Text></Button>}
+            </>}
         </div>
     );
 };
+
+const container = style({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px'
+})
+
+const body = (isMobile: boolean) => style({
+    flexDirection: isMobile ? 'column' : 'row',
+    display: 'flex',
+    alignItems: 'flex-start',
+    width: '100%',
+    gap: '12px'
+})
 
 export default VestingSplitParametr;

@@ -10,10 +10,14 @@ import silver2 from "../../assets/silver-2.svg";
 import infoIcon from "../../assets/info.png";
 
 import {style} from "typestyle";
+import {useMediaQuery} from "../../hooks/mediaQuery";
 
 const VestingSplitDetails = () => {
+    const isMobile = useMediaQuery('(max-width: 375px)')
+    const isTablet = useMediaQuery('(max-width: 768px)')
+
     return (
-        <div className={container}>
+        <div className={container(isMobile, isTablet)}>
             <div className={header}>
                 <div style={{padding: '28px 21px 10px 21px'}}>
                     <VestingSplitSectionOverview
@@ -118,29 +122,35 @@ const VestingSplitDetails = () => {
                     </div>
                 </div>
                 <div className={steps}>
-                    <div/>
+                    <div style={{width: '200px'}}/>
                     <div style={{display: 'flex', justifyContent: 'space-between', width: '200px'}}>
-                        <div/>
-                        <div className={cornerStep}>
+                        <div />
+                        <div className={cornerStep(false)}>
                             <Text weight={'semiBold'} size={'_12'}>Step 1</Text>
                         </div>
                         <div className={cornerRight}>
                             <img style={{height: '12px'}} src={arrowRight} alt="arrowRight"/>
                         </div>
                     </div>
-                    <div/>
+                    <div style={{display: 'flex', justifyContent: 'space-between', width: '200px'}}>
+                        <div/>
+                        <div className={cornerStep(true)}>
+                            <Text colors={'gray'} size={'_12'}>Step 2</Text>
+                        </div>
+                       <div/>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-const container = style({
+const container = (isMobile: boolean, isTablet: boolean) => style({
     border: '3px solid rgba(138, 103, 255, 1)',
     borderRadius: '10px',
     display: 'flex',
     flexDirection: 'column',
-    width: '575px',
+    width: isMobile ? '100%' : '575px',
     height: 'max-content'
 })
 
@@ -206,13 +216,13 @@ const steps = style({
     justifyContent: 'space-between'
 })
 
-const cornerStep = style({
+const cornerStep = (disable: boolean) => style({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: '24px',
     borderRadius: '24px',
-    background: '#BC401C',
+    background: disable ? 'rgba(113,138,167,0.2)' : '#BC401C',
     padding: '0 7px 0 7px'
 })
 

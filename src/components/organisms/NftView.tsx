@@ -1,22 +1,26 @@
 import React from 'react';
-import {Text} from "../atoms";
+import {Label, Text} from "../atoms";
 import {style} from 'typestyle';
 import NftDetailsItem from "../molecules/NftDetailsItem";
 import gold2 from '../../assets/gold-2.svg';
+import {useMediaQuery} from "../../hooks/mediaQuery";
 
 const NftView = () => {
+    const isTablet = useMediaQuery('(max-width: 768px)');
+    const isMobile = useMediaQuery('(max-width: 375px)');
+
     const nftDetails = [
         {
             title: 'Vesting asset',
-            amount: '35,597,345,03',
-            usd: '~20,000,00 $',
-            buyPrice: '0.0035',
+            amount: 3559734503,
+            usd: 2000000,
+            buyPrice: 0.0035,
             token: 'MBase',
         },
         {
             title: 'Already claimed:',
-            amount: '35,597,345,03',
-            usd: '~20,000,00 $',
+            amount: 3559734503,
+            usd: 2000000,
             token: 'MBase',
         },
         {
@@ -29,43 +33,54 @@ const NftView = () => {
         },
         {
             title: 'vesting contract',
-            amount: '0xfeE335B...c1b166dEB11'
+            amount: 0xfeE335B
         }
     ]
     return (
-        <div className={container}>
+        <div className={container(isMobile, isTablet)}>
             <div>
                 <div className={viewHeader}>
-                    <Text title={'_3'} colors={'blue'}>VIEW</Text>
-                    <Text title={"_1"} colors={'red'}>NFT Details</Text>
+                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                        <Text title={isMobile ? '_4' : '_3'} colors={'blue'}>VIEW</Text>
+                        <Text title={isMobile ? '_2' : "_1"} colors={'red'}>NFT Details</Text>
+                        <Label colors={'yellow'}>Buy price</Label>
+                    </div>
+                    <div>
+                        <img style={{height: isMobile ? '75px' : 'unset'}} src={gold2} alt="nft gold"/>
+                    </div>
                 </div>
-                <div className={detailsContainer}>
-                    {nftDetails.map((nftDetail, index) =>
-                        <NftDetailsItem key={index} {...nftDetail} title={nftDetail.title.toUpperCase()}/>
-                    )}
-                </div>
+                {!isMobile && (
+                    <div className={detailsContainer}>
+                        {nftDetails.map((nftDetail, index) =>
+                            <NftDetailsItem key={index} {...nftDetail} title={nftDetail.title.toUpperCase()}/>
+                        )}
+                    </div>
+                )}
             </div>
-            <div>
-                <img src={gold2} alt=""/>
-            </div>
+            {isMobile && <NftDetailsItem
+                amount={360000000}
+                usd={20000}
+                title={'Vesting Assets'} token={'MBASE'}
+            />}
         </div>
     );
 };
 
-const container = style({
+const container = (isMobile: boolean, isTablet: boolean) => style({
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'space-between',
-    width: '822px',
-    padding: '36px 50px 36px 50px',
+    width: isTablet ? 'unset' : '822px',
+    padding: isMobile ? '16px 30px 16px 30px' : '36px 50px 36px 50px',
     borderRadius: '20px',
     background: `linear-gradient(34deg, rgba(27, 27, 28,100%) 48%, rgba(255,227,161,40%) 100%)`
 })
 
 const viewHeader = style({
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    marginBottom: '24px'
+    marginBottom: '24px',
+    width: '100%',
+    justifyContent: 'space-between'
 })
 
 const detailsContainer = style({

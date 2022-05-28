@@ -8,7 +8,7 @@
   align-items: center;
   background: #dddddd2e;
   border-radius: 8px;
-  padding: 5px 10px;
+  padding: 5px 10px 5px 6px;
 }
 .rootcolors_cyan {
   background: #73fff71a;
@@ -27,15 +27,17 @@
   position: relative;
   width: auto;
   height: auto;
-  max-width: 800px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .freeBoxcolors_yellow {
   margin-right: 0px;
 }
 .slotTargetChildren {
   color: #ffffff;
+  font-size: 11px;
 }
 .slotTargetChildrencolors_cyan {
   color: #73fff7;

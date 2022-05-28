@@ -13,6 +13,7 @@ import { EthersSignerFakeProvider, JrpcProviderPrivnet } from "./hooks/jrpc-prov
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
 import { PRIVNET } from "./config"
 import VestingSplit from "./components/pages/VestingSplit";
+import SelectNft from "./components/organisms/SelectNft";
 
 declare global {
 	interface Window {

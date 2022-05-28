@@ -1,6 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 import {Text} from "../atoms";
 import {style} from "typestyle";
+import {useMediaQuery} from "../../hooks/mediaQuery";
 
 
 interface VestingSplitSectionOverviewProps {
@@ -18,6 +19,9 @@ const VestingSplitSectionOverview: FC<VestingSplitSectionOverviewProps> = (
         actionText,
         actionIcon
     }) => {
+    const isMobile = useMediaQuery('(max-width: 375px)');
+    const isTablet = useMediaQuery('(max-width: 768px)')
+
     return (
         <div className={container}>
             <div className={left}>

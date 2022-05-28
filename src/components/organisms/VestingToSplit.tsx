@@ -6,6 +6,7 @@ import VestingSplitParametr from "../molecules/VestingSplitParametr";
 import silver2 from "../../assets/silver-2.svg";
 import question from '../../assets/question.png'
 import Input from "../Input";
+import {useMediaQuery} from "../../hooks/mediaQuery";
 
 export interface ISplitParametr {
     id: string;
@@ -17,7 +18,7 @@ const VestingToSplit = () => {
     const [availableAmount, setAvailableAmount] = useState(36597345.03);
 
     function uuidv4() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
             const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
@@ -50,10 +51,11 @@ const VestingToSplit = () => {
         setSplitParameters(splitParameters.map(p => p.id === id ? {...p, [key]: value} : p))
     };
 
-    console.log(splitParameters)
+    const isMobile = useMediaQuery('(max-width: 375px)');
+    const isTablet = useMediaQuery('(max-width: 768px)')
 
     return (
-        <div className={container}>
+        <div className={container(isTablet, isMobile)}>
             <div className={header}>
                 <div style={{padding: '28px 21px 45px 21px'}}>
                     <VestingSplitSectionOverview
@@ -108,14 +110,17 @@ const VestingToSplit = () => {
     );
 };
 
-const container = style({
-    border: '3px solid rgba(138, 103, 255, 1)',
-    borderRadius: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    width: '575px',
-    height: 'max-content'
-})
+const container = (isTablet: boolean, isMobile: boolean) => {
+    return style({
+        border: '3px solid rgba(138, 103, 255, 1)',
+        borderRadius: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        width: isMobile ? '100%' : '575px',
+        height: 'max-content',
+        marginBottom: (isTablet || isMobile) ? '112px' : 'unset'
+    })
+}
 
 const header = style({
     display: 'flex',

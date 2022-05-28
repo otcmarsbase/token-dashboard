@@ -3,6 +3,7 @@ import {Text} from '../atoms';
 import {style} from 'typestyle';
 import {DictionaryContext} from "../../contexts/DictionaryContext";
 import q from '../../assets/question.png';
+import {useMediaQuery} from "../../hooks/mediaQuery";
 
 interface VestingSplitOverviewProps {
     title: ReactNode
@@ -16,17 +17,21 @@ const VestingSplitOverview: FC<VestingSplitOverviewProps> = (
         howToUse,
         subTitle
     }) => {
+    const isMobile = useMediaQuery('(max-width: 375px)')
+
     return (
-        <div className={container}>
-            <div style={{display: 'flex'}}>
-                <Text title={"_1"}>{title}</Text>
+        <div className={container(isMobile)}>
+            <div style={{display: 'flex', marginBottom: isMobile ? '8px' : '0'}}>
+                <Text title={isMobile ? '_2' : "_1"}>{title}</Text>
                 <Text colors={"red"} withIconLeft iconLeft={<img style={{height: '18px'}} src={q} alt=""/>}>
                     <span style={{whiteSpace: 'nowrap'}}>{howToUse}</span>
                 </Text>
             </div>
-            <Text colors={'gray'} size={'_14'}>
-                {subTitle}
-            </Text>
+            <div style={{marginBottom: isMobile ? '8px' : '0'}}>
+                <Text colors={'gray'} size={'_14'}>
+                    {subTitle}
+                </Text>
+            </div>
         </div>
     );
 };
@@ -41,8 +46,8 @@ const VestingSplitOverviewLocalized = () => {
     />
 }
 
-const container = style({
-    width: '500px'
+const container = (isMobile: boolean) => style({
+    width: isMobile ? '100%' : '500px'
 })
 
 export const VestingSplitOverviewWrapper = () => <VestingSplitOverviewLocalized/>

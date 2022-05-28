@@ -2,6 +2,7 @@ import React, {FC, ReactNode, useContext} from 'react';
 import {Button, Text} from '../atoms';
 import {style} from "typestyle";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
+import {useMediaQuery} from "../../hooks/mediaQuery";
 
 interface VestingActionsProps {
     onSellWithPremium: () => void;
@@ -18,12 +19,15 @@ const VestingActions: FC<VestingActionsProps> = (props) => {
         sellWithPremiumBtn,
         buyNowBtn
     } = props;
+    const isMobile = useMediaQuery('(max-width: 375px)')
+    const isTablet = useMediaQuery('(max-width: 768px)')
+
     return (
-        <div className={container}>
-            <Button onClick={onSellWithPremium} size={'md'} colors={'defaultStroke'}>
+        <div className={container(isMobile)}>
+            <Button auto={isMobile} onClick={onSellWithPremium} size={'md'} colors={'defaultStroke'}>
                 <Text weight={'medium'} size={'_12'}>{sellWithPremiumBtn}</Text>
             </Button>
-            <Button onClick={onBuyNow} size={'md'} colors={'gradient'}>
+            <Button auto={isMobile} onClick={onBuyNow} size={'md'} colors={'gradient'}>
                 <Text weight={'medium'} size={'_12'}>{buyNowBtn}</Text>
             </Button>
         </div>
@@ -54,8 +58,9 @@ export const VestingActionsWrapper: FC<VestingActionsWrapperProps> = (props) => 
     return <VestingActionsLocalized {...props}/>
 }
 
-const container = style({
+const container = (isMobile: boolean) => style({
     display: 'flex',
     alignItems: 'center',
+    flexDirection: isMobile ? 'column-reverse' : 'row',
     gap: '12px'
 })
