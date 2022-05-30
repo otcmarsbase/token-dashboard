@@ -3,7 +3,7 @@ import {Text} from '../atoms';
 import {style} from 'typestyle';
 import {DictionaryContext} from "../../contexts/DictionaryContext";
 import q from '../../assets/question.png';
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface VestingSplitOverviewProps {
     title: ReactNode
@@ -17,7 +17,8 @@ const VestingSplitOverview: FC<VestingSplitOverviewProps> = (
         howToUse,
         subTitle
     }) => {
-    const isMobile = useMediaQuery('(max-width: 375px)')
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div className={container(isMobile)}>

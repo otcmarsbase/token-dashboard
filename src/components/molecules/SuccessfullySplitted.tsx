@@ -9,15 +9,19 @@ import silverNft from '../../assets/silver-2.svg'
 import goldNft from '../../assets/gold-2.svg'
 
 import {style} from "typestyle";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 const SuccessfullySplitted = () => {
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
+
     return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px'}}>
-            <img style={{width: '430px'}} src={successfullySplitted} alt=""/>
+        <div className={container(isMobile, isTablet)}>
+            <img style={{width: isMobile ? '100%' : '430px'}} src={successfullySplitted} alt=""/>
             <Text title={'_2'}>NFT has been successfully spliltted</Text>
             <Text colors={'gray'}>Certified business management professional, having a wealth of knowledge in
                 cryptography & finance, consistently providing </Text>
-            <div style={{width: '700px', marginTop: '56px'}}>
+            <div style={{width: isMobile ? '100%' : '700px', marginTop: '56px'}}>
                 <div style={{marginBottom: '34px'}}>
                     <Text
                         withIconRight
@@ -104,11 +108,18 @@ const SuccessfullySplitted = () => {
                         <Text title={'_4'}>Go to dashboard</Text>
                     </Button>
                 </div>
-
             </div>
         </div>
     );
 };
+
+const container = (isMobile: boolean, isTablet: boolean) => style({
+    marginBottom: (isMobile || isTablet) ? '100px' : 'unset',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '10px'
+})
 
 const nftInfo = style({
     display: 'flex',

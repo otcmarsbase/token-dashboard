@@ -9,13 +9,14 @@ import IsBeingSplitted from "../molecules/IsBeingSplitted";
 import VestingToSplit from "../organisms/VestingToSplit";
 import SplitError from "../molecules/SplitError";
 import SuccessfullySplitted from "../molecules/SuccessfullySplitted";
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {Text} from '../atoms';
 import VestingSplitNavbar from "../organisms/VestingSplitNavbar";
+import SelectNftModal from "../organisms/SelectNftModal";
 
 const VestingSplit = () => {
-    const isMobile = useMediaQuery('(max-width: 375px)')
-    const isTablet = useMediaQuery('(max-width: 768px)')
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div className={container}>
@@ -30,6 +31,7 @@ const VestingSplit = () => {
                 {/*<VestingSplitDetails/>*/}
             </div>
             {(isTablet || isMobile) && <VestingSplitNavbar/>}
+            {/*<SelectNftModal/>*/}
         </div>
     );
 };
@@ -41,7 +43,6 @@ const container = style({
     width: '100%',
     margin: 'auto',
     position: 'relative',
-
 })
 
 const body = (isTablet: boolean) => style({

@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 import {Label, Text} from '../atoms';
 import {style} from "typestyle";
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface IDates {
     activation: string;
@@ -27,7 +27,8 @@ const NftDetailsItem: FC<NftDetailsItemProps> = (
         buyPrice,
         token
     }) => {
-    const isMobile = useMediaQuery('(max-width: 375px)');
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div className={styledContainer(isMobile)}>
@@ -65,7 +66,6 @@ const NftDetailsItem: FC<NftDetailsItemProps> = (
                     </div>
                 )}
             </div>
-
         </div>
     );
 };

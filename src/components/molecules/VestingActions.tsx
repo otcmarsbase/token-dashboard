@@ -2,7 +2,7 @@ import React, {FC, ReactNode, useContext} from 'react';
 import {Button, Text} from '../atoms';
 import {style} from "typestyle";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface VestingActionsProps {
     onSellWithPremium: () => void;
@@ -19,8 +19,8 @@ const VestingActions: FC<VestingActionsProps> = (props) => {
         sellWithPremiumBtn,
         buyNowBtn
     } = props;
-    const isMobile = useMediaQuery('(max-width: 375px)')
-    const isTablet = useMediaQuery('(max-width: 768px)')
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div className={container(isMobile)}>

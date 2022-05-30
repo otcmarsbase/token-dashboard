@@ -1,5 +1,10 @@
 import { useEffect, useState, useDebugValue } from "react";
 
+export const Queries = {
+    mobile: '(max-width: 768px)',
+    tablet: '(max-width: 1433px)'
+}
+
 export const useMediaQuery = (query: string): boolean => {
     const getMatches = (query: string): boolean => {
         // Prevents SSR issues

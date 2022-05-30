@@ -1,7 +1,7 @@
 import React from 'react';
 import VestingStepCard from "../molecules/VestingStepCard";
 import {style} from "typestyle";
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 const container = style({
     width: '100%',
@@ -30,8 +30,8 @@ const VestingSplitSteps = () => {
         }
     ]
 
-    const isMobile = useMediaQuery('(max-width: 375px)')
-    const isTablet = useMediaQuery('(max-width: 768px)')
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div className={container}>

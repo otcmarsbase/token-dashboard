@@ -57,7 +57,7 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
                     showTokenName
                     tokenName={<Text colors={'red'} size={'_14'}>MBase</Text>}
                 />
-                <div style={{display: 'flex', width: '100%', alignItems: 'flex-end'}}>
+                <div style={{display: 'flex', alignItems: 'flex-end', width: isMobile ? '100%' : 'unset'}}>
                     <Input
                         type={'number'}
                         onChange={event => handleEdit(id, parseFloat(event.target.value), 'percent')}
@@ -72,17 +72,20 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
                                 Percent
                             </Text>
                         }
-                        percent={!isMobile}
+                        percent={!isMobile || !isTablet}
                     />
                     {isMobile
                         ? isLast
-                            ? <Button onClick={handleAdd} size={'lg'}><Text weight={'medium'}>+</Text></Button>
-                            : notTheFirstAndLast && <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
-                            <Text weight={'medium'}>-</Text>
-                        </Button>
+                            ? <Button onClick={handleAdd} size={'lg'}>
+                                <Text weight={'medium'}>+</Text>
+                            </Button>
+                            : notTheFirstAndLast && (
+                            <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
+                                <Text weight={'medium'}>-</Text>
+                            </Button>
+                        )
                         : <></>}
                 </div>
-
             </div>
             {!isMobile && <>
                 {notTheFirstAndLast && <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>

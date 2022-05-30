@@ -1,19 +1,35 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {style} from "typestyle";
 
 import changeViewIcon from '../../assets/changeViewIcon.svg';
 import sortIcon from '../../assets/sortIcon.svg';
-import purpleNft from '../../assets/purpleNft.svg';
 import X from '../../assets/X.png';
 
-import {Label, Text} from '../atoms';
+import {Text} from '../atoms';
 import NftSelectCard from "../molecules/NftSelectCard";
+import {createPortal} from "react-dom";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
-const SelectNft = () => {
-    return (
-        <div className={container}>
-            <div className={modalContainer}>
-                <div className={modal}>
+const SelectNftModal = () => {
+    const modalsRoot = document.getElementById('modals');
+
+    if (!modalsRoot) return null;
+
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
+
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        }
+    }, [])
+
+    return createPortal(<div className={container}>
+        <div className={modalContainer}>
+            <div className={modalWrapper(isMobile)}>
+                <div className={modal(isMobile, isTablet)}>
                     <div className={modalContent}>
                         <div className={modalContentHeader}>
                             <div>
@@ -28,7 +44,7 @@ const SelectNft = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={modalContentBody}>
+                        <div className={modalContentBody(isMobile, isTablet)}>
                             <NftSelectCard
                                 color={'purple'}
                                 amount={36000000000}
@@ -70,12 +86,9 @@ const SelectNft = () => {
                         </div>
                     </div>
                 </div>
-                <div style={{position: 'absolute', right: '680px'}}>
-                    <img style={{height: '16px'}} src={X} alt=""/>
-                </div>
             </div>
         </div>
-    );
+    </div>, modalsRoot)
 };
 
 const container = style({
@@ -96,18 +109,29 @@ const container = style({
 
 const modalContainer = style({
     display: 'flex',
+    width: '100%',
+    padding: '20px',
+    justifyContent: 'center',
 })
 
-const modal = style({
+const modalWrapper = (isMobile: boolean) => style({
+    width: isMobile ? '100%' : '462px',
+    padding: '3px',
+    position: 'relative',
+    background: `linear-gradient(151.47deg, #8A67FF -7.28%, #49D4FF 29.09%, #FE673C 65.78%, #A6498F 107.39%)`,
+    borderRadius: '16px',
+})
+
+const modal = (isMobile: boolean, isTablet: boolean) => style({
     display: 'flex',
     backgroundColor: 'black',
     borderRadius: '16px',
-    width: '462px',
+    width: isMobile ? '100%' : '462px',
 })
 
-const modalContentBody = style({
+const modalContentBody = (isMobile: boolean, isTablet: boolean) => style({
     display: 'flex',
-    height: '448px',
+    height: 'calc(100vh - 340px)',
     overflow: 'auto',
     flexDirection: 'column'
 })
@@ -136,4 +160,4 @@ const iconContainer = style({
     borderRadius: '8px'
 })
 
-export default SelectNft;
+export default SelectNftModal;

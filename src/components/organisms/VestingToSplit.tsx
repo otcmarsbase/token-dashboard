@@ -6,7 +6,7 @@ import VestingSplitParametr from "../molecules/VestingSplitParametr";
 import silver2 from "../../assets/silver-2.svg";
 import question from '../../assets/question.png'
 import Input from "../Input";
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 export interface ISplitParametr {
     id: string;
@@ -51,74 +51,83 @@ const VestingToSplit = () => {
         setSplitParameters(splitParameters.map(p => p.id === id ? {...p, [key]: value} : p))
     };
 
-    const isMobile = useMediaQuery('(max-width: 375px)');
-    const isTablet = useMediaQuery('(max-width: 768px)')
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
-        <div className={container(isTablet, isMobile)}>
-            <div className={header}>
-                <div style={{padding: '28px 21px 45px 21px'}}>
-                    <VestingSplitSectionOverview
-                        title={'To Split'}
-                        subTitle={'Set the parameters you need to suggest the best trading conditions'}
-                        actionText={'How to split?'}
-                        actionIcon={<img style={{height: '18px'}} src={question} alt=""/>}
-                        onAction={() => null}
-                    />
-                    <div style={{display: 'flex', gap: '16px', alignItems: 'center'}}>
-                        <Input
-                            type={'number'}
-                            onChange={event => setAvailableAmount(parseFloat(event.target.value))}
-                            value={availableAmount}
-                            showStartIcon
-                            startIcon={<img src={silver2}/>}
-                            showTokenName
-                            tokenName={<Text colors={'red'} size={'_14'}>MBase</Text>}
+        <div className={containerWrapper}>
+            <div className={container(isTablet, isMobile)}>
+                <div className={header}>
+                    <div style={{padding: '28px 21px 45px 21px'}}>
+                        <VestingSplitSectionOverview
+                            title={'To Split'}
+                            subTitle={'Set the parameters you need to suggest the best trading conditions'}
+                            actionText={'How to split?'}
+                            actionIcon={<img style={{height: '18px'}} src={question} alt=""/>}
+                            onAction={() => null}
                         />
-                        <Button onClick={() => null} size={'lg'}>Change</Button>
+                        <div style={{display: 'flex', gap: '16px', alignItems: 'center'}}>
+                            <Input
+                                type={'number'}
+                                onChange={event => setAvailableAmount(parseFloat(event.target.value))}
+                                value={availableAmount}
+                                showStartIcon
+                                startIcon={<img src={silver2}/>}
+                                showTokenName
+                                tokenName={<Text colors={'red'} size={'_14'}>MBase</Text>}
+                            />
+                            <Button onClick={() => null} size={'lg'}>Change</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className={body}>
+                    <VestingSplitSectionOverview
+                        title={'Split parameters'}
+                        subTitle={'You can split your NFT up to 10 parts'}
+                    />
+                    {splitParameters.map((splitParametr, index) => (
+                        <VestingSplitParametr
+                            handleAdd={handleAdd}
+                            handleDelete={handleDelete}
+                            handleEdit={handleEdit}
+                            parametersLength={splitParameters.length}
+                            position={index}
+                            key={splitParametr.id}
+                            {...splitParametr}
+                        />
+                    ))}
+                </div>
+                <div className={footer}>
+                    <Button auto size={'lg'} onClick={() => null}>
+                        <Text weight={'medium'}>SPLIT</Text>
+                    </Button>
+                    <div>
+                        <Text colors={'gray'}>Fee:</Text>
+                        <Text weight={'medium'} colors={'red'}>36,000 MBS (1%)</Text>
+                        <Text colors={'gray'}>~10,000 $</Text>
                     </div>
                 </div>
             </div>
-            <div className={body}>
-                <VestingSplitSectionOverview
-                    title={'Split parameters'}
-                    subTitle={'You can split your NFT up to 10 parts'}
-                />
-                {splitParameters.map((splitParametr, index) => (
-                    <VestingSplitParametr
-                        handleAdd={handleAdd}
-                        handleDelete={handleDelete}
-                        handleEdit={handleEdit}
-                        parametersLength={splitParameters.length}
-                        position={index}
-                        key={splitParametr.id}
-                        {...splitParametr}
-                    />
-                ))}
-            </div>
-            <div className={footer}>
-                <Button auto size={'lg'} onClick={() => null}>
-                    <Text weight={'medium'}>SPLIT</Text>
-                </Button>
-                <div>
-                    <Text colors={'gray'}>Fee:</Text>
-                    <Text weight={'medium'} colors={'red'}>36,000 MBS (1%)</Text>
-                    <Text colors={'gray'}>~10,000 $</Text>
-                </div>
-            </div>
         </div>
+
     );
 };
 
+const containerWrapper = style({
+    padding: '3px',
+    background: `linear-gradient(151.47deg, #8A67FF -7.28%, #49D4FF 29.09%, #FE673C 65.78%, #A6498F 107.39%)`,
+    borderRadius: '10px',
+})
+
 const container = (isTablet: boolean, isMobile: boolean) => {
     return style({
-        border: '3px solid rgba(138, 103, 255, 1)',
         borderRadius: '10px',
         display: 'flex',
         flexDirection: 'column',
-        width: isMobile ? '100%' : '575px',
+        width: (isTablet || isMobile) ? '100%' : '575px',
         height: 'max-content',
-        marginBottom: (isTablet || isMobile) ? '112px' : 'unset'
+        marginBottom: (isTablet || isMobile) ? '112px' : 'unset',
+        backgroundColor: 'black'
     })
 }
 

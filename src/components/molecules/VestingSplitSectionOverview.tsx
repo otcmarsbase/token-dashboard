@@ -23,26 +23,30 @@ const VestingSplitSectionOverview: FC<VestingSplitSectionOverviewProps> = (
     const isTablet = useMediaQuery('(max-width: 768px)')
 
     return (
-        <div className={container}>
-            <div className={left}>
-                <Text title={'_2'}>{title}</Text>
-                <Text size={'_12'} colors={'gray'}>{subTitle}</Text>
+        <div>
+            <div className={container(isMobile)}>
+                <div className={left}>
+                    <Text title={'_2'}>{title}</Text>
+                    {!isMobile && <Text size={'_12'} colors={'gray'}>{subTitle}</Text>}
+                </div>
+                {actionText && (
+                    <Text
+                        colors={'red'}
+                        size={'_14'}
+                        withIconLeft
+                        iconLeft={actionIcon}
+                    >
+                        <span style={{whiteSpace: 'nowrap'}}>{actionText}</span>
+                    </Text>
+                )}
             </div>
-            {actionText && (
-                <Text
-                    colors={'red'}
-                    size={'_14'}
-                    withIconLeft
-                    iconLeft={actionIcon}
-                >
-                    <span style={{whiteSpace: 'nowrap'}}>{actionText}</span>
-                </Text>
-            )}
+            {isMobile && <Text size={'_12'} colors={'gray'}>{subTitle}</Text>}
         </div>
+
     );
 };
 
-const container = style({
+const container = (isMobile: boolean) => style({
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
