@@ -32,39 +32,15 @@ const NftDetailsItem: FC<NftDetailsItemProps> = (
 
     return (
         <div className={styledContainer(isMobile)}>
-            <div className={styledHeader}>
-                <Text colors={'gray'}>{title}</Text>
-                {buyPrice && (
-                    <Label colors={'yellow'}>
-                        <span style={{marginRight: '5px'}}>Buy price</span>
-                        <span style={{fontWeight: '500'}}>{buyPrice}</span>
-                    </Label>
-                )}
-            </div>
-            <div>
-                {dates
-                    ? (
-                        <div style={{display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'flex-start'}}>
-                            {(Object.keys(dates) as Array<keyof IDates>).map((key => (
-                                <Label disabled>
-                                    <Text>{key}</Text>
-                                    <Text>{dates[key]}</Text>
-                                </Label>
-                            )))}
-                        </div>
-                    )
-                    : (
-                        <Text>
-                            {`${amount} ${token}`}
-                        </Text>
-                    )}
-                {usd && (
-                    <div className={styledFooter}>
-                        <Text colors={'gray'}>
-                            {`${usd} $`}
-                        </Text>
-                    </div>
-                )}
+            <Text
+                colors={'gray'}
+                size={isMobile ? '_12' : undefined}
+            >
+                <b>{title}</b>
+            </Text>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
+                <Text>{amount} {token}</Text>
+                <Text size={'_12'} colors={'gray'}>~{usd} $</Text>
             </div>
         </div>
     );
@@ -74,6 +50,7 @@ const styledContainer = (isMobile: boolean) => style({
     display: 'flex',
     flexDirection: isMobile ? 'row' : 'column',
     justifyContent: isMobile ? 'space-between' : '',
+    alignItems: isMobile ? 'start' : 'unset',
     gap: '5px',
     width: '100%'
 })

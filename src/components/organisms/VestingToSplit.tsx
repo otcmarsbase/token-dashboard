@@ -15,8 +15,6 @@ export interface ISplitParametr {
 }
 
 const VestingToSplit = () => {
-    const [availableAmount, setAvailableAmount] = useState(36597345.03);
-
     function uuidv4() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
             const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -55,7 +53,7 @@ const VestingToSplit = () => {
     const isTablet = useMediaQuery(Queries.tablet)
 
     return (
-        <div className={containerWrapper}>
+        <div className={containerWrapper(isTablet, isMobile)}>
             <div className={container(isTablet, isMobile)}>
                 <div className={header}>
                     <div style={{padding: '28px 21px 45px 21px'}}>
@@ -67,16 +65,17 @@ const VestingToSplit = () => {
                             onAction={() => null}
                         />
                         <div style={{display: 'flex', gap: '16px', alignItems: 'center'}}>
-                            <Input
-                                type={'number'}
-                                onChange={event => setAvailableAmount(parseFloat(event.target.value))}
-                                value={availableAmount}
-                                showStartIcon
-                                startIcon={<img src={silver2}/>}
-                                showTokenName
-                                tokenName={<Text colors={'red'} size={'_14'}>MBase</Text>}
-                            />
-                            <Button onClick={() => null} size={'lg'}>Change</Button>
+                            <div className={nftInfo}>
+                                <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                                    <img src={silver2} alt="silver nft"/>
+                                    <Text>36,597,345.03</Text>
+                                    {!isMobile && <Text colors={'gray'} size={'_12'}>~20,000,00 $</Text>}
+                                </div>
+                                <div>
+                                    <Text colors={'red'}>MBase</Text>
+                                </div>
+                            </div>
+                            {!isMobile && <Button onClick={() => null} size={'lg'}>Change</Button>}
                         </div>
                     </div>
                 </div>
@@ -99,12 +98,12 @@ const VestingToSplit = () => {
                 </div>
                 <div className={footer}>
                     <Button auto size={'lg'} onClick={() => null}>
-                        <Text weight={'medium'}>SPLIT</Text>
+                        <Text title={'_3'}>SPLIT</Text>
                     </Button>
                     <div>
-                        <Text colors={'gray'}>Fee:</Text>
-                        <Text weight={'medium'} colors={'red'}>36,000 MBS (1%)</Text>
-                        <Text colors={'gray'}>~10,000 $</Text>
+                        <Text colors={'gray'} size={'_14'}>Total fee:</Text>
+                        <Text weight={'medium'} size={'_14'}>36,000 MBS (1%)</Text>
+                        <Text colors={'gray'} size={'_12'}>~10,000 $</Text>
                     </div>
                 </div>
             </div>
@@ -113,10 +112,21 @@ const VestingToSplit = () => {
     );
 };
 
-const containerWrapper = style({
+const nftInfo = style({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'rgba(81, 84, 96, 0.4)',
+    padding: '12px 14px 12px 14px',
+    borderRadius: '8px',
+    width: '100%'
+})
+
+const containerWrapper = (isTablet: boolean, isMobile: boolean) => style({
     padding: '3px',
     background: `linear-gradient(151.47deg, #8A67FF -7.28%, #49D4FF 29.09%, #FE673C 65.78%, #A6498F 107.39%)`,
     borderRadius: '10px',
+    marginBottom: (isTablet || isMobile) ? '112px' : 'unset',
 })
 
 const container = (isTablet: boolean, isMobile: boolean) => {
@@ -126,7 +136,6 @@ const container = (isTablet: boolean, isMobile: boolean) => {
         flexDirection: 'column',
         width: (isTablet || isMobile) ? '100%' : '575px',
         height: 'max-content',
-        marginBottom: (isTablet || isMobile) ? '112px' : 'unset',
         backgroundColor: 'black'
     })
 }
@@ -151,7 +160,10 @@ const footer = style({
     backgroundColor: '#74250E',
     padding: '24px',
     borderRadius: '0 0 10px 10px',
-    textAlign: 'center'
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px'
 })
 
 export default VestingToSplit;

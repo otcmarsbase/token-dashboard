@@ -1,7 +1,7 @@
 import React, {FC, ReactNode} from 'react';
 import {Text} from "../atoms";
 import {style} from "typestyle";
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 
 interface VestingSplitSectionOverviewProps {
@@ -19,17 +19,27 @@ const VestingSplitSectionOverview: FC<VestingSplitSectionOverviewProps> = (
         actionText,
         actionIcon
     }) => {
-    const isMobile = useMediaQuery('(max-width: 375px)');
-    const isTablet = useMediaQuery('(max-width: 768px)')
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
-        <div>
+        <div style={{width: '100%'}}>
+            {(actionText && isMobile) && (
+                <Text
+                    colors={'red'}
+                    size={'_14'}
+                    withIconLeft
+                    iconLeft={actionIcon}
+                >
+                    <span style={{whiteSpace: 'nowrap'}}>{actionText}</span>
+                </Text>
+            )}
             <div className={container(isMobile)}>
                 <div className={left}>
                     <Text title={'_2'}>{title}</Text>
                     {!isMobile && <Text size={'_12'} colors={'gray'}>{subTitle}</Text>}
                 </div>
-                {actionText && (
+                {(actionText && !isMobile) && (
                     <Text
                         colors={'red'}
                         size={'_14'}

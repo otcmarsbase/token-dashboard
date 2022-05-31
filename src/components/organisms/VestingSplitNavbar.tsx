@@ -9,6 +9,54 @@ import profileIcon from '../../assets/profile.svg';
 import moreIcon from '../../assets/more.svg';
 import {createPortal} from "react-dom";
 
+interface INavbarMenu {
+    text: string;
+    icon: string;
+    alt: string;
+    color?: "red" | "blue" | "gray" | "white" | "lightGray" | undefined;
+    onClick: () => void;
+    active: boolean;
+}
+
+const navbarMenu: INavbarMenu[] = [
+    {
+        text: 'Create Offer',
+        icon: plusIcon,
+        alt: 'Create Offer Menu Item',
+        color: 'red',
+        onClick: () => null,
+        active: false
+    },
+    {
+        text: 'OTC desk',
+        icon: otcDeskIcon,
+        alt: 'OTC desk Menu Item',
+        onClick: () => null,
+        active: false,
+    },
+    {
+        text: 'Dashboard',
+        icon: dashboardIcon,
+        alt: 'Dashboard Menu Item',
+        onClick: () => null,
+        active: true
+    },
+    {
+        text: 'Profile',
+        icon: profileIcon,
+        alt: 'Profile Menu Item',
+        onClick: () => null,
+        active: false
+    },
+    {
+        text: 'More',
+        icon: moreIcon,
+        alt: 'More Menu Item',
+        onClick: () => null,
+        active: false
+    },
+]
+
 const VestingSplitNavbar = () => {
     const modalsRoot = document.getElementById('modals');
 
@@ -17,26 +65,17 @@ const VestingSplitNavbar = () => {
     return createPortal(
         <div className={navbar}>
             <div className={navbarContent}>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '60px'}}>
-                    <img src={plusIcon} style={{marginBottom: '9px', height: '20px'}}/>
-                    <Text colors={'red'} size={'_10'}>Create Offer</Text>
-                </div>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50px'}}>
-                    <img src={otcDeskIcon} style={{marginBottom: '9px', height: '20px'}}/>
-                    <Text colors={'gray'} size={'_10'}>OTC desk</Text>
-                </div>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50px'}}>
-                    <img src={dashboardIcon} style={{marginBottom: '9px', height: '20px'}}/>
-                    <Text size={'_10'}>Dashboard</Text>
-                </div>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50px'}}>
-                    <img src={profileIcon} style={{marginBottom: '9px', height: '20px'}}/>
-                    <Text colors={'gray'} size={'_10'}>Profile</Text>
-                </div>
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50px'}}>
-                    <img src={moreIcon} style={{marginBottom: '9px', height: '20px'}}/>
-                    <Text colors={'gray'} size={'_10'}>More</Text>
-                </div>
+                {navbarMenu.map(menuItem => (
+                    <div onClick={menuItem.onClick} className={navbarItem}>
+                        <img src={menuItem.icon} style={{marginBottom: '9px', height: '20px'}} alt={menuItem.alt}/>
+                        <Text
+                            colors={menuItem.color ? menuItem.color : menuItem.active ? 'white' : 'gray'}
+                            size={'_10'}
+                        >
+                            {menuItem.text}
+                        </Text>
+                    </div>
+                ))}
             </div>
         </div>
         , modalsRoot);
@@ -64,6 +103,13 @@ const navbarContent = style({
     padding: '5px',
     maxWidth: '588px',
     margin: '0 13px'
+})
+
+const navbarItem = style({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '60px'
 })
 
 export default VestingSplitNavbar;

@@ -11,6 +11,7 @@ import infoIcon from "../../assets/info.png";
 
 import {style} from "typestyle";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import SplitDetailsSection from "../molecules/SplitDetailsSection";
 
 const VestingSplitDetails = () => {
     const isMobile = useMediaQuery(Queries.mobile)
@@ -41,51 +42,34 @@ const VestingSplitDetails = () => {
                     </div>
                 </div>
                 <div className={body}>
-                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                            <Text size={'_14'}>Total Parts</Text>
-                            <Text size={'_12'} colors={'gray'}>The amount of money you want to exchange</Text>
-                        </div>
-                        <div>
-                            <Text weight={'semiBold'}>2</Text>
-                        </div>
-                    </div>
-                    <div className={divider}/>
-                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                            <Text size={'_14'}>Part 1</Text>
-                            <Text size={'_12'} colors={'gray'}>Fee: 14,000 MBase (1%) ~10,000 $ </Text>
-                        </div>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
-                            <Text weight={'semiBold'}>18,000,000.00 MBase (33%) </Text>
-                            <Text size={'_12'} colors={'gray'}>~20,000,00 $</Text>
-                        </div>
-                    </div>
-                    <div className={divider}/>
-                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                            <Text size={'_14'}>Part 2</Text>
-                            <Text size={'_12'} colors={'gray'}>~20,000,00 $</Text>
-                        </div>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
-                            <Text weight={'semiBold'}>18,000,000.00 MBase (33%) </Text>
-                            <Text size={'_12'} colors={'gray'}>~20,000,00 $</Text>
-                        </div>
-                    </div>
-                    <div className={divider}/>
-                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                            <Text size={'_14'}>Total Fee</Text>
-                        </div>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
-                            <Text weight={'semiBold'}>36,000 MBase (1%)</Text>
-                            <Text size={'_12'} colors={'gray'}>~20,000,00 $</Text>
-                        </div>
-                    </div>
+                    <SplitDetailsSection
+                        totalParts={2}
+                    />
+                    <SplitDetailsSection
+                        amount={1800000.00}
+                        token={'MBase'}
+                        percent={33}
+                        partIndex={1}
+                        usd={20000}
+                    />
+                    <SplitDetailsSection
+                        amount={1800000.00}
+                        token={'MBase'}
+                        percent={33}
+                        partIndex={2}
+                        usd={20000}
+                    />
+                    <SplitDetailsSection
+                        amount={36000}
+                        token={'MBase'}
+                        percent={1}
+                        usd={20000}
+                        totalFee
+                    />
                 </div>
                 <div className={footer}>
                     <div className={actions(isMobile, isTablet)}>
-                        <div>
+                        <div style={{width: '100%'}}>
                             <Input
                                 value={25000}
                                 color={'whiteStroke'}
@@ -115,7 +99,6 @@ const VestingSplitDetails = () => {
                                 </div>
                             </div>
                         </div>
-
                         <div style={{display: 'flex', width: '100%'}}>
                             <Button auto size={'lg'} onClick={() => null}>
                                 <Text title={'_3'}>APPROVE</Text>
@@ -124,7 +107,6 @@ const VestingSplitDetails = () => {
                                 <Text title={'_3'}>ACCEPT</Text>
                             </Button>
                         </div>
-
                     </div>
                     <div className={steps}>
                         {!isMobile && <div style={{width: '200px'}}/>}
@@ -191,9 +173,9 @@ const footer = style({
 
 const actions = (isMobile: boolean, isTablet: boolean) => style({
     display: 'flex',
-    gap: '13px',
     alignItems: (isTablet) ? 'center' : 'flex-end',
-    flexDirection: (isMobile) ? 'column' : 'row'
+    flexDirection: (isMobile) ? 'column' : 'row',
+    marginBottom: '20px'
 })
 
 const nftInfo = style({
@@ -205,18 +187,12 @@ const nftInfo = style({
     borderRadius: '8px'
 })
 
-const divider = style({
-    width: '100%',
-    height: '1px',
-    backgroundColor: 'rgba(42, 42, 44, 1)',
-    margin: '10px 0 10px 0'
-})
-
 const tagContainer = style({
     display: 'flex',
     gap: '3px',
     marginTop: '4px',
-    width: '100%'
+    width: '100%',
+    marginBottom: '28px'
 })
 
 const tag = style({

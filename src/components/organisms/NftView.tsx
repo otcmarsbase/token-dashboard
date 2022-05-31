@@ -12,85 +12,111 @@ const NftView = () => {
     const nftDetails = [
         {
             title: 'Vesting asset',
-            amount: 3559734503,
-            usd: 2000000,
-            buyPrice: 0.0035,
+            value: 3559734503,
+            subValue: 2000000,
             token: 'MBase',
         },
         {
             title: 'Already claimed:',
-            amount: 3559734503,
-            usd: 2000000,
+            value: 12564.08,
             token: 'MBase',
         },
         {
-            title: 'vesting dates:',
-            dates: {
-                activation: '16.04.2023',
-                start: '16.05.2022 20:00 UTC',
-                end: '16.05.2023 20:00 UTC',
-            }
+            title: 'Vesting contract',
+            value: '0x13052cE99F'
         },
         {
-            title: 'vesting contract',
-            amount: 0xfeE335B
-        }
+            title: 'Activation date',
+            value: '16.04.2023'
+        },
+        {
+            title: 'Start date',
+            value: '16.05.2022 20:00 UTC'
+        },
+        {
+            title: 'End date',
+            value: '16.05.2022 20:00 UTC'
+        },
     ]
 
     return (
         <div className={container(isMobile, isTablet)}>
-            <div>
-                <div className={viewHeader}>
-                    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
-                        <Text title={isMobile ? '_4' : '_3'} colors={'blue'}>VIEW</Text>
-                        <Text title={isMobile ? '_2' : "_1"} colors={'red'}>NFT Details</Text>
-                        {isMobile && <Label colors={'yellow'}>Buy price</Label>}
-                        {!isMobile && (
-                            <div className={detailsContainer}>
-                                {nftDetails.map((nftDetail, index) =>
-                                    <NftDetailsItem key={index} {...nftDetail} title={nftDetail.title.toUpperCase()}/>
+            <div className={containerBody(isMobile)}>
+                <div className={body}>
+                    <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '5px'}}>
+                            <Text title={isMobile ? '_4' : '_3'} colors={'blue'}>VIEW</Text>
+                            <Text title={isMobile ? '_2' : "_1"} colors={'red'}>NFT Details</Text>
+                            <Label colors={'yellow'}>
+                                <span>Buy price </span>
+                                <span style={{fontWeight: '600'}}>0.0035</span>
+                            </Label>
+                        </div>
+                        {isMobile && <img style={{height: '75px'}} src={gold2} alt="nft gold"/>}
+                    </div>
+                    {nftDetails.map((nftDetail, index) =>
+                        <div key={index} className={itemContainer(isMobile)}>
+                            <Text colors={'gray'} size={isMobile ? '_12' : undefined}>
+                                <b>{isMobile ? nftDetail.title : nftDetail.title.toUpperCase()}</b>
+                            </Text>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: `flex-${isMobile ? 'end' : 'start'}`
+                            }}>
+                                <Text colors={`${nftDetail.value}`.startsWith('0x') ? 'red' : undefined}>
+                                    {nftDetail.value} {nftDetail.token}
+                                </Text>
+                                {nftDetail.subValue && (
+                                    <Text size={'_12'} colors={'gray'}>~{nftDetail.subValue} $</Text>
                                 )}
                             </div>
-                        )}
-                    </div>
-                    <div>
-                        <img style={{height: isMobile ? '75px' : 'unset'}} src={gold2} alt="nft gold"/>
-                    </div>
+                        </div>
+                    )}
                 </div>
+                {!isMobile && <img src={gold2} alt="nft gold"/>}
             </div>
-            {isMobile && <NftDetailsItem
-                amount={360000000}
-                usd={20000}
-                title={'Vesting Assets'} token={'MBASE'}
-            />}
-            {isMobile && <Button onClick={() => null} auto colors={'defaultStroke'}>
-                Details
-            </Button>}
+            {isMobile && (
+                <Button onClick={() => null} auto colors={'defaultStroke'}>
+                    Details
+                </Button>
+            )}
         </div>
     );
 };
 
 const container = (isMobile: boolean, isTablet: boolean) => style({
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: isMobile ? 'column' : 'row',
     justifyContent: 'space-between',
     width: isTablet ? 'unset' : '822px',
-    padding: isMobile ? '16px 30px 16px 30px' : '36px 50px 36px 50px',
+    padding: '16px',
     borderRadius: '20px',
     background: `linear-gradient(34deg, rgba(27, 27, 28,100%) 48%, rgba(255,227,161,40%) 100%)`
 })
 
-const viewHeader = style({
+const containerBody = (isMobile: boolean) => style({
     display: 'flex',
-    marginBottom: '24px',
     width: '100%',
-    justifyContent: 'space-between'
+    flexDirection: isMobile ? 'column' : 'row',
 })
 
-const detailsContainer = style({
+const body = style({
     display: 'flex',
     flexDirection: 'column',
-    gap: '14px'
+    gap: '14px',
+    paddingBottom: '30px',
+    marginBottom: '12px',
+    borderBottom: '1px solid rgba(42, 42, 44, 1)',
+    width: '100%',
+})
+
+const itemContainer = (isMobile: boolean) => style({
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'start',
+    flexDirection: isMobile ? 'row' : 'column'
 })
 
 export default NftView;

@@ -4,7 +4,7 @@ import silver2 from "../../assets/silver-2.svg";
 import {Button, Text} from "../atoms";
 import info from '../../assets/info.png'
 import {ISplitParametr} from "../organisms/VestingToSplit";
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {style} from "typestyle";
 
 interface VestingSplitParametrProps {
@@ -32,8 +32,8 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
     const isLast = (parametersLength - 1) === position;
     const notTheFirstAndLast = position !== 0 && !isLast;
 
-    const isMobile = useMediaQuery('(max-width: 375px)');
-    const isTablet = useMediaQuery('(max-width: 768px)')
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div className={container}>
@@ -57,7 +57,7 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
                     showTokenName
                     tokenName={<Text colors={'red'} size={'_14'}>MBase</Text>}
                 />
-                <div style={{display: 'flex', alignItems: 'flex-end', width: isMobile ? '100%' : 'unset'}}>
+                <div style={{display: 'flex', alignItems: 'flex-end', width: isMobile ? '100%' : 'unset', gap: '14px'}}>
                     <Input
                         type={'number'}
                         onChange={event => handleEdit(id, parseFloat(event.target.value), 'percent')}
@@ -88,12 +88,16 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
                 </div>
             </div>
             {!isMobile && <>
-                {notTheFirstAndLast && <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
-                    <Text weight={'medium'}>-</Text>
-                </Button>}
+                {notTheFirstAndLast && (
+                    <Button onClick={handleDelete(id)} size={'lg'} colors={"dark"}>
+                        <Text weight={'medium'}>-</Text>
+                    </Button>
+                )}
             </>}
             {!isMobile && <>
-                {isLast && <Button onClick={handleAdd} size={'lg'}><Text weight={'medium'}>+</Text></Button>}
+                {isLast && <Button onClick={handleAdd} size={'lg'}>
+                    <Text weight={'medium'}>+</Text>
+                </Button>}
             </>}
         </div>
     );
@@ -102,7 +106,10 @@ const VestingSplitParametr: FC<VestingSplitParametrProps> = (
 const container = style({
     display: 'flex',
     alignItems: 'center',
-    gap: '12px'
+    gap: '12px',
+    borderBottom: '1px solid rgba(42, 42, 44, 1)',
+    paddingBottom: '16px',
+    marginBottom: '16px'
 })
 
 const body = (isMobile: boolean) => style({
