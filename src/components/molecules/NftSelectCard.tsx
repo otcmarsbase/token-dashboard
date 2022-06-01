@@ -8,7 +8,7 @@ import silverNft from "../../assets/silverNft.svg";
 import {Label, Text} from "../atoms";
 import {style} from "typestyle";
 
-type ColorTypes = 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
+export type ColorTypes = 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
 
 interface INftSelectCard {
     active?: boolean;

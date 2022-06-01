@@ -31,8 +31,8 @@ export default function App() {
 						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
 							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
 								<AppStateProvider>
-									{/*<TokenDashboard />*/}
-									<VestingSplit/>
+									<TokenDashboard />
+									{/*<VestingSplit/>*/}
 								</AppStateProvider>
 							</MarsbaseVestingProvider>
 						</MarsbaseTokenProvider>

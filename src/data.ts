@@ -5,9 +5,10 @@ export const DICT = {
 	en: {
 		nft: {
 			dashboard: {
-				page_title: "Token Dashboard",
+				page_title: "Vesting Token Dashboard",
 				how_to_use: "How to use?",
-				page_description: "New Decentralized. We introduce a unique farming model",
+				page_description: "The perfect place for making large volume deals with hundreds of altcoins \n" +
+					"without slippage or market price impact",
 				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
 				buy_now_btn: (token: string) => `Buy ${token} now`,
 				summary: {
@@ -131,7 +132,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "2",
-			kind: "cyan",
+			kind: "gold",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -147,7 +148,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "3",
-			kind: "yellow",
+			kind: "red",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -163,7 +164,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "4",
-			kind: "green",
+			kind: "silver",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -179,7 +180,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "5",
-			kind: "purple",
+			kind: "goldDark",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",

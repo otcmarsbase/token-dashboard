@@ -14,7 +14,7 @@ import { TagLabelColors } from "../atoms"
 
 export interface INft {
 	id: string
-	kind: TagLabelColors
+	kind: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
 	amount: number
 	amountUsd: number
 	token: string
@@ -43,7 +43,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 	return (
 		<Table>
 			<thead>
-				<TableRow>
+				<TableRow main={false}>
 					{columnsSorterNames?.map((columnSorterName, index) => (
 						<TableHead key={index}>
 							<ColumnSorter text={columnSorterName} />
@@ -89,7 +89,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 				))}
 			</tbody>
 			<TableFooter>
-				<TableRow>
+				<TableRow main={false}>
 					<TableData>
 						<TablePaginationWrapper startNumbers={startNumbers} endNumbers={endNumbers} />
 					</TableData>

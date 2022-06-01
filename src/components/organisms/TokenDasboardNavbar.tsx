@@ -57,7 +57,7 @@ const navbarMenu: INavbarMenu[] = [
     },
 ]
 
-const VestingSplitNavbar = () => {
+const TokenDashboardNavbar = () => {
     const modalsRoot = document.getElementById('modals');
 
     if (!modalsRoot) return null;
@@ -112,4 +112,4 @@ const navbarItem = style({
     width: '60px'
 })
 
-export default VestingSplitNavbar;
+export default TokenDashboardNavbar;

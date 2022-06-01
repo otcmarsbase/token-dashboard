@@ -11,7 +11,7 @@ import SplitError from "../molecules/SplitError";
 import SuccessfullySplitted from "../molecules/SuccessfullySplitted";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {Text} from '../atoms';
-import VestingSplitNavbar from "../organisms/VestingSplitNavbar";
+import VestingSplitNavbar from "../organisms/TokenDasboardNavbar";
 import SelectNftModal from "../organisms/SelectNftModal";
 
 const VestingSplit = () => {
