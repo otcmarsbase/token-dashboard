@@ -9,7 +9,7 @@ import { MetaMaskProvider } from "metamask-react"
 import "./styles.css"
 
 import { useMetamask } from "use-metamask"
-import { EthersSignerFakeProvider, JrpcProviderPrivnet } from "./hooks/jrpc-provider"
+import { EthersSignerFakeProvider, EthersSignerMetamaskProvider, JrpcProviderPrivnet, WalletContextProvider } from "./hooks/jrpc-provider"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
 import { PRIVNET } from "./config"
 import VestingSplit from "./components/pages/VestingSplit";
@@ -25,9 +25,9 @@ export default function App() {
 	return (
 		<DictionaryProvider lang="en">
 			<MetaMaskProvider>
-				{/* <TokenDashboard /> */}
-				<JrpcProviderPrivnet>
-					<EthersSignerFakeProvider address="0x60c56553495612d4b93b6BC1deffE937223eaF51">
+				<WalletContextProvider>
+
+					<JrpcProviderPrivnet>
 						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
 							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
 								<AppStateProvider>
@@ -35,9 +35,10 @@ export default function App() {
 								</AppStateProvider>
 							</MarsbaseVestingProvider>
 						</MarsbaseTokenProvider>
-					</EthersSignerFakeProvider>
-				</JrpcProviderPrivnet>
+					</JrpcProviderPrivnet>
+
+				</WalletContextProvider>
 			</MetaMaskProvider>
-		</DictionaryProvider>
+		</DictionaryProvider >
 	)
 }

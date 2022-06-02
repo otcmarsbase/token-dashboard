@@ -1,67 +1,79 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import {
     TokenDashboardTemplate,
     Summary as TDTSummary,
 } from "../templates/TokenDashboardTemplate"
-import {NftTableSummary, TokenDashboardHeader} from "../organisms"
-import {NftTableWrapper} from "../organisms/NftTable"
-import {useContext} from "react"
-import {AppStateContext} from "../../contexts/AppStateContext"
-import {ConnectWithMetamask} from "../organisms/ConnectWithMetamask"
-import {Header} from "../templates"
+
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {style} from "typestyle";
-
 import NftCardMobile from "../molecules/NftCardMobile";
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
 import ClaimRewardsModal from "../molecules/ClaimRewardsModal";
-
+      
+import { NftTableSummary, TokenDashboardHeader } from "../organisms"
+import { INft, NftTableWrapper } from "../organisms/NftTable"
+import { useContext } from "react"
+import { AppStateContext } from "../../contexts/AppStateContext"
+import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
+import { Header } from "../templates"
+import { useNfts } from "../../hooks/useNfts"
+import { useEthAddress } from "../../hooks/jrpc-provider"
+import { calculateKind, nftDataToView } from "../../api"
+import { useMarsbaseContracts } from "../../hooks/mbase-contract"
+import { BigNumber } from "ethers"
+import { useMetaMask } from "metamask-react"
 
 const TokenDashboard = () => {
-    const {data, handlers} = useContext(AppStateContext)
-    // const { blockNumber, status } = useJsonRpc();
+	const { account } = useMetaMask()
+	const address = account
+	const { token } = useMarsbaseContracts()
+	const { handlers } = useContext(AppStateContext)
+	const [renderNfts, setRenderNfts] = useState<INft[]>([])
+  const isMobile = useMediaQuery(Queries.mobile);
+  const isTablet = useMediaQuery(Queries.tablet);
 
-    const isMobile = useMediaQuery(Queries.mobile);
-    const isTablet = useMediaQuery(Queries.tablet);
+	let nfts: any[] = []
 
-    return (
-        <TokenDashboardTemplate>
-            <Header>
-                <ConnectWithMetamask/>
-                <TokenDashboardHeader/>
-            </Header>
-            <TDTSummary>
-                <NftTableSummary/>
-            </TDTSummary>
-            <ClaimRewardsModal/>
-            {(isMobile || isTablet) ? (
+	if (address && nfts.length == 0) {
+		nfts = useNfts(address)
+	}
+
+	useEffect(() => {
+		nftDataToView(nfts, token)
+			.then(res => setRenderNfts(res))
+	}, [nfts])
+
+	return (
+		<TokenDashboardTemplate>
+			<Header>
+				<ConnectWithMetamask />
+				<TokenDashboardHeader />
+			</Header>
+			<TDTSummary>
+				<NftTableSummary />
+			</TDTSummary>
+      
+      <ClaimRewardsModal/>
+      {(isMobile || isTablet) ? (
                 <div className={mobileNftContainer(isMobile, isTablet)}>
-                    <NftCardMobile
-                        nftId={'1'}
-                        color={"purple"}
+                 {renderNfts.map((nft) => {
+                 <NftCardMobile
+                        nftId={nft.id}
+                        color={'purple'}
                         onClaim={handlers.onClaim}
                         onActions={handlers.onActions}
-                    />
-                    <NftCardMobile
-                        nftId={'2'}
-                        color={"goldDark"}
-                        onClaim={handlers.onClaim}
-                        onActions={handlers.onActions}
-                    />
-                    <NftCardMobile
-                        nftId={'3'}
-                        color={"gold"}
-                        onClaim={handlers.onClaim}
-                        onActions={handlers.onActions}
-                    />
+                    /> 
+                 })}
                 </div>
             ) : (
-                <NftTableWrapper nfts={data.nfts} onClaim={handlers.onClaim} onActions={handlers.onActions}/>
+                <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim} onActions={handlers.onActions}/>
             )}
             {(isMobile || isTablet) && <TokenDashboardNavbar/>}
-        </TokenDashboardTemplate>
-    )
+      
+		</TokenDashboardTemplate>
+	)
+
 }
 
 const mobileNftContainer = (isMobile: boolean, isTablet: boolean) => style({

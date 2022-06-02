@@ -1,6 +1,10 @@
-import {BigNumber, BigNumberish, Contract, ethers} from "ethers"
-import {INft} from "./components/organisms/NftTable"
-import {MarsbaseVesting__factory, MarsbaseVesting} from "@otcmarsbase/token-contract-types"
+import { BigNumber, BigNumberish, Contract, ethers } from "ethers"
+import { INft } from "./components/organisms/NftTable"
+import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcmarsbase/token-contract-types"
+import { useContext } from "react"
+import { MarsbaseTokenContext } from "./hooks/mbase-contract"
+import { TOKEN_THRESHOLD } from "./config"
+import { TagLabelColors } from "./components/atoms"
 
 type NftData = Awaited<ReturnType<MarsbaseVesting["getVestingRecord"]>>
 
@@ -19,7 +23,7 @@ export async function requestMetamaskConnect(): Promise<string | undefined> {
         return
     }
 
-    const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
 
     return accounts[0]
 }
@@ -50,10 +54,70 @@ export async function requestClaimOneSignature(nftId: string, vest: MarsbaseVest
     return true
 }
 
+export function calculateKind(amount: BigNumber): TagLabelColors {
+
+    for (let i = 1; i < TOKEN_THRESHOLD.length; i++)
+        if (amount.toNumber() <= (TOKEN_THRESHOLD[i].threshold))
+            return TOKEN_THRESHOLD[i].color
+
+    return TOKEN_THRESHOLD[TOKEN_THRESHOLD.length - 1].color
+}
+
 export async function requestClaimAllSignature(nfts: INft[], vest: MarsbaseVesting): Promise<boolean> {
     const tx = await vest["unvest(uint256[])"](nfts.map(x => x.id))
 
     await tx.wait()
 
     return true
+}
+
+export async function nftDataToView(nfts: NftData[], token: MarsbaseToken): Promise<INft[]> {
+
+    function lerp(timePassed: number, amount: number, duration: number) {
+        if (timePassed >= duration)
+            return amount
+        if (timePassed <= 0)
+            return 0
+        return (amount * timePassed) / duration
+    }
+
+    let result: INft[] = []
+    const secondsInDay = 86400
+
+    for (let i = 0; i < nfts.length; i++) {
+        const duration = nfts[i].end.sub(nfts[i].start)
+        const initialAmount = nfts[i].initialAmount
+
+        const timePassed = Date.now() / 1000 - nfts[i].start.toNumber()
+
+        const unclaimed = lerp(timePassed, initialAmount.toNumber(), duration.toNumber())
+
+        const totalTime = nfts[i].end.sub(nfts[i].initialStart).toNumber()
+
+        const percentComplete = ((100 * timePassed) / totalTime) * 0.01
+
+        const daysPassed = (percentComplete * totalTime) / secondsInDay
+        const daysLeft = ((1 - percentComplete) * totalTime) / secondsInDay
+
+        let nftView: INft = {
+            id: i.toString(),
+            kind: calculateKind(nfts[i].amount),
+            amount: nfts[i].initialAmount.toNumber(),
+            token: await token.symbol(),
+            started: new Date(nfts[i].initialStart.toNumber() * 1000).toString(),
+            locked: nfts[i].amount.sub(BigNumber.from(Math.floor(unclaimed))).toNumber(),
+            unclaimed: unclaimed,
+            timePassed: `${daysPassed} days`,
+            timeLeft: `${daysLeft} days`,
+            percentComplete: percentComplete,
+
+            amountUsd: 0,
+            price: 0,
+            available: 0,
+            availableUsd: 0
+        }
+
+        result.push(nftView)
+    }
+    return result
 }
