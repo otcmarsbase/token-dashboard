@@ -9,16 +9,23 @@ import goldDarkNftIcon from "../../assets/goldDarkNft.svg";
 import redNftIcon from "../../assets/redNft.svg";
 import silverNftIcon from "../../assets/silverNft.svg";
 import {ColorTypes} from "./NftSelectCard";
+import {INft} from "../organisms/NftTable";
 
 
-interface NftCardMobileProps {
-    nftId: string;
-    color: ColorTypes;
+interface NftCardMobileProps extends INft {
     onClaim: (nftId: string) => void;
     onActions: (nftId: string) => void;
 }
 
-const NftCardMobile: FC<NftCardMobileProps> = ({color, onClaim, onActions, nftId}) => {
+const NftCardMobile: FC<NftCardMobileProps> = (props) => {
+        const {
+            id,
+            price,
+            kind,
+            started,
+            onActions,
+            onClaim
+        } = props;
         const colors: any = {
             purple: {
                 border: 'rgba(115, 255, 247, 0.5)',
@@ -46,9 +53,9 @@ const NftCardMobile: FC<NftCardMobileProps> = ({color, onClaim, onActions, nftId
             }
         }
 
-        const borderColor = colors[color].border;
-        const nftIcon = colors[color].icon;
-        const tagColor = colors[color].tag;
+        const borderColor = colors[kind].border;
+        const nftIcon = colors[kind].icon;
+        const tagColor = colors[kind].tag;
 
         return (
             <div className={mobileNftCart(borderColor)}>
@@ -63,11 +70,11 @@ const NftCardMobile: FC<NftCardMobileProps> = ({color, onClaim, onActions, nftId
                         }}>
                             <Label colors={tagColor}>
                                 <span>Price </span>
-                                <span style={{fontWeight: '500'}}>0.0035</span>
+                                <span style={{fontWeight: '500'}}>{price}</span>
                             </Label>
                             <Label disabled>
                                 <span>Started </span>
-                                <span style={{fontWeight: '500'}}>02.03.2022</span>
+                                <span style={{fontWeight: '500'}}>{started}</span>
                             </Label>
                         </div>
                     </div>
@@ -113,8 +120,8 @@ const NftCardMobile: FC<NftCardMobileProps> = ({color, onClaim, onActions, nftId
                         </div>
                     </div>
                     <div style={{display: 'flex', gap: '10px'}}>
-                        <Button onClick={() => onClaim(nftId)} auto size={'sm'}>Claim</Button>
-                        <Button onClick={() => onActions(nftId)} auto size={'sm'} colors={'defaultStroke'}>Actions</Button>
+                        <Button onClick={() => onClaim(id)} auto size={'sm'}>Claim</Button>
+                        <Button onClick={() => onActions(id)} auto size={'sm'} colors={'defaultStroke'}>Actions</Button>
                     </div>
                 </div>
             </div>
