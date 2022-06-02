@@ -26,7 +26,6 @@ export default function App() {
 		<DictionaryProvider lang="en">
 			<MetaMaskProvider>
 				<WalletContextProvider>
-
 					<JrpcProviderPrivnet>
 						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
 							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
@@ -36,7 +35,6 @@ export default function App() {
 							</MarsbaseVestingProvider>
 						</MarsbaseTokenProvider>
 					</JrpcProviderPrivnet>
-
 				</WalletContextProvider>
 			</MetaMaskProvider>
 		</DictionaryProvider >
