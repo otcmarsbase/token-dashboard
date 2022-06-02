@@ -132,7 +132,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "2",
-			kind: "gold",
+			kind: "purple",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -148,7 +148,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "3",
-			kind: "red",
+			kind: "green",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -164,7 +164,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "4",
-			kind: "silver",
+			kind: "purple",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -180,7 +180,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "5",
-			kind: "goldDark",
+			kind: "yellow",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
