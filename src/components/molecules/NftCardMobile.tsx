@@ -53,12 +53,12 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
             }
         }
 
-        const borderColor = colors[kind].border;
+        // const borderColor = colors[kind].border;
         const nftIcon = colors[kind].icon;
         const tagColor = colors[kind].tag;
 
         return (
-            <div className={mobileNftCart(borderColor)}>
+            <div className={mobileNftCart('purple')}>
                 <div style={{padding: '13px'}}>
                     <div className={mobileNftCartHeader}>
                         <img style={{height: '52px'}} src={nftIcon} alt=""/>
