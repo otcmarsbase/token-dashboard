@@ -8,6 +8,7 @@ import { TextInputRef } from "@plasmicapp/react-web";
 interface InputProps extends DefaultInputProps {}
 
 function Input_(props: InputProps, ref: TextInputRef) {
+  // @ts-ignore
   const { plasmicProps } = PlasmicInput.useBehavior<InputProps>(props, ref);
   return <PlasmicInput {...plasmicProps} />;
 }
