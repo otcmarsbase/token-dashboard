@@ -14,7 +14,7 @@ import { TagLabelColors } from "../atoms"
 
 export interface INft {
 	id: string
-	kind: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
+	kind: TagLabelColors
 	amount: number
 	amountUsd: number
 	token: string
@@ -60,7 +60,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 								token={nft.token}
 								buyPrice={nft.price}
 								unvestStartTimestamp={Date.now()}
-								kind={nft.kind}
+								kind={'purple'}
 								usdValue={nft.availableUsd}
 							/>
 						</TableData>
