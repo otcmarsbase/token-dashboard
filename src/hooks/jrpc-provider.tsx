@@ -37,10 +37,11 @@ export const WalletContext = React.createContext<WalletContext | undefined>(unde
 
 export const WalletContextProvider: React.FC<PropsWithChildren<{}>> = props => {
 
-	let provider : ethers.providers.Web3Provider | null = null
+	let provider: ethers.providers.Web3Provider | null = null
 
 	try {
-		provider = React.useMemo(() => new ethers.providers.Web3Provider(window.ethereum), [window.ethereum])
+		console.log('new provider')
+		provider = new ethers.providers.Web3Provider(window.ethereum)
 	}
 	catch (err) {
 		alert('no metamask')
