@@ -25,9 +25,9 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  width: auto;
-  height: 100%;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   max-width: 100%;
-  min-height: 0;
+  flex-shrink: 0;
 }

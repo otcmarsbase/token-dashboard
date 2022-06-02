@@ -4,6 +4,7 @@ import {Button} from "../atoms"
 import {style} from "typestyle"
 import {FC, ReactNode, useContext} from "react"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface HeaderActionsProps {
     btnText: ReactNode
@@ -20,19 +21,24 @@ export const HeaderActions: FC<HeaderActionsProps> = (
         onSellWithPremium,
         onBuyNow
     }) => {
-
-    const container = style({
-        display: "flex",
-        gap: "5px"
-    })
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
-        <div className={container}>
-            <Button onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>{btnText}</Button>
-            <Button onClick={onBuyNow} size={"md"} colors={'gradient'}>{btnGradientText}</Button>
+        <div className={container(isMobile)}>
+            <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>{btnText}</Button>
+            <Button auto={isMobile} onClick={onBuyNow} size={"md"} colors={'gradient'}>{btnGradientText}</Button>
         </div>
     )
 }
+
+const container = (isMobile: boolean) => style({
+    display: "flex",
+    gap: isMobile ? "24px" : "12px",
+    width: isMobile ? '100%' : 'unset',
+    flexDirection: isMobile ? 'column' : 'row',
+    marginBottom: isMobile ? '57px' : "unset"
+})
 
 type HeaderActionsLocalizedProps = Omit<HeaderActionsProps, 'btnText' | 'btnGradientText'>
 

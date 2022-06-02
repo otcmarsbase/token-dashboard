@@ -34,12 +34,12 @@
 }
 .buttoncolors_defaultStroke {
   background: none;
-  border-style: solid;
-  border-color: #ffffff80;
+  border: 2px solid #515460;
 }
 .buttonisDisable {
   opacity: 0.5;
-  background: #bc401c;
+  background: #686a6e33;
+  cursor: not-allowed;
 }
 .buttonshowStartIcon {
   display: flex;
@@ -120,6 +120,7 @@
 }
 .slotTargetChildrenisDisable {
   text-align: center;
+  color: #333333;
 }
 .slotTargetChildrenshowStartIcon {
   text-align: center;

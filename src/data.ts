@@ -5,9 +5,10 @@ export const DICT = {
 	en: {
 		nft: {
 			dashboard: {
-				page_title: "Token Dashboard",
+				page_title: "Vesting Token Dashboard",
 				how_to_use: "How to use?",
-				page_description: "New Decentralized. We introduce a unique farming model",
+				page_description: "The perfect place for making large volume deals with hundreds of altcoins \n" +
+					"without slippage or market price impact",
 				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
 				buy_now_btn: (token: string) => `Buy ${token} now`,
 				summary: {
@@ -36,6 +37,14 @@ export const DICT = {
 					header: "How is distribution done?",
 					description: "For the first time, a crypto OTC desk and even"
 				}
+			},
+			vestingSplit: {
+				page_title: "Vesting split",
+				how_to_use: "How to use?",
+				page_description: "The perfect place for making large volume deals with hundreds of altcoins \n" +
+					"without slippage or market price impact",
+				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
+				buy_now_btn: (token: string) => `Buy ${token} now`,
 			}
 		}
 	},
@@ -73,6 +82,14 @@ export const DICT = {
 					header: "Как распределяется?",
 					description: "Для первого раза, крипто ОТС деск и даже"
 				}
+			},
+			vestingSplit: {
+				page_title: "Vesting split",
+				how_to_use: "How to use?",
+				page_description: "The perfect place for making large volume deals with hundreds of altcoins \n" +
+					"without slippage or market price impact",
+				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
+				buy_now_btn: (token: string) => `Buy ${token} now`,
 			}
 		}
 	}
@@ -107,7 +124,7 @@ export const SCREEN_DATA: IScreenData = {
 			started: "02.03.2022",
 			locked: 14_500_780,
 			unclaimed: 1_500_780,
-			percentComplete: 0.951,
+			percentComplete: 90.951,
 			timePassed: "299 days",
 			timeLeft: "66 days",
 			available: 6656.77,
@@ -115,7 +132,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "2",
-			kind: "cyan",
+			kind: "gold",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -123,7 +140,7 @@ export const SCREEN_DATA: IScreenData = {
 			started: "02.03.2022",
 			locked: 14_500_780,
 			unclaimed: 1_500_780,
-			percentComplete: 0.7,
+			percentComplete: 50.7,
 			timePassed: "200 days",
 			timeLeft: "165 days",
 			available: 6656.77,
@@ -131,7 +148,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "3",
-			kind: "yellow",
+			kind: "red",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -139,7 +156,7 @@ export const SCREEN_DATA: IScreenData = {
 			started: "02.03.2022",
 			locked: 14_500_780,
 			unclaimed: 1_500_780,
-			percentComplete: 0.65,
+			percentComplete: 25.65,
 			timePassed: "179 days",
 			timeLeft: "87 days",
 			available: 6656.77,
@@ -147,7 +164,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "4",
-			kind: "green",
+			kind: "silver",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -155,7 +172,7 @@ export const SCREEN_DATA: IScreenData = {
 			started: "02.03.2022",
 			locked: 14_500_780,
 			unclaimed: 1_500_780,
-			percentComplete: 0.33,
+			percentComplete: 70.33,
 			timePassed: "102 days",
 			timeLeft: "163 days",
 			available: 6656.77,
@@ -163,7 +180,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "5",
-			kind: "purple",
+			kind: "goldDark",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -171,7 +188,7 @@ export const SCREEN_DATA: IScreenData = {
 			started: "02.03.2022",
 			locked: 14_500_780,
 			unclaimed: 1_500_780,
-			percentComplete: 0.1,
+			percentComplete: 10.1,
 			timePassed: "97 days",
 			timeLeft: "178 days",
 			available: 6656.77,

@@ -1,6 +1,7 @@
 import React from 'react';
 import VestingStepCard from "../molecules/VestingStepCard";
 import {style} from "typestyle";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 const container = style({
     width: '100%',
@@ -11,11 +12,34 @@ const container = style({
 })
 
 const VestingSplitSteps = () => {
+    const steps = [
+        {
+            active: false,
+            title: 'Parameters',
+            subTitle: 'Set suitable conditions'
+        },
+        {
+            active: true,
+            title: 'Split details',
+            subTitle: 'Verify and approve the offer'
+        },
+        {
+            active: false,
+            title: 'Publication',
+            subTitle: 'Send the offer to the market'
+        }
+    ]
+
+    const isMobile = useMediaQuery(Queries.mobile)
+    const isTablet = useMediaQuery(Queries.tablet)
+
     return (
         <div className={container}>
-            <VestingStepCard/>
-            <VestingStepCard/>
-            <VestingStepCard/>
+            {(isMobile ? steps.filter(s => s.active) : steps).map((step, index) => (
+                <VestingStepCard
+                    key={index}
+                    index={index + 1} {...step}/>
+            ))}
         </div>
     );
 };

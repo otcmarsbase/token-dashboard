@@ -6,45 +6,48 @@
   height: auto;
   justify-content: center;
   align-items: center;
-  background: #dddddd1a;
+  background: #dddddd2e;
   border-radius: 8px;
-  padding: 5px 10px;
-}
-.rootcolors_purple {
-  background: #8c56dc80;
+  padding: 5px 10px 5px 6px;
 }
 .rootcolors_cyan {
   background: #73fff71a;
 }
-.rootcolors_green {
-  background: #09c78180;
-}
 .rootcolors_yellow {
   background: #ffce511a;
+}
+.rootcolors_red {
+  background: #fea4831a;
+}
+.rootdisabled {
+  background: #686a6e1a;
+  cursor: not-allowed;
 }
 .freeBox {
   position: relative;
   width: auto;
   height: auto;
-  max-width: 800px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .freeBoxcolors_yellow {
   margin-right: 0px;
 }
 .slotTargetChildren {
   color: #ffffff;
-}
-.slotTargetChildrencolors_purple {
-  color: #8c56dc;
+  font-size: 11px;
 }
 .slotTargetChildrencolors_cyan {
   color: #73fff7;
 }
-.slotTargetChildrencolors_green {
-  color: #09c781;
-}
 .slotTargetChildrencolors_yellow {
   color: #ffce51;
+}
+.slotTargetChildrencolors_red {
+  color: #fea483;
+}
+.slotTargetChildrendisabled {
+  color: #686a6e;
 }

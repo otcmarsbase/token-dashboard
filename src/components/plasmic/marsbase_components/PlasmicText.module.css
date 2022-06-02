@@ -9,11 +9,54 @@
   min-width: auto;
   max-width: none;
 }
+.roottitle__2 {
+  height: auto;
+}
+.rootwithIconRight {
+  display: inline-flex;
+  flex-direction: row;
+  width: auto;
+  flex-row-gap: 0px;
+}
+.rootwithIconLeft {
+  display: flex;
+  flex-direction: row;
+  flex-row-gap: 0px;
+}
+.freeBox__ifxz4 {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin-right: 5px;
+  display: none;
+}
+.freeBoxwithIconLeft__ifxz4SLg5G {
+  display: flex;
+}
+.svg__v7Hqz {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
 .freeBox___4Jz6K {
   display: flex;
   position: relative;
   flex-direction: column;
   align-self: center;
+}
+.freeBoxtitle__2___4Jz6KwDoKp {
+  height: auto;
+}
+.freeBoxwithIconRight___4Jz6KOZp1U {
+  height: auto;
+  width: auto;
 }
 .slotTargetChildren {
   color: #ffffff;
@@ -21,13 +64,11 @@
 .slotTargetChildrenweight_medium {
   font-weight: 500;
 }
+.slotTargetChildrensize__28 {
+  font-size: 28px;
+}
 .slotTargetChildrensize__18 {
   font-size: 18px;
-}
-.slotTargetChildrentitle {
-  font-size: 32px;
-  font-weight: 600;
-  font-family: "EurofontExtendedC";
 }
 .slotTargetChildrencolors_gray {
   color: #7b7b7b;
@@ -35,12 +76,44 @@
 .slotTargetChildrencolors_red {
   color: var(--token-MfCyf2DBW);
 }
-.slotTargetChildrenfont_euro {
+.slotTargetChildrencolors_lightGray {
+  color: #d2d2d2;
+}
+.slotTargetChildrencolors_blue {
+  color: #4e7ffe;
+}
+.slotTargetChildrenopacity__10 {
+  color: #ffffff1a;
+}
+.slotTargetChildrentitle__1 {
+  font-size: 32px;
+  font-weight: 600;
   font-family: var(--token-t77KRyK74);
+}
+.slotTargetChildrentitle__2 {
+  font-size: 18px;
+  font-family: var(--token-t77KRyK74);
+  font-weight: 600;
 }
 .slotTargetChildrenweight_semiBold {
   font-weight: 600;
   color: #ffffff;
+}
+.slotTargetChildrentitle__3 {
+  font-size: 14px;
+  font-family: var(--token-t77KRyK74);
+  font-weight: 600;
+}
+.slotTargetChildrentitle__4 {
+  font-size: 12px;
+  font-family: var(--token-t77KRyK74);
+  font-weight: 600;
+}
+.slotTargetChildrenwithIconLeft {
+  white-space: pre-wrap;
+}
+.slotTargetChildrenweight_light {
+  font-weight: 300;
 }
 .slotTargetChildrensize__10 {
   font-size: 10px;
@@ -57,9 +130,6 @@
 .slotTargetChildrensize__24 {
   font-size: 24px;
 }
-.slotTargetChildrensize__28 {
-  font-size: 28px;
-}
 .freeBox__lzUj9 {
   position: relative;
   width: 100%;
@@ -68,9 +138,6 @@
   display: flex;
   flex-direction: row;
   min-width: 0;
-}
-.freeBoxtitle__lzUj9QXncF {
-  display: none;
 }
 .icon__aKwMs:global(.__wab_instance) {
   max-width: 100%;
@@ -105,4 +172,26 @@
   height: auto;
   max-width: 800px;
   display: none;
+}
+.freeBox__g95C7 {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin-left: 5px;
+  display: none;
+}
+.freeBoxwithIconRight__g95C7OZp1U {
+  display: flex;
+}
+.svg__hbDas {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
 }

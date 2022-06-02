@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react"
 
 import {
-	TokenDashboardTemplate,
-	Summary as TDTSummary,
+    TokenDashboardTemplate,
+    Summary as TDTSummary,
 } from "../templates/TokenDashboardTemplate"
+
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {style} from "typestyle";
+import NftCardMobile from "../molecules/NftCardMobile";
+import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
+import ClaimRewardsModal from "../molecules/ClaimRewardsModal";
+      
 import { NftTableSummary, TokenDashboardHeader } from "../organisms"
 import { INft, NftTableWrapper } from "../organisms/NftTable"
 import { useContext } from "react"
@@ -23,6 +30,8 @@ const TokenDashboard = () => {
 	const { token } = useMarsbaseContracts()
 	const { handlers } = useContext(AppStateContext)
 	const [renderNfts, setRenderNfts] = useState<INft[]>([])
+  const isMobile = useMediaQuery(Queries.mobile);
+  const isTablet = useMediaQuery(Queries.tablet);
 
 	let nfts: any[] = []
 
@@ -44,10 +53,35 @@ const TokenDashboard = () => {
 			<TDTSummary>
 				<NftTableSummary />
 			</TDTSummary>
-
-			<NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim} onActions={handlers.onActions} />
+      
+      <ClaimRewardsModal/>
+      {(isMobile || isTablet) ? (
+                <div className={mobileNftContainer(isMobile, isTablet)}>
+                 {renderNfts.map((nft) => {
+                 <NftCardMobile
+                        nftId={nft.id}
+                        color={'purple'}
+                        onClaim={handlers.onClaim}
+                        onActions={handlers.onActions}
+                    /> 
+                 })}
+                </div>
+            ) : (
+                <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim} onActions={handlers.onActions}/>
+            )}
+            {(isMobile || isTablet) && <TokenDashboardNavbar/>}
+      
 		</TokenDashboardTemplate>
 	)
+
 }
+
+const mobileNftContainer = (isMobile: boolean, isTablet: boolean) => style({
+    display: 'grid',
+    gridTemplateColumns: `repeat(${isMobile ? '1' : '2'}, 1fr)`,
+    gap: isTablet ? '16px' : '32px',
+    marginBottom: '100px'
+})
+
 
 export default TokenDashboard

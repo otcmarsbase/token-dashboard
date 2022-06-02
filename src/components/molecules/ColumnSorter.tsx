@@ -3,22 +3,23 @@ import React from "react"
 import { FC, ReactNode } from "react"
 import { style } from "typestyle"
 import {IconExtraSmall, Text} from "../atoms"
+import sorterIcon from '../../assets/sorterIcon.png';
 
 interface ColumnSorterProps {
 	text: ReactNode
-	icon?: ReactNode
 }
 
 export const ColumnSorter: FC<ColumnSorterProps> = ({ text }) => {
-	const container = style({
-		display: "flex",
-		gap: "5px"
-	})
-
 	return (
 		<div className={container}>
-			<Text colors={'red'}>{text}</Text>
-			<IconExtraSmall />
+			<Text colors={'gray'} size={'_12'}>{text}</Text>
+			<img src={sorterIcon} style={{height: '12px'}} alt=""/>
 		</div>
 	)
 }
+
+const container = style({
+	display: "flex",
+	gap: "5px",
+	alignItems: 'center'
+})

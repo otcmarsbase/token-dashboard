@@ -1,10 +1,37 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Count, Text} from "../atoms";
 import {style} from 'typestyle';
 
-const container = style({
+interface VestingStepCardProps {
+    title: string;
+    subTitle: string;
+    active?: boolean;
+    index: number;
+}
+
+const VestingStepCard: FC<VestingStepCardProps> = (
+    {
+        active = false,
+        title,
+        subTitle,
+        index
+    }) => {
+    return (
+        <div className={container(active)}>
+            <Count colors={active ? 'gradient' : 'gray'}>
+                <Text colors={active ? 'white' : 'gray'} title={'_2'}>{index}</Text>
+            </Count>
+            <div className={body}>
+                <Text colors={active ? 'white' : 'gray'} title={'_2'}>{title}</Text>
+                <Text weight={'light'} colors={active ? 'white' : 'gray'} size={'_14'}>{subTitle}</Text>
+            </div>
+        </div>
+    );
+};
+
+const container = (active: boolean) => style({
     display: "flex",
-    background: `rgba(37, 38, 40, 0.5)`,
+    background: active ? `rgba(37, 38, 40, 0.5)` : `rgba(37, 38, 40, 0.2)`,
     borderRadius: '16px',
     padding: '27px 24px 27px 24px',
     width: '100%',
@@ -17,19 +44,5 @@ const body = style({
     alignItems: 'flex-start',
     marginLeft: '10px',
 })
-
-const VestingStepCard = () => {
-    return (
-        <div className={container}>
-            <Count colors={'gradient'}>
-                <Text weight={'medium'} size={'_24'}>1</Text>
-            </Count>
-            <div className={body}>
-                <Text font={'euro'} size={'_18'} weight={'medium'}>Parameters</Text>
-                <Text colors={'gray'} size={'_14'}>Set suitable conditions</Text>
-            </div>
-        </div>
-    );
-};
 
 export default VestingStepCard;

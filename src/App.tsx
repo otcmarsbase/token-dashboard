@@ -12,6 +12,8 @@ import { useMetamask } from "use-metamask"
 import { EthersSignerFakeProvider, EthersSignerMetamaskProvider, JrpcProviderPrivnet, WalletContextProvider } from "./hooks/jrpc-provider"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
 import { PRIVNET } from "./config"
+import VestingSplit from "./components/pages/VestingSplit";
+import SelectNftModal from "./components/organisms/SelectNftModal";
 
 declare global {
 	interface Window {

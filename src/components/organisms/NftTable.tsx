@@ -14,7 +14,7 @@ import { TagLabelColors } from "../atoms"
 
 export interface INft {
 	id: string
-	kind: TagLabelColors
+	kind: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
 	amount: number
 	amountUsd: number
 	token: string
@@ -43,7 +43,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 	return (
 		<Table>
 			<thead>
-				<TableRow>
+				<TableRow main={false}>
 					{columnsSorterNames?.map((columnSorterName, index) => (
 						<TableHead key={index}>
 							<ColumnSorter text={columnSorterName} />
@@ -54,7 +54,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 			<tbody>
 				{nfts?.map((nft) => (
 					<TableRow key={nft.id}>
-						<TableData>
+						<TableData justifyContent={'start'}>
 							<NftOverviewWrapper
 								amount={nft.amount}
 								token={nft.token}
@@ -64,7 +64,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 								usdValue={nft.availableUsd}
 							/>
 						</TableData>
-						<TableData>
+						<TableData justifyContent={'center'}>
 							<NftProgressWrapper
 								amount={nft.amount}
 								token={nft.token}
@@ -76,7 +76,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 								progressMax="100"
 							/>
 						</TableData>
-						<TableData>
+						<TableData justifyContent={'end'}>
 							<NftAvailableClaimWrapper
 								onClaim={() => onClaim(nft.id)}
 								onActions={() => onActions(nft.id)}
@@ -89,8 +89,8 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 				))}
 			</tbody>
 			<TableFooter>
-				<TableRow>
-					<TableData>
+				<TableRow main={false}>
+					<TableData justifyContent={'center'}>
 						<TablePaginationWrapper startNumbers={startNumbers} endNumbers={endNumbers} />
 					</TableData>
 				</TableRow>

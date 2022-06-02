@@ -17,7 +17,8 @@ interface NftAvailableClaimProps {
 
 const contentAmount = style({
 	display: "flex",
-	flexDirection: "column"
+	flexDirection: "column",
+	alignItems: 'end'
 })
 
 const content = style({
@@ -41,8 +42,8 @@ export const NftAvailableClaim: FC<NftAvailableClaimProps> = ({
 	return (
 		<div className={content}>
 			<div className={contentAmount}>
-				<Text colors={"red"}>{`${amount} ${token}`}</Text>
-				<Text>{amountUsd}</Text>
+				<Text colors={"red"} size={'_14'}><b>{`${amount} ${token}`}</b></Text>
+				<Text colors={'gray'} size={'_12'}>{amountUsd}</Text>
 			</div>
 			<div className={contentActions}>
 				<Button size={'md'} onClick={onClaim}>{btnClaimText}</Button>
