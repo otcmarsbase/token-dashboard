@@ -15,13 +15,20 @@ import { useEthAddress } from "../../hooks/jrpc-provider"
 import { calculateKind, nftDataToView } from "../../api"
 import { useMarsbaseContracts } from "../../hooks/mbase-contract"
 import { BigNumber } from "ethers"
+import { useMetaMask } from "metamask-react"
 
 const TokenDashboard = () => {
-	const address = useEthAddress()
+	const { account } = useMetaMask()
+	const address = account
 	const { token } = useMarsbaseContracts()
 	const { handlers } = useContext(AppStateContext)
-	let { nfts } = useNfts(address)
 	const [renderNfts, setRenderNfts] = useState<INft[]>([])
+
+	let nfts: any[] = []
+
+	if (address && nfts.length == 0) {
+		nfts = useNfts(address)
+	}
 
 	useEffect(() => {
 		nftDataToView(nfts, token)

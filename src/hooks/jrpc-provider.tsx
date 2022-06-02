@@ -1,19 +1,19 @@
 import React, { PropsWithChildren } from "react"
 import { ethers } from "ethers"
 import { PRIVNET } from "../config"
+import { MetaMaskProvider, useMetaMask } from "metamask-react"
+import { IMetaMaskContext } from "metamask-react/lib/metamask-context"
 
 export const JRPCProviderContext = React.createContext<ethers.providers.JsonRpcProvider | undefined>(undefined)
 
-export const useEthProvider = () =>
-{
+export const useEthProvider = () => {
 	const provider = React.useContext(JRPCProviderContext)
 	if (!provider)
 		throw new Error("useJsonRpcProvider must be used within a JRPCProviderContext")
 	return provider
 }
 
-export const JrpcProviderPrivnet: React.FC<PropsWithChildren<{}>> = props =>
-{
+export const JrpcProviderPrivnet: React.FC<PropsWithChildren<{}>> = props => {
 	const provider = React.useMemo(() => new ethers.providers.JsonRpcProvider(PRIVNET.rpcUrl), [])
 
 	return (
@@ -21,12 +21,35 @@ export const JrpcProviderPrivnet: React.FC<PropsWithChildren<{}>> = props =>
 	)
 }
 
-export const MetamaskProvider: React.FC<PropsWithChildren<{}>> = props =>
-{
+/* export const MetamaskProvider: React.FC<PropsWithChildren<{}>> = props => {
 	const provider = React.useMemo(() => new ethers.providers.Web3Provider(window.ethereum), [window.ethereum])
 
 	return (
 		<JRPCProviderContext.Provider value={provider}>{props.children}</JRPCProviderContext.Provider>
+	)
+} */
+
+export type WalletContext = {
+	value: ethers.providers.Web3Provider | null
+}
+
+export const WalletContext = React.createContext<WalletContext | undefined>(undefined)
+
+export const WalletContextProvider: React.FC<PropsWithChildren<{}>> = props => {
+
+	let provider : ethers.providers.Web3Provider | null = null
+
+	try {
+		provider = React.useMemo(() => new ethers.providers.Web3Provider(window.ethereum), [window.ethereum])
+	}
+	catch (err) {
+		alert('no metamask')
+	}
+
+	return (
+		<WalletContext.Provider value={{ value: provider }}>
+			{props.children}
+		</WalletContext.Provider>
 	)
 }
 
@@ -37,17 +60,16 @@ export type EthAccountContext = {
 
 export const EthAccountContext = React.createContext<EthAccountContext | undefined>(undefined)
 
-export const useEthersAccount = () =>
-{
+export const useEthersAccount = () => {
 	const signer = React.useContext(EthAccountContext)
+	console.log(signer)
 	// if (!signer)
 	// 	throw new Error("useEthersSigner must be used within a EthersSignerContext")
-	
+
 	return signer
 }
 
-export const useEthAddress = () =>
-{
+export const useEthAddress = () => {
 	const signer = useEthersAccount()
 	if (!signer)
 		throw new Error("useEthersAddress must be used within a EthersSignerContext")
@@ -55,18 +77,15 @@ export const useEthAddress = () =>
 	return signer.address
 }
 
-export const EthersSignerFakeProvider: React.FC<PropsWithChildren<{ privateKey: string } | { address: string }>> = props =>
-{
+export const EthersSignerFakeProvider: React.FC<PropsWithChildren<{ privateKey: string } | { address: string }>> = props => {
 	const provider = useEthProvider()
 
 	const [ctx, setCtx] = React.useState<EthAccountContext>()
 
 	const key = "privateKey" in props ? props.privateKey : props.address
 
-	React.useEffect(() =>
-	{
-		if ("privateKey" in props)
-		{
+	React.useEffect(() => {
+		if ("privateKey" in props) {
 			const signer = new ethers.Wallet(props.privateKey, provider)
 			let address = ethers.utils.computeAddress(props.privateKey)
 			setCtx({
@@ -74,8 +93,7 @@ export const EthersSignerFakeProvider: React.FC<PropsWithChildren<{ privateKey: 
 				signAndSendTx: tx => signer.sendTransaction(tx)
 			})
 		}
-		else
-		{
+		else {
 			setCtx({
 				address: props.address,
 				signAndSendTx: console.log
@@ -88,16 +106,14 @@ export const EthersSignerFakeProvider: React.FC<PropsWithChildren<{ privateKey: 
 	)
 }
 
-export const EthersSignerMetamaskProvider: React.FC<PropsWithChildren<{}>> = props =>
-{
+export const EthersSignerMetamaskProvider: React.FC<PropsWithChildren<{}>> = props => {
 	const provider = useEthProvider()
+	console.log(provider)
 
 	const [ctx, setCtx] = React.useState<EthAccountContext>()
 
-	React.useEffect(() =>
-	{
-		(async () =>
-		{
+	React.useEffect(() => {
+		(async () => {
 			await provider.send("eth_requestAccounts", [])
 			let signer = provider.getSigner()
 			let address = await signer.getAddress()

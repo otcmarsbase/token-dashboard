@@ -28,5 +28,5 @@ export const useNfts = (address: string) => {
 
     }, [address, account])
 
-    return { nfts }
+    return nfts 
 }
