@@ -54,7 +54,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 			<tbody>
 				{nfts?.map((nft) => (
 					<TableRow key={nft.id}>
-						<TableData>
+						<TableData justifyContent={'start'}>
 							<NftOverviewWrapper
 								amount={nft.amount}
 								token={nft.token}
@@ -64,7 +64,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 								usdValue={nft.availableUsd}
 							/>
 						</TableData>
-						<TableData>
+						<TableData justifyContent={'center'}>
 							<NftProgressWrapper
 								amount={nft.amount}
 								token={nft.token}
@@ -76,7 +76,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 								progressMax="100"
 							/>
 						</TableData>
-						<TableData>
+						<TableData justifyContent={'end'}>
 							<NftAvailableClaimWrapper
 								onClaim={() => onClaim(nft.id)}
 								onActions={() => onActions(nft.id)}
@@ -90,7 +90,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 			</tbody>
 			<TableFooter>
 				<TableRow main={false}>
-					<TableData>
+					<TableData justifyContent={'center'}>
 						<TablePaginationWrapper startNumbers={startNumbers} endNumbers={endNumbers} />
 					</TableData>
 				</TableRow>

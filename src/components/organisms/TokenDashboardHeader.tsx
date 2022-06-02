@@ -15,19 +15,20 @@ const TokenDashboardHeader = () => {
 	const { onSellWithPremium, onBuyNow } = handlers
 
 	return (
-		<div className={container(isMobile)}>
+		<div className={container(isMobile, isTablet)}>
 			<HeaderOverviewWrapper />
 			<HeaderActionsWrapper onSellWithPremium={onSellWithPremium} onBuyNow={onBuyNow} token={data.token} />
 		</div>
 	)
 }
 
-const container = (isMobile: boolean) => style({
+const container = (isMobile: boolean, isTablet: boolean) => style({
 	display: "flex",
-	alignItems: "center",
+	alignItems: isTablet ? 'start' : "center",
 	justifyContent: "space-between",
 	width: "100%",
-	flexDirection: isMobile ? 'column' : 'row'
+	flexDirection: (isMobile || isTablet) ? 'column' : 'row',
+	marginBottom: isMobile ? 'unset' : '70px'
 })
 
 export default TokenDashboardHeader

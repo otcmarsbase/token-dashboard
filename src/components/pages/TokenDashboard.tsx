@@ -15,6 +15,7 @@ import {style} from "typestyle";
 
 import NftCardMobile from "../molecules/NftCardMobile";
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
+import ClaimRewardsModal from "../molecules/ClaimRewardsModal";
 
 
 const TokenDashboard = () => {
@@ -33,11 +34,24 @@ const TokenDashboard = () => {
             <TDTSummary>
                 <NftTableSummary/>
             </TDTSummary>
-            {isMobile ? (
-                <div className={mobileNftContainer}>
+            <ClaimRewardsModal/>
+            {(isMobile || isTablet) ? (
+                <div className={mobileNftContainer(isMobile, isTablet)}>
                     <NftCardMobile
                         nftId={'1'}
                         color={"purple"}
+                        onClaim={handlers.onClaim}
+                        onActions={handlers.onActions}
+                    />
+                    <NftCardMobile
+                        nftId={'2'}
+                        color={"goldDark"}
+                        onClaim={handlers.onClaim}
+                        onActions={handlers.onActions}
+                    />
+                    <NftCardMobile
+                        nftId={'3'}
+                        color={"gold"}
                         onClaim={handlers.onClaim}
                         onActions={handlers.onActions}
                     />
@@ -45,15 +59,15 @@ const TokenDashboard = () => {
             ) : (
                 <NftTableWrapper nfts={data.nfts} onClaim={handlers.onClaim} onActions={handlers.onActions}/>
             )}
-            {isMobile && <TokenDashboardNavbar/>}
+            {(isMobile || isTablet) && <TokenDashboardNavbar/>}
         </TokenDashboardTemplate>
     )
 }
 
-const mobileNftContainer = style({
-    display: 'flex',
-    flexDirection: "column",
-    gap: '32px',
+const mobileNftContainer = (isMobile: boolean, isTablet: boolean) => style({
+    display: 'grid',
+    gridTemplateColumns: `repeat(${isMobile ? '1' : '2'}, 1fr)`,
+    gap: isTablet ? '16px' : '32px',
     marginBottom: '100px'
 })
 

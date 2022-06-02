@@ -11,7 +11,7 @@ interface NftProgressProps {
 	locked: ReactNode
 	progressValue: ReactNode
 	progressMax: ReactNode
-	percentComplete: ReactNode
+	percentComplete: number
 	timePassed: ReactNode
 	percentLeft: ReactNode
 	timeLeft: ReactNode
@@ -30,34 +30,8 @@ export const NftProgress: FC<NftProgressProps> = ({
 	timeLeft,
 	lockedCaption
 }) => {
-	const container = style({
-		width: "250px"
-	})
-
-	const content = style({
-		width: "100%",
-		display: "flex",
-		justifyContent: "space-between"
-	})
 
 	return (
-		// <div className={container}>
-		// 	<div className={content}>
-		// 		<Text>{`${amount} ${token}`}</Text>
-		// 		<Text>{`${locked} ${token} ${lockedCaption}`}</Text>
-		// 	</div>
-		// 	<ProgressGradient value={typeof progressValue} max={typeof progressMax} />
-		// 	<div className={content}>
-		// 		<div>
-		// 			<Text>{percentComplete}</Text>
-		// 			<Text size={'_12'} colors={"gray"}>{timePassed}</Text>
-		// 		</div>
-		// 		<div>
-		// 			<Text>{percentLeft}</Text>
-		// 			<Text size={"_12"} colors={"gray"}>{timeLeft}</Text>
-		// 		</div>
-		// 	</div>
-		// </div>
 		<div style={{display: 'flex', flexDirection: 'column', width: '100%', gap: '5px'}}>
 			<div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
 				<Text size={'_10'}>{`${amount} ${token}`}</Text>
@@ -65,12 +39,12 @@ export const NftProgress: FC<NftProgressProps> = ({
 			</div>
 			<div>
 				<div className={progressContainer}>
-					<div className={progressLine(95.1)}/>
+					<div className={progressLine(percentComplete)}/>
 				</div>
 			</div>
 			<div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
 				<div>
-					<Text size={'_10'}>{percentComplete}</Text>
+					<Text size={'_10'}>{percentComplete}%</Text>
 					<Text size={'_10'} colors={'gray'}>{timePassed}</Text>
 				</div>
 				<div>
@@ -121,7 +95,7 @@ interface NftProgressWrapperProps {
 
 export const NftProgressWrapper: FC<NftProgressWrapperProps> = (props) => {
 	const percentLeft = `${100 - props.percentComplete}%`
-	const percentComplete = `${props.percentComplete}%`
+	const percentComplete = props.percentComplete
 
 	return <NftProgressLocalized {...props} percentLeft={percentLeft} percentComplete={percentComplete}/>
 }

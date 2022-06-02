@@ -34,12 +34,17 @@ const styledTableRow = (main: boolean) => style({
     display: 'flex'
 })
 
-export const TableHead: FC<{ children: ReactNode }> = ({children}) => {
-    return <th style={{width: '100%'}}>{children}</th>
+export const TableHead: FC<{ children: ReactNode, justifyContent?: string }> = (
+    {
+        children,
+        justifyContent
+    }) => {
+    return <th style={{width: '100%', justifyContent}}>{children}</th>
 }
 
-export const TableData: FC<{ children: ReactNode }> = ({children}) => {
-    return <td style={{display: 'flex', width: '100%'}}>{children}</td>
+export const TableData: FC<{ children: ReactNode, justifyContent: string }> = (
+    {children, justifyContent}) => {
+    return <td style={{display: 'flex', width: '100%', alignItems: 'center', justifyContent}}>{children}</td>
 }
 
 export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) => {
