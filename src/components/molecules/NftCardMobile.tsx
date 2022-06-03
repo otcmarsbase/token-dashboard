@@ -11,11 +11,12 @@ import silverNftIcon from "../../assets/silverNft.svg";
 import {ColorTypes} from "./NftSelectCard";
 import {INft} from "../organisms/NftTable";
 
-
 interface NftCardMobileProps extends INft {
     onClaim: (nftId: string) => void;
     onActions: (nftId: string) => void;
 }
+
+type IColors = { [color in TagLabelColors]: { border: string; icon: string, label: TagLabelColors } };
 
 const NftCardMobile: FC<NftCardMobileProps> = (props) => {
         const {
@@ -23,28 +24,63 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
             price,
             kind,
             started,
+            amountUsd,
+            amount,
+            availableUsd,
+            available,
+            token,
+            timePassed,
+            timeLeft,
+            percentComplete,
+            locked,
+            unclaimed,
             onActions,
             onClaim
         } = props;
 
+        console.log(props)
+
+        const colors: IColors = {
+            yellow: {
+                label: 'yellow',
+                border: 'rgba(255, 214, 108, 0.5)',
+                icon: goldNftIcon
+            },
+            silver: {
+                label: 'silver',
+                border: 'rgba(221, 221, 221, 0.5)',
+                icon: redNftIcon
+            },
+            red: {
+                label: 'red',
+                border: 'rgba(236, 104, 62, 0.5)',
+                icon: redNftIcon
+            },
+            cyan: {
+                label: 'cyan',
+                border: 'rgba(115, 255, 247, 0.5)',
+                icon: purpleNftIcon
+            }
+        }
+
         return (
-            <div className={mobileNftCart('purple')}>
+            <div className={mobileNftCart(colors[kind].border)}>
                 <div style={{padding: '13px'}}>
                     <div className={mobileNftCartHeader}>
-                        <img style={{height: '52px'}} src={purpleNftIcon} alt=""/>
+                        <img style={{height: '52px'}} src={colors[kind].icon} alt=""/>
                         <div style={{
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'start',
                             gap: '10px'
                         }}>
-                            <Label colors={'cyan'}>
+                            <Label colors={colors[kind].label}>
                                 <span>Price </span>
                                 <span style={{fontWeight: '500'}}>{price}</span>
                             </Label>
                             <Label disabled>
                                 <span>Started </span>
-                                <span style={{fontWeight: '500'}}>{started}</span>
+                                <span style={{fontWeight: '500'}}>{new Date(started).toLocaleDateString('ru')}</span>
                             </Label>
                         </div>
                     </div>
@@ -54,28 +90,30 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                                 <b>Lot of NFT</b>
                             </Text>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
-                                <Text>36,000,000,000 MBase</Text>
-                                <Text colors={'gray'} size={'_11'}>~56,000$</Text>
+                                <Text>{amount} MBase</Text>
+                                <Text colors={'gray'} size={'_11'}>~{amountUsd}$</Text>
                             </div>
                         </div>
                         <div style={{display: 'flex', flexDirection: 'column', width: '100%', gap: '5px'}}>
                             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
                                 <Text size={'_10'}>1,500,780 MBS</Text>
-                                <Text colors={'gray'}>14,500,780 MBS Locked</Text>
+                                <Text colors={'gray'} size={'_10'}>
+                                    <b>{locked} {token} Locked</b>
+                                </Text>
                             </div>
                             <div>
                                 <div className={progressContainer}>
-                                    <div className={progressLine(95.1)}/>
+                                    <div className={progressLine(percentComplete)}/>
                                 </div>
                             </div>
                             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
-                                <div>
-                                    <Text size={'_10'}>95,1%</Text>
-                                    <Text size={'_10'} colors={'gray'}>299 days</Text>
+                                <div style={{display: 'flex'}}>
+                                    <Text size={'_10'}>{percentComplete}%</Text>
+                                    <Text size={'_10'} colors={'gray'}>{timeLeft}</Text>
                                 </div>
-                                <div>
-                                    <Text size={'_10'}>4,9%</Text>
-                                    <Text size={'_10'} colors={'gray'}>66 days</Text>
+                                <div style={{display: 'flex'}}>
+                                    <Text size={'_10'}>{100 - percentComplete}%</Text>
+                                    <Text size={'_10'} colors={'gray'}>{timePassed}</Text>
                                 </div>
                             </div>
                         </div>
@@ -84,14 +122,18 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                                 <b>Availible for claim</b>
                             </Text>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
-                                <Text colors={'red'}>6,656,77 MBase</Text>
-                                <Text colors={'gray'} size={'_11'}>~31,32$</Text>
+                                <Text colors={'red'}>{available} {token}</Text>
+                                <Text colors={'gray'} size={'_11'}>~{availableUsd}$</Text>
                             </div>
                         </div>
                     </div>
                     <div style={{display: 'flex', gap: '10px'}}>
-                        <Button onClick={() => onClaim(id)} auto size={'sm'}>Claim</Button>
-                        <Button onClick={() => onActions(id)} auto size={'sm'} colors={'defaultStroke'}>Actions</Button>
+                        <Button onClick={() => onClaim(id)} auto size={'sm'}>
+                            <span style={{fontWeight: 600}}>Claim</span>
+                        </Button>
+                        <Button onClick={() => onActions(id)} auto size={'sm'} colors={'defaultStroke'}>
+                            <span style={{fontWeight: 600}}>Actions</span>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -109,7 +151,8 @@ const mobileNftCart = (borderColor: string) => style({
 
 const mobileNftCartHeader = style({
     display: 'flex',
-    marginBottom: '15px'
+    marginBottom: '15px',
+    alignItems: 'center'
 })
 
 const availableContainer = style({

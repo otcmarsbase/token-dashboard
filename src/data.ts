@@ -116,7 +116,7 @@ export const SCREEN_DATA: IScreenData = {
 	nfts: [
 		{
 			id: "1",
-			kind: "purple",
+			kind: "yellow",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -132,7 +132,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "2",
-			kind: "purple",
+			kind: "red",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -148,7 +148,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "3",
-			kind: "green",
+			kind: "silver",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",
@@ -164,7 +164,7 @@ export const SCREEN_DATA: IScreenData = {
 		},
 		{
 			id: "4",
-			kind: "purple",
+			kind: "cyan",
 			amount: 36_000_000_000,
 			amountUsd: 56_000,
 			token: "MBase",

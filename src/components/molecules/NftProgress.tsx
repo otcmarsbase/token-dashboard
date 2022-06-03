@@ -43,7 +43,7 @@ export const NftProgress: FC<NftProgressProps> = ({
 				</div>
 			</div>
 			<div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
-				<div>
+				<div style={{display: 'flex'}}>
 					<Text size={'_10'}>{percentComplete}%</Text>
 					<Text size={'_10'} colors={'gray'}>{timePassed}</Text>
 				</div>

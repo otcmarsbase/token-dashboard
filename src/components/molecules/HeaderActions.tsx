@@ -1,6 +1,6 @@
 import React from "react"
 
-import {Button} from "../atoms"
+import {Button, Text} from "../atoms"
 import {style} from "typestyle"
 import {FC, ReactNode, useContext} from "react"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
@@ -26,8 +26,12 @@ export const HeaderActions: FC<HeaderActionsProps> = (
 
     return (
         <div className={container(isMobile)}>
-            <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>{btnText}</Button>
-            <Button auto={isMobile} onClick={onBuyNow} size={"md"} colors={'gradient'}>{btnGradientText}</Button>
+            <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>
+                <Text title={'_4'}>{btnText}</Text>
+            </Button>
+            <Button auto={isMobile} onClick={onBuyNow} size={"md"} colors={'gradient'}>
+                <Text title={'_4'}>{btnGradientText}</Text>
+            </Button>
         </div>
     )
 }

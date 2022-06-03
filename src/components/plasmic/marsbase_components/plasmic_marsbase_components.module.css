@@ -141,12 +141,36 @@
   margin: 0;
   border-width: 0px;
 }
+:where(.__wab_rich_text *),
+:where(.__wab_text *) {
+  white-space: inherit;
+  grid-row: auto;
+  grid-column: auto;
+  position: relative;
+  background: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  box-sizing: border-box;
+  text-decoration-line: none;
+  margin: 0;
+  border-width: 0px;
+}
+
 :where(.img) {
   display: inline-block;
 }
+:where(.__wab_rich_text img),
+:where(.__wab_text img) {
+}
+
 :where(.li) {
   display: list-item;
 }
+:where(.__wab_rich_text li),
+:where(.__wab_text li) {
+}
+
 :where(.span) {
   display: inline;
   position: static;
@@ -158,6 +182,18 @@
   color: inherit;
   text-transform: inherit;
 }
+:where(.__wab_rich_text span),
+:where(.__wab_text span) {
+  position: static;
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+
 :where(.input) {
   font-family: inherit;
   line-height: inherit;
@@ -170,6 +206,20 @@
   padding: 2px;
   border: 1px solid lightgray;
 }
+:where(.__wab_rich_text input),
+:where(.__wab_text input) {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+  background-image: linear-gradient(#ffffff, #ffffff);
+  padding: 2px;
+  border: 1px solid lightgray;
+}
+
 :where(.textarea) {
   font-family: inherit;
   line-height: inherit;
@@ -181,6 +231,19 @@
   padding: 2px;
   border: 1px solid lightgray;
 }
+:where(.__wab_rich_text textarea),
+:where(.__wab_text textarea) {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+  padding: 2px;
+  border: 1px solid lightgray;
+}
+
 :where(.button) {
   font-family: inherit;
   line-height: inherit;
@@ -195,14 +258,42 @@
   padding: 2px 6px;
   border: 1px solid lightgray;
 }
+:where(.__wab_rich_text button),
+:where(.__wab_text button) {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+  background-image: none;
+  align-items: flex-start;
+  text-align: center;
+  padding: 2px 6px;
+  border: 1px solid lightgray;
+}
+
 :where(.code) {
   font-family: inherit;
   line-height: inherit;
 }
+:where(.__wab_rich_text code),
+:where(.__wab_text code) {
+  font-family: inherit;
+  line-height: inherit;
+}
+
 :where(.pre) {
   font-family: inherit;
   line-height: inherit;
 }
+:where(.__wab_rich_text pre),
+:where(.__wab_text pre) {
+  font-family: inherit;
+  line-height: inherit;
+}
+
 :where(.p) {
   font-family: inherit;
   line-height: inherit;
@@ -212,47 +303,121 @@
   color: inherit;
   text-transform: inherit;
 }
+:where(.__wab_rich_text p),
+:where(.__wab_text p) {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+
 :where(.h1) {
   font-size: inherit;
   font-weight: inherit;
 }
+:where(.__wab_rich_text h1),
+:where(.__wab_text h1) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 :where(.h2) {
   font-size: inherit;
   font-weight: inherit;
 }
+:where(.__wab_rich_text h2),
+:where(.__wab_text h2) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 :where(.h3) {
   font-size: inherit;
   font-weight: inherit;
 }
+:where(.__wab_rich_text h3),
+:where(.__wab_text h3) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 :where(.h4) {
   font-size: inherit;
   font-weight: inherit;
 }
+:where(.__wab_rich_text h4),
+:where(.__wab_text h4) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 :where(.h5) {
   font-size: inherit;
   font-weight: inherit;
 }
+:where(.__wab_rich_text h5),
+:where(.__wab_text h5) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 :where(.h6) {
   font-size: inherit;
   font-weight: inherit;
 }
+:where(.__wab_rich_text h6),
+:where(.__wab_text h6) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 :where(.address) {
   font-style: inherit;
 }
+:where(.__wab_rich_text address),
+:where(.__wab_text address) {
+  font-style: inherit;
+}
+
 :where(.a) {
   color: inherit;
 }
+:where(.__wab_rich_text a),
+:where(.__wab_text a) {
+  color: inherit;
+}
+
 :where(.ol) {
   list-style-type: none;
   padding: 0;
 }
+:where(.__wab_rich_text ol),
+:where(.__wab_text ol) {
+  list-style-type: none;
+  padding: 0;
+}
+
 :where(.ul) {
   list-style-type: none;
   padding: 0;
 }
+:where(.__wab_rich_text ul),
+:where(.__wab_text ul) {
+  list-style-type: none;
+  padding: 0;
+}
+
 :where(.select) {
   padding: 2px 6px;
 }
+:where(.__wab_rich_text select),
+:where(.__wab_text select) {
+  padding: 2px 6px;
+}
+
 .plasmic_default__component_wrapper {
   display: grid;
 }
@@ -284,6 +449,7 @@
 
 :where(.root_reset .plasmic_default__h1),
 :where(.root_reset .h1),
+:where(.root_reset .__wab_text h1),
 :where(.root_reset.plasmic_default__h1) {
   color: var(--mixin-re9jERs0so9t_color);
   font-weight: var(--mixin-re9jERs0so9t_font-weight);
@@ -294,6 +460,7 @@
 
 :where(.root_reset .plasmic_default__h2),
 :where(.root_reset .h2),
+:where(.root_reset .__wab_text h2),
 :where(.root_reset.plasmic_default__h2) {
   font-family: var(--mixin-C5pGeQPQNmQm_font-family);
   color: var(--mixin-C5pGeQPQNmQm_color);
@@ -305,12 +472,14 @@
 
 :where(.root_reset .plasmic_default__a),
 :where(.root_reset .a),
+:where(.root_reset .__wab_text a),
 :where(.root_reset.plasmic_default__a) {
   color: var(--mixin-nhtrvwPJmyCP_color);
 }
 
 :where(.root_reset .plasmic_default__h3),
 :where(.root_reset .h3),
+:where(.root_reset .__wab_text h3),
 :where(.root_reset.plasmic_default__h3) {
   font-family: var(--mixin-iH_30YCazJUB_font-family);
   color: var(--mixin-iH_30YCazJUB_color);
@@ -322,6 +491,7 @@
 
 :where(.root_reset .plasmic_default__h4),
 :where(.root_reset .h4),
+:where(.root_reset .__wab_text h4),
 :where(.root_reset.plasmic_default__h4) {
   font-family: var(--mixin-yUV0gW9yhetu_font-family);
   color: var(--mixin-yUV0gW9yhetu_color);
@@ -333,6 +503,7 @@
 
 :where(.root_reset .plasmic_default__code),
 :where(.root_reset .code),
+:where(.root_reset .__wab_text code),
 :where(.root_reset.plasmic_default__code) {
   background: var(--mixin-52V6LvtLEqN6_background);
   font-family: var(--mixin-52V6LvtLEqN6_font-family);
@@ -360,6 +531,7 @@
 
 :where(.root_reset .plasmic_default__blockquote),
 :where(.root_reset .blockquote),
+:where(.root_reset .__wab_text blockquote),
 :where(.root_reset.plasmic_default__blockquote) {
   color: var(--mixin-u31ewVG_ylud_color);
   padding-left: var(--mixin-u31ewVG_ylud_padding-left);
@@ -370,6 +542,7 @@
 
 :where(.root_reset .plasmic_default__pre),
 :where(.root_reset .pre),
+:where(.root_reset .__wab_text pre),
 :where(.root_reset.plasmic_default__pre) {
   background: var(--mixin-PfB2ghD2NREwt_background);
   font-family: var(--mixin-PfB2ghD2NREwt_font-family);
@@ -397,6 +570,7 @@
 
 :where(.root_reset .plasmic_default__ul),
 :where(.root_reset .ul),
+:where(.root_reset .__wab_text ul),
 :where(.root_reset.plasmic_default__ul) {
   display: var(--mixin-EvbOKF4VxyFZO_display);
   flex-direction: var(--mixin-EvbOKF4VxyFZO_flex-direction);
@@ -411,6 +585,7 @@
 
 :where(.root_reset .plasmic_default__ol),
 :where(.root_reset .ol),
+:where(.root_reset .__wab_text ol),
 :where(.root_reset.plasmic_default__ol) {
   display: var(--mixin-pxsWAX5jf4lL0_display);
   flex-direction: var(--mixin-pxsWAX5jf4lL0_flex-direction);
@@ -425,6 +600,7 @@
 
 :where(.root_reset .plasmic_default__h5),
 :where(.root_reset .h5),
+:where(.root_reset .__wab_text h5),
 :where(.root_reset.plasmic_default__h5) {
   font-family: var(--mixin-5ZFy045bPOoVT_font-family);
   color: var(--mixin-5ZFy045bPOoVT_color);
@@ -436,6 +612,7 @@
 
 :where(.root_reset .plasmic_default__h6),
 :where(.root_reset .h6),
+:where(.root_reset .__wab_text h6),
 :where(.root_reset.plasmic_default__h6) {
   font-family: var(--mixin-CiUpxHMs2akaO_font-family);
   color: var(--mixin-CiUpxHMs2akaO_color);
@@ -446,6 +623,7 @@
 
 :where(.root_reset .plasmic_default__a:hover),
 :where(.root_reset .a:hover),
+:where(.root_reset .__wab_text a:hover),
 :where(.root_reset.plasmic_default__a:hover) {
   color: var(--mixin-RPDW5tEz6MkY1_color);
 }
