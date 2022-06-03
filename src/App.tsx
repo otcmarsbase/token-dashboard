@@ -1,19 +1,12 @@
 import React from "react"
-
 import TokenDashboard from "./components/pages/TokenDashboard"
-
 import { AppStateProvider } from "./contexts/AppStateContext"
 import { DictionaryProvider } from "./contexts/DictionaryContext"
 import { MetaMaskProvider } from "metamask-react"
-
-import "./styles.css"
-
-import { useMetamask } from "use-metamask"
-import { EthersSignerFakeProvider, EthersSignerMetamaskProvider, JrpcProviderPrivnet, WalletContextProvider } from "./hooks/jrpc-provider"
+import { JrpcProviderPrivnet, WalletContextProvider } from "./hooks/jrpc-provider"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
 import { PRIVNET } from "./config"
-import VestingSplit from "./components/pages/VestingSplit";
-import SelectNftModal from "./components/organisms/SelectNftModal";
+import "./styles.css"
 
 declare global {
 	interface Window {
@@ -24,9 +17,9 @@ declare global {
 export default function App() {
 	return (
 		<DictionaryProvider lang="en">
-			<MetaMaskProvider>
-				<WalletContextProvider>
-					<JrpcProviderPrivnet>
+			<JrpcProviderPrivnet>
+				<MetaMaskProvider>
+					<WalletContextProvider>
 						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
 							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
 								<AppStateProvider>
@@ -34,9 +27,9 @@ export default function App() {
 								</AppStateProvider>
 							</MarsbaseVestingProvider>
 						</MarsbaseTokenProvider>
-					</JrpcProviderPrivnet>
-				</WalletContextProvider>
-			</MetaMaskProvider>
+					</WalletContextProvider>
+				</MetaMaskProvider>
+			</JrpcProviderPrivnet>
 		</DictionaryProvider >
 	)
 }

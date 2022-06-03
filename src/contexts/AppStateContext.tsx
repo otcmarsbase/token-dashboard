@@ -15,27 +15,13 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
         handlers: HANDLERS,
     }), [])
 
-    const { account, connect, status } = useMetaMask()
     const provider = useContext(WalletContext)?.value
-
-    const [render, setRender] = useState(<>Not Logged in</>)
 
     let contracts = useMarsbaseContracts()
 
     useEffect(() => {
 
-        if (!account) {
-            if (status == 'notConnected') {
-                console.log('status is not connecting')
-                connect()
-            }
-            if (status == 'connecting')
-                setRender(<>See notifications</>)
-            if (status == 'unavailable')
-                setRender(<>No metamask!</>)
-        }
-
-        const signer = provider?.getSigner() /* это должно быть в другом месте? */
+        const signer = provider?.getSigner() 
 
         state.handlers.onClaim = async nftId => {
             const tx = await contracts.vesting.populateTransaction["unvest(uint256)"](nftId)
@@ -44,11 +30,11 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
                 .catch((err) => alert('tx denied'))
 
         }
-    }, [status])
-    /* let acc = account */
+    }, [])
+    /* let acc = account
 
-    /* let account = useEthersAccount() */
-    /* state.handlers.onClaim = async nftId =>
+    let account = useEthersAccount()
+    state.handlers.onClaim = async nftId =>
     {
         let tx = await contracts.vesting.populateTransaction["unvest(uint256)"](nftId)
         acc.signAndSendTx(tx)
@@ -58,7 +44,8 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
 
     return (
         <AppStateContext.Provider value={state}>
-            {status == 'connected' ? props.children : render}
+            {/* {status == 'connected' ? props.children : render} */}
+            {props.children}
         </AppStateContext.Provider>
     )
 }

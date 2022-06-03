@@ -6,7 +6,7 @@ import { MarsbaseTokenContext } from "./hooks/mbase-contract"
 import { TOKEN_THRESHOLD } from "./config"
 import { TagLabelColors } from "./components/atoms"
 
-type NftData = Awaited<ReturnType<MarsbaseVesting["getVestingRecord"]>>
+export type NftData = Awaited<ReturnType<MarsbaseVesting["getVestingRecord"]>>
 
 export function createApi(mbaseAddress: string, vestingAddress: string, provider: ethers.Signer | ethers.providers.Provider) {
     let vest = MarsbaseVesting__factory.connect(vestingAddress, provider)
