@@ -30,16 +30,17 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = (
                         <Text
                             colors={'red'}
                             size={'_14'}
-                            iconRight={<img style={{height: '18px', width: '18px'}} src={question} alt=""/>}
-                            withIconRight
+                            iconLeft={<img style={{height: '18px', width: '18px', marginLeft: '16px'}} src={question} alt=""/>}
+                            withIconLeft
                         >
                             <span style={{whiteSpace: 'nowrap'}}>How to use?</span>
                         </Text>
                     )}
 
             </div>
-            {isMobile && <div style={{marginBottom: '8px'}}/>}
+            <div style={{marginBottom: '8px'}}/>
             <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
+            <div style={{marginBottom: '24px'}}/>
         </div>
     )
 }

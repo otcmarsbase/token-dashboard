@@ -1,13 +1,70 @@
 import React, {FC} from "react"
 import {style} from "typestyle"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
-import {Text, Label} from "../atoms";
+import {Text, Label, TagLabelColors} from "../atoms";
 
 import goldNftIcon from '../../assets/goldNft.svg';
 import darkGoldNftIcon from '../../assets/goldDarkNft.svg';
 import nftPurpleIcon from '../../assets/purpleNft.svg';
 import nftRedIcon from '../../assets/redNft.svg';
 import nftSilverIcon from '../../assets/silverNft.svg';
+import redNftIcon from "../../assets/redNft.svg";
+import purpleNftIcon from "../../assets/purpleNft.svg";
+import {IColors} from "./NftCardMobile";
+
+export type NftOverviewProps = {
+    amount: React.ReactNode
+    amountUsd: React.ReactNode
+    price: React.ReactNode
+    date: React.ReactNode
+    labelColor: TagLabelColors
+}
+
+export const NftOverviewVisual: FC<NftOverviewProps> = (props) => {
+    const {amount, amountUsd, labelColor} = props;
+
+    const colors: IColors = {
+        yellow: {
+            label: 'yellow',
+            border: 'rgba(255, 214, 108, 0.5)',
+            icon: goldNftIcon
+        },
+        silver: {
+            label: 'silver',
+            border: 'rgba(221, 221, 221, 0.5)',
+            icon: redNftIcon
+        },
+        red: {
+            label: 'red',
+            border: 'rgba(236, 104, 62, 0.5)',
+            icon: redNftIcon
+        },
+        cyan: {
+            label: 'cyan',
+            border: 'rgba(115, 255, 247, 0.5)',
+            icon: purpleNftIcon
+        }
+    }
+
+    return (
+        <div className={container}>
+            <img src={colors[labelColor]?.icon || ''} style={{height: '60px', marginRight: '12px'}} alt=""/>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
+                <div className={header}>
+                    <Text size={'_14'}>{amount}</Text>
+                    <Text colors={'gray'} size={'_12'}>{amountUsd}</Text>
+                </div>
+                <div className={footer}>
+                    <Label colors={colors[labelColor]?.label || ''}>
+                        <span>Price </span>
+                        <span style={{fontWeight: 600}}>{props.price}</span>
+                    </Label>
+                    <Label>{props.date}</Label>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 const container = style({
     display: "flex",
@@ -22,69 +79,8 @@ const header = style({
 
 const footer = style({
     display: "flex",
-    gap: "10px"
+    gap: "4px"
 })
-
-export type NftOverviewProps = {
-    amount: React.ReactNode
-    amountUsd: React.ReactNode
-    price: React.ReactNode
-    date: React.ReactNode
-    labelColor: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
-}
-
-export const NftOverviewVisual: FC<NftOverviewProps> = (props) => {
-    const {amount, amountUsd, labelColor} = props;
-
-    const covertLabelColor = (color: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple') => {
-        switch (color) {
-            case "gold":
-            case "goldDark":
-                return 'yellow'
-            case "purple":
-                return 'cyan'
-            case "red":
-                return 'red'
-            case "silver":
-                return undefined
-        }
-    }
-
-    const getNftIcon = (color: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple') => {
-        switch (color) {
-            case "gold":
-                return goldNftIcon
-            case "goldDark":
-                return darkGoldNftIcon
-            case "purple":
-                return nftPurpleIcon
-            case "red":
-                return nftRedIcon
-            case "silver":
-                return nftSilverIcon
-        }
-    }
-
-    return (
-        <div className={container}>
-            <img src={getNftIcon(labelColor)} style={{height: '60px'}} alt=""/>
-            <div style={{display: 'flex', flexDirection: 'column'}}>
-                <div className={header}>
-                    <Text size={'_14'}>{amount}</Text>
-                    <Text colors={'gray'} size={'_12'}>{amountUsd}</Text>
-                </div>
-                <div className={footer}>
-                    <Label colors={covertLabelColor(labelColor)}>
-                        <span>Price </span>
-                        <span style={{fontWeight: 600}}>{props.price}</span>
-                    </Label>
-                    <Label>{props.date}</Label>
-                </div>
-            </div>
-
-        </div>
-    )
-}
 
 export type NftOverviewLocalizedProps = Omit<NftOverviewProps, "price" | "date"> & {
     priceAmount: React.ReactNode
@@ -111,7 +107,7 @@ export type NftOverviewWrapperProps = {
     buyPrice: number
     usdValue: number
     unvestStartTimestamp: number
-    kind: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
+    kind: TagLabelColors
 }
 export const NftOverviewWrapper: React.FC<NftOverviewWrapperProps> = (props) => {
     return (

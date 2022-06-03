@@ -20,7 +20,6 @@
 }
 .rootdisabled {
   background: #686a6e1a;
-  cursor: not-allowed;
 }
 .freeBox {
   position: relative;
@@ -30,6 +29,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  align-self: center;
   padding: 0px 6px;
 }
 .freeBoxcolors_yellow {

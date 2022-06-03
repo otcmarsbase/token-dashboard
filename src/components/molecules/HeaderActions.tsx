@@ -25,7 +25,7 @@ export const HeaderActions: FC<HeaderActionsProps> = (
     const isTablet = useMediaQuery(Queries.tablet)
 
     return (
-        <div className={container(isMobile)}>
+        <div className={container(isMobile, isTablet)}>
             <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>
                 <Text title={'_4'}>{btnText}</Text>
             </Button>
@@ -36,11 +36,11 @@ export const HeaderActions: FC<HeaderActionsProps> = (
     )
 }
 
-const container = (isMobile: boolean) => style({
+const container = (isMobile: boolean, isTablet: boolean) => style({
     display: "flex",
     gap: isMobile ? "24px" : "12px",
     width: isMobile ? '100%' : 'unset',
-    flexDirection: isMobile ? 'column' : 'row',
+    flexDirection: isMobile ? 'column' : isTablet ? 'row-reverse' : 'row',
     marginBottom: isMobile ? '57px' : "unset"
 })
 

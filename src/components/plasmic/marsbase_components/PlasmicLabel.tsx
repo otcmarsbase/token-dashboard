@@ -111,7 +111,8 @@ function PlasmicLabel__RenderFunc(props: {
         data-plasmic-override={overrides.freeBox}
         className={classNames(projectcss.all, sty.freeBox, {
           [sty.freeBoxcolors_cyan]: hasVariant(variants, "colors", "cyan"),
-          [sty.freeBoxcolors_yellow]: hasVariant(variants, "colors", "yellow")
+          [sty.freeBoxcolors_yellow]: hasVariant(variants, "colors", "yellow"),
+          [sty.freeBoxdisabled]: hasVariant(variants, "disabled", "disabled")
         })}
       >
         {p.renderPlasmicSlot({

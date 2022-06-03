@@ -20,12 +20,12 @@ const SummaryDestribution: FC<SummaryDestributionProps> = ({title, subTitle, cou
 
     return (
         <div className={container(isMobile)}>
-            <img style={{height: '36px'}} src={flyUsdIcon} alt=""/>
+            <img style={{height: '36px', marginRight: '12px'}} src={flyUsdIcon} alt=""/>
             <div className={content}>
                 <div className={contentHeader}>
                     <Text title={'_3'}>{title}</Text>
-                    <Count>
-                        <Text title={'_4'}>{count}</Text>
+                    <Count distribution>
+                        <Text title={'_4'} colors={'red'}>{count}</Text>
                     </Count>
                 </div>
                 <Text size={'_12'} colors={'gray'}>{subTitle}</Text>

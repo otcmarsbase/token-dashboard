@@ -8,10 +8,11 @@ export const Table: FC<{ children: ReactNode }> = ({children}) => {
 }
 
 const tableStyle = style({
-    backgroundColor: 'rgba(27, 27, 28, 1)',
-    width: '100%',
+    backgroundColor: 'rgba(27,27,28,0.6)',
+    width: '1066px',
     padding: '32px',
     borderRadius: '12px',
+    height: '608px',
 })
 
 export const TableRow: FC<{ children: ReactNode, main?: boolean }> = (
@@ -27,9 +28,9 @@ export const TableRow: FC<{ children: ReactNode, main?: boolean }> = (
 }
 
 const styledTableRow = (main: boolean) => style({
-    backgroundColor: main ? 'black' : 'unset',
+    backgroundColor: main ? 'rgba(0,0,0,0.5)' : 'unset',
     borderRadius: '12px',
-    padding: '16px',
+    padding: '12px 16px 12px 16px',
     marginBottom: '15px',
     display: 'flex'
 })
@@ -44,20 +45,48 @@ export const TableHead: FC<{ children: ReactNode, justifyContent?: string }> = (
 
 export const TableData: FC<{ children: ReactNode, justifyContent: string }> = (
     {children, justifyContent}) => {
-    return <td style={{display: 'flex', width: '100%', alignItems: 'center', justifyContent}}>{children}</td>
+    return (
+        <div style={{display: 'flex', width: '100%'}}>
+            <td style={{
+                display: 'flex',
+                width: '100%',
+                alignItems: 'center',
+                justifyContent
+            }}>
+                {children}
+            </td>
+            {justifyContent !== 'end' && (
+                <div style={{
+                    width: '2px',
+                    backgroundColor: 'rgba(27, 27, 28, 1)',
+                    height: '100%',
+                    marginRight: '24px',
+                    marginLeft: '24px',
+                }}/>
+            )}
+        </div>
+    )
 }
 
 export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) => {
-    const main = style({
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-        maxWidth: '1433px',
-        width: '100%',
-        margin: 'auto',
-    })
-    return <main className={main}>{children}</main>
+
+    return <main className={main}>
+        {children}
+    </main>
 }
+
+const main = style({
+    display: "flex",
+    flexDirection: "column",
+    gap: "20px",
+    maxWidth: '1433px',
+    width: '100%',
+    margin: 'auto',
+})
+
+const content = style({
+
+})
 
 export const TableFooter: FC<{ children: ReactNode }> = ({children}) => {
     return <tfoot>{children}</tfoot>

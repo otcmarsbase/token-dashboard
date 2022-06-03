@@ -39,18 +39,18 @@ import sty from "./PlasmicCount.module.css"; // plasmic-import: ArKwfI2osU/css
 
 export type PlasmicCount__VariantMembers = {
   colors: "gradient" | "gray";
-  size: "unnamedVariant";
+  distribution: "distribution";
 };
 
 export type PlasmicCount__VariantsArgs = {
   colors?: SingleChoiceArg<"gradient" | "gray">;
-  size?: SingleChoiceArg<"unnamedVariant">;
+  distribution?: SingleBooleanChoiceArg<"distribution">;
 };
 
 type VariantPropType = keyof PlasmicCount__VariantsArgs;
 export const PlasmicCount__VariantProps = new Array<VariantPropType>(
   "colors",
-  "size"
+  "distribution"
 );
 
 export type PlasmicCount__ArgsType = {
@@ -68,7 +68,7 @@ export type PlasmicCount__OverridesType = {
 export interface DefaultCountProps {
   children?: React.ReactNode;
   colors?: SingleChoiceArg<"gradient" | "gray">;
-  size?: SingleChoiceArg<"unnamedVariant">;
+  distribution?: SingleBooleanChoiceArg<"distribution">;
   className?: string;
 }
 
@@ -101,10 +101,10 @@ function PlasmicCount__RenderFunc(props: {
         {
           [sty.rootcolors_gradient]: hasVariant(variants, "colors", "gradient"),
           [sty.rootcolors_gray]: hasVariant(variants, "colors", "gray"),
-          [sty.rootsize_unnamedVariant]: hasVariant(
+          [sty.rootdistribution]: hasVariant(
             variants,
-            "size",
-            "unnamedVariant"
+            "distribution",
+            "distribution"
           )
         }
       )}
@@ -112,7 +112,13 @@ function PlasmicCount__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox)}
+        className={classNames(projectcss.all, sty.freeBox, {
+          [sty.freeBoxdistribution]: hasVariant(
+            variants,
+            "distribution",
+            "distribution"
+          )
+        })}
       >
         {p.renderPlasmicSlot({
           defaultContents: null,

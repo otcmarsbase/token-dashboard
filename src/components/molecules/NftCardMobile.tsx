@@ -16,7 +16,7 @@ interface NftCardMobileProps extends INft {
     onActions: (nftId: string) => void;
 }
 
-type IColors = { [color in TagLabelColors]: { border: string; icon: string, label: TagLabelColors } };
+export type IColors = { [color in TagLabelColors]: { border: string; icon: string, label: TagLabelColors } };
 
 const NftCardMobile: FC<NftCardMobileProps> = (props) => {
         const {
@@ -85,7 +85,7 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                         </div>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
-                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start'}}>
                             <Text colors={'gray'} size={'_12'}>
                                 <b>Lot of NFT</b>
                             </Text>
@@ -107,11 +107,11 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                                 </div>
                             </div>
                             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
-                                <div style={{display: 'flex'}}>
+                                <div>
                                     <Text size={'_10'}>{percentComplete}%</Text>
                                     <Text size={'_10'} colors={'gray'}>{timeLeft}</Text>
                                 </div>
-                                <div style={{display: 'flex'}}>
+                                <div>
                                     <Text size={'_10'}>{100 - percentComplete}%</Text>
                                     <Text size={'_10'} colors={'gray'}>{timePassed}</Text>
                                 </div>
@@ -160,7 +160,8 @@ const availableContainer = style({
     justifyContent: 'space-between',
     marginBottom: '12px',
     paddingBottom: '12px',
-    borderBottom: '1px solid rgba(42, 42, 44, 1)'
+    borderBottom: '1px solid rgba(42, 42, 44, 1)',
+    alignItems: 'start'
 })
 
 const progressContainer = style({

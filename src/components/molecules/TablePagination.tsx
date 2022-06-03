@@ -13,8 +13,6 @@ interface TablePaginationProps {
 }
 
 export const TablePagination: FC<TablePaginationProps> = ({ prevText, nextText, startNumbers, endNumbers }) => {
-	const container = style({})
-
 	return (
 		<div className={container}>
 			<Text>{prevText}</Text>
@@ -29,6 +27,8 @@ export const TablePagination: FC<TablePaginationProps> = ({ prevText, nextText, 
 		</div>
 	)
 }
+
+const container = style({})
 
 
 type TablePaginationLocalizedProps = Omit<TablePaginationProps, "prevText" | "nextText">
