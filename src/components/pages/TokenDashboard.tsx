@@ -37,40 +37,43 @@ const TokenDashboard = () => {
     }, [nfts])
 
     return (
-        <TokenDashboardTemplate>
+        <>
             <Header>
                 <ConnectWithMetamask/>
                 <TokenDashboardHeader/>
             </Header>
-            <TDTSummary>
-                <NftTableSummary/>
-            </TDTSummary>
-            {/*<ClaimRewardsModal/>*/}
-            <div style={{
-                display: 'flex',
-                width: '100%',
-                justifyContent: 'space-between',
-                flexDirection: isMobile ? 'column' : 'row'
-            }}>
-                {(isMobile || isTablet) ? (
-                    <div className={mobileNftContainer(isMobile, isTablet)}>
-                        {renderNfts.map((nft) =>
-                            <NftCardMobile
-                                onClaim={handlers.onClaim}
-                                onActions={handlers.onActions}
-                                {...nft}
-                            />
-                        )}
-                    </div>
-                ) : (
-                    <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim}
-                                     onActions={handlers.onActions}/>
-                )}
-                {(isMobile || !isTablet) &&
-                    <img src={adImage} style={{height: '230px', marginBottom: isMobile ? '100px' : 'unset'}} alt=""/>}
-            </div>
-            {(isMobile || isTablet) && <TokenDashboardNavbar/>}
-        </TokenDashboardTemplate>
+            <TokenDashboardTemplate>
+                <TDTSummary>
+                    <NftTableSummary/>
+                </TDTSummary>
+                {/*<ClaimRewardsModal/>*/}
+                <div style={{
+                    display: 'flex',
+                    width: '100%',
+                    justifyContent: 'space-between',
+                    flexDirection: isMobile ? 'column' : 'row',
+                    gap: '20px'
+                }}>
+                    {(isMobile || isTablet) ? (
+                        <div className={mobileNftContainer(isMobile, isTablet)}>
+                            {renderNfts.map((nft) =>
+                                <NftCardMobile
+                                    onClaim={handlers.onClaim}
+                                    onActions={handlers.onActions}
+                                    {...nft}
+                                />
+                            )}
+                        </div>
+                    ) : (
+                        <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim}
+                                         onActions={handlers.onActions}/>
+                    )}
+                    {(isMobile || !isTablet) &&
+                        <img src={adImage} style={{height: '230px', marginBottom: isMobile ? '100px' : 'unset'}} alt=""/>}
+                </div>
+                {(isMobile || isTablet) && <TokenDashboardNavbar/>}
+            </TokenDashboardTemplate>
+        </>
     )
 
 }

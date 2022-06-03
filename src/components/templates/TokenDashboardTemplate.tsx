@@ -1,7 +1,14 @@
 import React, {FC, ReactNode} from "react"
 import {style} from "typestyle"
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
-export const Summary: FC<{ children: ReactNode }> = ({children}) => <div>{children}</div>
+export const Summary: FC<{ children: ReactNode }> = ({children}) => {
+    return <div className={styledTableSummary}>{children}</div>
+}
+
+const styledTableSummary = style({
+    marginBottom: '24px'
+})
 
 export const Table: FC<{ children: ReactNode }> = ({children}) => {
     return <table className={tableStyle}>{children}</table>
@@ -69,23 +76,32 @@ export const TableData: FC<{ children: ReactNode, justifyContent: string }> = (
 }
 
 export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) => {
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet)
 
-    return <main className={main}>
-        {children}
-    </main>
+    return (
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+            <main className={main(isMobile, isTablet)}>
+                <div className={content(isMobile, isTablet)}>
+                    {children}
+                </div>
+            </main>
+        </div>
+    )
 }
 
-const main = style({
+const main = (isMobile: boolean, isTablet: boolean) => style({
     display: "flex",
     flexDirection: "column",
     gap: "20px",
     maxWidth: '1433px',
-    width: '100%',
-    margin: 'auto',
+    backgroundColor: (!isMobile && isTablet) ? 'rgba(27, 27, 28, 0.4)' : 'unset',
+    margin: (isMobile || isTablet) ? '0 20px 0 20px' : 'unset',
+    borderRadius: '12px'
 })
 
-const content = style({
-
+const content = (isMobile: boolean, isTablet: boolean) => style({
+    padding: (isMobile || isTablet) ? '20px' : "unset",
 })
 
 export const TableFooter: FC<{ children: ReactNode }> = ({children}) => {

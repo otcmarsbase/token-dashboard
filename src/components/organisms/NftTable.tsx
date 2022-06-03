@@ -90,18 +90,13 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 				))}
 			</tbody>
 			<TableFooter>
-				<TableRow main={false}>
-					<TableData justifyContent={'center'}>
-						<TablePaginationWrapper startNumbers={startNumbers} endNumbers={endNumbers} />
-					</TableData>
-				</TableRow>
+				<TablePaginationWrapper startNumbers={startNumbers} endNumbers={endNumbers} />
 			</TableFooter>
 		</Table>
 	)
 }
 
 const styledTBody = style({
-	overflow: 'auto',
 	display: 'flex',
 	flexDirection: 'column'
 })
