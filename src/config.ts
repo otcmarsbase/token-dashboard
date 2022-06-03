@@ -9,8 +9,8 @@ export const PRIVNET = {
 export type TOKEN_THRESHOLD_TYPE = {color: TagLabelColors, threshold: number}[]
 
 export const TOKEN_THRESHOLD : TOKEN_THRESHOLD_TYPE = [
-	{ color: "green", threshold: 1_000_000 },
+	{ color: "red", threshold: 1_000_000 },
 	{ color: "yellow", threshold: 10_000_000 },
 	{ color: "cyan", threshold: 100_000_000 },
-	{ color: "purple", threshold: Infinity },
+	{ color: "silver", threshold: Infinity },
 ]
