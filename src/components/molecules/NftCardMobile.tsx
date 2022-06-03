@@ -26,49 +26,19 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
             onActions,
             onClaim
         } = props;
-        const colors: any = {
-            purple: {
-                border: 'rgba(115, 255, 247, 0.5)',
-                icon: purpleNftIcon,
-                tag: 'cyan'
-            },
-            gold: {
-                border: 'rgba(255, 214, 108, 0.5)',
-                icon: goldNftIcon,
-                tag: 'yellow'
-            },
-            goldDark: {
-                border: 'rgba(255, 214, 108, 0.5)',
-                icon: goldDarkNftIcon,
-                tag: 'yellow'
-            },
-            red: {
-                border: 'rgba(236, 104, 62, 0.5)',
-                icon: redNftIcon,
-                tag: 'red'
-            },
-            silver: {
-                border: 'rgba(221, 221, 221, 0.5)',
-                icon: silverNftIcon,
-            }
-        }
-
-        // const borderColor = colors[kind].border;
-        const nftIcon = colors[kind].icon;
-        const tagColor = colors[kind].tag;
 
         return (
             <div className={mobileNftCart('purple')}>
                 <div style={{padding: '13px'}}>
                     <div className={mobileNftCartHeader}>
-                        <img style={{height: '52px'}} src={nftIcon} alt=""/>
+                        <img style={{height: '52px'}} src={purpleNftIcon} alt=""/>
                         <div style={{
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'start',
                             gap: '10px'
                         }}>
-                            <Label colors={tagColor}>
+                            <Label colors={'cyan'}>
                                 <span>Price </span>
                                 <span style={{fontWeight: '500'}}>{price}</span>
                             </Label>
