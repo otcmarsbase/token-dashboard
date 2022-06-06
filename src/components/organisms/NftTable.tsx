@@ -11,22 +11,23 @@ import {
 } from "../molecules"
 import { Table, TableRow, TableHead, TableData, TableFooter } from "../templates/TokenDashboardTemplate"
 import { TagLabelColors } from "../atoms"
+import { BigNumber } from "ethers"
 
 export interface INft {
 	id: string
 	kind: TagLabelColors
-	amount: number
-	amountUsd: number
+	amount: BigNumber
+	amountUsd: BigNumber
 	token: string
-	price: number
+	price: BigNumber
 	started: string
-	locked: number
-	unclaimed: number
+	locked: BigNumber
+	unclaimed: BigNumber
 	percentComplete: number
 	timePassed: string
 	timeLeft: string
-	available: number
-	availableUsd: number
+	available: BigNumber
+	availableUsd: BigNumber
 }
 
 interface NftTableProps {
@@ -56,19 +57,19 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 					<TableRow key={nft.id}>
 						<TableData justifyContent={'start'}>
 							<NftOverviewWrapper
-								amount={nft.amount}
+								amount={nft.amount.toString()}
 								token={nft.token}
-								buyPrice={nft.price}
+								buyPrice={nft.price.toString()}
 								unvestStartTimestamp={Date.now()}
 								kind={'purple'}
-								usdValue={nft.availableUsd}
+								usdValue={nft.availableUsd.toString()}
 							/>
 						</TableData>
 						<TableData justifyContent={'center'}>
 							<NftProgressWrapper
-								amount={nft.amount}
+								amount={nft.amount.toString()}
 								token={nft.token}
-								locked={nft.locked}
+								locked={nft.locked.toString()}
 								percentComplete={nft.percentComplete}
 								timePassed={nft.timePassed}
 								timeLeft={nft.timeLeft}
@@ -80,8 +81,8 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 							<NftAvailableClaimWrapper
 								onClaim={() => onClaim(nft.id)}
 								onActions={() => onActions(nft.id)}
-								amount={nft.amount}
-								amountUsd={nft.amountUsd}
+								amount={nft.amount.toString()}
+								amountUsd={nft.amountUsd.toString()}
 								token={nft.token}
 							/>
 						</TableData>

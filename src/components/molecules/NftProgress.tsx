@@ -83,9 +83,9 @@ export const NftProgressLocalized: FC<NftProgressLocalizedProps> = (props) => {
 }
 
 interface NftProgressWrapperProps {
-	amount: number
+	amount: React.ReactNode
 	token: string
-	locked: number
+	locked: React.ReactNode
 	progressValue: string
 	progressMax: string
 	percentComplete: number

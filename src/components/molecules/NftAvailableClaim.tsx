@@ -68,8 +68,8 @@ export const NftAvailableClaimLocalized: FC<NftAvailableClaimLocalizedProps> = (
 }
 
 interface NftAvailableClaimWrapperProps {
-	amount: number
-	amountUsd: number
+	amount: React.ReactNode
+	amountUsd: React.ReactNode
 	token: string
 	onClaim: () => void
 	onActions: () => void

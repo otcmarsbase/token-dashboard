@@ -106,10 +106,10 @@ export const NftOverviewLocalized: React.FC<NftOverviewLocalizedProps> = (props)
 export const formatDate = (timestamp: number) => new Date(timestamp).toDateString()
 
 export type NftOverviewWrapperProps = {
-    amount: number | string
+    amount: React.ReactNode
     token: string
-    buyPrice: number
-    usdValue: number
+    buyPrice: React.ReactNode
+    usdValue: React.ReactNode
     unvestStartTimestamp: number
     kind: 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
 }
@@ -118,7 +118,7 @@ export const NftOverviewWrapper: React.FC<NftOverviewWrapperProps> = (props) => 
         <NftOverviewLocalized
             amount={`${props.amount} ${props.token}`}
             amountUsd={`~$${props.usdValue}`}
-            priceAmount={props.buyPrice.toPrecision(4)}
+            priceAmount={props.buyPrice}
             startedDate={formatDate(props.unvestStartTimestamp)}
             labelColor={props.kind}
         />

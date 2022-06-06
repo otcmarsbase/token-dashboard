@@ -102,7 +102,7 @@ export const HANDLERS = {
 	onBuyNow: () => console.log(`buy now`)
 }
 
-interface IScreenData {
+export interface IScreenData {
 	nfts: INft[]
 	token: string
 	distributionAmount: number
@@ -114,7 +114,7 @@ export const SCREEN_DATA: IScreenData = {
 	distributionAmount: 18,
 	unclaimedTotal: 312416.72,
 	nfts: [
-		{
+		/* {
 			id: "1",
 			kind: "purple",
 			amount: 36_000_000_000,
@@ -193,6 +193,6 @@ export const SCREEN_DATA: IScreenData = {
 			timeLeft: "178 days",
 			available: 6656.77,
 			availableUsd: 31.32
-		}
+		} */
 	]
 }
