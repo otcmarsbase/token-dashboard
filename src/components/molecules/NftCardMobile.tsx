@@ -38,8 +38,6 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
             onClaim
         } = props;
 
-        console.log(props)
-
         const colors: IColors = {
             yellow: {
                 label: 'yellow',

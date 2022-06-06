@@ -20,6 +20,8 @@ import {nftDataToView} from "../../api"
 import {useMarsbaseContracts} from "../../hooks/mbase-contract"
 import ConnectWallet from "../molecules/ConnectWallet";
 import adImage from "../../assets/ad.png";
+import Notification from "../molecules/Notification";
+import HowIs from "../molecules/HowIs";
 
 const TokenDashboard = () => {
     const {token} = useMarsbaseContracts()
@@ -42,7 +44,7 @@ const TokenDashboard = () => {
                 <ConnectWithMetamask/>
                 <TokenDashboardHeader/>
             </Header>
-            <TokenDashboardTemplate>
+            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs/>}>
                 <TDTSummary>
                     <NftTableSummary/>
                 </TDTSummary>
@@ -68,11 +70,9 @@ const TokenDashboard = () => {
                         <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim}
                                          onActions={handlers.onActions}/>
                     )}
-                    {(isMobile || !isTablet) &&
-                        <img src={adImage} style={{height: '230px', marginBottom: isMobile ? '100px' : 'unset'}} alt=""/>}
                 </div>
-                {(isMobile || isTablet) && <TokenDashboardNavbar/>}
             </TokenDashboardTemplate>
+            {(isMobile || isTablet) && <TokenDashboardNavbar/>}
         </>
     )
 

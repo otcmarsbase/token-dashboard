@@ -37,7 +37,6 @@ export const TableRow: FC<{ children: ReactNode, main?: boolean }> = (
 const styledTableRow = (main: boolean) => style({
     backgroundColor: main ? 'rgba(0,0,0,0.5)' : 'unset',
     borderRadius: '12px',
-    padding: '12px 16px 12px 16px',
     marginBottom: '15px',
     display: 'flex'
 })
@@ -67,15 +66,13 @@ export const TableData: FC<{ children: ReactNode, justifyContent: string }> = (
                     width: '2px',
                     backgroundColor: 'rgba(27, 27, 28, 1)',
                     height: '100%',
-                    marginRight: '24px',
-                    marginLeft: '24px',
                 }}/>
             )}
         </div>
     )
 }
 
-export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) => {
+export const TokenDashboardTemplate: FC<{ children: ReactNode, sidebar?: ReactNode }> = ({children, sidebar}) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet)
 
@@ -85,6 +82,11 @@ export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) 
                 <div className={content(isMobile, isTablet)}>
                     {children}
                 </div>
+                {sidebar && (
+                    <div className={content(isMobile, isTablet)}>
+                        {sidebar}
+                    </div>
+                )}
             </main>
         </div>
     )
@@ -92,7 +94,7 @@ export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) 
 
 const main = (isMobile: boolean, isTablet: boolean) => style({
     display: "flex",
-    flexDirection: "column",
+    flexDirection: isMobile ? 'column' : "row",
     gap: "20px",
     maxWidth: '1433px',
     backgroundColor: (!isMobile && isTablet) ? 'rgba(27, 27, 28, 0.4)' : 'unset',
@@ -101,7 +103,7 @@ const main = (isMobile: boolean, isTablet: boolean) => style({
 })
 
 const content = (isMobile: boolean, isTablet: boolean) => style({
-    padding: (isMobile || isTablet) ? '20px' : "unset",
+    padding: (!isMobile && isTablet) ? '20px' : "unset",
 })
 
 export const TableFooter: FC<{ children: ReactNode }> = ({children}) => {

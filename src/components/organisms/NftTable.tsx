@@ -41,6 +41,7 @@ interface NftTableProps {
 export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim, onActions }) => {
 	const startNumbers = nfts.map((nft, index) => index).slice(1, 4)
 	const endNumbers = nfts.map((nft, index) => index).slice(nfts.length - 3, nfts.length)
+
 	return (
 		<Table>
 			<thead>
@@ -60,7 +61,7 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 								amount={nft.amount}
 								token={nft.token}
 								buyPrice={nft.price}
-								unvestStartTimestamp={Date.now()}
+								unvestStartTimestamp={nft.started}
 								kind={'cyan'}
 								usdValue={nft.availableUsd}
 							/>

@@ -69,7 +69,8 @@ export const NftOverviewVisual: FC<NftOverviewProps> = (props) => {
 const container = style({
     display: "flex",
     flexDirection: "row",
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: '16px'
 })
 
 const header = style({
