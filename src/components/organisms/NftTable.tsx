@@ -137,10 +137,19 @@ interface NftTableWrapperProps {
     nfts: INft[]
     onClaim: (nftId: string) => void
     onActions: (nftId: string) => void
+    loading: boolean;
 }
 
 export const NftTableWrapper: FC<NftTableWrapperProps> = (props) => {
     const walletExist = true;
+
+    if (props.loading) {
+        return (
+            <div className={loadingContainer}>
+                <ClipLoader color={"#fff"} size={50}/>
+            </div>
+        )
+    }
 
     if (!walletExist) {
         return <ConnectWallet/>
