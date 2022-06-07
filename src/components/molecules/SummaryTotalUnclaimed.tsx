@@ -48,9 +48,9 @@ const container = (isMobile: boolean) => style({
 const content = (isMobile: boolean) => style({
     display: "flex",
     flexDirection: "column",
-    alignItems: isMobile ? 'end' : 'unset',
+    alignItems: "end",
     width: isMobile ? '270px' : 'unset',
-    marginRight: isMobile ? '21px' : 'unset'
+    marginRight: '20px',
 })
 
 type SummaryTotalUnclaimedLocalizedProps = Pick<SummaryTotalUnclaimedProps, "unclaimedAmount" | "token" | 'onClaimAll'>

@@ -38,12 +38,12 @@ import projectcss from "./plasmic_marsbase_components.module.css"; // plasmic-im
 import sty from "./PlasmicLabel.module.css"; // plasmic-import: zvfx6kR6ll/css
 
 export type PlasmicLabel__VariantMembers = {
-  colors: "cyan" | "yellow" | "red";
+  colors: "cyan" | "yellow" | "red" | "silver";
   disabled: "disabled";
 };
 
 export type PlasmicLabel__VariantsArgs = {
-  colors?: SingleChoiceArg<"cyan" | "yellow" | "red">;
+  colors?: SingleChoiceArg<"cyan" | "yellow" | "red" | "silver">;
   disabled?: SingleBooleanChoiceArg<"disabled">;
 };
 
@@ -67,7 +67,7 @@ export type PlasmicLabel__OverridesType = {
 
 export interface DefaultLabelProps {
   children?: React.ReactNode;
-  colors?: SingleChoiceArg<"cyan" | "yellow" | "red">;
+  colors?: SingleChoiceArg<"cyan" | "yellow" | "red" | "silver">;
   disabled?: SingleBooleanChoiceArg<"disabled">;
   className?: string;
 }
@@ -111,7 +111,8 @@ function PlasmicLabel__RenderFunc(props: {
         data-plasmic-override={overrides.freeBox}
         className={classNames(projectcss.all, sty.freeBox, {
           [sty.freeBoxcolors_cyan]: hasVariant(variants, "colors", "cyan"),
-          [sty.freeBoxcolors_yellow]: hasVariant(variants, "colors", "yellow")
+          [sty.freeBoxcolors_yellow]: hasVariant(variants, "colors", "yellow"),
+          [sty.freeBoxdisabled]: hasVariant(variants, "disabled", "disabled")
         })}
       >
         {p.renderPlasmicSlot({

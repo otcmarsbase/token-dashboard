@@ -16,9 +16,9 @@
 .rootcolors_gray {
   background: #51546080;
 }
-.rootsize_unnamedVariant {
-  width: 55px;
-  height: 55px;
+.rootdistribution {
+  background: #c74a2633;
+  height: 17px;
 }
 .freeBox {
   display: flex;

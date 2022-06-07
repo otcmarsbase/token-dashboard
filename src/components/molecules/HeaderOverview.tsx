@@ -22,17 +22,25 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = (
 
     return (
         <div>
-            <div style={{display: "flex"}}>
+            <div style={{display: "flex", alignItems: 'center'}}>
                 <Text title={isMobile ? '_2' : '_1'}>{title}</Text>
-                {!isMobile && <Text
-                    colors={'red'}
-                    size={'_14'}
-                    iconRight={<img style={{height: '18px', width: '18px'}} src={question} alt=""/>}
-                    withIconRight
-                ><span style={{whiteSpace: 'nowrap'}}>How to use?</span></Text>}
+                {isMobile
+                    ? <img style={{height: '18px', width: '18px', marginLeft: '6px'}} src={question} alt=""/>
+                    : (
+                        <Text
+                            colors={'red'}
+                            size={'_14'}
+                            iconLeft={<img style={{height: '18px', width: '18px', marginLeft: '16px'}} src={question} alt=""/>}
+                            withIconLeft
+                        >
+                            <span style={{whiteSpace: 'nowrap'}}>How to use?</span>
+                        </Text>
+                    )}
 
             </div>
+            <div style={{marginBottom: '8px'}}/>
             <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
+            <div style={{marginBottom: '24px'}}/>
         </div>
     )
 }

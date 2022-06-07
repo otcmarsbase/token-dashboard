@@ -20,6 +20,9 @@ import { nftDataToView } from "../../api"
 import { MarsbaseTokenContext, useMarsbaseContracts } from "../../hooks/mbase-contract"
 import { useMetaMask } from "metamask-react";
 
+import ConnectWallet from "../molecules/ConnectWallet";
+import adImage from "../../assets/ad.png";
+
 const TokenDashboard = () => {
     const { token } = useMarsbaseContracts()
     const contract = useContext(MarsbaseTokenContext)
@@ -41,43 +44,52 @@ const TokenDashboard = () => {
             })
     }, [nfts])
 
-    console.log(renderNfts)
-    /* console.log(nfts.map(el => el?.amount.toFixed(0))) */
-
     return (
-        <TokenDashboardTemplate>
+        <>
             <Header>
                 <ConnectWithMetamask />
                 <TokenDashboardHeader />
             </Header>
-            <TDTSummary>
-                <NftTableSummary />
-            </TDTSummary>
-            <button onClick={() => {
-                if (account)
-                    contract?.balanceOf(account)
-                        .then(res => console.log(res.toString()))
-            }}>Show me balance (for test)</button>
-            {loading || viewLoading ? 'loading' : ''}
 
-            {/*<ClaimRewardsModal/>*/}
-            {(isMobile || isTablet) ? (
-                <div className={mobileNftContainer(isMobile, isTablet)}>
-                    {renderNfts.map((nft) =>
-                        <NftCardMobile
-                            onClaim={handlers.onClaim}
-                            onActions={handlers.onActions}
-                            {...nft}
-                        />
+            <TokenDashboardTemplate>
+                <TDTSummary>
+                    <NftTableSummary />
+                </TDTSummary>
+
+                <button onClick={() => {
+                    if (account)
+                        contract?.balanceOf(account)
+                            .then(res => console.log(res.toString()))
+                }}>Show me balance (for test)</button>
+
+                {/*<ClaimRewardsModal/>*/}
+                <div style={{
+                    display: 'flex',
+                    width: '100%',
+                    justifyContent: 'space-between',
+                    flexDirection: isMobile ? 'column' : 'row',
+                    gap: '20px'
+                }}>
+                    {(isMobile || isTablet) ? (
+                        <div className={mobileNftContainer(isMobile, isTablet)}>
+                            {renderNfts.map((nft) =>
+                                <NftCardMobile
+                                    onClaim={handlers.onClaim}
+                                    onActions={handlers.onActions}
+                                    {...nft}
+                                />
+                            )}
+                        </div>
+                    ) : (
+                        <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim}
+                            onActions={handlers.onActions} />
                     )}
+                    {(isMobile || !isTablet) &&
+                        <img src={adImage} style={{ height: '230px', marginBottom: isMobile ? '100px' : 'unset' }} alt="" />}
                 </div>
-            ) : (
-                <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim}
-                    onActions={handlers.onActions} />
-            )}
-            {(isMobile || isTablet) && <TokenDashboardNavbar />}
-
-        </TokenDashboardTemplate>
+                {(isMobile || isTablet) && <TokenDashboardNavbar />}
+            </TokenDashboardTemplate >
+        </>
     )
 
 }
@@ -86,7 +98,6 @@ const mobileNftContainer = (isMobile: boolean, isTablet: boolean) => style({
     display: 'grid',
     gridTemplateColumns: `repeat(${isMobile ? '1' : '2'}, 1fr)`,
     gap: isTablet ? '16px' : '32px',
-    marginBottom: '100px'
 })
 
 

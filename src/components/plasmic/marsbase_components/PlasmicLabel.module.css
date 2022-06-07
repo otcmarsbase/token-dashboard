@@ -7,8 +7,7 @@
   justify-content: center;
   align-items: center;
   background: #dddddd2e;
-  border-radius: 8px;
-  padding: 5px 10px 5px 6px;
+  border-radius: 4px;
 }
 .rootcolors_cyan {
   background: #73fff71a;
@@ -21,16 +20,17 @@
 }
 .rootdisabled {
   background: #686a6e1a;
-  cursor: not-allowed;
 }
 .freeBox {
   position: relative;
   width: auto;
-  height: auto;
+  height: 18px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  align-self: center;
+  padding: 0px 6px;
 }
 .freeBoxcolors_yellow {
   margin-right: 0px;

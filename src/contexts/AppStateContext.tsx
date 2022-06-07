@@ -1,9 +1,10 @@
+import { BigNumber } from "ethers"
 import { useMetaMask } from "metamask-react"
 import React, { ReactNode, useContext, useEffect, useState } from "react"
 import { NftData } from "../api"
 import { SCREEN_DATA, HANDLERS, IScreenData } from "../data"
-import { useEthersAccount, WalletContext } from "../hooks/jrpc-provider"
-import { useMarsbaseContracts } from "../hooks/mbase-contract"
+import { JRPCProviderContext, JrpcProviderPrivnet, useEthersAccount, WalletContext } from "../hooks/jrpc-provider"
+import { MarsbaseVestingContext, useMarsbaseContracts } from "../hooks/mbase-contract"
 
 export type AppStateContext = {
     data: IScreenData,
@@ -30,21 +31,24 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
         nftsData: []
     }), [])
 
-    const provider = useContext(WalletContext)?.value
+    const provider = useContext(WalletContext)
 
     let contracts = useMarsbaseContracts()
 
     useEffect(() => {
 
-        const signer = provider?.getSigner()
+        const signer = provider?.value?.getSigner()
 
         state.handlers.onClaim = async nftId => {
             const tx = await contracts.vesting.populateTransaction["unvest(uint256)"](nftId)
+            /* tx.value = BigNumber.from(0)
+            tx.chainId = 1337
+            tx.gasPrice = BigNumber.from(1000000000) */
+            tx.gasLimit = await contracts.vesting.estimateGas["unvest(uint256)"](nftId)
 
             signer?.sendTransaction(tx)
                 .then(res => alert('tx confirmed'))
-                .catch((err) => alert('tx denied'))
-
+                .catch((err) => console.log(err))
         }
     }, [])
     /* let acc = account

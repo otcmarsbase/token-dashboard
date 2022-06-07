@@ -56,9 +56,12 @@ export async function requestClaimOneSignature(nftId: string, vest: MarsbaseVest
 
 export function calculateKind(amount: BigNumber): TagLabelColors {
 
-    for (let i = 1; i < TOKEN_THRESHOLD.length; i++)
-        if (amount.lte(TOKEN_THRESHOLD[i].threshold)) 
-            return TOKEN_THRESHOLD[i].color
+    for (let i = 0; i < TOKEN_THRESHOLD.length; i++) {
+        const tresh = TOKEN_THRESHOLD[i].threshold
+        if (tresh != undefined)
+            if (amount.lte(tresh))
+                return TOKEN_THRESHOLD[i].color
+    }
 
     return TOKEN_THRESHOLD[TOKEN_THRESHOLD.length - 1].color
 }
@@ -88,16 +91,17 @@ export async function nftDataToView(nfts: NftData[], token: MarsbaseToken): Prom
         const duration = nfts[i].end.sub(nfts[i].start)
         const initialAmount = nfts[i].initialAmount
 
-        const timePassed = Date.now() / 1000 - nfts[i].start.toNumber() 
+        const timePassed = Date.now() / 1000 - nfts[i].start.toNumber()
 
         const unclaimed = lerp(timePassed, initialAmount, duration)
-
+        
         const totalTime = nfts[i].end.sub(nfts[i].initialStart).toNumber()
 
-        const percentComplete = ((100 * timePassed) / totalTime) * 0.01
+        const percentComplete_temp = ((Date.now() / 1000 - nfts[i].initialStart.toNumber()) * 100) / totalTime
+        const percentComplete = percentComplete_temp < 100 ? percentComplete_temp : 100
 
-        const daysPassed = (percentComplete * totalTime) / secondsInDay
-        const daysLeft = ((1 - percentComplete) * totalTime) / secondsInDay
+        const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
+        const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
 
         let nftView: INft = {
             id: i.toString(),
@@ -116,22 +120,6 @@ export async function nftDataToView(nfts: NftData[], token: MarsbaseToken): Prom
             available: BigNumber.from('0'),
             availableUsd: BigNumber.from('0')
         }
-        /* let nftView = {
-            id: "1",
-            kind: "purple",
-            amount: BigNumber.from(36_000_000_000),
-            amountUsd: BigNumber.from(56_000),
-            token: "MBase",
-            price: BigNumber.from(0),
-            started: "02.03.2022",
-            locked: BigNumber.from(14_500_780),
-            unclaimed: BigNumber.from(1_500_780),
-            percentComplete: 90.951,
-            timePassed: "299 days",
-            timeLeft: "66 days",
-            available: BigNumber.from(6656),
-            availableUsd: BigNumber.from(31)
-        } */
 
         result.push(nftView)
     }

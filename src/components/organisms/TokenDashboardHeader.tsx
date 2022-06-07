@@ -28,7 +28,6 @@ const container = (isMobile: boolean, isTablet: boolean) => style({
 	justifyContent: "space-between",
 	width: "100%",
 	flexDirection: (isMobile || isTablet) ? 'column' : 'row',
-	marginBottom: isMobile ? 'unset' : '70px'
 })
 
 export default TokenDashboardHeader

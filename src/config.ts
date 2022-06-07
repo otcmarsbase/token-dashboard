@@ -1,4 +1,4 @@
-import { BigNumber } from "ethers"
+import { BigNumber, BigNumberish } from "ethers"
 import { TagLabelColors } from "./components/atoms"
 
 export const PRIVNET = {
@@ -7,11 +7,11 @@ export const PRIVNET = {
 	mbaseVestingAddress: "0x728f79949a66c9950C39A8FD0BF9d353655d689C",
 }
 
-export type TOKEN_THRESHOLD_TYPE = {color: TagLabelColors, threshold: BigNumber}[]
+export type TOKEN_THRESHOLD_TYPE = { color: TagLabelColors, threshold: BigNumber | undefined }[]
 
-export const TOKEN_THRESHOLD : TOKEN_THRESHOLD_TYPE = [
-	{ color: "green", threshold: BigNumber.from(1_000_000) },
+export const TOKEN_THRESHOLD: TOKEN_THRESHOLD_TYPE = [
+	{ color: "red", threshold: BigNumber.from(1_000_000) },
 	{ color: "yellow", threshold: BigNumber.from(10_000_000) },
 	{ color: "cyan", threshold: BigNumber.from(100_000_000) },
-	{ color: "purple", threshold: BigNumber.from(Number.MAX_SAFE_INTEGER - 1) }, /* так можно? */
+	{ color: "silver", threshold: undefined }, 
 ]

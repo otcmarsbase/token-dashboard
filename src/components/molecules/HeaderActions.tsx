@@ -1,6 +1,6 @@
 import React from "react"
 
-import {Button} from "../atoms"
+import {Button, Text} from "../atoms"
 import {style} from "typestyle"
 import {FC, ReactNode, useContext} from "react"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
@@ -25,18 +25,22 @@ export const HeaderActions: FC<HeaderActionsProps> = (
     const isTablet = useMediaQuery(Queries.tablet)
 
     return (
-        <div className={container(isMobile)}>
-            <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>{btnText}</Button>
-            <Button auto={isMobile} onClick={onBuyNow} size={"md"} colors={'gradient'}>{btnGradientText}</Button>
+        <div className={container(isMobile, isTablet)}>
+            <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>
+                <Text title={'_4'}>{btnText}</Text>
+            </Button>
+            <Button auto={isMobile} onClick={onBuyNow} size={"md"} colors={'gradient'}>
+                <Text title={'_4'}>{btnGradientText}</Text>
+            </Button>
         </div>
     )
 }
 
-const container = (isMobile: boolean) => style({
+const container = (isMobile: boolean, isTablet: boolean) => style({
     display: "flex",
     gap: isMobile ? "24px" : "12px",
     width: isMobile ? '100%' : 'unset',
-    flexDirection: isMobile ? 'column' : 'row',
+    flexDirection: isMobile ? 'column' : isTablet ? 'row-reverse' : 'row',
     marginBottom: isMobile ? '57px' : "unset"
 })
 

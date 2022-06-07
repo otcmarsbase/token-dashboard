@@ -147,20 +147,6 @@
           "scheme": "blackbox",
           "componentType": "component",
           "plumeType": "text-input"
-        },
-        {
-          "id": "c0iBv_VenXZ",
-          "name": "InputTest",
-          "type": "managed",
-          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
-          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicInputTest.tsx",
-          "importSpec": {
-            "modulePath": "InputTest.tsx"
-          },
-          "cssFilePath": "plasmic/marsbase_components/PlasmicInputTest.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "text-input"
         }
       ],
       "icons": [
