@@ -68,6 +68,7 @@ const TokenDashboard = () => {
 
                 {/*<ClaimRewardsModal/>*/}
                 <NftTableWrapper
+                    loading={loading}
                     nfts={renderNfts ? renderNfts : []}
                     onClaim={handlers.onClaim}
                     onActions={handlers.onActions}
