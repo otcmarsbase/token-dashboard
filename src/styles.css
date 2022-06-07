@@ -1,5 +1,12 @@
 body {
   background-color: #000000;
-  color: white;
   margin: 0;
+}
+
+@font-face {
+  font-family: 'EurofontExtendedC';
+  src: url('assets/fonts/eurofontextendedc_bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }

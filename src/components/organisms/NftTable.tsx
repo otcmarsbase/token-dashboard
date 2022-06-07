@@ -14,6 +14,8 @@ import { TagLabelColors } from "../atoms"
 import { BigNumber } from "ethers"
 import ConnectWallet from "../molecules/ConnectWallet";
 import {style} from "typestyle";
+import NftCardMobile from "../molecules/NftCardMobile";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 
 export interface INft {
@@ -41,8 +43,23 @@ interface NftTableProps {
 }
 
 export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim, onActions }) => {
-	const startNumbers = nfts.map((nft, index) => index).slice(1, 4)
-	const endNumbers = nfts.map((nft, index) => index).slice(nfts.length - 3, nfts.length)
+	const isMobile = useMediaQuery(Queries.mobile);
+	const isTablet = useMediaQuery(Queries.tablet);
+
+	if (isMobile || isTablet) {
+		return (
+			<div className={mobileNftContainer(isMobile, isTablet)}>
+				{nfts.map((nft) =>
+					<NftCardMobile
+						key={nft.id}
+						onClaim={onClaim}
+						onActions={onActions}
+						{...nft}
+					/>
+				)}
+			</div>
+		)
+	}
 
 	return (
 		<Table>
@@ -92,9 +109,6 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 					</TableRow>
 				))}
 			</tbody>
-			<TableFooter>
-				<TablePaginationWrapper startNumbers={startNumbers} endNumbers={endNumbers} />
-			</TableFooter>
 		</Table>
 	)
 }
@@ -102,6 +116,12 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 const styledTBody = style({
 	display: 'flex',
 	flexDirection: 'column'
+})
+
+const mobileNftContainer = (isMobile: boolean, isTablet: boolean) => style({
+	display: 'grid',
+	gridTemplateColumns: `repeat(${isMobile ? '1' : '2'}, 1fr)`,
+	gap: isTablet ? '16px' : '32px',
 })
 
 type NftTableLocalizedProps = Omit<NftTableProps, "columnsSorterNames">
