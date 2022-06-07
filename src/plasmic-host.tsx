@@ -27,7 +27,7 @@ registerComponent(wrap(NftOverviewWrapper), {
 		buyPrice: "number",
 		usdValue: "number",
 		kind: "string",
-		unvestStartTimestamp: "number",
+		unvestStartTimestamp: "string",
 	}
 })
 

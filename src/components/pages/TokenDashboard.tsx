@@ -22,6 +22,8 @@ import { useMetaMask } from "metamask-react";
 
 import ConnectWallet from "../molecules/ConnectWallet";
 import adImage from "../../assets/ad.png";
+import Notification from "../molecules/Notification";
+import HowIs from "../molecules/HowIs";
 
 const TokenDashboard = () => {
     const { token } = useMarsbaseContracts()
@@ -35,6 +37,8 @@ const TokenDashboard = () => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
 
+
+    console.log(renderNfts)
     useEffect(() => {
         setViewLoading(true)
         nftDataToView(nfts, token)
@@ -50,8 +54,7 @@ const TokenDashboard = () => {
                 <ConnectWithMetamask />
                 <TokenDashboardHeader />
             </Header>
-
-            <TokenDashboardTemplate>
+            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs/>}>
                 <TDTSummary>
                     <NftTableSummary />
                 </TDTSummary>
@@ -84,11 +87,9 @@ const TokenDashboard = () => {
                         <NftTableWrapper nfts={renderNfts ? renderNfts : []} onClaim={handlers.onClaim}
                             onActions={handlers.onActions} />
                     )}
-                    {(isMobile || !isTablet) &&
-                        <img src={adImage} style={{ height: '230px', marginBottom: isMobile ? '100px' : 'unset' }} alt="" />}
                 </div>
-                {(isMobile || isTablet) && <TokenDashboardNavbar />}
-            </TokenDashboardTemplate >
+            </TokenDashboardTemplate>
+            {(isMobile || isTablet) && <TokenDashboardNavbar/>}
         </>
     )
 

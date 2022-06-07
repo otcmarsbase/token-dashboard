@@ -51,7 +51,8 @@ const contentAmount = style({
 
 const content = style({
     display: "flex",
-    gap: "10px"
+    gap: "10px",
+    padding: '16px'
 })
 
 const contentActions = style({
