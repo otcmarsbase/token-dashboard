@@ -99,13 +99,8 @@ export const NftProgressWrapper: FC<NftProgressWrapperProps> = (props) => {
     const percentLeft = 100 - props.percentComplete;
     const percentComplete = props.percentComplete;
 
-    const timeLeft = `${props.timeLeft.slice(0, 4)} ${props.timeLeft.slice(-4)}`;
-    const timePassed = `${props.timePassed.slice(0, 4)} ${props.timePassed.slice(-4)}`;
-
     return <NftProgressLocalized
         {...props}
-        timePassed={timePassed}
-        timeLeft={timeLeft}
         percentLeft={percentLeft}
         percentComplete={percentComplete}/>
 }

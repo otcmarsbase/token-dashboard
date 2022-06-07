@@ -74,7 +74,7 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                         }}>
                             <Label colors={colors[kind].label}>
                                 <span>Price </span>
-                                <span style={{fontWeight: '500'}}>{price}</span>
+                                <span style={{fontWeight: '500'}}>{price.toString()}</span>
                             </Label>
                             <Label disabled>
                                 <span>Started </span>
@@ -88,15 +88,15 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                                 <b>Lot of NFT</b>
                             </Text>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
-                                <Text>{amount} MBase</Text>
-                                <Text colors={'gray'} size={'_11'}>~{amountUsd}$</Text>
+                                <Text>{amount.toString()} MBase</Text>
+                                <Text colors={'gray'} size={'_11'}>~{amountUsd.toString()}$</Text>
                             </div>
                         </div>
                         <div style={{display: 'flex', flexDirection: 'column', width: '100%', gap: '5px'}}>
                             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
                                 <Text size={'_10'}>1,500,780 MBS</Text>
                                 <Text colors={'gray'} size={'_10'}>
-                                    <b>{locked} {token} Locked</b>
+                                    <b>{locked.toString()} {token} Locked</b>
                                 </Text>
                             </div>
                             <div>
@@ -120,8 +120,8 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                                 <b>Availible for claim</b>
                             </Text>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
-                                <Text colors={'red'}>{available} {token}</Text>
-                                <Text colors={'gray'} size={'_11'}>~{availableUsd}$</Text>
+                                <Text colors={'red'}>{available.toString()} {token}</Text>
+                                <Text colors={'gray'} size={'_11'}>~{availableUsd.toString()}$</Text>
                             </div>
                         </div>
                     </div>
