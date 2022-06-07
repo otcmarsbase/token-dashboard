@@ -14,7 +14,7 @@ const ConnectWallet: FC<ConnectWalletProps> = ({ref}) => {
     const isTablet = useMediaQuery(Queries.tablet);
 
     return (
-        <div className={container(height || 500)}>
+        <div className={container(height || 500, isMobile, isTablet)}>
             <div className={content(isMobile, isTablet)}>
                 <div className={settingStyle}>
                     <img style={{height: '24px', width: '24px'}} src={settingsIcon} alt=""/>
@@ -38,16 +38,18 @@ const ConnectWallet: FC<ConnectWalletProps> = ({ref}) => {
     );
 };
 
-const container = (height: number) => style({
+const container = (height: number, isMobile: boolean, isTablet: boolean) => style({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height: height,
-    width: '100%'
+    width: (isMobile || isTablet) ? '100%' : '1066px',
+    backgroundColor: isMobile ? 'unset' : 'rgba(27,27,28,0.6)',
+    borderRadius: '16px'
 })
 
 const content = (isMobile: boolean, isTablet: boolean) => style({
-    width: (isMobile || isTablet) ? '100%' :'440px',
+    width: (isMobile || isTablet) ? '100%' : '440px',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',

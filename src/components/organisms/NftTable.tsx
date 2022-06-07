@@ -47,8 +47,6 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
 
-    const walletExist = false;
-
     if (isMobile || isTablet) {
         return (
             <div className={mobileNftContainer(isMobile, isTablet)}>
@@ -76,11 +74,6 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
             </TableRow>
             </thead>
             <tbody className={styledTBody}>
-            {(() => {
-                if (!walletExist) {
-                    return <ConnectWallet/>
-                }
-            })()}
             {nfts?.map((nft) => (
                 <TableRow key={nft.id}>
                     <TableData justifyContent={'start'}>
@@ -147,6 +140,12 @@ interface NftTableWrapperProps {
 }
 
 export const NftTableWrapper: FC<NftTableWrapperProps> = (props) => {
+    const walletExist = true;
+
+    if (!walletExist) {
+        return <ConnectWallet/>
+    }
+
     return <NftTableLocalized {...props} />
 }
 
