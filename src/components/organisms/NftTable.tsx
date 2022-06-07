@@ -20,20 +20,20 @@ import {ClipLoader} from "react-spinners";
 
 
 export interface INft {
-    id: string
-    kind: TagLabelColors
-    amount: BigNumber
-    amountUsd: BigNumber
-    token: string
-    price: BigNumber
-    started: string
-    locked: BigNumber
-    unclaimed: BigNumber
-    percentComplete: number
-    timePassed: string
-    timeLeft: string
-    available: BigNumber
-    availableUsd: BigNumber
+	id: string
+	kind: TagLabelColors
+	amount: string
+	amountUsd: string
+	token: string
+	price: string
+	started: string
+	locked: string
+	unclaimed: string
+	percentComplete: number
+	timePassed: string
+	timeLeft: string
+	available: string
+	availableUsd: string
 }
 
 interface NftTableProps {

@@ -31,20 +31,20 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
         nftsData: []
     }), [])
 
-    const provider = useContext(WalletContext)
+    const provider = useContext(JRPCProviderContext)
 
     let contracts = useMarsbaseContracts()
 
     useEffect(() => {
 
-        const signer = provider?.value?.getSigner()
+        const signer = provider?.getSigner()
 
         state.handlers.onClaim = async nftId => {
             const tx = await contracts.vesting.populateTransaction["unvest(uint256)"](nftId)
             /* tx.value = BigNumber.from(0)
             tx.chainId = 1337
             tx.gasPrice = BigNumber.from(1000000000) */
-            tx.gasLimit = await contracts.vesting.estimateGas["unvest(uint256)"](nftId)
+            /* tx.gasLimit = await contracts.vesting.estimateGas["unvest(uint256)"](nftId) */
 
             signer?.sendTransaction(tx)
                 .then(res => alert('tx confirmed'))

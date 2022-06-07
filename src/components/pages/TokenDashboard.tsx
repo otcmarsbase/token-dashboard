@@ -38,14 +38,22 @@ const TokenDashboard = () => {
     const isTablet = useMediaQuery(Queries.tablet);
 
 
-    console.log(renderNfts)
     useEffect(() => {
-        setViewLoading(true)
-        nftDataToView(nfts, token)
-            .then(res => {
+
+        const prepareRender = async () => {
+            if (nfts.length > 0) {
+                setViewLoading(true)
+                const decimals = await token.decimals()
+
+                setRenderNfts(await nftDataToView(nfts, token, decimals))
                 setViewLoading(false)
-                setRenderNfts(res)
-            })
+            }
+            else if (renderNfts.length)
+                setRenderNfts([])
+        }
+
+        prepareRender()
+
     }, [nfts])
 
     return (
@@ -54,10 +62,11 @@ const TokenDashboard = () => {
                 <ConnectWithMetamask/>
                 <TokenDashboardHeader/>
             </Header>
-            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs/>}>
+            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs />}>
                 <TDTSummary>
                     <NftTableSummary/>
                 </TDTSummary>
+                {viewLoading || loading ? 'loading' : ''}
 
                 <button onClick={() => {
                     if (account)
@@ -68,13 +77,13 @@ const TokenDashboard = () => {
 
                 {/*<ClaimRewardsModal/>*/}
                 <NftTableWrapper
-                    loading={loading}
+                    loading={loading || viewLoading}
                     nfts={renderNfts ? renderNfts : []}
                     onClaim={handlers.onClaim}
                     onActions={handlers.onActions}
                 />
             </TokenDashboardTemplate>
-            {(isMobile || isTablet) && <TokenDashboardNavbar/>}
+            {(isMobile || isTablet) && <TokenDashboardNavbar />}
         </>
     )
 }
