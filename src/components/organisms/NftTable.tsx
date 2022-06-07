@@ -18,7 +18,6 @@ import NftCardMobile from "../molecules/NftCardMobile";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {ClipLoader} from "react-spinners";
 
-
 export interface INft {
     id: string
     kind: TagLabelColors
@@ -48,10 +47,18 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
 
+    if (loading) {
+        return (
+            <div className={loadingContainer}>
+                <ClipLoader color={'#ffffff'} loading={loading} size={50}/>
+            </div>
+        )
+    }
+
     if (isMobile || isTablet) {
         return (
             <div className={mobileNftContainer(isMobile, isTablet)}>
-                {nfts.map((nft) =>
+                {nfts?.map((nft) =>
                     <NftCardMobile
                         key={nft.id}
                         onClaim={onClaim}
@@ -75,11 +82,6 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
             </TableRow>
             </thead>
             <tbody className={styledTBody}>
-            {loading && (
-                <div className={loadingContainer}>
-                    <ClipLoader color={'#ffffff'} loading={loading} size={50}/>
-                </div>
-            )}
             {nfts?.map((nft) => (
                 <TableRow key={nft.id}>
                     <TableData justifyContent={'start'}>
