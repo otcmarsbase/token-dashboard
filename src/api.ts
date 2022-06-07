@@ -1,4 +1,4 @@
-import { BigNumber, BigNumberish, Contract, ethers } from "ethers"
+import { BigNumber, BigNumberish, Contract, ethers, utils } from "ethers"
 import { INft } from "./components/organisms/NftTable"
 import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcmarsbase/token-contract-types"
 import { useContext } from "react"
@@ -54,12 +54,14 @@ export async function requestClaimOneSignature(nftId: string, vest: MarsbaseVest
     return true
 }
 
-export function calculateKind(amount: BigNumber): TagLabelColors {
+export function calculateKind(amount: BigNumber, decimals: number): TagLabelColors {
+
+    const _decimals = BigNumber.from(Math.pow(10, decimals).toString())
 
     for (let i = 0; i < TOKEN_THRESHOLD.length; i++) {
         const tresh = TOKEN_THRESHOLD[i].threshold
         if (tresh != undefined)
-            if (amount.lte(tresh))
+            if (amount.lte(tresh.mul(_decimals)))
                 return TOKEN_THRESHOLD[i].color
     }
 
@@ -74,7 +76,7 @@ export async function requestClaimAllSignature(nfts: INft[], vest: MarsbaseVesti
     return true
 }
 
-export async function nftDataToView(nfts: NftData[], token: MarsbaseToken): Promise<INft[]> {
+export async function nftDataToView(nfts: NftData[], token: MarsbaseToken, decimals: number): Promise<INft[]> {
 
     function lerp(timePassed: number, amount: BigNumber, duration: BigNumber) {
         if (BigNumber.from(Math.ceil(timePassed)).gt(duration)) /* TODO: убрать округление */
@@ -103,22 +105,25 @@ export async function nftDataToView(nfts: NftData[], token: MarsbaseToken): Prom
         const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
         const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
 
+        const _decimals = BigNumber.from(Math.pow(10, decimals).toString())
+
+
         let nftView: INft = {
             id: i.toString(),
-            kind: calculateKind(nfts[i].amount),
-            amount: nfts[i].initialAmount,
+            kind: calculateKind(nfts[i].amount, decimals),
+            amount: utils.formatUnits(nfts[i].initialAmount, decimals),
+            locked: utils.formatUnits(nfts[i].amount.sub(unclaimed)),
+            unclaimed: utils.formatUnits(unclaimed),
             token: await token.symbol(),
             started: new Date(nfts[i].initialStart.toNumber() * 1000).toString(),
-            locked: nfts[i].amount.sub(unclaimed),
-            unclaimed: unclaimed,
             timePassed: `${daysPassed} days`,
             timeLeft: `${daysLeft} days`,
             percentComplete: percentComplete,
 
-            amountUsd: BigNumber.from('0'),
-            price: BigNumber.from('0'),
-            available: BigNumber.from('0'),
-            availableUsd: BigNumber.from('0')
+            amountUsd: '0',
+            price: '0',
+            available: '0',
+            availableUsd: '0'
         }
 
         result.push(nftView)

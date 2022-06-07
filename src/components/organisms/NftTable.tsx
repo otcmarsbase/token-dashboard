@@ -19,18 +19,18 @@ import {style} from "typestyle";
 export interface INft {
 	id: string
 	kind: TagLabelColors
-	amount: BigNumber
-	amountUsd: BigNumber
+	amount: string
+	amountUsd: string
 	token: string
-	price: BigNumber
+	price: string
 	started: string
-	locked: BigNumber
-	unclaimed: BigNumber
+	locked: string
+	unclaimed: string
 	percentComplete: number
 	timePassed: string
 	timeLeft: string
-	available: BigNumber
-	availableUsd: BigNumber
+	available: string
+	availableUsd: string
 }
 
 interface NftTableProps {
@@ -60,19 +60,19 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 					<TableRow key={nft.id}>
 						<TableData justifyContent={'start'}>
 							<NftOverviewWrapper
-								amount={nft.amount.toString()}
+								amount={nft.amount}
 								token={nft.token}
-								buyPrice={nft.price.toString()}
+								buyPrice={nft.price}
 								unvestStartTimestamp={nft.started}
 								kind={'cyan'}
-								usdValue={nft.availableUsd.toString()}
+								usdValue={nft.availableUsd}
 							/>
 						</TableData>
 						<TableData justifyContent={'center'}>
 							<NftProgressWrapper
-								amount={nft.amount.toString()}
+								amount={nft.amount}
 								token={nft.token}
-								locked={nft.locked.toString()}
+								locked={nft.locked}
 								percentComplete={nft.percentComplete}
 								timePassed={nft.timePassed}
 								timeLeft={nft.timeLeft}
@@ -84,8 +84,8 @@ export const NftTable: FC<NftTableProps> = ({ columnsSorterNames, nfts, onClaim,
 							<NftAvailableClaimWrapper
 								onClaim={() => onClaim(nft.id)}
 								onActions={() => onActions(nft.id)}
-								amount={nft.amount.toString()}
-								amountUsd={nft.amountUsd.toString()}
+								amount={nft.amount}
+								amountUsd={nft.amountUsd}
 								token={nft.token}
 							/>
 						</TableData>

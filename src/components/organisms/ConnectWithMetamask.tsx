@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useMetaMask } from "metamask-react"
 
 export const ConnectWithMetamask: React.FC = () => {
