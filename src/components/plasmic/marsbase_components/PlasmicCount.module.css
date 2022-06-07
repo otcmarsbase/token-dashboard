@@ -19,6 +19,8 @@
 .rootdistribution {
   background: #c74a2633;
   height: 17px;
+  justify-content: center;
+  align-items: center;
 }
 .freeBox {
   display: flex;
@@ -30,4 +32,22 @@
   height: 36px;
   max-width: 100%;
   flex-shrink: 0;
+}
+.freeBoxdistribution {
+  align-self: center;
+}
+.slotTargetChildren > *,
+.slotTargetChildren > .__wab_slot > *,
+.slotTargetChildren > .__wab_slot > .__wab_slot > *,
+.slotTargetChildren > .__wab_slot > .__wab_slot > .__wab_slot > *,
+.slotTargetChildren > picture > img,
+.slotTargetChildren > .__wab_slot > picture > img,
+.slotTargetChildren > .__wab_slot > .__wab_slot > picture > img,
+.slotTargetChildren > .__wab_slot > .__wab_slot > .__wab_slot > picture > img {
+  transition-property: all, all;
+  transition-duration: 1s, 1s;
+}
+.slotTargetChildrendistribution {
+  text-align: center;
+  line-height: 0;
 }

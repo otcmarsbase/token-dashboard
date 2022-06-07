@@ -18,6 +18,7 @@ import NftCardMobile from "../molecules/NftCardMobile";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {ClipLoader} from "react-spinners";
 
+
 export interface INft {
     id: string
     kind: TagLabelColors
@@ -40,20 +41,13 @@ interface NftTableProps {
     nfts: INft[]
     onClaim: (nftId: string) => void
     onActions: (nftId: string) => void
-    loading?: boolean;
 }
 
-export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, onActions, loading}) => {
+export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, onActions}) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
 
-    if (loading) {
-        return (
-            <div className={loadingContainer}>
-                <ClipLoader color={'#ffffff'} loading={loading} size={50}/>
-            </div>
-        )
-    }
+    const walletExist = false;
 
     if (isMobile || isTablet) {
         return (
@@ -76,12 +70,17 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
             <TableRow main={false}>
                 {columnsSorterNames?.map((columnSorterName, index) => (
                     <TableHead key={index}>
-                        <ColumnSorter index={index} text={columnSorterName}/>
+                        <ColumnSorter text={columnSorterName}/>
                     </TableHead>
                 ))}
             </TableRow>
             </thead>
             <tbody className={styledTBody}>
+            {(() => {
+                if (!walletExist) {
+                    return <ConnectWallet/>
+                }
+            })()}
             {nfts?.map((nft) => (
                 <TableRow key={nft.id}>
                     <TableData justifyContent={'start'}>
@@ -133,13 +132,6 @@ const mobileNftContainer = (isMobile: boolean, isTablet: boolean) => style({
     gap: isTablet ? '16px' : '32px',
 })
 
-const loadingContainer = style({
-    height: '500px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-})
-
 type NftTableLocalizedProps = Omit<NftTableProps, "columnsSorterNames">
 
 export const NftTableLocalized: FC<NftTableLocalizedProps> = (props) => {
@@ -152,11 +144,17 @@ interface NftTableWrapperProps {
     nfts: INft[]
     onClaim: (nftId: string) => void
     onActions: (nftId: string) => void
-    loading?: boolean;
 }
 
 export const NftTableWrapper: FC<NftTableWrapperProps> = (props) => {
     return <NftTableLocalized {...props} />
 }
+
+const loadingContainer = style({
+    height: '500px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+})
 
 export default NftTable

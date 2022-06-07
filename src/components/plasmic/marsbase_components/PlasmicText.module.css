@@ -12,6 +12,10 @@
 .roottitle__2 {
   height: auto;
 }
+.roottitle__4 {
+  justify-content: center;
+  align-items: center;
+}
 .rootwithIconRight {
   display: inline-flex;
   flex-direction: row;
@@ -53,6 +57,10 @@
 }
 .freeBoxtitle__2___4Jz6KwDoKp {
   height: auto;
+}
+.freeBoxtitle__4___4Jz6KFj1Lh {
+  justify-content: center;
+  align-items: center;
 }
 .freeBoxwithIconRight___4Jz6KOZp1U {
   height: auto;

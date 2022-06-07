@@ -122,7 +122,14 @@ function PlasmicCount__RenderFunc(props: {
       >
         {p.renderPlasmicSlot({
           defaultContents: null,
-          value: args.children
+          value: args.children,
+          className: classNames(sty.slotTargetChildren, {
+            [sty.slotTargetChildrendistribution]: hasVariant(
+              variants,
+              "distribution",
+              "distribution"
+            )
+          })
         })}
       </div>
     </div>

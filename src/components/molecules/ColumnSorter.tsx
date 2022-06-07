@@ -7,22 +7,20 @@ import sorterIcon from '../../assets/sorterIcon.png';
 
 interface ColumnSorterProps {
 	text: ReactNode;
-	index: number;
 }
 
-export const ColumnSorter: FC<ColumnSorterProps> = ({ text, index }) => {
+export const ColumnSorter: FC<ColumnSorterProps> = ({ text }) => {
 	return (
-		<div className={container(index)}>
+		<div className={container}>
 			<Text colors={'gray'} size={'_12'}>{text}</Text>
 			<img src={sorterIcon} style={{height: '12px'}} alt=""/>
 		</div>
 	)
 }
 
-const container = (index: number) => style({
+const container = style({
 	display: "flex",
 	gap: "5px",
 	alignItems: 'center',
-	justifyContent: index === 2 ? 'end' : 'start',
-	marginRight: index === 2 ? '180px' : 'unset',
+	justifyContent: 'start',
 })

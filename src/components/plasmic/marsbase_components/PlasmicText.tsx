@@ -135,6 +135,7 @@ function PlasmicText__RenderFunc(props: {
         sty.root,
         {
           [sty.roottitle__2]: hasVariant(variants, "title", "_2"),
+          [sty.roottitle__4]: hasVariant(variants, "title", "_4"),
           [sty.rootwithIconLeft]: hasVariant(
             variants,
             "withIconLeft",
@@ -227,6 +228,11 @@ function PlasmicText__RenderFunc(props: {
             variants,
             "title",
             "_2"
+          ),
+          [sty.freeBoxtitle__4___4Jz6KFj1Lh]: hasVariant(
+            variants,
+            "title",
+            "_4"
           ),
           [sty.freeBoxweight_medium___4Jz6KcKDv1]: hasVariant(
             variants,
