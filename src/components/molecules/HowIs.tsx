@@ -6,23 +6,31 @@ import cosmonaut from '../../assets/cosmonautpng.png';
 const HowIs = () => {
     return (
         <div className={container}>
-            <div className={content}>
-                <Text title={'_2'}>How is distribution done?</Text>
-                <span style={{display: 'block',marginBottom: '6px'}}/>
-                <Text colors={'gray'} size={'_12'}>For the first time, a crypto OTC desk and even</Text>
-                <div className={styledVideo}/>
+            <div className={imageContainer}>
+                <div className={content}>
+                    <Text title={'_2'}>How is distribution done?</Text>
+                    <span style={{display: 'block',marginBottom: '6px'}}/>
+                    <Text colors={'gray'} size={'_12'}>For the first time, a crypto OTC desk and even</Text>
+                    <video controls className={styledVideo}>
+                        <source src="URL"/>
+                    </video>
+                </div>
             </div>
+
         </div>
     );
 };
 
-const container = style({
-    height: '',
-    backgroundColor: 'rgba(152,81,255,0.2)',
-    borderRadius: '16px',
+const imageContainer = style({
     backgroundImage: `url(${cosmonaut})`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'bottom right'
+    backgroundPosition: 'bottom right',
+})
+
+const container = style({
+    background: `linear-gradient(45deg, rgba(46,23,19,1) 0%, rgba(31,20,43,1) 100%)`,
+    borderRadius: '16px',
+    marginTop: '90px'
 })
 
 const content = style({
@@ -30,11 +38,12 @@ const content = style({
 })
 
 const styledVideo = style({
-    width: '180px',
+    width: '200px',
     height: '108px',
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    // backgroundColor: 'rgb(18,18,18)',
     marginTop: '18px',
     borderRadius: '16px',
+    zIndex: 2
 })
 
 export default HowIs;
