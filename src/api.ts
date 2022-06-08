@@ -1,4 +1,4 @@
-import { BigNumber, BigNumberish, Contract, ethers, utils } from "ethers"
+import { BigNumber, BigNumberish, Contract, ethers, FixedNumber, utils } from "ethers"
 import { INft } from "./components/organisms/NftTable"
 import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcmarsbase/token-contract-types"
 import { useContext } from "react"
@@ -105,8 +105,6 @@ export async function nftDataToView(nfts: NftData[], token: MarsbaseToken, decim
         const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
         const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
 
-        const _decimals = BigNumber.from(Math.pow(10, decimals).toString())
-
 
         let nftView: INft = {
             id: i.toString(),
@@ -119,6 +117,7 @@ export async function nftDataToView(nfts: NftData[], token: MarsbaseToken, decim
             timePassed: `${daysPassed} days`,
             timeLeft: `${daysLeft} days`,
             percentComplete: percentComplete,
+            unclaimedIncPerSec: FixedNumber.from(nfts[i].amount).divUnsafe(FixedNumber.from(totalTime)),
 
             amountUsd: '0',
             price: '0',

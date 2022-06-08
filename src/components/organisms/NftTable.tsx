@@ -11,7 +11,7 @@ import {
 } from "../molecules"
 import {Table, TableRow, TableHead, TableData, TableFooter} from "../templates/TokenDashboardTemplate"
 import {TagLabelColors} from "../atoms"
-import {BigNumber} from "ethers"
+import {BigNumber, FixedNumber} from "ethers"
 import ConnectWallet from "../molecules/ConnectWallet";
 import {style} from "typestyle";
 import NftCardMobile from "../molecules/NftCardMobile";
@@ -34,6 +34,8 @@ export interface INft {
 	timeLeft: string
 	available: string
 	availableUsd: string
+
+    unclaimedIncPerSec?: FixedNumber
 }
 
 interface NftTableProps {
@@ -76,6 +78,8 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
             <tbody className={styledTBody}>
             {nfts?.map((nft) => (
                 <TableRow key={nft.id}>
+                            <span style={{color: 'white'}}>{nft.unclaimed}</span> 
+
                     <TableData justifyContent={'start'}>
                         <NftOverviewWrapper
                             amount={nft.amount.toString()}

@@ -1,11 +1,11 @@
 import { useMetaMask } from "metamask-react"
 import { useContext, useEffect, useState } from "react"
 import useSWR, { Fetcher, Key } from "swr"
-import { getNftList } from "../api"
+import { getNftList, NftData } from "../api"
 import { MarsbaseVestingContext } from "./mbase-contract"
 
 export const useNfts = () => {
-    const [nfts, setNfts] = useState<any[]>([])
+    const [nfts, setNfts] = useState<NftData[]>([])
     const {account} = useMetaMask()
     const [loading, setLoading] = useState(false)    
     const vest = useContext(MarsbaseVestingContext)
