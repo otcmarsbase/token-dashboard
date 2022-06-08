@@ -7,6 +7,7 @@ import { JrpcProviderPrivnet, WalletContextProvider } from "./hooks/jrpc-provide
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
 import { PRIVNET } from "./config"
 import "./styles.css"
+import { NftsContextProvider } from "./contexts/NftsContext"
 
 declare global {
 	interface Window {
@@ -23,7 +24,9 @@ export default function App() {
 						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
 							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
 								<AppStateProvider>
-									<TokenDashboard />
+									<NftsContextProvider>
+										<TokenDashboard />
+									</NftsContextProvider>
 								</AppStateProvider>
 							</MarsbaseVestingProvider>
 						</MarsbaseTokenProvider>

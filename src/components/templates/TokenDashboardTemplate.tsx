@@ -1,4 +1,4 @@
-import React, {FC, ReactNode} from "react"
+import React, {FC, ReactNode, useEffect} from "react"
 import {style} from "typestyle"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 

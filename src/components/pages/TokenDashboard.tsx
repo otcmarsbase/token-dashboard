@@ -26,78 +26,29 @@ import Notification from "../molecules/Notification";
 import HowIs from "../molecules/HowIs";
 import { FixedNumber } from "ethers";
 import { useInterval } from "../../hooks/useInterval";
-import {NftTableSummaryWrapper} from "../organisms/NftTableSummary";
+import { NftTableSummaryWrapper } from "../organisms/NftTableSummary";
+import { SCREEN_DATA } from "../../data";
+import { NftsContext } from "../../contexts/NftsContext";
 
 const TokenDashboard = () => {
-    const { token } = useMarsbaseContracts()
-    const contract = useContext(MarsbaseTokenContext)
-    const { account } = useMetaMask()
     const { handlers } = useContext(AppStateContext)
-    const [renderNfts, setRenderNfts] = useState<INft[]>([])
-    const { nfts, loading } = useNfts()
     const [viewLoading, setViewLoading] = useState(false)
-
+    const { nftsG, loading } = useContext(NftsContext)
 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
 
-    const updateRenderNfts = () => {
-        let result: INft[] = []
-        for (let nft of renderNfts) {
-
-            let _nft = nft
-
-            if (nft.percentComplete != 100) {
-                let _unclaimed: FixedNumber | null = null
-
-                if (nft.unclaimedIncPerSec) {
-                    _unclaimed = FixedNumber.from(nft.unclaimed).addUnsafe(nft.unclaimedIncPerSec)
-                    _nft.unclaimed = (FixedNumber.from(nft.unclaimed).addUnsafe(nft.unclaimedIncPerSec)).toString()
-                }
-            }
-
-            result.push(_nft)
-
-        }
-        setRenderNfts(result)
-    }
-
-    useInterval(updateRenderNfts, 1000)
-
-
-    useEffect(() => {
-        const prepareRender = async () => {
-            if (nfts.length > 0) {
-                setViewLoading(true)
-                const decimals = await token.decimals()
-
-                setRenderNfts(await nftDataToView(nfts, token, decimals))
-                setViewLoading(false)
-            }
-            else if (renderNfts.length)
-                setRenderNfts([])
-        }
-
-        prepareRender()
-
-    }, [nfts])
-
     return (
         <>
-            <Header>
-                <ConnectWithMetamask />
-                <TokenDashboardHeader />
-            </Header>
+            <MemoHeader />
             <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs />}>
-                <TDTSummary>
-                    <NftTableSummaryWrapper/>
-                </TDTSummary>
+                <MemoTableSummary />
                 {viewLoading || loading ? 'loading' : ''}
 
                 {/* <ClaimRewardsModal/> */}
                 <NftTableWrapper
                     loading={loading || viewLoading}
-                    nfts={renderNfts ? renderNfts : []}
+                    nfts={nftsG}
                     onClaim={handlers.onClaim}
                     onActions={handlers.onActions}
                 />
@@ -107,5 +58,17 @@ const TokenDashboard = () => {
     )
 }
 
+const MemoHeader = React.memo(() => (
+    <Header>
+        <ConnectWithMetamask />
+        <TokenDashboardHeader />
+    </Header>
+))
+
+const MemoTableSummary = React.memo(() => (
+    <TDTSummary>
+        <NftTableSummaryWrapper />
+    </TDTSummary>
+))
 
 export default TokenDashboard

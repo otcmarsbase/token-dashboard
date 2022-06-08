@@ -3,9 +3,6 @@ import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {style} from "typestyle";
 
 export const Header: FC<{children: ReactNode}> = ({ children }) => {
-    useEffect(() => {
-        console.log('header rerendered')
-    })
     return <div className={container}>
         <div className={content}>
             {children}
