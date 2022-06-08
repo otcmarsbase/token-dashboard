@@ -6,8 +6,8 @@ import {style} from "typestyle"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
 
 interface NftAvailableClaimProps {
-    amount: ReactNode
-    amountUsd: ReactNode
+    available: ReactNode
+    availableUsd: ReactNode
     btnClaimText: ReactNode
     btnActionsText: ReactNode
     token: ReactNode
@@ -17,8 +17,8 @@ interface NftAvailableClaimProps {
 
 export const NftAvailableClaim: FC<NftAvailableClaimProps> = (
     {
-        amount,
-        amountUsd,
+        available,
+        availableUsd,
         btnActionsText,
         btnClaimText,
         token,
@@ -28,8 +28,8 @@ export const NftAvailableClaim: FC<NftAvailableClaimProps> = (
     return (
         <div className={content}>
             <div className={contentAmount}>
-                <Text colors={"red"} size={'_14'}><b>{`${amount} ${token}`}</b></Text>
-                <Text colors={'gray'} size={'_12'}>{amountUsd}</Text>
+                <Text colors={"red"} size={'_14'}><b>{`${available} ${token}`}</b></Text>
+                <Text colors={'gray'} size={'_12'}>~{availableUsd}%</Text>
             </div>
             <div className={contentActions}>
                 <Button size={'md'} onClick={onClaim}>
@@ -76,15 +76,13 @@ export const NftAvailableClaimLocalized: FC<NftAvailableClaimLocalizedProps> = (
 }
 
 interface NftAvailableClaimWrapperProps {
-	amount: React.ReactNode
-	amountUsd: React.ReactNode
+    available: React.ReactNode
+    availableUsd: React.ReactNode
 	token: string
 	onClaim: () => void
 	onActions: () => void
 }
 
 export const NftAvailableClaimWrapper: FC<NftAvailableClaimWrapperProps> = (props) => {
-    const usd = `${props.amountUsd}$`
-
-    return <NftAvailableClaimLocalized {...props} amountUsd={usd}/>
+    return <NftAvailableClaimLocalized {...props} />
 }
