@@ -23,8 +23,8 @@ import {useMetaMask} from "metamask-react";
 import ConnectWallet from "../molecules/ConnectWallet";
 import adImage from "../../assets/ad.png";
 import Notification from "../molecules/Notification";
-import HowIs from "../molecules/HowIs";
 import {NftTableSummaryWrapper} from "../organisms/NftTableSummary";
+import {HowIsWrapper} from "../molecules/HowIs";
 
 const TokenDashboard = () => {
     const {token} = useMarsbaseContracts()
@@ -62,7 +62,7 @@ const TokenDashboard = () => {
                 <ConnectWithMetamask/>
                 <TokenDashboardHeader/>
             </Header>
-            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs />}>
+            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIsWrapper />}>
                 <TDTSummary>
                     <NftTableSummaryWrapper/>
                 </TDTSummary>

@@ -15,6 +15,7 @@ const container = style({
     marginBottom: '41px',
     width: '100%',
     margin: 'auto',
+    background: 'linear-gradient(97deg, rgba(0,0,0,1) 0%, rgba(26,1,47,1) 100%)'
 })
 
 const content = style({

@@ -1,12 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {createPortal} from "react-dom";
 import {style} from "typestyle";
 import {Button, Text} from '../atoms';
 import purpleNftIcon from '../../assets/purpleNft.svg';
 import Input from "../Input";
+import questionIcon from '../../assets/question.png';
 
-const ClaimRewardsModal = () => {
+interface ClaimRewardsModalProps {
+    all?: boolean
+}
+
+const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all}) => {
     const modalsRoot = document.getElementById('modals');
 
     if (!modalsRoot) return null;
@@ -29,7 +34,7 @@ const ClaimRewardsModal = () => {
                     <div className={modal(isMobile, isTablet)}>
                         <div className={modalContent}>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
-                                <Text title={'_2'}>CLAIM REWARDS</Text>
+                                <Text title={'_2'}>CLAIM {all && 'ALL '}REWARDS</Text>
                                 <Text colors={'gray'} size={'_12'}>Additional text, preview subtitle</Text>
                             </div>
                             <span style={{textAlign: 'start'}}>
@@ -37,12 +42,23 @@ const ClaimRewardsModal = () => {
                                     Vesting asset
                                 </Text>
                             </span>
-                            <div className={vestingAssetCard}>
-                                <img src={purpleNftIcon} style={{marginRight: '10px', height: '60px'}} alt=""/>
-                                <Text>36,000,000,000 MBase</Text>
-                            </div>
-                            <Input upLabel={<Text>Available for claim</Text>} showUpLabel color={'whiteStroke'}/>
-                            <Button onClick={() => null} size={'lg'} auto>Claim</Button>
+                            {!all && (
+                                <div className={vestingAssetCard}>
+                                    <img src={purpleNftIcon} style={{marginRight: '10px', height: '60px'}} alt=""/>
+                                    <Text>36,000,000,000 MBase</Text>
+                                </div>
+                            )}
+                            <Input
+                                upLabel={
+                                    <Text iconRight={<img src={questionIcon} style={{height: '9px'}} alt=""/>} withIconRight>
+                                        <span style={{whiteSpace: 'nowrap'}}>Available for claim{all && ' all'}</span>
+                                    </Text>}
+                                showUpLabel
+                                color={'whiteStroke'}
+                            />
+                            <Button onClick={() => null} size={'lg'} auto>
+                                <Text weight={'medium'} size={'_14'}>Claim</Text>
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -97,7 +113,7 @@ const modalContent = style({
 })
 
 const vestingAssetCard = style({
-    backgroundColor: 'rgba(42, 42, 44, 1)',
+    backgroundColor: 'rgba(42,42,44,0.4)',
     borderLeft: '6px solid rgba(152, 81, 255, 1)',
     padding: '14px',
     display: 'flex',

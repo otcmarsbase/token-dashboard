@@ -58,7 +58,7 @@ export const NftProgress: FC<NftProgressProps> = (
 }
 
 const progressContainer = style({
-    backgroundColor: 'rgba(104, 106, 110, 1)',
+    backgroundColor: 'rgba(104,106,110,0.2)',
     borderRadius: '4px',
     position: 'relative',
     height: '6px',

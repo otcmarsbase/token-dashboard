@@ -67,6 +67,7 @@ function PlasmicProgress__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
   const args = Object.assign({}, defaultProgress__Args, props.args);
   const $props = args;
+  const $ctx = ph.useDataEnv?.() || {};
 
   return (
     <div

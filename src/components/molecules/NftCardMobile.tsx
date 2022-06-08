@@ -5,10 +5,9 @@ import {style} from "typestyle";
 
 import purpleNftIcon from "../../assets/purpleNft.svg";
 import goldNftIcon from "../../assets/goldNft.svg";
-import goldDarkNftIcon from "../../assets/goldDarkNft.svg";
 import redNftIcon from "../../assets/redNft.svg";
 import silverNftIcon from "../../assets/silverNft.svg";
-import {ColorTypes} from "./NftSelectCard";
+
 import {INft} from "../organisms/NftTable";
 
 interface NftCardMobileProps extends INft {
@@ -47,7 +46,7 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
             silver: {
                 label: 'silver',
                 border: 'rgba(221, 221, 221, 0.5)',
-                icon: redNftIcon
+                icon: silverNftIcon
             },
             red: {
                 label: 'red',

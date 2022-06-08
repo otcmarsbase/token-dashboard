@@ -92,6 +92,8 @@ export interface DefaultCheckboxProps extends pp.CheckboxProps {
   "aria-labelledby"?: string;
 }
 
+export const defaultCheckbox__Args: Partial<PlasmicCheckbox__ArgsType> = {};
+
 function PlasmicCheckbox__RenderFunc(props: {
   variants: PlasmicCheckbox__VariantsArgs;
   args: PlasmicCheckbox__ArgsType;
@@ -99,8 +101,10 @@ function PlasmicCheckbox__RenderFunc(props: {
 
   forNode?: string;
 }) {
-  const { variants, args, overrides, forNode } = props;
-  const $props = props.args;
+  const { variants, overrides, forNode } = props;
+  const args = Object.assign({}, defaultCheckbox__Args, props.args);
+  const $props = args;
+  const $ctx = ph.useDataEnv?.() || {};
 
   const [isRootFocusVisibleWithin, triggerRootFocusVisibleWithinProps] =
     useTrigger("useFocusVisibleWithin", {

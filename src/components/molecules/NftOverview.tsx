@@ -111,8 +111,6 @@ export type NftOverviewWrapperProps = {
     kind: TagLabelColors
 }
 export const NftOverviewWrapper: React.FC<NftOverviewWrapperProps> = (props) => {
-    console.log(props.unvestStartTimestamp)
-
     return (
         <NftOverviewLocalized
             amount={`${props.amount} ${props.token}`}

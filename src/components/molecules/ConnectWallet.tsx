@@ -44,7 +44,7 @@ const container = (height: number, isMobile: boolean, isTablet: boolean) => styl
     justifyContent: 'center',
     height: height,
     width: (isMobile || isTablet) ? '100%' : '1066px',
-    backgroundColor: isMobile ? 'unset' : 'rgba(27,27,28,0.6)',
+    backgroundColor: (isMobile || isTablet) ? 'unset' : 'rgba(27,27,28,0.6)',
     borderRadius: '16px'
 })
 

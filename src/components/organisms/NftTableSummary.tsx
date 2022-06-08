@@ -1,4 +1,4 @@
-import React, {FC, ReactNode} from "react"
+import React, {FC} from "react"
 
 import {SummaryDestributionWrapper, SummaryTotalUnclaimedWrapper} from "../molecules"
 import {style} from "typestyle"
@@ -8,7 +8,6 @@ import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface INftTableSummary {
     distributionAmount: number;
-    isMobile: boolean;
     onClaimAll: () => void;
     unclaimedTotal: number;
     token: string;
@@ -17,11 +16,11 @@ interface INftTableSummary {
 const NftTableSummary: FC<INftTableSummary> = (
     {
         distributionAmount,
-        isMobile,
         onClaimAll,
         unclaimedTotal,
         token
     }) => {
+    const isMobile = useMediaQuery(Queries.mobile);
 
     return (
         <div className={container(isMobile)}>
@@ -44,17 +43,16 @@ const container = (isMobile: boolean) => style({
 })
 
 export const NftTableSummaryWrapper = () => {
-    const {data, handlers} = useContext(AppStateContext)
+    const {data, handlers} = useContext(AppStateContext);
 
-    const isMobile = useMediaQuery(Queries.mobile)
-
-    return <NftTableSummary
-        distributionAmount={data.distributionAmount}
-        token={data.token}
-        unclaimedTotal={data.unclaimedTotal}
-        onClaimAll={handlers.onClaimAll}
-        isMobile={isMobile}
-    />
+    return (
+        <NftTableSummary
+            distributionAmount={data.distributionAmount}
+            token={data.token}
+            unclaimedTotal={data.unclaimedTotal}
+            onClaimAll={handlers.onClaimAll}
+        />
+    )
 }
 
 export default NftTableSummary
