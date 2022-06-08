@@ -1,32 +1,60 @@
-import React from "react"
+import React, {FC, ReactNode} from "react"
 
-import { SummaryDestributionWrapper, SummaryTotalUnclaimedWrapper } from "../molecules"
-import { style } from "typestyle"
-import { useContext } from "react"
-import { AppStateContext } from "../../contexts/AppStateContext"
+import {SummaryDestributionWrapper, SummaryTotalUnclaimedWrapper} from "../molecules"
+import {style} from "typestyle"
+import {useContext} from "react"
+import {AppStateContext} from "../../contexts/AppStateContext"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
-const NftTableSummary = () => {
-	const { data, handlers } = useContext(AppStateContext)
-	const { onClaimAll } = handlers
+interface INftTableSummary {
+    distributionAmount: number;
+    isMobile: boolean;
+    onClaimAll: () => void;
+    unclaimedTotal: number;
+    token: string;
+}
 
-	const isMobile = useMediaQuery(Queries.mobile)
-	const isTablet = useMediaQuery(Queries.tablet)
+const NftTableSummary: FC<INftTableSummary> = (
+    {
+        distributionAmount,
+        isMobile,
+        onClaimAll,
+        unclaimedTotal,
+        token
+    }) => {
 
-	return (
-		<div className={container(isMobile)}>
-			<SummaryDestributionWrapper count={data.distributionAmount} />
-			<SummaryTotalUnclaimedWrapper onClaimAll={onClaimAll} unclaimedAmount={data.unclaimedTotal} token={data.token} />
-		</div>
-	)
+    return (
+        <div className={container(isMobile)}>
+            <SummaryDestributionWrapper count={distributionAmount}/>
+            <SummaryTotalUnclaimedWrapper
+                onClaimAll={onClaimAll}
+                unclaimedAmount={unclaimedTotal}
+                token={token}
+            />
+        </div>
+    )
 }
 
 const container = (isMobile: boolean) => style({
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "space-between",
-	width: "100%",
-	flexDirection: isMobile ? 'column-reverse' : 'unset'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    flexDirection: isMobile ? 'column-reverse' : 'unset'
 })
+
+export const NftTableSummaryWrapper = () => {
+    const {data, handlers} = useContext(AppStateContext)
+
+    const isMobile = useMediaQuery(Queries.mobile)
+
+    return <NftTableSummary
+        distributionAmount={data.distributionAmount}
+        token={data.token}
+        unclaimedTotal={data.unclaimedTotal}
+        onClaimAll={handlers.onClaimAll}
+        isMobile={isMobile}
+    />
+}
 
 export default NftTableSummary

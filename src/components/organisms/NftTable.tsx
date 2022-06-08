@@ -17,6 +17,7 @@ import {style} from "typestyle";
 import NftCardMobile from "../molecules/NftCardMobile";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {ClipLoader} from "react-spinners";
+import TableLoading from "../molecules/TableLoading";
 
 
 export interface INft {
@@ -147,26 +148,19 @@ interface NftTableWrapperProps {
 export const NftTableWrapper: FC<NftTableWrapperProps> = (props) => {
     const walletExist = true;
 
-    if (props.loading) {
-        return (
-            <div className={loadingContainer}>
-                <ClipLoader color={"#fff"} size={50}/>
-            </div>
-        )
-    }
-
     if (!walletExist) {
         return <ConnectWallet/>
+    }
+
+    if (props.loading) {
+        return (
+            <TableLoading/>
+        )
     }
 
     return <NftTableLocalized {...props} />
 }
 
-const loadingContainer = style({
-    height: '500px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-})
+
 
 export default NftTable

@@ -26,6 +26,7 @@ import Notification from "../molecules/Notification";
 import HowIs from "../molecules/HowIs";
 import { FixedNumber } from "ethers";
 import { useInterval } from "../../hooks/useInterval";
+import {NftTableSummaryWrapper} from "../organisms/NftTableSummary";
 
 const TokenDashboard = () => {
     const { token } = useMarsbaseContracts()
@@ -65,7 +66,6 @@ const TokenDashboard = () => {
 
 
     useEffect(() => {
-
         const prepareRender = async () => {
             if (nfts.length > 0) {
                 setViewLoading(true)
@@ -90,7 +90,7 @@ const TokenDashboard = () => {
             </Header>
             <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs />}>
                 <TDTSummary>
-                    <NftTableSummary />
+                    <NftTableSummaryWrapper/>
                 </TDTSummary>
                 {viewLoading || loading ? 'loading' : ''}
 
