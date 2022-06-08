@@ -23,7 +23,6 @@ const NftTableSummary: FC<INftTableSummary> = (
         token
     }) => {
 
-
     return (
         <div className={container(isMobile)}>
             <SummaryDestributionWrapper count={distributionAmount}/>

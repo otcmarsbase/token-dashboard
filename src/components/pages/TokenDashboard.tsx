@@ -24,6 +24,7 @@ import ConnectWallet from "../molecules/ConnectWallet";
 import adImage from "../../assets/ad.png";
 import Notification from "../molecules/Notification";
 import HowIs from "../molecules/HowIs";
+import {NftTableSummaryWrapper} from "../organisms/NftTableSummary";
 
 const TokenDashboard = () => {
     const {token} = useMarsbaseContracts()
@@ -63,7 +64,7 @@ const TokenDashboard = () => {
             </Header>
             <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs />}>
                 <TDTSummary>
-                    <NftTableSummary/>
+                    <NftTableSummaryWrapper/>
                 </TDTSummary>
                 {viewLoading || loading ? 'loading' : ''}
 
