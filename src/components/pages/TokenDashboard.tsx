@@ -39,7 +39,6 @@ const TokenDashboard = () => {
 
 
     useEffect(() => {
-
         const prepareRender = async () => {
             if (nfts.length > 0) {
                 setViewLoading(true)

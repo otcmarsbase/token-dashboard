@@ -16,7 +16,6 @@ interface SummaryDestributionProps {
 
 const SummaryDestribution: FC<SummaryDestributionProps> = ({title, subTitle, count}) => {
     const isMobile = useMediaQuery(Queries.mobile)
-    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div className={container(isMobile)}>
