@@ -14,7 +14,17 @@ import {style} from "typestyle";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import SplitDetailsSection from "../molecules/SplitDetailsSection";
 
-const VestingSplitDetails = () => {
+const VestingSplitDetailsExample: React.FC = () =>
+{
+	return <VestingSplitDetails
+		title="Check split details"
+	/>
+}
+
+export type VestingSplitDetailsProps = {
+	title: React.ReactNode
+}
+const VestingSplitDetails: React.FC<VestingSplitDetailsProps> = props => {
     const isMobile = useMediaQuery(Queries.mobile)
     const isTablet = useMediaQuery(Queries.tablet)
 
@@ -24,7 +34,7 @@ const VestingSplitDetails = () => {
                 <div className={header}>
                     <div style={{padding: '28px 21px 10px 21px'}}>
                         <VestingSplitSectionOverview
-                            title={'Check split details'}
+                            title={props.title}
                             subTitle={'Set the parameters you need to suggest the best trading conditions'}
                             actionText={'How to split?'}
                             actionIcon={<img style={{height: '18px'}} src={arrowLeft} alt={"arrow left"}/>}
