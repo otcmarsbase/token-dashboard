@@ -76,56 +76,79 @@ export async function requestClaimAllSignature(nfts: INft[], vest: MarsbaseVesti
     return true
 }
 
+function lerp(timePassed: number, amount: BigNumber, duration: BigNumber) {
+    if (BigNumber.from(Math.ceil(timePassed)).gt(duration)) /* TODO: убрать округление */
+        return amount
+    if (timePassed <= 0)
+        return BigNumber.from('0')
+    return ((amount.mul(BigNumber.from(Math.ceil(timePassed)))).div(duration)) /* и тут */
+}
+
 export async function nftDataToView(nfts: NftData[], token: MarsbaseToken, decimals: number): Promise<INft[]> {
 
-    function lerp(timePassed: number, amount: BigNumber, duration: BigNumber) {
-        if (BigNumber.from(Math.ceil(timePassed)).gt(duration)) /* TODO: убрать округление */
-            return amount
-        if (timePassed <= 0)
-            return BigNumber.from('0')
-        return ((amount.mul(BigNumber.from(Math.ceil(timePassed)))).div(duration)) /* и тут */
-    }
-
     let result: INft[] = []
-    const secondsInDay = 86400
 
     for (let i = 0; i < nfts.length; i++) {
-        const duration = nfts[i].end.sub(nfts[i].start)
-        const initialAmount = nfts[i].initialAmount
-
-        const timePassed = Date.now() / 1000 - nfts[i].start.toNumber()
-
-        const unclaimed = lerp(timePassed, initialAmount, duration)
-        
-        const totalTime = nfts[i].end.sub(nfts[i].initialStart).toNumber()
-
-        const percentComplete_temp = ((Date.now() / 1000 - nfts[i].initialStart.toNumber()) * 100) / totalTime
-        const percentComplete = percentComplete_temp < 100 ? percentComplete_temp : 100
-
-        const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
-        const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
-
 
         let nftView: INft = {
             id: i.toString(),
             kind: calculateKind(nfts[i].amount, decimals),
             amount: utils.formatUnits(nfts[i].initialAmount, decimals),
-            locked: utils.formatUnits(nfts[i].amount.sub(unclaimed)),
-            unclaimed: utils.formatUnits(unclaimed),
+            locked: '0',
+            unclaimed: '0',
             token: await token.symbol(),
             started: new Date(nfts[i].initialStart.toNumber() * 1000).toString(),
-            timePassed: `${daysPassed} days`,
-            timeLeft: `${daysLeft} days`,
-            percentComplete: percentComplete,
-            unclaimedIncPerSec: FixedNumber.from(nfts[i].amount).divUnsafe(FixedNumber.from(totalTime)),
+            timePassed: `0`,
+            timeLeft: `0`,
+            percentComplete: 0,
+            end: nfts[i].end.toString(),
 
             amountUsd: '0',
             price: '0',
             available: '0',
-            availableUsd: '0'
+            availableUsd: '0',
         }
 
         result.push(nftView)
+    }
+    return updateNfts(result, decimals)
+}
+
+export const updateNfts = (nfts: INft[], decimals: number) => { /* динамическое обновление данных (пока что только unclaimed) */
+    let result: INft[] = []
+
+    const secondsInDay = 86400
+
+    for (let nft of nfts) {
+
+        let _nft = nft
+
+        if (nft.percentComplete != 100) {
+
+            const started = Date.parse(nft.started) / 1000
+            const timePassed = Math.floor(Date.now() / 1000 - started)
+            const duration = parseInt(nft.end) - started
+            const amount = utils.parseUnits(nft.amount, decimals)
+            const totalTime = (BigNumber.from(nft.end).sub(BigNumber.from(started))).toNumber()
+
+            const percentComplete_temp = (timePassed * 100) / totalTime
+            const percentComplete = percentComplete_temp < 100 ? percentComplete_temp : 100
+
+            const unclaimed = lerp(timePassed, amount, BigNumber.from(duration))
+
+            const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
+            const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
+
+            _nft.unclaimed = utils.formatUnits(unclaimed, decimals)
+            _nft.percentComplete = percentComplete
+            _nft.locked = utils.formatUnits(amount.sub(unclaimed), decimals)
+            _nft.timePassed = `${daysPassed} days`
+            _nft.timeLeft = `${daysLeft} days`
+
+        }
+
+        result.push(_nft)
+
     }
     return result
 }

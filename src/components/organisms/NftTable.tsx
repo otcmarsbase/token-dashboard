@@ -28,6 +28,7 @@ export interface INft {
 	token: string
 	price: string
 	started: string
+    end: string
 	locked: string
 	unclaimed: string
 	percentComplete: number
@@ -35,8 +36,6 @@ export interface INft {
 	timeLeft: string
 	available: string
 	availableUsd: string
-
-    unclaimedIncPerSec?: FixedNumber
 }
 
 interface NftTableProps {

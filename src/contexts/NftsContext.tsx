@@ -1,6 +1,6 @@
-import { FixedNumber } from "ethers"
+import { BigNumber, FixedNumber } from "ethers"
 import React, { PropsWithChildren, useContext, useEffect, useState } from "react"
-import { nftDataToView } from "../api"
+import { nftDataToView, updateNfts } from "../api"
 import { INft } from "../components/organisms/NftTable"
 import { useMarsbaseContracts } from "../hooks/mbase-contract"
 import { useInterval } from "../hooks/useInterval"
@@ -31,28 +31,11 @@ export const NftsContextProvider: React.FC<PropsWithChildren<{}>> = props => {
         setViewData()
     }, [nfts])
 
-    const updateNfts = () => { /* динамическое обновление данных (пока что только unclaimed) */
-        let result: INft[] = []
-        for (let nft of nftsG) {
-
-            let _nft = nft
-
-            if (nft.percentComplete != 100) {
-                let _unclaimed: FixedNumber | null = null
-
-                if (nft.unclaimedIncPerSec) {
-                    _unclaimed = FixedNumber.from(nft.unclaimed).addUnsafe(nft.unclaimedIncPerSec)
-                    _nft.unclaimed = (FixedNumber.from(nft.unclaimed).addUnsafe(nft.unclaimedIncPerSec)).toString()
-                }
-            }
-
-            result.push(_nft)
-
-        }
-        setNftsG(result)
+    const foo = async () => {
+        setNftsG(updateNfts(nftsG, await token.decimals()))
     }
 
-    useInterval(updateNfts, 1000)
+    useInterval(foo, 1000)
 
 
     return (
