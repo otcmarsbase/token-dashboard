@@ -3,7 +3,8 @@ import React from "react"
 import {FC, ReactNode, useContext} from "react"
 import {style} from "typestyle"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
-import {Text, Count} from "../atoms"
+import {Text} from "../atoms/Text"
+import {Count} from "../atoms/Count"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import flyUsdIcon from '../../assets/flyUsd.png';
 

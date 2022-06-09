@@ -3,7 +3,7 @@ import React from "react"
 import {FC, ReactNode, useContext} from "react"
 import {style} from "typestyle"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
-import {ProgressGradient, Text} from "../atoms"
+import {Text} from "../atoms/Text"
 
 interface NftProgressProps {
     amount: ReactNode

@@ -1,6 +1,8 @@
 import React, {FC} from 'react';
 
-import {Button, Label, TagLabelColors, Text} from "../atoms";
+import {Button} from "../atoms/Button";
+import {Label, TagLabelColors} from "../atoms/Label";
+import {Text} from "../atoms/Text";
 import {style} from "typestyle";
 
 import purpleNftIcon from "../../assets/purpleNft.svg";

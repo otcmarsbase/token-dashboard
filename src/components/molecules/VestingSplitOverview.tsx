@@ -1,5 +1,5 @@
 import React, {FC, ReactNode, useContext} from 'react';
-import {Text} from '../atoms';
+import {Text} from '../atoms/Text';
 import {style} from 'typestyle';
 import {DictionaryContext} from "../../contexts/DictionaryContext";
 import q from '../../assets/question.png';

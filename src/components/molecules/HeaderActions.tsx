@@ -1,6 +1,7 @@
 import React from "react"
 
-import {Button, Text} from "../atoms"
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 import {style} from "typestyle"
 import {FC, ReactNode, useContext} from "react"
 import {DictionaryContext} from "../../contexts/DictionaryContext"

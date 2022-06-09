@@ -4,7 +4,7 @@ import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcma
 import { useContext } from "react"
 import { MarsbaseTokenContext } from "./hooks/mbase-contract"
 import { TOKEN_THRESHOLD } from "./config"
-import { TagLabelColors } from "./components/atoms"
+import { TagLabelColors } from "./components/atoms/Label"
 
 export type NftData = Awaited<ReturnType<MarsbaseVesting["getVestingRecord"]>>
 

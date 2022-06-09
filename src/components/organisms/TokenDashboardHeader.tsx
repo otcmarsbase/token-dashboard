@@ -1,13 +1,13 @@
 import React from "react"
 
-import { HeaderActionsWrapper } from "../molecules"
+import { HeaderActionsWrapper } from "../molecules/HeaderActions"
 import { style } from "typestyle"
 import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"
 import { HeaderOverviewWrapper } from "../molecules/HeaderOverview"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
-const TokenDashboardHeader = () => {
+export const TokenDashboardHeader = () => {
 	const isMobile = useMediaQuery(Queries.mobile)
 	const isTablet = useMediaQuery(Queries.tablet)
 
@@ -30,4 +30,3 @@ const container = (isMobile: boolean, isTablet: boolean) => style({
 	flexDirection: (isMobile || isTablet) ? 'column' : 'row',
 })
 
-export default TokenDashboardHeader

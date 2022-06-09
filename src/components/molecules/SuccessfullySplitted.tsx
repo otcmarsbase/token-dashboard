@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {Button, Text} from "../atoms";
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 
 import successfullySplitted from "../../assets/successfullySplitted.png";
 import silver2 from "../../assets/silver-2.svg";

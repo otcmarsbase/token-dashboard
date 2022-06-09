@@ -2,7 +2,8 @@ import React, {FC, useEffect} from 'react';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {createPortal} from "react-dom";
 import {style} from "typestyle";
-import {Button, Text} from '../atoms';
+import {Button} from '../atoms/Button';
+import {Text} from '../atoms/Text';
 import purpleNftIcon from '../../assets/purpleNft.svg';
 import Input from "../Input";
 import questionIcon from '../../assets/question.png';
@@ -11,7 +12,7 @@ interface ClaimRewardsModalProps {
     all?: boolean
 }
 
-const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all}) => {
+export const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all}) => {
     const modalsRoot = document.getElementById('modals');
 
     if (!modalsRoot) return null;
@@ -120,5 +121,3 @@ const vestingAssetCard = style({
     alignItems: 'center',
     borderRadius: '16px'
 })
-
-export default ClaimRewardsModal;

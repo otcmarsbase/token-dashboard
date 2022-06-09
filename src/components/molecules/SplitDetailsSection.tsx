@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Text} from "../atoms";
+import {Text} from "../atoms/Text";
 import {style} from "typestyle";
 
 interface SplitDetailsSectionProps {

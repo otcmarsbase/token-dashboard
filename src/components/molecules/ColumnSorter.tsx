@@ -2,7 +2,7 @@ import React from "react"
 
 import { FC, ReactNode } from "react"
 import { style } from "typestyle"
-import {IconExtraSmall, Text} from "../atoms"
+import {Text} from "../atoms/Text"
 import sorterIcon from '../../assets/sorterIcon.png';
 
 interface ColumnSorterProps {

@@ -1,6 +1,6 @@
 import React, {FC, ReactNode, useContext} from 'react';
 import {style} from "typestyle";
-import {Text} from '../atoms';
+import {Text} from '../atoms/Text';
 import cosmonaut from '../../assets/cosmonautpng.png';
 import {DictionaryContext} from "../../contexts/DictionaryContext";
 

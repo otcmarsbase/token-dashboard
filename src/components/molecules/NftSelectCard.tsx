@@ -5,7 +5,8 @@ import goldDarkNft from "../../assets/goldDarkNft.svg";
 import redNft from "../../assets/redNft.svg";
 import silverNft from "../../assets/silverNft.svg";
 
-import {Label, Text} from "../atoms";
+import {Text} from '../atoms/Text'
+import {Label} from '../atoms/Label'
 import {style} from "typestyle";
 
 export type ColorTypes = 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';

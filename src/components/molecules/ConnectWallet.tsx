@@ -1,7 +1,8 @@
 import React, {FC, RefObject} from 'react';
 import settingsIcon from '../../assets/setting.svg';
 import {style} from "typestyle";
-import {Button, Text} from "../atoms";
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface ConnectWalletProps {

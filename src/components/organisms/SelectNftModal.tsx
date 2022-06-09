@@ -5,7 +5,7 @@ import changeViewIcon from '../../assets/changeViewIcon.svg';
 import sortIcon from '../../assets/sortIcon.svg';
 import X from '../../assets/X.png';
 
-import {Text} from '../atoms';
+import {Text} from '../atoms/Text'
 import NftSelectCard from "../molecules/NftSelectCard";
 import {createPortal} from "react-dom";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";

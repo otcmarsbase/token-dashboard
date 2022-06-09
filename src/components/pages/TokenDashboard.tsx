@@ -8,8 +8,9 @@ import { Queries, useMediaQuery } from "../../hooks/mediaQuery";
 import { style } from "typestyle";
 import NftCardMobile from "../molecules/NftCardMobile";
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
-import ClaimRewardsModal from "../molecules/ClaimRewardsModal";
-import { NftTableSummary, TokenDashboardHeader } from "../organisms"
+import { ClaimRewardsModal } from "../molecules/ClaimRewardsModal";
+import { NftTableSummary } from "../organisms/NftTableSummary"
+import { TokenDashboardHeader } from "../organisms/TokenDashboardHeader"
 import { INft, NftTableWrapper } from "../organisms/NftTable"
 import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"

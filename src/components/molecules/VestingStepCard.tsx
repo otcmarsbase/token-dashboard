@@ -1,5 +1,7 @@
 import React, {FC} from 'react';
-import {Count, Text} from "../atoms";
+
+import {Count} from '../atoms/Count';
+import {Text} from '../atoms/Text'
 import {style} from 'typestyle';
 
 interface VestingStepCardProps {

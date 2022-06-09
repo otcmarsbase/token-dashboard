@@ -1,5 +1,5 @@
 import React, {FC, ReactNode} from 'react';
-import {Label, Text} from '../atoms';
+import {Text} from '../atoms/Text';
 import {style} from "typestyle";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 

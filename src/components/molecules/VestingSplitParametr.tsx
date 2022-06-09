@@ -1,7 +1,8 @@
 import React, {FC, useState} from 'react';
 import Input from "../Input";
 import silver2 from "../../assets/silver-2.svg";
-import {Button, Text} from "../atoms";
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 import info from '../../assets/info.png'
 import {ISplitParametr} from "../organisms/VestingToSplit";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";

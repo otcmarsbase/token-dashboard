@@ -1,5 +1,7 @@
 import React from 'react';
-import {Button, Label, Text} from "../atoms";
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
+import {Label} from '../atoms/Label'
 import {style} from 'typestyle';
 import NftDetailsItem from "../molecules/NftDetailsItem";
 import gold2 from '../../assets/gold-2.svg';

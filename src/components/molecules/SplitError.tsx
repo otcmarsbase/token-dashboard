@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {Button, Text} from '../atoms';
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 
 import splitError from '../../assets/splitErrorIllustration.png';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";

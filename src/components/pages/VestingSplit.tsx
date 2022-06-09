@@ -10,7 +10,7 @@ import VestingToSplit from "../organisms/VestingToSplit";
 import SplitError from "../molecules/SplitError";
 import SuccessfullySplitted from "../molecules/SuccessfullySplitted";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-import {Text} from '../atoms';
+import {Text} from '../atoms/Text';
 import VestingSplitNavbar from "../organisms/TokenDasboardNavbar";
 import SelectNftModal from "../organisms/SelectNftModal";
 

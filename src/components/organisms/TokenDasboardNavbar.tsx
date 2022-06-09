@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from "../atoms";
+import {Text} from "../atoms/Text";
 import {style} from "typestyle";
 
 import plusIcon from '../../assets/plus.png';

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Text, Button} from '../atoms'
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 import {style} from "typestyle";
 import VestingSplitSectionOverview from "../molecules/VestingSplitSectionOverview";
 import VestingSplitParametr from "../molecules/VestingSplitParametr";

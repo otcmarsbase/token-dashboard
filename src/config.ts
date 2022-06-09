@@ -1,5 +1,5 @@
 import { BigNumber, BigNumberish } from "ethers"
-import { TagLabelColors } from "./components/atoms"
+import { TagLabelColors } from "./components/atoms/Label"
 
 export const PRIVNET = {
 	chainId: 1337,

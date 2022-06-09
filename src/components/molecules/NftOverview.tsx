@@ -1,7 +1,7 @@
 import React, {FC} from "react"
 import {style} from "typestyle"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
-import {Text, Label, TagLabelColors} from "../atoms";
+
 
 import goldNftIcon from '../../assets/goldNft.svg';
 import darkGoldNftIcon from '../../assets/goldDarkNft.svg';
@@ -11,6 +11,9 @@ import nftSilverIcon from '../../assets/silverNft.svg';
 import redNftIcon from "../../assets/redNft.svg";
 import purpleNftIcon from "../../assets/purpleNft.svg";
 import {IColors} from "./NftCardMobile";
+import { TagLabelColors } from "../atoms/Label";
+import {Label} from "../atoms/Label";
+import {Text} from '../atoms/Text'
 
 export type NftOverviewProps = {
     amount: React.ReactNode

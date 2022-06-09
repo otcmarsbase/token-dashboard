@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {style} from "typestyle";
 import {createPortal} from "react-dom";
-import {Text} from '../atoms';
+import {Text} from '../atoms/Text';
 import doneIcon from '../../assets/doneIcon.png'
 import errorIcon from '../../assets/errorIcon.png'
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";

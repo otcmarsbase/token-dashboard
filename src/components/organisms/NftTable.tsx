@@ -2,15 +2,9 @@ import React from "react"
 
 import {useContext, FC, ReactNode} from "react"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
-import {
-    ColumnSorter,
-    NftOverviewWrapper,
-    NftProgressWrapper,
-    NftAvailableClaimWrapper,
-    TablePaginationWrapper
-} from "../molecules"
+
 import {Table, TableRow, TableHead, TableData, TableFooter} from "../templates/TokenDashboardTemplate"
-import {TagLabelColors} from "../atoms"
+import {TagLabelColors} from "../atoms/Label"
 import {BigNumber, FixedNumber} from "ethers"
 import ConnectWallet from "../molecules/ConnectWallet";
 import {style} from "typestyle";
@@ -18,6 +12,10 @@ import NftCardMobile from "../molecules/NftCardMobile";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {ClipLoader} from "react-spinners";
 import TableLoading from "../molecules/TableLoading";
+import { ColumnSorter } from "../molecules/ColumnSorter"
+import { NftAvailableClaimWrapper } from "../molecules/NftAvailableClaim"
+import { NftOverviewWrapper } from "../molecules/NftOverview"
+import { NftProgressWrapper } from "../molecules/NftProgress"
 
 
 export interface INft {

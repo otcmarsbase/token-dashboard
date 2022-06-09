@@ -2,7 +2,7 @@ import React from "react"
 
 import { DetailedHTMLProps, FC, ReactNode, SourceHTMLAttributes, VideoHTMLAttributes } from "react"
 import { style } from "typestyle"
-import { Text } from "../atoms"
+import { Text } from "../atoms/Text"
 
 interface LearningBlockProps {
 	titleText: ReactNode

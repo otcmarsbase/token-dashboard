@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Text} from '../atoms';
+import {Text} from '../atoms/Text';
 
 import beingSplitted from '../../assets/beingSplitted.png';
 import {useMediaQuery} from "../../hooks/mediaQuery";

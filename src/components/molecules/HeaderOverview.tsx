@@ -1,7 +1,7 @@
 import React from "react"
 
 import {FC, ReactNode, useContext} from "react"
-import {Text} from "../atoms"
+import {Text} from "../atoms/Text"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
 import question from '../../assets/question.png';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";

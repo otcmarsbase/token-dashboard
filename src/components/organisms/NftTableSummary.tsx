@@ -1,6 +1,7 @@
 import React, {FC} from "react"
 
-import {SummaryDestributionWrapper, SummaryTotalUnclaimedWrapper} from "../molecules"
+import {SummaryDestributionWrapper} from "../molecules/SummaryDestribution"
+import {SummaryTotalUnclaimedWrapper} from "../molecules/SummaryTotalUnclaimed"
 import {style} from "typestyle"
 import {useContext} from "react"
 import {AppStateContext} from "../../contexts/AppStateContext"
@@ -13,7 +14,7 @@ interface INftTableSummary {
     token: string;
 }
 
-const NftTableSummary: FC<INftTableSummary> = (
+export const NftTableSummary: FC<INftTableSummary> = (
     {
         distributionAmount,
         onClaimAll,
@@ -55,4 +56,3 @@ export const NftTableSummaryWrapper = () => {
     )
 }
 
-export default NftTableSummary

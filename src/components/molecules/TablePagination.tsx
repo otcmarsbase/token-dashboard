@@ -2,7 +2,8 @@ import React from "react"
 
 import { FC, ReactNode, useContext } from "react"
 import { style } from "typestyle"
-import {Count, Text} from "../atoms"
+import {Text} from '../atoms/Text'
+import {Count} from '../atoms/Count'
 import { DictionaryContext } from "../../contexts/DictionaryContext"
 
 interface TablePaginationProps {

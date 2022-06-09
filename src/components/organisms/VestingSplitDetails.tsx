@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {Button, Text} from '../atoms';
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 import VestingSplitSectionOverview from "../molecules/VestingSplitSectionOverview";
 import Input from "../Input";
 

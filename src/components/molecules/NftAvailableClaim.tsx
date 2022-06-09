@@ -1,7 +1,8 @@
 import React from "react"
 
 import {FC, ReactNode, useContext} from "react"
-import {Text, Button} from "../atoms"
+import {Text} from '../atoms/Text'
+import {Button} from '../atoms/Button'
 import {style} from "typestyle"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
 
