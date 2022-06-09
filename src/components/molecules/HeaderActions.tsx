@@ -41,7 +41,7 @@ const container = (isMobile: boolean, isTablet: boolean) => style({
     gap: isMobile ? "24px" : "12px",
     width: isMobile ? '100%' : 'unset',
     flexDirection: isMobile ? 'column' : isTablet ? 'row-reverse' : 'row',
-    marginBottom: isMobile ? '57px' : "unset"
+    marginBottom: isMobile ? '24px' : "33px"
 })
 
 type HeaderActionsLocalizedProps = Omit<HeaderActionsProps, 'btnText' | 'btnGradientText'>

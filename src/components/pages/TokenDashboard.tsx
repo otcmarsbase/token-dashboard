@@ -23,11 +23,8 @@ import { useMetaMask } from "metamask-react";
 import ConnectWallet from "../molecules/ConnectWallet";
 import adImage from "../../assets/ad.png";
 import Notification from "../molecules/Notification";
-import HowIs from "../molecules/HowIs";
-import { FixedNumber } from "ethers";
-import { useInterval } from "../../hooks/useInterval";
-import { NftTableSummaryWrapper } from "../organisms/NftTableSummary";
-import { SCREEN_DATA } from "../../data";
+import {NftTableSummaryWrapper} from "../organisms/NftTableSummary";
+import {HowIsWrapper} from "../molecules/HowIs";
 import { NftsContext } from "../../contexts/NftsContext";
 
 const TokenDashboard = () => {
@@ -41,7 +38,7 @@ const TokenDashboard = () => {
     return (
         <>
             <MemoHeader />
-            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIs />}>
+            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIsWrapper />}>
                 <MemoTableSummary />
                 {viewLoading || loading ? 'loading' : ''}
 

@@ -1,16 +1,22 @@
-import React from 'react';
+import React, {FC, ReactNode, useContext} from 'react';
 import {style} from "typestyle";
 import {Text} from '../atoms';
 import cosmonaut from '../../assets/cosmonautpng.png';
+import {DictionaryContext} from "../../contexts/DictionaryContext";
 
-const HowIs = () => {
+interface HowIsProps {
+    title: ReactNode;
+    subTitle: ReactNode;
+}
+
+const HowIs: FC<HowIsProps> = ({title, subTitle}) => {
     return (
         <div className={container}>
             <div className={imageContainer}>
                 <div className={content}>
-                    <Text title={'_2'}>How is distribution done?</Text>
+                    <Text title={'_2'}>{title}</Text>
                     <span style={{display: 'block',marginBottom: '6px'}}/>
-                    <Text colors={'gray'} size={'_12'}>For the first time, a crypto OTC desk and even</Text>
+                    <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
                     <video controls className={styledVideo}>
                         <source src="URL"/>
                     </video>
@@ -46,4 +52,10 @@ const styledVideo = style({
     zIndex: 2
 })
 
-export default HowIs;
+export const HowIsLocalized = () => {
+    const {nft} = useContext(DictionaryContext);
+
+    return <HowIs title={nft.dashboard.distribution_video.header} subTitle={nft.dashboard.distribution_video.description}/>
+}
+
+export const HowIsWrapper = () => <HowIsLocalized/>

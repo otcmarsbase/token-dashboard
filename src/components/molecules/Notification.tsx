@@ -24,7 +24,7 @@ const Notification: FC<NotificationsProps> = ({type}) => {
             <div className={content(isMobile)}>
                 <div style={{marginRight: '12px'}}>{type === 'success' ? <img style={{height: '24px'}} src={doneIcon}/> :
                     <img style={{height: '24px'}} src={errorIcon}/>}</div>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'start'}}>
+                <div style={{display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'start', flex: 1}}>
                     <Text weight={'semiBold'}>Done</Text>
                     {isPc && (
                         <Text>Every time after using Mars Base, we recommend you to disconnect.</Text>
@@ -46,12 +46,13 @@ const container = (type: string, isMobile: boolean) => style({
     zIndex: 9999,
     backgroundColor: type === 'success' ? 'rgba(52, 168, 83, 1)' : 'rgba(232, 42, 54, 1)',
     borderRadius: '6px',
-    padding: '20px',
+    padding: '16px 26px 16px 20px',
     width: isMobile ? 'unset' : '368px',
 })
 
 const content = (isMobile: boolean) => style({
-    display: 'flex'
+    display: 'flex',
+    alignItems: 'center'
 })
 
 export default Notification;

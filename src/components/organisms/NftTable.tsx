@@ -87,7 +87,7 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
                             token={nft.token}
                             buyPrice={nft.price.toString()}
                             unvestStartTimestamp={nft.started}
-                            kind={'cyan'}
+                            kind={nft.kind}
                             usdValue={nft.availableUsd.toString()}
                         />
                     </TableData>
@@ -107,8 +107,8 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
                         <NftAvailableClaimWrapper
                             onClaim={() => onClaim(nft.id)}
                             onActions={() => onActions(nft.id)}
-                            amount={nft.amount.toString()}
-                            amountUsd={nft.amountUsd.toString()}
+                            available={nft.available}
+                            availableUsd={nft.availableUsd}
                             token={nft.token}
                         />
                     </TableData>
