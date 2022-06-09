@@ -78,8 +78,6 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
             <tbody className={styledTBody}>
             {nfts?.map((nft) => (
                 <TableRow key={nft.id}>
-                            <span style={{color: 'white'}}>{nft.unclaimed}</span> 
-
                     <TableData justifyContent={'start'}>
                         <NftOverviewWrapper
                             amount={nft.amount.toString()}
@@ -87,26 +85,24 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
                             buyPrice={nft.price.toString()}
                             unvestStartTimestamp={nft.started}
                             kind={nft.kind}
-                            usdValue={nft.availableUsd.toString()}
+                            usdValue={nft.amountUsd.toString()}
                         />
                     </TableData>
                     <TableData justifyContent={'center'}>
                         <NftProgressWrapper
-                            amount={nft.amount.toString()}
+                            amount={nft.amount}
                             token={nft.token}
-                            locked={nft.locked.toString()}
+                            locked={nft.locked}
                             percentComplete={nft.percentComplete}
                             timePassed={nft.timePassed}
                             timeLeft={nft.timeLeft}
-                            progressValue="80"
-                            progressMax="100"
                         />
                     </TableData>
                     <TableData justifyContent={'end'}>
                         <NftAvailableClaimWrapper
                             onClaim={() => onClaim(nft.id)}
                             onActions={() => onActions(nft.id)}
-                            available={nft.available}
+                            available={nft.unclaimed}
                             availableUsd={nft.availableUsd}
                             token={nft.token}
                         />
