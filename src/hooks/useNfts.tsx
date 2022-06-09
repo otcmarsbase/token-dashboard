@@ -1,8 +1,7 @@
 import { useConnectedMetaMask } from "metamask-react"
-import { useContext, useEffect, useState } from "react"
-import useSWR, { Fetcher, Key } from "swr"
-import { getNftList, NftData } from "../api"
-import { MarsbaseVestingContext, useMarsbaseContracts } from "./mbase-contract"
+import useSWR from "swr"
+import { getNftList } from "../api"
+import { useMarsbaseContracts } from "./mbase-contract"
 
 export const useNfts = () => {
     const {account} = useConnectedMetaMask()
