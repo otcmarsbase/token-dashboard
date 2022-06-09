@@ -25,7 +25,7 @@ import ConnectWallet from "../molecules/ConnectWallet";
 import adImage from "../../assets/ad.png";
 import Notification from "../molecules/Notification";
 import {NftTableSummaryWrapper} from "../organisms/NftTableSummary";
-import {HowIsWrapper} from "../molecules/HowIs";
+import {HowIsLocalized} from "../molecules/HowIs";
 import { NftsContext } from "../../contexts/NftsContext";
 
 const TokenDashboard = () => {
@@ -39,7 +39,7 @@ const TokenDashboard = () => {
     return (
         <>
             <MemoHeader />
-            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIsWrapper />}>
+            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIsLocalized />}>
                 <MemoTableSummary />
                 {viewLoading || loading ? 'loading' : ''}
 

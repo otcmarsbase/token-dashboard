@@ -57,5 +57,3 @@ export const HowIsLocalized = () => {
 
     return <HowIs title={nft.dashboard.distribution_video.header} subTitle={nft.dashboard.distribution_video.description}/>
 }
-
-export const HowIsWrapper = () => <HowIsLocalized/>
