@@ -1,8 +1,7 @@
-import { BigNumber, FixedNumber } from "ethers"
-import React, { PropsWithChildren, useContext, useEffect, useState } from "react"
-import { nftDataToView, updateNfts } from "../api"
+import React, { PropsWithChildren, useMemo, useState } from "react"
+import { nftDataToView } from "../api"
 import { INft } from "../components/organisms/NftTable"
-import { useMarsbaseContracts } from "../hooks/mbase-contract"
+import { useTokenInfo } from "../hooks/mbase-contract"
 import { useInterval } from "../hooks/useInterval"
 import { useNfts } from "../hooks/useNfts"
 
@@ -15,31 +14,22 @@ export const NftsContext = React.createContext<NftsContextType>({ nftsG: [], loa
 
 export const NftsContextProvider: React.FC<PropsWithChildren<{}>> = props => {
 
-    const { nfts, loading } = useNfts()
-    const [viewLoading, setViewLoading] = useState<boolean>(false)
-    const { token } = useMarsbaseContracts()
-    const [nftsG, setNftsG] = useState<INft[]>([])
+    const { data: nfts } = useNfts()
+	const token = useTokenInfo()
+	const [currentTime, setCurrentTime] = useState<number>(Date.now())
 
-    useEffect(() => { /* конверт данных в тип для вью компонентов */
-        const setViewData = async () => {
-            setViewLoading(true)
-            const decimals = await token.decimals()
-            setNftsG(await nftDataToView(nfts, token, decimals))
-            setViewLoading(false)
-        }
+	const nftsG = useMemo(() =>
+	{
+		if (!token || !nfts)
+			return undefined
 
-        setViewData()
-    }, [nfts])
+		return nftDataToView(nfts, token.decimals, token.symbol, currentTime)
+	}, [nfts, token, currentTime])
 
-    const foo = async () => {
-        setNftsG(updateNfts(nftsG, await token.decimals()))
-    }
-
-    useInterval(foo, 1000)
-
+    useInterval(() => setCurrentTime(Date.now()), 500)
 
     return (
-        <NftsContext.Provider value={{ nftsG: nftsG, loading: loading || viewLoading }}>
+        <NftsContext.Provider value={{ nftsG: nftsG || [], loading: !nftsG }}>
             {props.children}
         </NftsContext.Provider>
     )

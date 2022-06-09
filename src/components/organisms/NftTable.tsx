@@ -16,7 +16,7 @@ import { NftOverviewWrapper } from "../molecules/NftOverview"
 import { NftProgressWrapper } from "../molecules/NftProgress"
 
 
-export interface INft {
+export type INftStatic = {
 	id: string
 	kind: TagLabelColors
 	amount: string
@@ -25,6 +25,8 @@ export interface INft {
 	price: string
 	started: string
     end: string
+}
+export type INftDynamic = {
 	locked: string
 	unclaimed: string
 	percentComplete: number
@@ -33,6 +35,7 @@ export interface INft {
 	available: string
 	availableUsd: string
 }
+export type INft = INftStatic & INftDynamic
 
 interface NftTableProps {
     columnsSorterNames: ReactNode[]

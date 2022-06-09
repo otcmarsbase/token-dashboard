@@ -1,8 +1,6 @@
-import { BigNumber, BigNumberish, Contract, ethers, FixedNumber, utils } from "ethers"
-import { INft } from "./components/organisms/NftTable"
-import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcmarsbase/token-contract-types"
-import { useContext } from "react"
-import { MarsbaseTokenContext } from "./hooks/mbase-contract"
+import { BigNumber, BigNumberish, ethers, utils } from "ethers"
+import { INft, INftDynamic, INftStatic } from "./components/organisms/NftTable"
+import { MarsbaseVesting__factory, MarsbaseVesting } from "@otcmarsbase/token-contract-types"
 import { TOKEN_THRESHOLD } from "./config"
 import { TagLabelColors } from "./components/atoms/Label"
 
@@ -45,12 +43,13 @@ export async function requestClaimOneSignature(nftId: string, vest: MarsbaseVest
 
 export function calculateKind(amount: BigNumber, decimals: number): TagLabelColors {
 
-    const _decimals = BigNumber.from(Math.pow(10, decimals).toString())
+    const _decimals = BigNumber.from(10).pow(decimals).toString()
+	const amountInTokens = amount.div(_decimals).toNumber()
 
     for (let i = 0; i < TOKEN_THRESHOLD.length; i++) {
         const tresh = TOKEN_THRESHOLD[i].threshold
         if (tresh != undefined)
-            if (amount.lte(tresh.mul(_decimals)))
+            if (amountInTokens < tresh)
                 return TOKEN_THRESHOLD[i].color
     }
 
@@ -73,71 +72,55 @@ function lerp(timePassed: number, amount: BigNumber, duration: BigNumber) {
     return ((amount.mul(BigNumber.from(Math.ceil(timePassed)))).div(duration)) /* и тут */
 }
 
-export async function nftDataToView(nfts: NftData[], token: MarsbaseToken, decimals: number): Promise<INft[]> {
-
-    let result: INft[] = []
-
-    for (let i = 0; i < nfts.length; i++) {
-
-        let nftView: INft = {
-            id: i.toString(),
-            kind: calculateKind(nfts[i].amount, decimals),
-            amount: utils.formatUnits(nfts[i].initialAmount, decimals),
-            locked: '0',
-            unclaimed: '0',
-            token: await token.symbol(),
-            started: new Date(nfts[i].initialStart.toNumber() * 1000).toString(),
-            timePassed: `0`,
-            timeLeft: `0`,
-            percentComplete: 0,
-            end: nfts[i].end.toString(),
-
-            amountUsd: '0',
-            price: '0',
-            available: '0',
-            availableUsd: '0',
-        }
-
-        result.push(nftView)
-    }
-    return updateNfts(result, decimals)
+export function convertBcNftToUi(nft: NftData, id: string, decimals: number, symbol: string): INftStatic
+{
+	return {
+		id: id,
+		kind: calculateKind(nft.amount, decimals),
+		amount: utils.formatUnits(nft.initialAmount, decimals),
+		token: symbol,
+		started: new Date(nft.initialStart.toNumber() * 1000).toString(),
+		end: nft.end.toString(),
+		
+		amountUsd: '0',
+		price: '0',
+	}
 }
 
-export const updateNfts = (nfts: INft[], decimals: number) => { /* динамическое обновление данных (пока что только unclaimed) */
-    let result: INft[] = []
+export function nftDataToView(nfts: NftData[], decimals: number, symbol: string, now: number): INft[] {
 
+	return nfts
+		.map((nft, i) => convertBcNftToUi(nft, i.toString(), decimals, symbol))
+		.map(nft => ({
+			...nft,
+			...calculateDynamicNft(nft, decimals, now)
+		}))
+}
+
+export const calculateDynamicNft = (nft: INftStatic, decimals: number, now: number): INftDynamic => { /* динамическое обновление данных (пока что только unclaimed) */
     const secondsInDay = 86400
 
-    for (let nft of nfts) {
+	let dyn = {} as INftDynamic
 
-        let _nft = nft
+	const started = Date.parse(nft.started) / 1000
+	const timePassed = Math.floor(now / 1000 - started)
+	const duration = parseInt(nft.end) - started
+	const amount = utils.parseUnits(nft.amount, decimals)
+	const totalTime = (BigNumber.from(nft.end).sub(BigNumber.from(started))).toNumber()
 
-        if (nft.percentComplete != 100) {
+	const percentComplete_temp = (timePassed * 100) / totalTime
+	const percentComplete = percentComplete_temp < 100 ? percentComplete_temp : 100
 
-            const started = Date.parse(nft.started) / 1000
-            const timePassed = Math.floor(Date.now() / 1000 - started)
-            const duration = parseInt(nft.end) - started
-            const amount = utils.parseUnits(nft.amount, decimals)
-            const totalTime = (BigNumber.from(nft.end).sub(BigNumber.from(started))).toNumber()
+	const unclaimed = lerp(timePassed, amount, BigNumber.from(duration))
 
-            const percentComplete_temp = (timePassed * 100) / totalTime
-            const percentComplete = percentComplete_temp < 100 ? percentComplete_temp : 100
+	const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
+	const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
 
-            const unclaimed = lerp(timePassed, amount, BigNumber.from(duration))
+	dyn.unclaimed = utils.formatUnits(unclaimed, decimals)
+	dyn.percentComplete = percentComplete
+	dyn.locked = utils.formatUnits(amount.sub(unclaimed), decimals)
+	dyn.timePassed = `${daysPassed} days`
+	dyn.timeLeft = `${daysLeft} days`
 
-            const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
-            const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
-
-            _nft.unclaimed = utils.formatUnits(unclaimed, decimals)
-            _nft.percentComplete = percentComplete
-            _nft.locked = utils.formatUnits(amount.sub(unclaimed), decimals)
-            _nft.timePassed = `${daysPassed} days`
-            _nft.timeLeft = `${daysLeft} days`
-
-        }
-
-        result.push(_nft)
-
-    }
-    return result
+    return dyn
 }
