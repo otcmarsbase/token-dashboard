@@ -1,16 +1,14 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 
 import {useContext, FC, ReactNode} from "react"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
 
-import {Table, TableRow, TableHead, TableData, TableFooter} from "../templates/TokenDashboardTemplate"
+import {Table, TableRow, TableHead, TableData} from "../templates/TokenDashboardTemplate"
 import {TagLabelColors} from "../atoms/Label"
-import {BigNumber, FixedNumber} from "ethers"
 import ConnectWallet from "../molecules/ConnectWallet";
 import {style} from "typestyle";
 import NftCardMobile from "../molecules/NftCardMobile";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-import {ClipLoader} from "react-spinners";
 import TableLoading from "../molecules/TableLoading";
 import { ColumnSorter } from "../molecules/ColumnSorter"
 import { NftAvailableClaimWrapper } from "../molecules/NftAvailableClaim"
@@ -43,14 +41,60 @@ interface NftTableProps {
     onActions: (nftId: string) => void
 }
 
+const MobileNftContainer: React.FC<PropsWithChildren<{}>> = props =>
+{
+	const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
+
+	return (
+		<div className={mobileNftContainer(isMobile, isTablet)}>
+			{props.children}
+		</div>
+	)
+}
+
+export const NftCardDesktop: FC<{ nft: INft, onClaim: () => void, onActions: () => void }> = ({ nft, ...props }) => (
+	<TableRow key={nft.id}>
+		<TableData justifyContent={'start'}>
+			<NftOverviewWrapper
+				amount={nft.amount}
+				token={nft.token}
+				buyPrice={nft.price}
+				unvestStartTimestamp={nft.started}
+				kind={nft.kind}
+				usdValue={nft.amountUsd}
+			/>
+		</TableData>
+		<TableData justifyContent={'center'}>
+			<NftProgressWrapper
+				amount={nft.amount}
+				token={nft.token}
+				locked={nft.locked}
+				percentComplete={nft.percentComplete}
+				timePassed={nft.timePassed}
+				timeLeft={nft.timeLeft}
+			/>
+		</TableData>
+		<TableData justifyContent={'end'}>
+			<NftAvailableClaimWrapper
+				onClaim={props.onClaim}
+				onActions={props.onActions}
+				available={nft.unclaimed}
+				availableUsd={nft.availableUsd}
+				token={nft.token}
+			/>
+		</TableData>
+	</TableRow>
+)
+
 export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, onActions}) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
 
     if (isMobile || isTablet) {
         return (
-            <div className={mobileNftContainer(isMobile, isTablet)}>
-                {nfts?.map((nft) =>
+            <MobileNftContainer>
+                {nfts.map((nft) =>
                     <NftCardMobile
                         key={nft.id}
                         onClaim={onClaim}
@@ -58,55 +102,29 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
                         {...nft}
                     />
                 )}
-            </div>
+            </MobileNftContainer>
         )
     }
 
     return (
         <Table>
             <thead>
-            <TableRow main={false}>
-                {columnsSorterNames?.map((columnSorterName, index) => (
-                    <TableHead key={index}>
-                        <ColumnSorter text={columnSorterName}/>
-                    </TableHead>
-                ))}
-            </TableRow>
+				<TableRow main={false}>
+					{columnsSorterNames.map((name, index) => (
+						<TableHead key={index}>
+							<ColumnSorter text={name}/>
+						</TableHead>
+					))}
+				</TableRow>
             </thead>
             <tbody className={styledTBody}>
-            {nfts?.map((nft) => (
-                <TableRow key={nft.id}>
-                    <TableData justifyContent={'start'}>
-                        <NftOverviewWrapper
-                            amount={nft.amount.toString()}
-                            token={nft.token}
-                            buyPrice={nft.price.toString()}
-                            unvestStartTimestamp={nft.started}
-                            kind={nft.kind}
-                            usdValue={nft.amountUsd.toString()}
-                        />
-                    </TableData>
-                    <TableData justifyContent={'center'}>
-                        <NftProgressWrapper
-                            amount={nft.amount}
-                            token={nft.token}
-                            locked={nft.locked}
-                            percentComplete={nft.percentComplete}
-                            timePassed={nft.timePassed}
-                            timeLeft={nft.timeLeft}
-                        />
-                    </TableData>
-                    <TableData justifyContent={'end'}>
-                        <NftAvailableClaimWrapper
-                            onClaim={() => onClaim(nft.id)}
-                            onActions={() => onActions(nft.id)}
-                            available={nft.unclaimed}
-                            availableUsd={nft.availableUsd}
-                            token={nft.token}
-                        />
-                    </TableData>
-                </TableRow>
-            ))}
+				{nfts.map((nft) => (
+					<NftCardDesktop
+						nft={nft}
+						onClaim={() => onClaim(nft.id)}
+						onActions={() => onActions(nft.id)}
+					/>
+				))}
             </tbody>
         </Table>
     )
