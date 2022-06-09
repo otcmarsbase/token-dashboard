@@ -17,17 +17,6 @@ export function createApi(mbaseAddress: string, vestingAddress: string, provider
     }
 }
 
-export async function requestMetamaskConnect(): Promise<string | undefined> {
-    if (!window.ethereum) {
-        console.log('MetaMask is not installed!')
-        return
-    }
-
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
-
-    return accounts[0]
-}
-
 export async function getNftList(address: string, vest: MarsbaseVesting) {
     const vestingsIds = await vest.getVestingsByOwner(address)
     const records = await Promise.all(vestingsIds.map((x: BigNumberish) => vest.getVestingRecord(x)))

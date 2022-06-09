@@ -3,24 +3,18 @@ import TokenDashboard from "./components/pages/TokenDashboard"
 import { AppStateProvider } from "./contexts/AppStateContext"
 import { DictionaryProvider } from "./contexts/DictionaryContext"
 import { MetaMaskProvider } from "metamask-react"
-import { JrpcProviderPrivnet, WalletContextProvider } from "./hooks/jrpc-provider"
+import { JrpcProviderPrivnet, EthersSignerMetamaskProvider } from "./hooks/jrpc-provider"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "./hooks/mbase-contract"
 import { PRIVNET } from "./config"
 import "./styles.css"
 import { NftsContextProvider } from "./contexts/NftsContext"
-
-declare global {
-	interface Window {
-		ethereum: any
-	}
-}
 
 export default function App() {
 	return (
 		<DictionaryProvider lang="en">
 			<JrpcProviderPrivnet>
 				<MetaMaskProvider>
-					<WalletContextProvider>
+					<EthersSignerMetamaskProvider chainId={"0x" + PRIVNET.chainId.toString(16)}>
 						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
 							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
 								<AppStateProvider>
@@ -30,7 +24,7 @@ export default function App() {
 								</AppStateProvider>
 							</MarsbaseVestingProvider>
 						</MarsbaseTokenProvider>
-					</WalletContextProvider>
+					</EthersSignerMetamaskProvider>
 				</MetaMaskProvider>
 			</JrpcProviderPrivnet>
 		</DictionaryProvider >
