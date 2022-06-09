@@ -1,4 +1,4 @@
-import React from "react"
+import React, { StrictMode } from "react"
 import TokenDashboard from "./components/pages/TokenDashboard"
 import { AppStateProvider } from "./contexts/AppStateContext"
 import { DictionaryProvider } from "./contexts/DictionaryContext"
@@ -11,22 +11,24 @@ import { NftsContextProvider } from "./contexts/NftsContext"
 
 export default function App() {
 	return (
-		<DictionaryProvider lang="en">
-			<JrpcProviderPrivnet>
-				<MetaMaskProvider>
-					<EthersSignerMetamaskProvider chainId={"0x" + PRIVNET.chainId.toString(16)}>
-						<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
-							<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
-								<AppStateProvider>
-									<NftsContextProvider>
-										<TokenDashboard />
-									</NftsContextProvider>
-								</AppStateProvider>
-							</MarsbaseVestingProvider>
-						</MarsbaseTokenProvider>
-					</EthersSignerMetamaskProvider>
-				</MetaMaskProvider>
-			</JrpcProviderPrivnet>
-		</DictionaryProvider >
+		<StrictMode>
+			<DictionaryProvider lang="en">
+				<JrpcProviderPrivnet>
+					<MetaMaskProvider>
+						<EthersSignerMetamaskProvider chainId={"0x" + PRIVNET.chainId.toString(16)}>
+							<MarsbaseTokenProvider address={PRIVNET.mbaseTokenAddress}>
+								<MarsbaseVestingProvider address={PRIVNET.mbaseVestingAddress}>
+									<AppStateProvider>
+										<NftsContextProvider>
+											<TokenDashboard />
+										</NftsContextProvider>
+									</AppStateProvider>
+								</MarsbaseVestingProvider>
+							</MarsbaseTokenProvider>
+						</EthersSignerMetamaskProvider>
+					</MetaMaskProvider>
+				</JrpcProviderPrivnet>
+			</DictionaryProvider>
+		</StrictMode>
 	)
 }
