@@ -28,7 +28,7 @@ const VestingSplit = () => {
             <div className={body(isTablet)}>
                 <NftView/>
                 {/*<VestingToSplit/>*/}
-                <VestingSplitDetails/>
+                <VestingSplitDetails title="test title"/>
             </div>
             {(isTablet || isMobile) && <VestingSplitNavbar/>}
             {/*<SelectNftModal/>*/}
