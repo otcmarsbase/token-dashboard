@@ -34,7 +34,6 @@ export const NftProgress: FC<NftProgressProps> = (
                 <Text colors={'gray'} size={'_10'}>
                     <span style={{fontWeight: 600}}>{`${locked} ${token} ${lockedCaption}`}</span>
                 </Text>
-                <Text size={'_10'}>{`${amount} ${token}`}</Text>
             </div>
             <div>
                 <div className={progressContainer}>

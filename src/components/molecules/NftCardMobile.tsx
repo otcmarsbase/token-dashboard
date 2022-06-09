@@ -26,7 +26,6 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
             amountUsd,
             amount,
             availableUsd,
-            available,
             token,
             timePassed,
             timeLeft,
@@ -87,15 +86,14 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                                 <b>Lot of NFT</b>
                             </Text>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
-                                <Text>{amount.toString()} MBase</Text>
-                                <Text colors={'gray'} size={'_11'}>~{amountUsd.toString()}$</Text>
+                                <Text>{amount} MBase</Text>
+                                <Text colors={'gray'} size={'_11'}>~{amountUsd}$</Text>
                             </div>
                         </div>
                         <div style={{display: 'flex', flexDirection: 'column', width: '100%', gap: '5px'}}>
                             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
-                                <Text size={'_10'}>1,500,780 MBS</Text>
                                 <Text colors={'gray'} size={'_10'}>
-                                    <b>{locked.toString()} {token} Locked</b>
+                                    <b>{locked} {token} Locked</b>
                                 </Text>
                             </div>
                             <div>
@@ -105,12 +103,12 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                             </div>
                             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
                                 <div>
-                                    <Text size={'_10'}>{percentComplete}%</Text>
-                                    <Text size={'_10'} colors={'gray'}>{timeLeft}</Text>
-                                </div>
-                                <div>
                                     <Text size={'_10'}>{100 - percentComplete}%</Text>
                                     <Text size={'_10'} colors={'gray'}>{timePassed}</Text>
+                                </div>
+                                <div>
+                                    <Text size={'_10'}>{percentComplete}%</Text>
+                                    <Text size={'_10'} colors={'gray'}>{timeLeft}</Text>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +117,7 @@ const NftCardMobile: FC<NftCardMobileProps> = (props) => {
                                 <b>Availible for claim</b>
                             </Text>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
-                                <Text colors={'red'}>{available.toString()} {token}</Text>
+                                <Text colors={'red'}>{unclaimed} {token}</Text>
                                 <Text colors={'gray'} size={'_11'}>~{availableUsd.toString()}$</Text>
                             </div>
                         </div>

@@ -29,7 +29,7 @@ export const NftAvailableClaim: FC<NftAvailableClaimProps> = (
         <div className={content}>
             <div className={contentAmount}>
                 <Text colors={"red"} size={'_14'}><b>{`${available} ${token}`}</b></Text>
-                <Text colors={'gray'} size={'_12'}>~{availableUsd}%</Text>
+                <Text colors={'gray'} size={'_12'}>~{availableUsd}$</Text>
             </div>
             <div className={contentActions}>
                 <Button size={'md'} onClick={onClaim}>
