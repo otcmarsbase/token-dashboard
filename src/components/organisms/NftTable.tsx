@@ -123,6 +123,7 @@ export const NftTable: FC<NftTableProps> = ({columnsSorterNames, nfts, onClaim, 
             <tbody className={styledTBody}>
 				{nfts.map((nft) => (
 					<NftCardDesktop
+						key={nft.id}
 						nft={nft}
 						onClaim={() => onClaim(nft.id)}
 						onActions={() => onActions(nft.id)}
