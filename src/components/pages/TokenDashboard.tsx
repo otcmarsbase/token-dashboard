@@ -16,10 +16,6 @@ import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
 import { Header } from "../templates"
-import { useNfts } from "../../hooks/useNfts"
-import { NftData, nftDataToView } from "../../api"
-import { MarsbaseTokenContext, useMarsbaseContracts } from "../../hooks/mbase-contract"
-import { useMetaMask } from "metamask-react";
 
 import ConnectWallet from "../molecules/ConnectWallet";
 import adImage from "../../assets/ad.png";

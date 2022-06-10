@@ -1,10 +1,10 @@
 import { BigNumber, BigNumberish, ethers, utils } from "ethers"
 import { INft, INftDynamic, INftStatic } from "./components/organisms/NftTable"
-import { MarsbaseVesting__factory, MarsbaseVesting } from "@otcmarsbase/token-contract-types"
+import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcmarsbase/token-contract-types"
 import { TOKEN_THRESHOLD } from "./config"
 import { TagLabelColors } from "./components/atoms/Label"
 
-export type NftData = Awaited<ReturnType<MarsbaseVesting["getVestingRecord"]>>
+export type NftData = Awaited<ReturnType<typeof getVestingNftInfo>>
 
 export function createApi(mbaseAddress: string, vestingAddress: string, provider: ethers.Signer | ethers.providers.Provider) {
     let vest = MarsbaseVesting__factory.connect(vestingAddress, provider)
@@ -15,9 +15,18 @@ export function createApi(mbaseAddress: string, vestingAddress: string, provider
     }
 }
 
+export async function getVestingNftInfo(id: BigNumberish, vest: MarsbaseVesting)
+{
+	let nft = await vest.getVestingRecord(id)
+	return {
+		id: id.toString(),
+		...nft,
+	}
+}
+
 export async function getNftList(address: string, vest: MarsbaseVesting) {
     const vestingsIds = await vest.getVestingsByOwner(address)
-    const records = await Promise.all(vestingsIds.map((id: BigNumberish) => vest.getVestingRecord(id)))
+    const records = await Promise.all(vestingsIds.map(id => getVestingNftInfo(id, vest)))
     return records
 }
 
@@ -72,10 +81,10 @@ function lerp(timePassed: number, amount: BigNumber, duration: BigNumber) {
     return ((amount.mul(BigNumber.from(Math.ceil(timePassed)))).div(duration)) /* и тут */
 }
 
-export function convertBcNftToUi(nft: NftData, id: string, decimals: number, symbol: string): INftStatic
+export function convertBcNftToUi(nft: NftData, decimals: number, symbol: string): INftStatic
 {
 	return {
-		id: id,
+		id: nft.id,
 		kind: calculateKind(nft.amount, decimals),
 		amount: utils.formatUnits(nft.initialAmount, decimals),
 		token: symbol,
@@ -90,7 +99,7 @@ export function convertBcNftToUi(nft: NftData, id: string, decimals: number, sym
 export function nftDataToView(nfts: NftData[], decimals: number, symbol: string, now: number): INft[] {
 
 	return nfts
-		.map((nft, i) => convertBcNftToUi(nft, i.toString(), decimals, symbol))
+		.map(nft => convertBcNftToUi(nft, decimals, symbol))
 		.map(nft => ({
 			...nft,
 			...calculateDynamicNft(nft, decimals, now)
