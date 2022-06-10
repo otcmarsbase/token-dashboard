@@ -4,7 +4,6 @@ import { PRIVNET } from "../config"
 import { MetaMaskProvider, useMetaMask } from "metamask-react"
 import { IMetaMaskContext } from "metamask-react/lib/metamask-context"
 import { useErrorHandlers } from "./errors"
-import detectEthereumProvider from "@metamask/detect-provider"
 
 export const Web3ProviderContext = React.createContext<ethers.providers.JsonRpcProvider | undefined>(undefined)
 

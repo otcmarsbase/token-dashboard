@@ -17,7 +17,7 @@ export function createApi(mbaseAddress: string, vestingAddress: string, provider
 
 export async function getNftList(address: string, vest: MarsbaseVesting) {
     const vestingsIds = await vest.getVestingsByOwner(address)
-    const records = await Promise.all(vestingsIds.map((x: BigNumberish) => vest.getVestingRecord(x)))
+    const records = await Promise.all(vestingsIds.map((id: BigNumberish) => vest.getVestingRecord(id)))
     return records
 }
 
