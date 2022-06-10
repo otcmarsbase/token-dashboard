@@ -100,8 +100,6 @@ export function nftDataToView(nfts: NftData[], decimals: number, symbol: string,
 export const calculateDynamicNft = (nft: INftStatic, decimals: number, now: number): INftDynamic => { /* динамическое обновление данных (пока что только unclaimed) */
     const secondsInDay = 86400
 
-	let dyn = {} as INftDynamic
-
 	const started = Date.parse(nft.started) / 1000
 	const timePassed = Math.floor(now / 1000 - started)
 	const duration = parseInt(nft.end) - started
@@ -116,11 +114,13 @@ export const calculateDynamicNft = (nft: INftStatic, decimals: number, now: numb
 	const daysPassed = (percentComplete * 0.01 * totalTime) / secondsInDay
 	const daysLeft = ((1 - percentComplete * 0.01) * totalTime) / secondsInDay
 
-	dyn.unclaimed = utils.formatUnits(unclaimed, decimals)
-	dyn.percentComplete = percentComplete
-	dyn.locked = utils.formatUnits(amount.sub(unclaimed), decimals)
-	dyn.timePassed = `${daysPassed} days`
-	dyn.timeLeft = `${daysLeft} days`
-
-    return dyn
+	return {
+		unclaimed: utils.formatUnits(unclaimed, decimals),
+		percentComplete: percentComplete,
+		locked: utils.formatUnits(amount.sub(unclaimed), decimals),
+		timePassed: `${daysPassed} days`,
+		timeLeft: `${daysLeft} days`,
+		available: utils.formatUnits(unclaimed, decimals),
+		availableUsd: '0',
+	}
 }
