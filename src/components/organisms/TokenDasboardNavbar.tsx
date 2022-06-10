@@ -8,6 +8,7 @@ import dashboardIcon from '../../assets/dashboard.svg';
 import profileIcon from '../../assets/profile.svg';
 import moreIcon from '../../assets/more.svg';
 import {createPortal} from "react-dom";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface INavbarMenu {
     text: string;
@@ -59,8 +60,16 @@ const navbarMenu: INavbarMenu[] = [
 
 const TokenDashboardNavbar = () => {
     const modalsRoot = document.getElementById('modals');
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
 
-    if (!modalsRoot) return null;
+    if (!modalsRoot) {
+        return null;
+    }
+
+    if(!isMobile || !isTablet) {
+        return null
+    }
 
     return createPortal(
         <div className={navbar}>

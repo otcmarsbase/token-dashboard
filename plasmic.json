@@ -147,6 +147,19 @@
           "scheme": "blackbox",
           "componentType": "component",
           "plumeType": "text-input"
+        },
+        {
+          "id": "514gf0jdxr",
+          "name": "Container",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicContainer.tsx",
+          "importSpec": {
+            "modulePath": "Container.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicContainer.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

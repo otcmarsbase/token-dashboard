@@ -9,7 +9,7 @@ interface HowIsProps {
     subTitle: ReactNode;
 }
 
-const HowIs: FC<HowIsProps> = ({title, subTitle}) => {
+const HowIsDistributionDone: FC<HowIsProps> = ({title, subTitle}) => {
     return (
         <div className={container}>
             <div className={imageContainer}>
@@ -18,7 +18,7 @@ const HowIs: FC<HowIsProps> = ({title, subTitle}) => {
                     <span style={{display: 'block',marginBottom: '6px'}}/>
                     <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
                     <video controls className={styledVideo}>
-                        <source src="URL"/>
+                        <source src=""/>
                     </video>
                 </div>
             </div>
@@ -46,7 +46,6 @@ const content = style({
 const styledVideo = style({
     width: '200px',
     height: '108px',
-    // backgroundColor: 'rgb(18,18,18)',
     marginTop: '18px',
     borderRadius: '16px',
     zIndex: 2
@@ -55,5 +54,5 @@ const styledVideo = style({
 export const HowIsLocalized = () => {
     const {nft} = useContext(DictionaryContext);
 
-    return <HowIs title={nft.dashboard.distribution_video.header} subTitle={nft.dashboard.distribution_video.description}/>
+    return <HowIsDistributionDone title={nft.dashboard.distribution_video.header} subTitle={nft.dashboard.distribution_video.description}/>
 }

@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, useMemo, useState } from "react"
 import { nftDataToView } from "../api"
-import { INft } from "../components/organisms/NftTable"
 import { useTokenInfo } from "../hooks/mbase-contract"
 import { useInterval } from "../hooks/useInterval"
 import { useNfts } from "../hooks/useNfts"
+import {INft} from "../components/organisms/types";
 
 export type NftsContextType = {
     nftsG: INft[]

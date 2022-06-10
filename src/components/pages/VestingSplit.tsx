@@ -5,14 +5,8 @@ import VestingSplitSteps from "../organisms/VestingSplitSteps";
 import {style} from "typestyle";
 import NftView from "../organisms/NftView";
 import VestingSplitDetails from "../organisms/VestingSplitDetails";
-import IsBeingSplitted from "../molecules/IsBeingSplitted";
-import VestingToSplit from "../organisms/VestingToSplit";
-import SplitError from "../molecules/SplitError";
-import SuccessfullySplitted from "../molecules/SuccessfullySplitted";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-import {Text} from '../atoms/Text';
 import VestingSplitNavbar from "../organisms/TokenDasboardNavbar";
-import SelectNftModal from "../organisms/SelectNftModal";
 
 const VestingSplit = () => {
     const isMobile = useMediaQuery(Queries.mobile)

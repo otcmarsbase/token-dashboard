@@ -1,0 +1,105 @@
+.root {
+  flex-direction: column;
+  display: inline-flex;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.root > :global(.__wab_flex-container) {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rootdirection_horizontal {
+  display: flex;
+  flex-direction: row;
+}
+.rootdirection_horizontal > :global(.__wab_flex-container) {
+  flex-direction: row;
+  margin-top: calc(0px - 0px);
+  height: calc(100% + 0px);
+}
+.rootdirection_horizontal > :global(.__wab_flex-container) > *,
+.rootdirection_horizontal
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > *,
+.rootdirection_horizontal > :global(.__wab_flex-container) > picture > img,
+.rootdirection_horizontal
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-top: 0px;
+}
+.rootjustify_between > :global(.__wab_flex-container) {
+  justify-content: space-between;
+}
+.rootpadding__0 {
+  padding: 20px;
+}
+.rootpadding__10 {
+  padding: 10px;
+}
+.rootpadding__15 {
+  padding: 15px;
+}
+.rootgap__5 > :global(.__wab_flex-container) {
+  margin-left: calc(0px - 0px);
+  width: calc(100% + 0px);
+  margin-top: calc(0px - 5px);
+  height: calc(100% + 5px);
+}
+.rootgap__5 > :global(.__wab_flex-container) > *,
+.rootgap__5 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.rootgap__5 > :global(.__wab_flex-container) > picture > img,
+.rootgap__5
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 0px;
+  margin-top: 5px;
+}
+.rootgap__10 > :global(.__wab_flex-container) {
+  margin-left: calc(0px - 0px);
+  width: calc(100% + 0px);
+  margin-top: calc(0px - 10px);
+  height: calc(100% + 10px);
+}
+.rootgap__10 > :global(.__wab_flex-container) > *,
+.rootgap__10 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.rootgap__10 > :global(.__wab_flex-container) > picture > img,
+.rootgap__10
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 0px;
+  margin-top: 10px;
+}
+.rootgap__15 > :global(.__wab_flex-container) {
+  margin-left: calc(0px - 0px);
+  width: calc(100% + 0px);
+  margin-top: calc(0px - 15px);
+  height: calc(100% + 15px);
+}
+.rootgap__15 > :global(.__wab_flex-container) > *,
+.rootgap__15 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.rootgap__15 > :global(.__wab_flex-container) > picture > img,
+.rootgap__15
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 0px;
+  margin-top: 15px;
+}
+.rootalign_start > :global(.__wab_flex-container) {
+  justify-content: center;
+  align-items: flex-start;
+}
+.rootalign_end > :global(.__wab_flex-container) {
+  justify-content: center;
+  align-items: flex-end;
+}

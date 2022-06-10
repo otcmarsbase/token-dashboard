@@ -7,14 +7,7 @@ import {Text} from "../atoms/Text"
 
 import Button from "../Button"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-
-interface SummaryTotalUnclaimedProps {
-    title: ReactNode
-    unclaimedAmount: ReactNode
-    buttonText: ReactNode
-    token: ReactNode
-    onClaimAll: () => void;
-}
+import {SummaryTotalUnclaimedLocalizedProps, SummaryTotalUnclaimedProps} from "../stateful/types";
 
 export const SummaryTotalUnclaimed: FC<SummaryTotalUnclaimedProps> = (
     {
@@ -38,6 +31,12 @@ export const SummaryTotalUnclaimed: FC<SummaryTotalUnclaimedProps> = (
     )
 }
 
+export const SummaryTotalUnclaimedLocalized: FC<SummaryTotalUnclaimedLocalizedProps> = (props) => {
+    const {nft} = useContext(DictionaryContext)
+    return <SummaryTotalUnclaimed {...props} buttonText={nft.dashboard.claim_all.claim_all_btn}
+                                  title={nft.dashboard.claim_all.total_unclaimed}/>
+}
+
 const container = (isMobile: boolean) => style({
     display: "flex",
     gap: "5px",
@@ -52,25 +51,3 @@ const content = (isMobile: boolean) => style({
     width: isMobile ? '270px' : 'unset',
     marginRight: '20px',
 })
-
-type SummaryTotalUnclaimedLocalizedProps = Pick<SummaryTotalUnclaimedProps, "unclaimedAmount" | "token" | 'onClaimAll'>
-
-export const SummaryTotalUnclaimedLocalized: FC<SummaryTotalUnclaimedLocalizedProps> = (props) => {
-    const {nft} = useContext(DictionaryContext)
-    return <SummaryTotalUnclaimed {...props} buttonText={nft.dashboard.claim_all.claim_all_btn}
-                                  title={nft.dashboard.claim_all.total_unclaimed}/>
-}
-
-interface SummaryTotalUnclaimedWrapperProps {
-    unclaimedAmount: number
-    token: string;
-    onClaimAll: () => void;
-}
-
-export const SummaryTotalUnclaimedWrapper: FC<SummaryTotalUnclaimedWrapperProps> = ({
-                                                                                        unclaimedAmount,
-                                                                                        token,
-                                                                                        onClaimAll
-                                                                                    }) => {
-    return <SummaryTotalUnclaimedLocalized unclaimedAmount={unclaimedAmount} token={token} onClaimAll={onClaimAll}/>
-}

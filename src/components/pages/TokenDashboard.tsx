@@ -1,53 +1,34 @@
-import React, { PropsWithChildren, useEffect, useState } from "react"
+import React  from "react"
 
-import {
-    TokenDashboardTemplate,
-    Summary as TDTSummary,
-} from "../templates/TokenDashboardTemplate"
-import { Queries, useMediaQuery } from "../../hooks/mediaQuery";
-import { style } from "typestyle";
-import NftCardMobile from "../molecules/NftCardMobile";
+import {TokenDashboardTemplate, Summary as TDTSummary} from "../templates/TokenDashboardTemplate"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
-import { ClaimRewardsModal } from "../molecules/ClaimRewardsModal";
-import { NftTableSummary } from "../organisms/NftTableSummary"
 import { TokenDashboardHeader } from "../organisms/TokenDashboardHeader"
-import { INft, NftTableWrapper } from "../organisms/NftTable"
 import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
 import { Header } from "../templates"
-
-import ConnectWallet from "../molecules/ConnectWallet";
-import adImage from "../../assets/ad.png";
-import Notification from "../molecules/Notification";
-import {NftTableSummaryWrapper} from "../organisms/NftTableSummary";
-import {HowIsLocalized} from "../molecules/HowIs";
 import { NftsContext } from "../../contexts/NftsContext";
+import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
+import {NftTable} from "../organisms/NftTable";
+import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
 
 const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)
-    const [viewLoading, setViewLoading] = useState(false)
     const { nftsG, loading } = useContext(NftsContext)
-
-    const isMobile = useMediaQuery(Queries.mobile);
-    const isTablet = useMediaQuery(Queries.tablet);
 
     return (
         <>
             <MemoHeader />
-            <TokenDashboardTemplate sidebar={(isMobile || !isTablet) && <HowIsLocalized />}>
+            <TokenDashboardTemplate>
                 <MemoTableSummary />
-                {viewLoading || loading ? 'loading' : ''}
-
-                {/* <ClaimRewardsModal/> */}
-                <NftTableWrapper
-                    loading={loading || viewLoading}
+                <NftTable
                     nfts={nftsG}
                     onClaim={handlers.onClaim}
                     onActions={handlers.onActions}
                 />
             </TokenDashboardTemplate>
-            {(isMobile || isTablet) && <TokenDashboardNavbar />}
+            <TokenDashboardNavbar />
+            <ClaimRewardsModalLocalized token={'MBase'} amount={36000000}/>
         </>
     )
 }

@@ -2,21 +2,7 @@ import React, {FC, ReactNode} from 'react';
 import {Text} from '../atoms/Text';
 import {style} from "typestyle";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-
-interface IDates {
-    activation: string;
-    start: string;
-    end: string;
-}
-
-interface NftDetailsItemProps {
-    title: string;
-    amount?: number;
-    usd?: number;
-    buyPrice?: number;
-    token?: string;
-    dates?: IDates
-}
+import {NftDetailsItemProps} from "./types";
 
 const NftDetailsItem: FC<NftDetailsItemProps> = (
     {

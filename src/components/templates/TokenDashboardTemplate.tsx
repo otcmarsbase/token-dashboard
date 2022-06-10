@@ -1,6 +1,7 @@
 import React, {FC, ReactNode, useEffect} from "react"
 import {style} from "typestyle"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {HowIsLocalized} from "../molecules/HowIsDistributionDone";
 
 export const Summary: FC<{ children: ReactNode }> = ({children}) => {
     return <div className={styledTableSummary}>{children}</div>
@@ -11,6 +12,13 @@ const styledTableSummary = style({
 })
 
 export const Table: FC<{ children: ReactNode }> = ({children}) => {
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet)
+
+    if (isMobile || isTablet) {
+        return null
+    }
+
     return <table className={tableStyle}>{children}</table>
 }
 
@@ -72,7 +80,7 @@ export const TableData: FC<{ children: ReactNode, justifyContent: string }> = (
     )
 }
 
-export const TokenDashboardTemplate: FC<{ children: ReactNode, sidebar?: ReactNode }> = ({children, sidebar}) => {
+export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet)
 
@@ -82,9 +90,9 @@ export const TokenDashboardTemplate: FC<{ children: ReactNode, sidebar?: ReactNo
                 <div className={content(isMobile, isTablet)}>
                     {children}
                 </div>
-                {sidebar && (
+                {(isMobile || !isTablet) && (
                     <div className={content(isMobile, isTablet)}>
-                        {sidebar}
+                        <HowIsLocalized/>
                     </div>
                 )}
             </main>
@@ -105,7 +113,3 @@ const main = (isMobile: boolean, isTablet: boolean) => style({
 const content = (isMobile: boolean, isTablet: boolean) => style({
     padding: (!isMobile && isTablet) ? '20px' : "unset",
 })
-
-export const TableFooter: FC<{ children: ReactNode }> = ({children}) => {
-    return <tfoot>{children}</tfoot>
-}

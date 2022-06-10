@@ -1,27 +1,22 @@
-import React from "react"
+import React, {FC} from 'react';
+import {Text} from "../atoms/Text";
+import {style} from "typestyle";
+import {NftCardMobileProps} from "./types";
 
-import {FC, useContext} from "react"
-import {style} from "typestyle"
-import {DictionaryContext} from "../../contexts/DictionaryContext"
-import {Text} from "../atoms/Text"
-import {NftProgressLocalizedProps, NftProgressProps} from "./types";
-
-export const NftProgress: FC<NftProgressProps> = (
+export const NftCardMobileProgressBar: FC<Pick<NftCardMobileProps,
+    'locked' | 'token' | 'percentComplete' | 'timePassed' | 'timeLeft'>> = (
     {
-        token,
         locked,
+        token,
         percentComplete,
         timePassed,
-        percentLeft,
-        timeLeft,
-        lockedCaption
+        timeLeft
     }) => {
-
     return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '264px', gap: '5px', padding: '16px'}}>
+        <div style={{display: 'flex', flexDirection: 'column', width: '100%', gap: '5px'}}>
             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
                 <Text colors={'gray'} size={'_10'}>
-                    <span style={{fontWeight: 600}}>{`${locked} ${token} ${lockedCaption}`}</span>
+                    <b>{locked} {token} Locked</b>
                 </Text>
             </div>
             <div>
@@ -30,31 +25,24 @@ export const NftProgress: FC<NftProgressProps> = (
                 </div>
             </div>
             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
-                <div style={{display: 'flex', gap: '5px'}}>
-                    <Text size={'_10'}>{percentLeft}%</Text>
+                <div>
+                    <Text size={'_10'}>{100 - percentComplete}%</Text>
                     <Text size={'_10'} colors={'gray'}>{timePassed}</Text>
                 </div>
-                <div style={{display: 'flex', gap: '5px'}}>
+                <div>
                     <Text size={'_10'}>{percentComplete}%</Text>
                     <Text size={'_10'} colors={'gray'}>{timeLeft}</Text>
                 </div>
             </div>
         </div>
-    )
-}
-
-export const NftProgressLocalized: FC<NftProgressLocalizedProps> = (props) => {
-    const {nft} = useContext(DictionaryContext)
-
-    return <NftProgress {...props} lockedCaption={nft.dashboard.nft_table.nft_card.locked_caption}/>
-}
+    );
+};
 
 const progressContainer = style({
-    backgroundColor: 'rgba(104,106,110,0.2)',
+    backgroundColor: 'rgba(104, 106, 110, 1)',
     borderRadius: '4px',
     position: 'relative',
-    height: '6px',
-    width: '100%',
+    height: '6px'
 })
 
 const progressLine = (progress: number) => style({
@@ -67,7 +55,3 @@ const progressLine = (progress: number) => style({
     background: 'linear-gradient(90deg, #FF1414 0%, #EAEE2C 48.44%, #7BDA1D 100%)',
     borderRadius: '4px',
 })
-
-
-
-

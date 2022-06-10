@@ -3,17 +3,10 @@ import React from "react"
 import {Text} from '../atoms/Text'
 import {Button} from '../atoms/Button'
 import {style} from "typestyle"
-import {FC, ReactNode, useContext} from "react"
+import {FC, useContext} from "react"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-
-interface HeaderActionsProps {
-    btnText: ReactNode
-    btnGradientText: ReactNode
-    onSellWithPremium: () => void;
-    onBuyNow: () => void
-    token: string
-}
+import {HeaderActionsLocalizedProps, HeaderActionsProps} from "./types";
 
 export const HeaderActions: FC<HeaderActionsProps> = (
     {
@@ -45,21 +38,12 @@ const container = (isMobile: boolean, isTablet: boolean) => style({
     marginBottom: isMobile ? '24px' : "33px"
 })
 
-type HeaderActionsLocalizedProps = Omit<HeaderActionsProps, 'btnText' | 'btnGradientText'>
-
 export const HeaderActionsLocalized: FC<HeaderActionsLocalizedProps> = (props) => {
     const {nft} = useContext(DictionaryContext)
 
-    return <HeaderActions {...props} btnText={nft.dashboard.sell_with_premium_btn(props.token)}
-                          btnGradientText={nft.dashboard.buy_now_btn(props.token)}/>
-}
-
-interface HeaderActionsWrapperProps {
-    token: string;
-    onSellWithPremium: () => void;
-    onBuyNow: () => void
-}
-
-export const HeaderActionsWrapper: FC<HeaderActionsWrapperProps> = (props) => {
-    return <HeaderActionsLocalized {...props} />
+    return <HeaderActions
+        {...props}
+        btnText={nft.dashboard.sell_with_premium_btn(props.token)}
+        btnGradientText={nft.dashboard.buy_now_btn(props.token)}
+    />
 }

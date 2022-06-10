@@ -8,18 +8,7 @@ import silverNft from "../../assets/silverNft.svg";
 import {Text} from '../atoms/Text'
 import {Label} from '../atoms/Label'
 import {style} from "typestyle";
-
-export type ColorTypes = 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
-
-interface INftSelectCard {
-    active?: boolean;
-    color: ColorTypes;
-    amount: number;
-    token: string;
-    usd: number;
-    price: number;
-    started: number;
-}
+import {INftSelectCard} from "./types";
 
 const NftSelectCard: FC<INftSelectCard> = (
     {

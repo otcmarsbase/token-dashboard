@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useContext, useEffect} from 'react';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {createPortal} from "react-dom";
 import {style} from "typestyle";
@@ -7,12 +7,10 @@ import {Text} from '../atoms/Text';
 import purpleNftIcon from '../../assets/purpleNft.svg';
 import Input from "../Input";
 import questionIcon from '../../assets/question.png';
+import {ClaimRewardsModalProps, ClaimRewardsModalLocalizedProps} from "./types";
+import {DictionaryContext} from "../../contexts/DictionaryContext";
 
-interface ClaimRewardsModalProps {
-    all?: boolean
-}
-
-export const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all}) => {
+const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
     const modalsRoot = document.getElementById('modals');
 
     if (!modalsRoot) return null;
@@ -35,30 +33,33 @@ export const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all}) => {
                     <div className={modal(isMobile, isTablet)}>
                         <div className={modalContent}>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
-                                <Text title={'_2'}>CLAIM {all && 'ALL '}REWARDS</Text>
-                                <Text colors={'gray'} size={'_12'}>Additional text, preview subtitle</Text>
+                                <Text title={'_2'}>{props.headerTitle}</Text>
+                                <Text colors={'gray'} size={'_12'}>{props.headerTitle}</Text>
                             </div>
                             <span style={{textAlign: 'start'}}>
                                 <Text title={'_3'}>
-                                    Vesting asset
+                                    {props.bodyTitle}
                                 </Text>
                             </span>
                             {!all && (
                                 <div className={vestingAssetCard}>
                                     <img src={purpleNftIcon} style={{marginRight: '10px', height: '60px'}} alt=""/>
-                                    <Text>36,000,000,000 MBase</Text>
+                                    <Text>{props.amount} {props.token}</Text>
                                 </div>
                             )}
                             <Input
                                 upLabel={
-                                    <Text iconRight={<img src={questionIcon} style={{height: '9px'}} alt=""/>} withIconRight>
-                                        <span style={{whiteSpace: 'nowrap'}}>Available for claim{all && ' all'}</span>
+                                    <Text
+                                        iconRight={<img src={questionIcon} style={{height: '9px'}} alt=""/>}
+                                        withIconRight
+                                    >
+                                        <span style={{whiteSpace: 'nowrap'}}>{props.inputLabelUp}</span>
                                     </Text>}
                                 showUpLabel
                                 color={'whiteStroke'}
                             />
                             <Button onClick={() => null} size={'lg'} auto>
-                                <Text weight={'medium'} size={'_14'}>Claim</Text>
+                                <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
                             </Button>
                         </div>
                     </div>
@@ -66,6 +67,19 @@ export const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all}) => {
             </div>
         </div>, modalsRoot)
 };
+
+export const ClaimRewardsModalLocalized: FC<ClaimRewardsModalLocalizedProps> = (props) => {
+    const {nft} = useContext(DictionaryContext);
+
+    return <ClaimRewardsModal
+        headerTitle={nft.dashboard.modals.claim_rewards.header_title}
+        headerSubTitle={nft.dashboard.modals.claim_rewards.header_sub_title}
+        bodyTitle={nft.dashboard.modals.claim_rewards.body_title}
+        inputLabelUp={nft.dashboard.modals.claim_rewards.input_label_up}
+        btnClaim={nft.dashboard.modals.claim_rewards.btn_claim}
+        {...props}
+    />
+}
 
 const container = (isMobile: boolean) => style({
     display: 'flex',

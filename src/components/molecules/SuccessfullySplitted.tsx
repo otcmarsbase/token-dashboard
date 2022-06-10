@@ -4,7 +4,6 @@ import {Text} from '../atoms/Text'
 import {Button} from '../atoms/Button'
 
 import successfullySplitted from "../../assets/successfullySplitted.png";
-import silver2 from "../../assets/silver-2.svg";
 import info from '../../assets/info.png'
 import silverNft from '../../assets/silver-2.svg'
 import goldNft from '../../assets/gold-2.svg'

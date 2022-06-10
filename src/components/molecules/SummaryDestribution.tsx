@@ -1,19 +1,13 @@
 import React from "react"
 
-import {FC, ReactNode, useContext} from "react"
+import {FC, useContext} from "react"
 import {style} from "typestyle"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
 import {Text} from "../atoms/Text"
 import {Count} from "../atoms/Count"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import flyUsdIcon from '../../assets/flyUsd.png';
-
-interface SummaryDestributionProps {
-    icon?: ReactNode
-    title: ReactNode
-    subTitle: ReactNode
-    count: ReactNode
-}
+import {SummaryDestributionProps} from "./types";
 
 const SummaryDestribution: FC<SummaryDestributionProps> = ({title, subTitle, count}) => {
     const isMobile = useMediaQuery(Queries.mobile)
@@ -64,5 +58,3 @@ interface SummaryDestributionWrapperProps {
 export const SummaryDestributionWrapper: FC<SummaryDestributionWrapperProps> = ({count}) => {
     return <SummaryDestributionLocalized count={count}/>
 }
-
-export default SummaryDestribution

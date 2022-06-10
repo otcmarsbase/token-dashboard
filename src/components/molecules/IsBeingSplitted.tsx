@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {FC, useContext} from 'react';
 
 import {Text} from '../atoms/Text';
 
 import beingSplitted from '../../assets/beingSplitted.png';
-import {useMediaQuery} from "../../hooks/mediaQuery";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {IsBeingSplittedLocalizedProps, IsBeingSplittedProps} from "./types";
+import {DictionaryContext} from "../../contexts/DictionaryContext";
 
-const IsBeingSplitted = () => {
-    const isMobile = useMediaQuery('(max-width: 375px)');
-    const isTablet = useMediaQuery('(max-width: 768px)');
+const IsBeingSplitted: FC<IsBeingSplittedProps> = ({title, subTitle}) => {
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
 
     return (
         <div style={{
@@ -18,10 +20,17 @@ const IsBeingSplitted = () => {
             marginBottom: (isMobile || isTablet) ? '100px' : 'unset'
         }}>
             <img style={{width: '430px'}} src={beingSplitted} alt=""/>
-            <Text title={'_2'}>NFT is being splitted</Text>
-            <Text colors={'gray'}>Please wait for a few moments. Colonizing Mars make take a while...</Text>
+            <Text title={'_2'}>{title}</Text>
+            <Text colors={'gray'}>{subTitle}</Text>
         </div>
     );
 };
 
-export default IsBeingSplitted;
+export const IsBeingSplittedLocalized: FC<IsBeingSplittedLocalizedProps> = () => {
+    const {nft} = useContext(DictionaryContext);
+
+    return <IsBeingSplitted
+        title={nft.dashboard.modals.is_being_splitted.title}
+        subTitle={nft.dashboard.modals.is_being_splitted.subTitle}
+    />
+}

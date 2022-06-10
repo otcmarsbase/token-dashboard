@@ -1,26 +1,16 @@
 import React from "react"
 
-import { FC, ReactNode } from "react"
-import { style } from "typestyle"
+import { FC } from "react"
 import {Text} from "../atoms/Text"
 import sorterIcon from '../../assets/sorterIcon.png';
+import Container from "../Container";
+import {ColumnSorterProps} from "./types";
 
-interface ColumnSorterProps {
-	text: ReactNode;
-}
-
-export const ColumnSorter: FC<ColumnSorterProps> = ({ text }) => {
+export const ColumnSorter: FC<ColumnSorterProps> = ({ text, onSort }) => {
 	return (
-		<div className={container}>
+		<Container gap={"_5"}>
 			<Text colors={'gray'} size={'_12'}>{text}</Text>
-			<img src={sorterIcon} style={{height: '12px'}} alt=""/>
-		</div>
+			<img onClick={onSort} src={sorterIcon} style={{height: '12px'}} alt=""/>
+		</Container>
 	)
 }
-
-const container = style({
-	display: "flex",
-	gap: "5px",
-	alignItems: 'center',
-	justifyContent: 'start',
-})

@@ -5,20 +5,11 @@ import {Text} from "../atoms/Text"
 import {DictionaryContext} from "../../contexts/DictionaryContext"
 import question from '../../assets/question.png';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {HeaderOverviewProps} from "./types";
 
-interface HeaderOverviewProps {
-    title: ReactNode
-    subTitle: ReactNode
-}
-
-const HeaderOverviewVisual: FC<HeaderOverviewProps> = (
-    {
-        title,
-        subTitle
-    }) => {
+const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
 
     const isMobile = useMediaQuery(Queries.mobile)
-    const isTablet = useMediaQuery(Queries.tablet)
 
     return (
         <div>
@@ -50,12 +41,3 @@ export const NftOverviewLocalized: React.FC = () => {
 
     return <HeaderOverviewVisual title={nft.dashboard.page_title} subTitle={nft.dashboard.page_description}/>
 }
-
-interface HeaderOverviewWrapperProps {
-}
-
-export const HeaderOverviewWrapper: React.FC<HeaderOverviewWrapperProps> = (props) => {
-    return <NftOverviewLocalized/>
-}
-
-export default HeaderOverviewVisual

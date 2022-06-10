@@ -21,7 +21,7 @@ const Notification: FC<NotificationsProps> = ({type}) => {
 
     return createPortal(
         <div className={container(type, isMobile)}>
-            <div className={content(isMobile)}>
+            <div className={content}>
                 <div style={{marginRight: '12px'}}>{type === 'success' ? <img style={{height: '24px'}} src={doneIcon}/> :
                     <img style={{height: '24px'}} src={errorIcon}/>}</div>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'start', flex: 1}}>
@@ -50,9 +50,7 @@ const container = (type: string, isMobile: boolean) => style({
     width: isMobile ? 'unset' : '368px',
 })
 
-const content = (isMobile: boolean) => style({
+const content = style({
     display: 'flex',
     alignItems: 'center'
 })
-
-export default Notification;
