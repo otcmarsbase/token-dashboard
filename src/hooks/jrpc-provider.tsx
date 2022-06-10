@@ -1,8 +1,7 @@
-import React, { PropsWithChildren, useEffect } from "react"
+import React, { PropsWithChildren } from "react"
 import { ethers } from "ethers"
-import { PRIVNET } from "../config"
-import { MetaMaskProvider, useMetaMask } from "metamask-react"
-import { IMetaMaskContext } from "metamask-react/lib/metamask-context"
+import { EvmNetwork } from "../config"
+import { useConnectedMetaMask, useMetaMask } from "metamask-react"
 import { useErrorHandlers } from "./errors"
 
 export const Web3ProviderContext = React.createContext<ethers.providers.JsonRpcProvider | undefined>(undefined)
@@ -17,40 +16,27 @@ export const useEthProvider = () => {
 	return provider
 }
 
-export const JrpcProviderPrivnet: React.FC<PropsWithChildren<{}>> = props => {
-	const provider = React.useMemo(() => new ethers.providers.JsonRpcProvider(PRIVNET.rpcUrl), [])
+export const JrpcProviderNode: React.FC<PropsWithChildren<{ network: EvmNetwork }>> = props => {
+	const provider = React.useMemo(() => new ethers.providers.JsonRpcProvider(props.network.rpcUrl), [])
 
 	return (
 		<Web3ProviderContext.Provider value={provider}>{props.children}</Web3ProviderContext.Provider>
 	)
 }
+export const MetamaskProviderOverride: React.FC<PropsWithChildren<{ ethereum: any }>> = props =>
+{
+	const provider = React.useMemo(() => new ethers.providers.Web3Provider(props.ethereum), [props.ethereum])
 
-// const web3provider = (ethereum: ethers.providers.ExternalProvider | undefined) =>
-// 	ethereum ? new ethers.providers.Web3Provider(ethereum) : undefined
-
-// export const MetamaskProvider: React.FC<PropsWithChildren<{}>> = props => {
-// 	const [ethereum, setEthereum] = React.useState(window.ethereum)
-// 	const provider = React.useMemo(() => web3provider(ethereum), [ethereum])
-
-// 	// maybe metamask was not yet injected, but will be later
-// 	useEffect(() =>
-// 	{
-// 		(async () =>
-// 		{
-// 			let eth = await detectEthereumProvider()
-// 			if (eth)
-// 				setEthereum(eth as ethers.providers.ExternalProvider)
-// 		})()
-// 	}, [])
-
-// 	// couldn't find metamask, revert to default provider (hopefully defined higher in the component tree)
-// 	if (!provider)
-// 		return <>{props.children}</>
-
-// 	return (
-// 		<Web3ProviderContext.Provider value={provider}>{props.children}</Web3ProviderContext.Provider>
-// 	)
-// }
+	return (
+		<Web3ProviderContext.Provider value={provider}>{props.children}</Web3ProviderContext.Provider>
+	)
+}
+export const Web3ProviderOverride: React.FC<PropsWithChildren<{ provider: ethers.providers.Web3Provider }>> = props =>
+{
+	return (
+		<Web3ProviderContext.Provider value={props.provider}>{props.children}</Web3ProviderContext.Provider>
+	)
+}
 
 export type TxSasSuccess = {
 	type: "success"
@@ -125,35 +111,33 @@ export const EthersSignerFakeProvider: React.FC<PropsWithChildren<{ privateKey: 
 	)
 }
 
-export const EthersSignerMetamaskProvider: React.FC<PropsWithChildren<{ chainId: string }>> = props => {
+export const EthersSignerMetamaskProvider: React.FC<PropsWithChildren<{ }>> = props =>
+{
 	const provider = useEthProvider()
-	// console.log(provider)
+	const metamask = useConnectedMetaMask()
 
-	const [ctx, setCtx] = React.useState<LoggedInUser>()
+	const ctx = React.useMemo<LoggedInUser>(() => ({
+		address: metamask.account,
+		signAndSendTx: signAndSendTxFactory(provider.getSigner()),
+	}), [metamask.account, provider])
 
-	const metamask = useMetaMask()
+	return (
+		<LoggedInUserContext.Provider value={ctx}>{props.children}</LoggedInUserContext.Provider>
+	)
+}
+export const EthersSignerMetamaskProviderWrongChainId: React.FC<PropsWithChildren<{ network: EvmNetwork }>> = props =>
+{
+	const provider = useEthProvider()
+	const metamask = useConnectedMetaMask()
 
-	React.useEffect(() => {
-		(async () => {
-			if (metamask.status !== "connected")
-				return
-
-			if (!metamask.account)
-				return
-
-			if (metamask.chainId != props.chainId)
-				return
-			
-			setCtx({
-				address: metamask.account,
-				signAndSendTx: tx => signAndSendTxFactory(provider.getSigner())(tx),
-			})
-		})()
-	}, [provider, metamask.status, metamask.chainId, metamask.account, props.chainId])
-
-	// cannot login with metamask for now
-	if (!ctx)
-		return <>{props.children}</>
+	const ctx = React.useMemo<LoggedInUser>(() => ({
+		address: metamask.account,
+		// TODO: handle errors
+		signAndSendTx: tx => provider.getSigner().signTransaction(tx)
+			// TODO: populate all necessary fields
+			.then(stx => provider.sendTransaction(stx)
+			.then(sent => ({ type:"success", hash: sent.hash }))),
+	}), [metamask.account, provider])
 
 	return (
 		<LoggedInUserContext.Provider value={ctx}>{props.children}</LoggedInUserContext.Provider>
