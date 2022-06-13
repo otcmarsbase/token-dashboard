@@ -4,6 +4,7 @@ import {SummaryDestributionWrapper} from "../molecules/SummaryDestribution"
 import {style} from "typestyle"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {SummaryTotalUnclaimedWrapper} from "../stateful/SummaryTotalUnclaimedWrapper";
+import Container from "../Container";
 
 interface INftTableSummary {
     distributionAmount: number;
@@ -20,15 +21,19 @@ export const NftTableSummary: FC<INftTableSummary> = (
         token
     }) => {
 
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = useMediaQuery(Queries.tablet);
+
     return (
-        <div className={container}>
+        <Container direction={isMobile ? undefined :'horizontal'} justify={'between'}>
             <SummaryDestributionWrapper count={distributionAmount}/>
             <SummaryTotalUnclaimedWrapper
                 onClaimAll={onClaimAll}
                 unclaimedAmount={unclaimedTotal}
                 token={token}
             />
-        </div>
+        </Container>
     )
 }
 

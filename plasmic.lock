@@ -7,11 +7,6 @@
       "lang": "ts",
       "fileLocks": [
         {
-          "type": "globalVariant",
-          "assetId": "3lOXnHZSFmncl",
-          "checksum": "1fb0fd651dd3a61ec2ed5dc8b4ad09b5"
-        },
-        {
           "type": "renderModule",
           "assetId": "IDy-UAQYMv",
           "checksum": "02b819a040b7a8e07be867cfef05c39f"
@@ -159,12 +154,17 @@
         {
           "type": "renderModule",
           "assetId": "514gf0jdxr",
-          "checksum": "05ef65623695b6f4fd5ecf5db43a0e6d"
+          "checksum": "2886a67efb7c0562732c087b28a07214"
         },
         {
           "type": "cssRules",
           "assetId": "514gf0jdxr",
-          "checksum": "05ef65623695b6f4fd5ecf5db43a0e6d"
+          "checksum": "2886a67efb7c0562732c087b28a07214"
+        },
+        {
+          "type": "globalVariant",
+          "assetId": "3lOXnHZSFmncl",
+          "checksum": "6f88bbd1e5f3edd6b37f1182c64cbbcb"
         },
         {
           "assetId": "ujWBNnbL2n4RZDdiZiYFdw",

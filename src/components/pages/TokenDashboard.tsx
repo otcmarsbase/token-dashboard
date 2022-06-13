@@ -1,51 +1,45 @@
-import React  from "react"
+import React from "react"
 
-import {TokenDashboardTemplate, Summary as TDTSummary} from "../templates/TokenDashboardTemplate"
+import {TokenDashboardTemplate} from "../templates/TokenDashboardTemplate"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
-import { TokenDashboardHeader } from "../organisms/TokenDashboardHeader"
-import { useContext } from "react"
-import { AppStateContext } from "../../contexts/AppStateContext"
-import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
-import { Header } from "../templates"
-import { NftsContext } from "../../contexts/NftsContext";
+import {TokenDashboardHeader} from "../molecules/TokenDashboardHeader"
+import {useContext} from "react"
+import {AppStateContext} from "../../contexts/AppStateContext"
+import {ConnectWithMetamask} from "../organisms/ConnectWithMetamask"
+import {Header} from "../templates"
+import {NftsContext} from "../../contexts/NftsContext";
 import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
 import {NftTable} from "../organisms/NftTable";
-import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
 
 const TokenDashboard = () => {
-    const { handlers } = useContext(AppStateContext)
-    const { nftsG, loading } = useContext(NftsContext)
-
-    console.log(nftsG)
+    const {handlers} = useContext(AppStateContext)
+    const {nftsG, loading} = useContext(NftsContext)
 
     return (
         <>
-            <MemoHeader />
+            <MemoHeader/>
             <TokenDashboardTemplate>
-                <MemoTableSummary />
+                <MemoTableSummary/>
                 <NftTable
                     nfts={nftsG}
                     onClaim={handlers.onClaim}
                     onActions={handlers.onActions}
                 />
             </TokenDashboardTemplate>
-            <TokenDashboardNavbar />
-            {/* <ClaimRewardsModalLocalized token={'MBase'} amount={36000000}/> */}
+            <TokenDashboardNavbar/>
         </>
     )
 }
 
 const MemoHeader = React.memo(() => (
     <Header>
-        <ConnectWithMetamask />
-        <TokenDashboardHeader />
+        <ConnectWithMetamask/>
+        <TokenDashboardHeader/>
     </Header>
 ))
 
 const MemoTableSummary = React.memo(() => (
-    <TDTSummary>
-        <NftTableSummaryWrapper />
-    </TDTSummary>
+    <NftTableSummaryWrapper/>
 ))
 
 export default TokenDashboard

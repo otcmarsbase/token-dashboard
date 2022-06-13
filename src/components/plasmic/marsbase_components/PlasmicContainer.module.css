@@ -1,14 +1,27 @@
 .root {
   flex-direction: column;
-  display: inline-flex;
+  display: flex;
   position: relative;
-  width: auto;
+  width: 100%;
   height: auto;
+  min-width: 0;
 }
 .root > :global(.__wab_flex-container) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .root {
+    width: 100%;
+    min-width: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .root > :global(.__wab_flex-container) {
+    min-width: 0;
+  }
 }
 .rootdirection_horizontal {
   display: flex;
@@ -34,6 +47,27 @@
 }
 .rootjustify_between > :global(.__wab_flex-container) {
   justify-content: space-between;
+}
+.rootjustify_start > :global(.__wab_flex-container) {
+  justify-content: flex-start;
+  align-items: center;
+}
+.rootjustify_end > :global(.__wab_flex-container) {
+  justify-content: flex-end;
+  align-items: center;
+}
+.rootauto {
+  width: auto;
+  display: inline-flex;
+}
+.rootbackgroud_mobileCard {
+  background: #0d0d0d;
+}
+.rootborder__4 {
+  border-radius: 4px;
+}
+.rootborder__8 {
+  border-radius: 8px;
 }
 .rootpadding__0 {
   padding: 20px;
