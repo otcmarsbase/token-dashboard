@@ -6,14 +6,11 @@ import { DEFAULT_NETWORK } from "./config"
 import "./styles.css"
 import { MetaMaskChecker } from "./components/organisms/MetaMaskChecker"
 import { MetaMaskIgnored, MetamaskConnected, MetaMaskNotConnected, MetaMaskNotInstalled, MetaMaskWrongChainId } from "./components/organisms/MetaMaskStateWrappers"
-import { roundings } from "./contexts/RoundingsContext"
-import { BigNumber } from "ethers"
 declare global {
 	interface Window {
 		ethereum: any
 	}
 }
-
 export default function App() {
 	return (
 		<StrictMode>
