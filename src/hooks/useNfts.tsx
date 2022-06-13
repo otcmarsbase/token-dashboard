@@ -1,4 +1,4 @@
-import { useConnectedMetaMask, useMetaMask } from "metamask-react"
+import { useConnectedMetaMask } from "metamask-react"
 import useSWR from "swr"
 import { getNftList } from "../api"
 import { useMarsbaseContracts } from "./mbase-contract"

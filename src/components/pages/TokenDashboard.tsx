@@ -10,7 +10,6 @@ import { Header } from "../templates"
 import { NftsContext } from "../../contexts/NftsContext";
 import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
 import {NftTable} from "../organisms/NftTable";
-import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
 
 const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)

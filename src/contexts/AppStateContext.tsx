@@ -1,10 +1,8 @@
-import { BigNumber } from "ethers"
-import { useMetaMask } from "metamask-react"
-import React, { ReactNode, useContext, useEffect, useState } from "react"
+import React, { ReactNode } from "react"
 import { NftData } from "../api"
 import { SCREEN_DATA, HANDLERS, IScreenData } from "../data"
-import { JrpcProviderPrivnet, useCurrentUser } from "../hooks/jrpc-provider"
-import { MarsbaseVestingContext, useMarsbaseContracts } from "../hooks/mbase-contract"
+import { useCurrentUser } from "../hooks/jrpc-provider"
+import { useMarsbaseContracts } from "../hooks/mbase-contract"
 
 export type AppStateContext = {
     data: IScreenData,
