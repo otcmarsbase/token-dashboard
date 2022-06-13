@@ -15,8 +15,8 @@ import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
 const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)
     const { nftsG, loading } = useContext(NftsContext)
-
-    console.log(nftsG)
+/* 
+    console.log(nftsG) */
 
     return (
         <>
