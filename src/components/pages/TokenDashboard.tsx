@@ -16,6 +16,8 @@ const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)
     const { nftsG, loading } = useContext(NftsContext)
 
+    console.log(nftsG)
+
     return (
         <>
             <MemoHeader />
@@ -28,7 +30,7 @@ const TokenDashboard = () => {
                 />
             </TokenDashboardTemplate>
             <TokenDashboardNavbar />
-            <ClaimRewardsModalLocalized token={'MBase'} amount={36000000}/>
+            {/* <ClaimRewardsModalLocalized token={'MBase'} amount={36000000}/> */}
         </>
     )
 }

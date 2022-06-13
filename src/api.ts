@@ -1,8 +1,8 @@
 import { BigNumber, BigNumberish, ethers, utils } from "ethers"
-import { INft, INftDynamic, INftStatic } from "./components/organisms/NftTable"
 import { MarsbaseVesting__factory, MarsbaseVesting, MarsbaseToken } from "@otcmarsbase/token-contract-types"
 import { TOKEN_THRESHOLD } from "./config"
 import { TagLabelColors } from "./components/atoms/Label"
+import { INftDynamic, INftStatic, INft } from "./components/organisms/types"
 
 export type NftData = Awaited<ReturnType<typeof getVestingNftInfo>>
 

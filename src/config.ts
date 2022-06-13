@@ -1,21 +1,25 @@
 
 const chainIdToHex = (chainId: number) => `0x${chainId.toString(16)}`
 
+const mbaseTokenAddress = '0x765Eb9A1518C2906D11D330a11dBA294a7673E84'
+
+const mbaseVestingAddress = '0xd37A38DC1BE88c33033821025A7CC5664d2b7328'
+
 export const NETWORKS = ([
 	{
 		name: "Marsbase",
 		chainId: 1337,
 		rpcUrl: "https://happy-heron-57.deno.dev",
-		mbaseTokenAddress: "0x605cc9e1C86A8dC0cFe7303D06f2889a4491906C",
-		mbaseVestingAddress: "0x728f79949a66c9950C39A8FD0BF9d353655d689C",
+		mbaseTokenAddress: mbaseTokenAddress,
+		mbaseVestingAddress: mbaseVestingAddress,
 		blockExplorerUrl: "https://134.122.65.135/",
 	},
 	{
 		name: "Rinkeby",
 		chainId: 4,
 		rpcUrl: "https://rinkeby.infura.io/v3/d9d8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8f8",
-		mbaseTokenAddress: "0x605cc9e1C86A8dC0cFe7303D06f2889a4491906C",
-		mbaseVestingAddress: "0x728f79949a66c9950C39A8FD0BF9d353655d689C",
+		mbaseTokenAddress: mbaseTokenAddress,
+		mbaseVestingAddress: mbaseVestingAddress,
 		blockExplorerUrl: "https://rinkeby.etherscan.io/",
 	}
 ] as const).map(x => ({ ...x, chainIdStr: chainIdToHex(x.chainId) }))
