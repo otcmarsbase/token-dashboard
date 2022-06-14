@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from "react"
 import { EvmNetwork } from "../../config"
 import { AppStateProvider } from "../../contexts/AppStateContext"
 import { NftsContextProvider } from "../../contexts/NftsContext"
+import { RoundingContext, RoundingContextProvider } from "../../contexts/RoundingsContext"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "../../hooks/mbase-contract"
 import TokenDashboard from "../pages/TokenDashboard"
 
@@ -9,9 +10,11 @@ export const MetamaskConnected: React.FC<{ network: EvmNetwork }> = props => (
 	<MarsbaseTokenProvider address={props.network.mbaseTokenAddress}>
 		<MarsbaseVestingProvider address={props.network.mbaseVestingAddress}>
 			<AppStateProvider>
-				<NftsContextProvider>
-					<TokenDashboard />
-				</NftsContextProvider>
+				<RoundingContextProvider>
+					<NftsContextProvider>
+						<TokenDashboard />
+					</NftsContextProvider>
+				</RoundingContextProvider>
 			</AppStateProvider>
 		</MarsbaseVestingProvider>
 	</MarsbaseTokenProvider>

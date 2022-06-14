@@ -1,6 +1,6 @@
-import React  from "react"
+import React from "react"
 
-import {TokenDashboardTemplate, Summary as TDTSummary} from "../templates/TokenDashboardTemplate"
+import { TokenDashboardTemplate, Summary as TDTSummary } from "../templates/TokenDashboardTemplate"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
 import { TokenDashboardHeader } from "../organisms/TokenDashboardHeader"
 import { useContext } from "react"
@@ -8,14 +8,13 @@ import { AppStateContext } from "../../contexts/AppStateContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
 import { Header } from "../templates"
 import { NftsContext } from "../../contexts/NftsContext";
-import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
-import {NftTable} from "../organisms/NftTable";
+import { NftTableSummaryWrapper } from "../stateful/NftTableSummaryWrapper";
+import { NftTable } from "../organisms/NftTable";
+import { RoundingContext } from "../../contexts/RoundingsContext";
 
 const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)
     const { nftsG, loading } = useContext(NftsContext)
-/* 
-    console.log(nftsG) */
 
     return (
         <>
