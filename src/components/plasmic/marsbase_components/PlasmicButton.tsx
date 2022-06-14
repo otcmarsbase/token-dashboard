@@ -49,7 +49,7 @@ export type PlasmicButton__VariantMembers = {
     | "redStroke"
     | "dark"
     | "defaultStroke";
-  isDisable: "isDisable";
+  disabled: "disabled";
   showStartIcon: "showStartIcon";
   showEndIcon: "showEndIcon";
   прозрачность: "_10" | "_20";
@@ -68,7 +68,7 @@ export type PlasmicButton__VariantsArgs = {
     | "dark"
     | "defaultStroke"
   >;
-  isDisable?: SingleBooleanChoiceArg<"isDisable">;
+  disabled?: SingleBooleanChoiceArg<"disabled">;
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   прозрачность?: SingleChoiceArg<"_10" | "_20">;
@@ -80,7 +80,7 @@ type VariantPropType = keyof PlasmicButton__VariantsArgs;
 export const PlasmicButton__VariantProps = new Array<VariantPropType>(
   "size",
   "colors",
-  "isDisable",
+  "disabled",
   "showStartIcon",
   "showEndIcon",
   "прозрачность",
@@ -112,7 +112,7 @@ export interface DefaultButtonProps {
     | "dark"
     | "defaultStroke"
   >;
-  isDisable?: SingleBooleanChoiceArg<"isDisable">;
+  disabled?: SingleBooleanChoiceArg<"disabled">;
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
   showEndIcon?: SingleBooleanChoiceArg<"showEndIcon">;
   прозрачность?: SingleChoiceArg<"_10" | "_20">;
@@ -150,7 +150,7 @@ function PlasmicButton__RenderFunc(props: {
         sty.root,
         {
           [sty.rootauto]: hasVariant(variants, "auto", "auto"),
-          [sty.rootisDisable]: hasVariant(variants, "isDisable", "isDisable")
+          [sty.rootdisabled]: hasVariant(variants, "disabled", "disabled")
         }
       )}
     >
@@ -186,7 +186,8 @@ function PlasmicButton__RenderFunc(props: {
             "colors",
             "standart"
           ),
-          [sty.buttonisDisable]: hasVariant(variants, "isDisable", "isDisable"),
+          [sty.buttondisabled]: hasVariant(variants, "disabled", "disabled"),
+          [sty.buttonloading]: hasVariant(variants, "loading", "loading"),
           [sty.buttonshowEndIcon]: hasVariant(
             variants,
             "showEndIcon",
@@ -214,7 +215,7 @@ function PlasmicButton__RenderFunc(props: {
           )
         })}
         disabled={
-          hasVariant(variants, "isDisable", "isDisable") ? true : undefined
+          hasVariant(variants, "disabled", "disabled") ? true : undefined
         }
       >
         {(
@@ -270,10 +271,15 @@ function PlasmicButton__RenderFunc(props: {
               "colors",
               "standart"
             ),
-            [sty.slotTargetChildrenisDisable]: hasVariant(
+            [sty.slotTargetChildrendisabled]: hasVariant(
               variants,
-              "isDisable",
-              "isDisable"
+              "disabled",
+              "disabled"
+            ),
+            [sty.slotTargetChildrenloading]: hasVariant(
+              variants,
+              "loading",
+              "loading"
             ),
             [sty.slotTargetChildrenshowStartIcon]: hasVariant(
               variants,

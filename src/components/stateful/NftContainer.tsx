@@ -32,5 +32,5 @@ const nftContainer = (isMobile: boolean, isTablet: boolean) => style({
     display: 'grid',
     gridTemplateColumns: `repeat(${(!isMobile && isTablet) ? '2' : '1'}, 1fr)`,
     gap: isTablet ? '15px' : '30px',
-    width: '100%'
+    width: '100%',
 })

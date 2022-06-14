@@ -60,8 +60,11 @@
   width: auto;
   display: inline-flex;
 }
-.rootbackgroud_mobileCard {
-  background: #0d0d0d;
+.rootbackgroud_dark2 {
+  background: #101012;
+}
+.rootbackgroud_dark1 {
+  background: #080808;
 }
 .rootborderRadius__4 {
   border-radius: 4px;
@@ -81,11 +84,11 @@
 .rootmargin__10 > :global(.__wab_flex-container) {
   min-width: 0;
 }
-.rootmb__5 {
-  margin-bottom: 5px;
-}
 .rootpadding__0 {
   padding: 20px;
+}
+.rootmb__5 {
+  margin-bottom: 5px;
 }
 .rootmb__10 {
   margin-bottom: 10px;

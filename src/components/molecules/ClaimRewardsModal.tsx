@@ -53,6 +53,7 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
                                 </Text>}
                             showUpLabel
                             color={'whiteStroke'}
+                            value={props.availableForClaim}
                         />
                         <Container direction={'horizontal'} gap={'_10'}>
                             <Button colors={'defaultStroke'} onClick={props.onClose} size={'lg'} auto>

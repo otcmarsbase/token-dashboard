@@ -36,7 +36,7 @@
   background: none;
   border: 2px solid #ffffff1a;
 }
-.buttonisDisable {
+.buttondisabled {
   opacity: 0.5;
   background: #686a6e33;
   cursor: not-allowed;
@@ -65,6 +65,10 @@
 }
 .buttonsize_sm {
   padding: 6px 12px;
+}
+.buttonloading {
+  background: #686a6e66;
+  cursor: not-allowed;
 }
 .buttonsize_md {
   padding: 10px 16px;
@@ -118,7 +122,7 @@
 .slotTargetChildrencolors_dark {
   text-align: center;
 }
-.slotTargetChildrenisDisable {
+.slotTargetChildrendisabled {
   text-align: center;
   color: #333333;
 }
@@ -127,6 +131,9 @@
 }
 .slotTargetChildrensize_sm {
   text-align: center;
+}
+.slotTargetChildrenloading {
+  color: #ffffff66;
 }
 .slotTargetChildrensize_md {
   text-align: center;

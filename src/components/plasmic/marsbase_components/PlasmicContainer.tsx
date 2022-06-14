@@ -44,7 +44,7 @@ export type PlasmicContainer__VariantMembers = {
   align: "start" | "end";
   justify: "between" | "start" | "end";
   auto: "auto";
-  backgroud: "mobileCard";
+  backgroud: "dark2" | "dark1";
   borderRadius: "_4" | "_8";
   margin: "_5" | "_10";
   mb: "_5" | "_10" | "_15" | "_20" | "_25" | "_30";
@@ -57,7 +57,7 @@ export type PlasmicContainer__VariantsArgs = {
   align?: SingleChoiceArg<"start" | "end">;
   justify?: SingleChoiceArg<"between" | "start" | "end">;
   auto?: SingleBooleanChoiceArg<"auto">;
-  backgroud?: SingleChoiceArg<"mobileCard">;
+  backgroud?: SingleChoiceArg<"dark2" | "dark1">;
   borderRadius?: SingleChoiceArg<"_4" | "_8">;
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
@@ -96,7 +96,7 @@ export interface DefaultContainerProps {
   align?: SingleChoiceArg<"start" | "end">;
   justify?: SingleChoiceArg<"between" | "start" | "end">;
   auto?: SingleBooleanChoiceArg<"auto">;
-  backgroud?: SingleChoiceArg<"mobileCard">;
+  backgroud?: SingleChoiceArg<"dark2" | "dark1">;
   borderRadius?: SingleChoiceArg<"_4" | "_8">;
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
@@ -136,11 +136,8 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootalign_end]: hasVariant(variants, "align", "end"),
           [sty.rootalign_start]: hasVariant(variants, "align", "start"),
           [sty.rootauto]: hasVariant(variants, "auto", "auto"),
-          [sty.rootbackgroud_mobileCard]: hasVariant(
-            variants,
-            "backgroud",
-            "mobileCard"
-          ),
+          [sty.rootbackgroud_dark1]: hasVariant(variants, "backgroud", "dark1"),
+          [sty.rootbackgroud_dark2]: hasVariant(variants, "backgroud", "dark2"),
           [sty.rootborderRadius__4]: hasVariant(variants, "borderRadius", "_4"),
           [sty.rootborderRadius__8]: hasVariant(variants, "borderRadius", "_8"),
           [sty.rootdirection_horizontal]: hasVariant(

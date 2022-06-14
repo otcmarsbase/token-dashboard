@@ -18,7 +18,7 @@ const NftCard: FC<NftCardProps> = (props) => {
                 direction={isNotDesktop ? undefined : 'horizontal'}
                 padding={'_15'}
                 gap={'_15'}
-                backgroud={isNotDesktop ? 'mobileCard' : undefined}
+                backgroud={isNotDesktop ? 'dark2' : 'dark1'}
                 borderRadius={'_8'}
             >
                 <NftCardOverviewLocalized
