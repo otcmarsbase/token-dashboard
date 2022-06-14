@@ -2,7 +2,8 @@ import { useEffect, useState, useDebugValue } from "react";
 
 export const Queries = {
     mobile: '(max-width: 768px)',
-    tablet: '(max-width: 1433px)'
+    tablet: '(max-width: 1433px)',
+    desktop: '(max-width): 1920px)'
 }
 
 export const useMediaQuery = (query: string): boolean => {

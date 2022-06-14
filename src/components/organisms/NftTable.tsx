@@ -2,29 +2,20 @@ import React from "react"
 
 import {FC} from "react"
 import {NftTableProps} from "./types";
-import {Table} from "../templates/TokenDashboardTemplate";
-import TableSorterRow from "../stateful/TableSorterRow";
-import StyledTBody from "../molecules/StyledTBody";
-import NftCardDesktopData from "../stateful/NftCardDesktopData";
-import {MobileNftsContainer} from "../stateful/MobileNftContainer";
+import TableSorterState from "../stateful/TableSorterState";
+import {NftsContainer} from "../stateful/NftContainer";
+import Container from "../Container";
 
 export const NftTable: FC<NftTableProps> = ({nfts, onClaim, onActions}) => {
     return (
-        <>
-            <Table>
-                <thead>
-                <TableSorterRow/>
-                </thead>
-                <StyledTBody>
-                    <NftCardDesktopData nfts={nfts} onClaim={onClaim} onActions={onActions}/>
-                </StyledTBody>
-            </Table>
-            <MobileNftsContainer
+        <Container>
+            <TableSorterState/>
+            <NftsContainer
                 nfts={nfts}
                 onClaim={onClaim}
                 onActions={onActions}
             />
-        </>
+        </Container>
     )
 }
 

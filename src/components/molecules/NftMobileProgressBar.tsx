@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import {Text} from "../atoms/Text";
 import {style} from "typestyle";
-import {NftCardMobileProps} from "./types";
+import {NftCardProps} from "./types";
 
-export const NftCardMobileProgressBar: FC<Pick<NftCardMobileProps,
+export const NftCardMobileProgressBar: FC<Pick<NftCardProps,
     'locked' | 'token' | 'percentComplete' | 'timePassed' | 'timeLeft'>> = (
     {
         locked,

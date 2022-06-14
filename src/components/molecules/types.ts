@@ -131,12 +131,14 @@ export interface IsBeingSplittedProps {
 
 export type IsBeingSplittedLocalizedProps = Omit<IsBeingSplittedProps, ''>
 
-export interface NftCardMobileProps extends INft {
+export interface NftCardProps extends INft {
     onClaim: (nftId: string) => void;
     onActions: (nftId: string) => void;
 }
 
 export type IColors = { [color in TagLabelColors]: { border: string; icon: string, label: TagLabelColors } };
+
+export type NftCardActionsProps = Pick<NftCardProps, 'id' | 'onClaim' | 'onActions' | 'unclaimed' | 'token' | 'availableUsd'>
 
 export type NftOverviewProps = {
     amount: React.ReactNode
@@ -147,8 +149,10 @@ export type NftOverviewProps = {
     priceLabel: ReactNode
 }
 
-export type NftCardMobileOverviewProps = Pick<NftCardMobileProps, 'kind' | 'price' | 'started'> & {startedText: string, priceText: string}
+export type NftCardOverviewProps =
+    Pick<NftCardProps, 'kind' | 'price' | 'started' | 'amount' | 'amountUsd'>
+    & { startedText: string, priceText: string }
 
-export type NftCardMobileOverviewLocalizedProps = Omit<NftCardMobileOverviewProps, "startedText" | 'priceText'>
+export type NftCardOverviewLocalizedProps = Omit<NftCardOverviewProps, "startedText" | 'priceText'>
 
-export type NftCardMobileProgressLocalized = Omit<NftCardMobileProps, "">
+export type NftCardMobileProgressProps = Omit<NftCardProps, "">
