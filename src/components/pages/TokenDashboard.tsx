@@ -12,8 +12,8 @@ import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
 import {NftTable} from "../organisms/NftTable";
 
 const TokenDashboard = () => {
-    const {handlers} = useContext(AppStateContext)
-    const {nftsG, loading} = useContext(NftsContext)
+    const { handlers } = useContext(AppStateContext)
+    const { nftsG, loading } = useContext(NftsContext)
 
     return (
         <>
