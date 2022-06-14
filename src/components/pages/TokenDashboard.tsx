@@ -14,11 +14,12 @@ import { RoundingContext } from "../../contexts/RoundingsContext";
 
 const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)
-    const { nftsG, loading } = useContext(NftsContext)
+    const { nftsG, loading, error, tryAgain } = useContext(NftsContext)
 
     return (
         <>
             <MemoHeader />
+            {error ? <button onClick={tryAgain}>Try again</button> : ''}
             <TokenDashboardTemplate>
                 <MemoTableSummary />
                 <NftTable
