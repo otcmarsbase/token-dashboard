@@ -12,10 +12,14 @@ export const TokenDashboardHeader = () => {
 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
-    const isOther = (!isMobile && !isTablet);
+    const isDesktop = (!isMobile && !isTablet);
 
     return (
-        <Container direction={isOther ? 'horizontal' : undefined} justify={'between'}>
+        <Container
+            direction={isDesktop ? 'horizontal' : undefined}
+            justify={isDesktop ? 'start' : 'between'}
+            padding={'_20'}
+        >
             <NftOverviewLocalized/>
             <HeaderActionsLocalized
                 onSellWithPremium={onSellWithPremium}

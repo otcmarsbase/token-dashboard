@@ -8,6 +8,7 @@ import {Count} from "../atoms/Count"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import flyUsdIcon from '../../assets/flyUsd.png';
 import {SummaryDestributionProps} from "./types";
+import Container from "../Container";
 
 const SummaryDestribution: FC<SummaryDestributionProps> = ({title, subTitle, count}) => {
     const isMobile = useMediaQuery(Queries.mobile)
@@ -15,15 +16,15 @@ const SummaryDestribution: FC<SummaryDestributionProps> = ({title, subTitle, cou
     return (
         <div className={container(isMobile)}>
             <img style={{height: '36px', marginRight: '12px'}} src={flyUsdIcon} alt=""/>
-            <div className={content}>
-                <div className={contentHeader}>
+            <Container align={'start'}>
+                <Container gap={'_5'} justify={'start'} direction={'horizontal'}>
                     <Text title={'_3'}>{title}</Text>
                     <Count distribution>
                         <Text title={'_4'} colors={'red'}>{count}</Text>
                     </Count>
-                </div>
+                </Container>
                 <Text size={'_12'} colors={'gray'}>{subTitle}</Text>
-            </div>
+            </Container>
         </div>
     )
 }
@@ -31,15 +32,6 @@ const SummaryDestribution: FC<SummaryDestributionProps> = ({title, subTitle, cou
 const container = (isMobile: boolean) => style({
     display: "flex",
     width: isMobile ? '100%' : "300px"
-})
-const content = style({
-    display: "flex",
-    flexDirection: "column"
-})
-
-const contentHeader = style({
-    display: "flex",
-    gap: "5px"
 })
 
 type SummaryDestributionLocalizedProps = Pick<SummaryDestributionProps, "count" | "icon">

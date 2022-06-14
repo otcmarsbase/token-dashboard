@@ -3,6 +3,7 @@ import {style} from "typestyle";
 import {Text} from '../atoms/Text';
 import cosmonaut from '../../assets/cosmonautpng.png';
 import {DictionaryContext} from "../../contexts/DictionaryContext";
+import Container from "../Container";
 
 interface HowIsProps {
     title: ReactNode;
@@ -11,21 +12,27 @@ interface HowIsProps {
 
 const HowIsDistributionDone: FC<HowIsProps> = ({title, subTitle}) => {
     return (
-        <div className={container}>
-            <div className={imageContainer}>
-                <div className={content}>
-                    <Text title={'_2'}>{title}</Text>
-                    <span style={{display: 'block',marginBottom: '6px'}}/>
-                    <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
-                    <video controls className={styledVideo}>
-                        <source src=""/>
-                    </video>
+        <div className={wrapper}>
+            <div className={container}>
+                <div className={imageContainer}>
+                    <div className={content}>
+                        <Text title={'_2'}>{title}</Text>
+                        <span style={{display: 'block',marginBottom: '6px'}}/>
+                        <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
+                        <video controls className={styledVideo}>
+                            <source src=""/>
+                        </video>
+                    </div>
                 </div>
             </div>
-
         </div>
     );
 };
+
+const wrapper = style({
+    padding: '20px',
+    marginBottom: '80px'
+})
 
 const imageContainer = style({
     backgroundImage: `url(${cosmonaut})`,
@@ -36,7 +43,6 @@ const imageContainer = style({
 const container = style({
     background: `linear-gradient(45deg, rgba(46,23,19,1) 0%, rgba(31,20,43,1) 100%)`,
     borderRadius: '16px',
-    marginTop: '90px'
 })
 
 const content = style({

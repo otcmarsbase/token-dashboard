@@ -48,6 +48,7 @@ export type PlasmicText__VariantMembers = {
   title: "_1" | "_2" | "_3" | "_4";
   withIconRight: "withIconRight";
   withIconLeft: "withIconLeft";
+  noWrap: "noWrap";
 };
 
 export type PlasmicText__VariantsArgs = {
@@ -60,6 +61,7 @@ export type PlasmicText__VariantsArgs = {
   title?: SingleChoiceArg<"_1" | "_2" | "_3" | "_4">;
   withIconRight?: SingleBooleanChoiceArg<"withIconRight">;
   withIconLeft?: SingleBooleanChoiceArg<"withIconLeft">;
+  noWrap?: SingleBooleanChoiceArg<"noWrap">;
 };
 
 type VariantPropType = keyof PlasmicText__VariantsArgs;
@@ -70,7 +72,8 @@ export const PlasmicText__VariantProps = new Array<VariantPropType>(
   "opacity",
   "title",
   "withIconRight",
-  "withIconLeft"
+  "withIconLeft",
+  "noWrap"
 );
 
 export type PlasmicText__ArgsType = {
@@ -104,6 +107,7 @@ export interface DefaultTextProps {
   title?: SingleChoiceArg<"_1" | "_2" | "_3" | "_4">;
   withIconRight?: SingleBooleanChoiceArg<"withIconRight">;
   withIconLeft?: SingleBooleanChoiceArg<"withIconLeft">;
+  noWrap?: SingleBooleanChoiceArg<"noWrap">;
   className?: string;
 }
 
@@ -195,6 +199,11 @@ function PlasmicText__RenderFunc(props: {
             "colors",
             "white"
           ),
+          [sty.freeBoxnoWrap___4Jz6KQ9LeL]: hasVariant(
+            variants,
+            "noWrap",
+            "noWrap"
+          ),
           [sty.freeBoxsize__10___4Jz6KPsPn]: hasVariant(
             variants,
             "size",
@@ -280,6 +289,11 @@ function PlasmicText__RenderFunc(props: {
               variants,
               "colors",
               "red"
+            ),
+            [sty.slotTargetChildrennoWrap]: hasVariant(
+              variants,
+              "noWrap",
+              "noWrap"
             ),
             [sty.slotTargetChildrenopacity__10]: hasVariant(
               variants,

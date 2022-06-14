@@ -15,15 +15,21 @@ export const HeaderActions: FC<HeaderActionsProps> = (
         onSellWithPremium,
         onBuyNow
     }) => {
-    const isMobile = useMediaQuery(Queries.mobile)
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
 
     return (
-        <Container auto={!isMobile} gap={'_15'} direction={isMobile ? undefined : 'horizontal'}>
+        <Container
+            auto={!isMobile && !isTablet}
+            gap={'_15'}
+            direction={isMobile ? undefined : 'horizontal'}
+            justify={isTablet ? 'start' : undefined}
+        >
             <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>
-                <Text title={'_4'}>{btnText}</Text>
+                <Text title={'_4'} noWrap>{btnText}</Text>
             </Button>
             <Button auto={isMobile} onClick={onBuyNow} size={"md"} colors={'gradient'}>
-                <Text title={'_4'}>{btnGradientText}</Text>
+                <Text title={'_4'} noWrap>{btnGradientText}</Text>
             </Button>
         </Container>
     )

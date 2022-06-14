@@ -16,6 +16,7 @@
   background: #bc401c;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   border-radius: 8px;
   padding: 4px 10px;
   border-width: 1px;

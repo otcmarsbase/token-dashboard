@@ -28,6 +28,5 @@ export const NftTableSummaryWrapper = () => {
                 />
             </Modal>
         </>
-
     )
 }

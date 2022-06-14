@@ -15,6 +15,7 @@
 @media (min-width: 1024px) {
   .root {
     width: 100%;
+    max-width: 1488px;
     min-width: 0;
   }
 }
@@ -45,6 +46,10 @@
   > img {
   margin-top: 0px;
 }
+.rootalign_end > :global(.__wab_flex-container) {
+  justify-content: center;
+  align-items: flex-end;
+}
 .rootjustify_between > :global(.__wab_flex-container) {
   justify-content: space-between;
 }
@@ -60,11 +65,11 @@
   width: auto;
   display: inline-flex;
 }
+.rootbackgroud_dark1 {
+  background: #0d0d0d;
+}
 .rootbackgroud_dark2 {
   background: #101012;
-}
-.rootbackgroud_dark1 {
-  background: #080808;
 }
 .rootborderRadius__4 {
   border-radius: 4px;
@@ -75,6 +80,9 @@
 .rootmargin__5 {
   margin: 5px;
 }
+.rootpadding__0 {
+  padding: 20px;
+}
 .rootmargin__10 {
   max-width: 295px;
   width: 100%;
@@ -83,9 +91,6 @@
 }
 .rootmargin__10 > :global(.__wab_flex-container) {
   min-width: 0;
-}
-.rootpadding__0 {
-  padding: 20px;
 }
 .rootmb__5 {
   margin-bottom: 5px;
@@ -110,6 +115,9 @@
 }
 .rootpadding__15 {
   padding: 15px;
+}
+.rootpadding__20 {
+  padding: 20px;
 }
 .rootgap__5 > :global(.__wab_flex-container) {
   margin-left: calc(0px - 0px);
@@ -165,8 +173,4 @@
 .rootalign_start > :global(.__wab_flex-container) {
   justify-content: center;
   align-items: flex-start;
-}
-.rootalign_end > :global(.__wab_flex-container) {
-  justify-content: center;
-  align-items: flex-end;
 }

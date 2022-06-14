@@ -24,7 +24,12 @@ export const NftTableSummary: FC<INftTableSummary> = (
     const isMobile = useMediaQuery(Queries.mobile);
 
     return (
-        <Container mb={"_25"} direction={isMobile ? undefined :'horizontal'} justify={'between'}>
+        <Container
+            mb={"_10"}
+            direction={isMobile ? undefined : 'horizontal'}
+            justify={'between'}
+            gap={'_15'}
+        >
             <SummaryDestributionWrapper count={distributionAmount}/>
             <SummaryTotalUnclaimedWrapper
                 onClaimAll={onClaimAll}

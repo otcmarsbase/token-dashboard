@@ -120,6 +120,9 @@
 .slotTargetChildrenwithIconLeft {
   white-space: pre-wrap;
 }
+.slotTargetChildrennoWrap {
+  white-space: pre;
+}
 .slotTargetChildrenweight_light {
   font-weight: 300;
 }

@@ -9,24 +9,20 @@ export const TokenDashboardTemplate: FC<{ children: ReactNode }> = ({children}) 
     const isTablet = useMediaQuery(Queries.tablet)
 
     return (
-        <main className={main(isMobile, isTablet)}>
+        <div className={main(isMobile, isTablet)}>
             <Container padding={isMobile ? '_15' : undefined}>
                 {children}
             </Container>
             {(isMobile || !isTablet) && (
                 <HowIsLocalized/>
             )}
-        </main>
+        </div>
     )
 }
 
 const main = (isMobile: boolean, isTablet: boolean) => style({
     display: "flex",
     flexDirection: isMobile ? 'column' : "row",
-    gap: "20px",
     maxWidth: '1433px',
-    backgroundColor: (!isMobile && isTablet) ? 'rgba(27, 27, 28, 0.4)' : 'unset',
-    margin: '10px auto',
-    borderRadius: '12px',
-    // width: '100%'
+    margin: '0 auto',
 })

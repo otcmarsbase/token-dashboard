@@ -39,12 +39,12 @@ import sty from "./PlasmicContainer.module.css"; // plasmic-import: 514gf0jdxr/c
 
 export type PlasmicContainer__VariantMembers = {
   direction: "horizontal";
-  padding: "_0" | "_10" | "_15";
+  padding: "_0" | "_10" | "_15" | "_20";
   gap: "_5" | "_10" | "_15";
   align: "start" | "end";
   justify: "between" | "start" | "end";
   auto: "auto";
-  backgroud: "dark2" | "dark1";
+  backgroud: "dark1" | "dark2";
   borderRadius: "_4" | "_8";
   margin: "_5" | "_10";
   mb: "_5" | "_10" | "_15" | "_20" | "_25" | "_30";
@@ -52,12 +52,12 @@ export type PlasmicContainer__VariantMembers = {
 
 export type PlasmicContainer__VariantsArgs = {
   direction?: SingleChoiceArg<"horizontal">;
-  padding?: SingleChoiceArg<"_0" | "_10" | "_15">;
+  padding?: SingleChoiceArg<"_0" | "_10" | "_15" | "_20">;
   gap?: SingleChoiceArg<"_5" | "_10" | "_15">;
   align?: SingleChoiceArg<"start" | "end">;
   justify?: SingleChoiceArg<"between" | "start" | "end">;
   auto?: SingleBooleanChoiceArg<"auto">;
-  backgroud?: SingleChoiceArg<"dark2" | "dark1">;
+  backgroud?: SingleChoiceArg<"dark1" | "dark2">;
   borderRadius?: SingleChoiceArg<"_4" | "_8">;
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
@@ -91,12 +91,12 @@ export type PlasmicContainer__OverridesType = {
 export interface DefaultContainerProps {
   children?: React.ReactNode;
   direction?: SingleChoiceArg<"horizontal">;
-  padding?: SingleChoiceArg<"_0" | "_10" | "_15">;
+  padding?: SingleChoiceArg<"_0" | "_10" | "_15" | "_20">;
   gap?: SingleChoiceArg<"_5" | "_10" | "_15">;
   align?: SingleChoiceArg<"start" | "end">;
   justify?: SingleChoiceArg<"between" | "start" | "end">;
   auto?: SingleBooleanChoiceArg<"auto">;
-  backgroud?: SingleChoiceArg<"dark2" | "dark1">;
+  backgroud?: SingleChoiceArg<"dark1" | "dark2">;
   borderRadius?: SingleChoiceArg<"_4" | "_8">;
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
@@ -161,7 +161,8 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootmb__5]: hasVariant(variants, "mb", "_5"),
           [sty.rootpadding__0]: hasVariant(variants, "padding", "_0"),
           [sty.rootpadding__10]: hasVariant(variants, "padding", "_10"),
-          [sty.rootpadding__15]: hasVariant(variants, "padding", "_15")
+          [sty.rootpadding__15]: hasVariant(variants, "padding", "_15"),
+          [sty.rootpadding__20]: hasVariant(variants, "padding", "_20")
         }
       )}
     >
