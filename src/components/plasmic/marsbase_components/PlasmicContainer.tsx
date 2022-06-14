@@ -42,7 +42,10 @@ export type PlasmicContainer__VariantMembers = {
   padding: "_0" | "_10" | "_15";
   gap: "_5" | "_10" | "_15";
   align: "start" | "end";
-  justify: "between";
+  justify: "between" | "start" | "end";
+  auto: "auto";
+  backgroud: "mobileCard";
+  border: "_4" | "_8";
 };
 
 export type PlasmicContainer__VariantsArgs = {
@@ -50,7 +53,10 @@ export type PlasmicContainer__VariantsArgs = {
   padding?: SingleChoiceArg<"_0" | "_10" | "_15">;
   gap?: SingleChoiceArg<"_5" | "_10" | "_15">;
   align?: SingleChoiceArg<"start" | "end">;
-  justify?: SingleChoiceArg<"between">;
+  justify?: SingleChoiceArg<"between" | "start" | "end">;
+  auto?: SingleBooleanChoiceArg<"auto">;
+  backgroud?: SingleChoiceArg<"mobileCard">;
+  border?: SingleChoiceArg<"_4" | "_8">;
 };
 
 type VariantPropType = keyof PlasmicContainer__VariantsArgs;
@@ -59,7 +65,10 @@ export const PlasmicContainer__VariantProps = new Array<VariantPropType>(
   "padding",
   "gap",
   "align",
-  "justify"
+  "justify",
+  "auto",
+  "backgroud",
+  "border"
 );
 
 export type PlasmicContainer__ArgsType = {
@@ -79,7 +88,10 @@ export interface DefaultContainerProps {
   padding?: SingleChoiceArg<"_0" | "_10" | "_15">;
   gap?: SingleChoiceArg<"_5" | "_10" | "_15">;
   align?: SingleChoiceArg<"start" | "end">;
-  justify?: SingleChoiceArg<"between">;
+  justify?: SingleChoiceArg<"between" | "start" | "end">;
+  auto?: SingleBooleanChoiceArg<"auto">;
+  backgroud?: SingleChoiceArg<"mobileCard">;
+  border?: SingleChoiceArg<"_4" | "_8">;
   className?: string;
 }
 
@@ -115,6 +127,14 @@ function PlasmicContainer__RenderFunc(props: {
         {
           [sty.rootalign_end]: hasVariant(variants, "align", "end"),
           [sty.rootalign_start]: hasVariant(variants, "align", "start"),
+          [sty.rootauto]: hasVariant(variants, "auto", "auto"),
+          [sty.rootbackgroud_mobileCard]: hasVariant(
+            variants,
+            "backgroud",
+            "mobileCard"
+          ),
+          [sty.rootborder__4]: hasVariant(variants, "border", "_4"),
+          [sty.rootborder__8]: hasVariant(variants, "border", "_8"),
           [sty.rootdirection_horizontal]: hasVariant(
             variants,
             "direction",
@@ -124,6 +144,8 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootgap__15]: hasVariant(variants, "gap", "_15"),
           [sty.rootgap__5]: hasVariant(variants, "gap", "_5"),
           [sty.rootjustify_between]: hasVariant(variants, "justify", "between"),
+          [sty.rootjustify_end]: hasVariant(variants, "justify", "end"),
+          [sty.rootjustify_start]: hasVariant(variants, "justify", "start"),
           [sty.rootpadding__0]: hasVariant(variants, "padding", "_0"),
           [sty.rootpadding__10]: hasVariant(variants, "padding", "_10"),
           [sty.rootpadding__15]: hasVariant(variants, "padding", "_15")

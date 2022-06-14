@@ -39,8 +39,6 @@ export const AppStateProvider: React.FC<{ children: ReactNode }> = props => {
 		nftsData: []
 	}), [user, contracts])
 
-    // state.handlers.onClaimAll = api.requestClaimAllSignature
-
     return (
         <AppStateContext.Provider value={state}>
             {props.children}

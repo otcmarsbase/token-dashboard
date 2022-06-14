@@ -1,8 +1,7 @@
 import React from "react"
 
-import { TokenDashboardTemplate, Summary as TDTSummary } from "../templates/TokenDashboardTemplate"
+import { TokenDashboardTemplate} from "../templates/TokenDashboardTemplate"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
-import { TokenDashboardHeader } from "../organisms/TokenDashboardHeader"
 import { useContext } from "react"
 import { AppStateContext } from "../../contexts/AppStateContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
@@ -11,6 +10,9 @@ import { NftsContext } from "../../contexts/NftsContext";
 import { NftTableSummaryWrapper } from "../stateful/NftTableSummaryWrapper";
 import { NftTable } from "../organisms/NftTable";
 import { RoundingContext } from "../../contexts/RoundingsContext";
+import { TokenDashboardHeader } from "../molecules/TokenDashboardHeader";
+
+
 
 const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)
@@ -21,30 +23,27 @@ const TokenDashboard = () => {
             <MemoHeader />
             {error ? <button onClick={tryAgain}>Try again</button> : ''}
             <TokenDashboardTemplate>
-                <MemoTableSummary />
+                <MemoTableSummary/>
                 <NftTable
                     nfts={nftsG}
                     onClaim={handlers.onClaim}
                     onActions={handlers.onActions}
                 />
             </TokenDashboardTemplate>
-            <TokenDashboardNavbar />
-            {/* <ClaimRewardsModalLocalized token={'MBase'} amount={36000000}/> */}
+            <TokenDashboardNavbar/>
         </>
     )
 }
 
 const MemoHeader = React.memo(() => (
     <Header>
-        <ConnectWithMetamask />
-        <TokenDashboardHeader />
+        <ConnectWithMetamask/>
+        <TokenDashboardHeader/>
     </Header>
 ))
 
 const MemoTableSummary = React.memo(() => (
-    <TDTSummary>
-        <NftTableSummaryWrapper />
-    </TDTSummary>
+    <NftTableSummaryWrapper/>
 ))
 
 export default TokenDashboard
