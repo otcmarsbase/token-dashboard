@@ -9,6 +9,7 @@ import Input from "../Input";
 import questionIcon from '../../assets/question.png';
 import {ClaimRewardsModalProps, ClaimRewardsModalLocalizedProps} from "./types";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
+import Container from "../Container";
 
 const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
     const isMobile = useMediaQuery(Queries.mobile)
@@ -53,9 +54,15 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
                             showUpLabel
                             color={'whiteStroke'}
                         />
-                        <Button onClick={() => null} size={'lg'} auto>
-                            <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
-                        </Button>
+                        <Container direction={'horizontal'} gap={'_10'}>
+                            <Button colors={'defaultStroke'} onClick={props.onClose} size={'lg'} auto>
+                                <Text weight={'medium'} size={'_14'}>Close</Text>
+                            </Button>
+                            <Button onClick={() => null} size={'lg'} auto>
+                                <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
+                            </Button>
+                        </Container>
+
                     </div>
                 </div>
             </div>

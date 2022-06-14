@@ -17,7 +17,11 @@ export const NftTableSummaryWrapper = () => {
                 onClaimAll={() => setVisible(true)}
             />
             <Modal>
-                <ClaimRewardsModalLocalized token={'MBase'} amount={3600000}/>
+                <ClaimRewardsModalLocalized
+                    onClose={() => setVisible(false)}
+                    token={'MBase'}
+                    amount={3600000}
+                />
             </Modal>
         </>
 
