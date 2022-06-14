@@ -23,6 +23,8 @@ export const NftTableSummaryWrapper = () => {
                     token={'MBase'}
                     amount={3600000}
                     availableForClaim={123123123}
+                    onClaim={() => console.log('on claim click')}
+                    btnClaimLoad={false}
                 />
             </Modal>
         </>

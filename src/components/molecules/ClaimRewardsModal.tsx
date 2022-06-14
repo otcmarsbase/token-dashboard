@@ -59,7 +59,7 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
                             <Button colors={'defaultStroke'} onClick={props.onClose} size={'lg'} auto>
                                 <Text weight={'medium'} size={'_14'}>Close</Text>
                             </Button>
-                            <Button onClick={() => null} size={'lg'} auto>
+                            <Button disabled={props.btnClaimLoad} onClick={props.onClaim} size={'lg'} auto>
                                 <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
                             </Button>
                         </Container>
