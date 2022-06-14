@@ -1,20 +1,20 @@
 import {createPortal} from "react-dom";
 import {
     Dispatch,
-    FC,
+    FC, PropsWithChildren,
     ReactNode,
     SetStateAction,
     useState
 } from "react";
 
-export const useModal = (id: string): [FC, boolean, Dispatch<SetStateAction<boolean>>] => {
+export const useModal = (id: string): [FC<PropsWithChildren<{}>>, boolean, Dispatch<SetStateAction<boolean>>] => {
     const [open, setOpen] = useState(false);
 
     const handleOpen = (children: ReactNode) => {
         const element = document.createElement("div");
         element.setAttribute("id", id);
 
-        const modalRoot = document.getElementById('modal-root');
+        const modalRoot = document.getElementById('modals');
 
         if (!modalRoot) {
             throw new Error('modalRoot not exist')
@@ -36,7 +36,7 @@ export const useModal = (id: string): [FC, boolean, Dispatch<SetStateAction<bool
     }
 
 
-    const Modal: FC<any> = ({children}) => {
+    const Modal: FC<PropsWithChildren<{}>> = ({children}) => {
         return open
             ? handleOpen(children)
             : handleClose()

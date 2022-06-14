@@ -4,7 +4,6 @@ import {style} from "typestyle";
 import {IMobileNftsContainer} from "../organisms/types";
 import NftCard from "../molecules/NftCard";
 import React from "react";
-import Container from "../Container";
 
 export const NftsContainer: FC<PropsWithChildren<IMobileNftsContainer>> = (
     {
@@ -32,5 +31,6 @@ export const NftsContainer: FC<PropsWithChildren<IMobileNftsContainer>> = (
 const nftContainer = (isMobile: boolean, isTablet: boolean) => style({
     display: 'grid',
     gridTemplateColumns: `repeat(${(!isMobile && isTablet) ? '2' : '1'}, 1fr)`,
-    gap: isTablet ? '16px' : '32px',
+    gap: isTablet ? '15px' : '30px',
+    width: '100%'
 })

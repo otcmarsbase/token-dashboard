@@ -63,14 +63,44 @@
 .rootbackgroud_mobileCard {
   background: #0d0d0d;
 }
-.rootborder__4 {
+.rootborderRadius__4 {
   border-radius: 4px;
 }
-.rootborder__8 {
+.rootborderRadius__8 {
   border-radius: 8px;
+}
+.rootmargin__5 {
+  margin: 5px;
+}
+.rootmargin__10 {
+  max-width: 295px;
+  width: 100%;
+  min-width: 0;
+  margin: 10px;
+}
+.rootmargin__10 > :global(.__wab_flex-container) {
+  min-width: 0;
+}
+.rootmb__5 {
+  margin-bottom: 5px;
 }
 .rootpadding__0 {
   padding: 20px;
+}
+.rootmb__10 {
+  margin-bottom: 10px;
+}
+.rootmb__15 {
+  margin-bottom: 15px;
+}
+.rootmb__20 {
+  margin-bottom: 20px;
+}
+.rootmb__25 {
+  margin-bottom: 25px;
+}
+.rootmb__30 {
+  margin-bottom: 30px;
 }
 .rootpadding__10 {
   padding: 10px;

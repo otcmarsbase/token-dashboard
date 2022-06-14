@@ -5,6 +5,7 @@ import {style} from "typestyle"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {SummaryTotalUnclaimedWrapper} from "../stateful/SummaryTotalUnclaimedWrapper";
 import Container from "../Container";
+import {useModal} from "../../hooks/modal";
 
 interface INftTableSummary {
     distributionAmount: number;
@@ -20,13 +21,10 @@ export const NftTableSummary: FC<INftTableSummary> = (
         unclaimedTotal,
         token
     }) => {
-
     const isMobile = useMediaQuery(Queries.mobile);
-    const isTablet = useMediaQuery(Queries.tablet);
-    const isDesktop = useMediaQuery(Queries.tablet);
 
     return (
-        <Container direction={isMobile ? undefined :'horizontal'} justify={'between'}>
+        <Container mb={"_25"} direction={isMobile ? undefined :'horizontal'} justify={'between'}>
             <SummaryDestributionWrapper count={distributionAmount}/>
             <SummaryTotalUnclaimedWrapper
                 onClaimAll={onClaimAll}
@@ -36,11 +34,4 @@ export const NftTableSummary: FC<INftTableSummary> = (
         </Container>
     )
 }
-
-const container = style({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-})
 

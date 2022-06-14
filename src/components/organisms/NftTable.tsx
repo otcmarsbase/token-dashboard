@@ -8,7 +8,7 @@ import Container from "../Container";
 
 export const NftTable: FC<NftTableProps> = ({nfts, onClaim, onActions}) => {
     return (
-        <Container>
+        <Container backgroud={'mobileCard'} padding={'_10'}>
             <TableSorterState/>
             <NftsContainer
                 nfts={nfts}
