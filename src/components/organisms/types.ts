@@ -9,6 +9,10 @@ export type INftStatic = {
     token: string
     price: string
     started: string
+
+    start: string
+    initialStart: string
+
     end: string
 }
 export type INftDynamic = {

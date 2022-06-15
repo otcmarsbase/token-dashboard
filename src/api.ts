@@ -88,7 +88,11 @@ export function convertBcNftToUi(nft: NftData, decimals: number, symbol: string)
 		kind: calculateKind(nft.amount, decimals),
 		amount: utils.formatUnits(nft.initialAmount, decimals),
 		token: symbol,
-		started: new Date(nft.initialStart.toNumber() * 1000).toString(),
+
+		start: new Date(nft.start.toNumber() * 1000).toString(), /* время с последнего клейма */
+		initialStart: new Date(nft.initialStart.toNumber() * 1000).toString(),
+		
+		started: new Date(nft.initialStart.toNumber() * 1000).toString(), /* то же, что и initialStart */
 		end: nft.end.toString(),
 		
 		amountUsd: '0',
@@ -110,8 +114,9 @@ export const calculateDynamicNft = (nft: INftStatic, decimals: number, now: numb
     const secondsInDay = 86400
 
 	const started = Date.parse(nft.started) / 1000
+	const sinceClaim = Date.parse(nft.start) / 1000
 	const timePassed = Math.floor(now / 1000 - started)
-	const duration = parseInt(nft.end) - started
+	const duration = parseInt(nft.end) - sinceClaim
 	const amount = utils.parseUnits(nft.amount, decimals)
 	const totalTime = (BigNumber.from(nft.end).sub(BigNumber.from(started))).toNumber()
 

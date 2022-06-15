@@ -4,6 +4,7 @@ import { AppStateProvider } from "../../contexts/AppStateContext"
 import { HandlersProvider } from "../../contexts/HandlersContext"
 import { NftsContextProvider } from "../../contexts/NftsContext"
 import { RoundingContext, RoundingContextProvider } from "../../contexts/RoundingsContext"
+import { UserVestingContextProvider } from "../../contexts/UserVestingContext"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "../../hooks/mbase-contract"
 import TokenDashboard from "../pages/TokenDashboard"
 
@@ -12,11 +13,9 @@ export const MetamaskConnected: React.FC<{ network: EvmNetwork }> = props => (
 		<MarsbaseVestingProvider address={props.network.mbaseVestingAddress}>
 			<AppStateProvider>
 				<RoundingContextProvider>
-					<NftsContextProvider>
-						<HandlersProvider>
-							<TokenDashboard />
-						</HandlersProvider>
-					</NftsContextProvider>
+					<UserVestingContextProvider>
+						<TokenDashboard />
+					</UserVestingContextProvider>
 				</RoundingContextProvider>
 			</AppStateProvider>
 		</MarsbaseVestingProvider>

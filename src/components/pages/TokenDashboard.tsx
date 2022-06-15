@@ -11,12 +11,12 @@ import { NftTableSummaryWrapper } from "../stateful/NftTableSummaryWrapper";
 import { NftTable } from "../organisms/NftTable";
 import { TokenDashboardHeader } from "../molecules/TokenDashboardHeader";
 import TableLoading from "../molecules/TableLoading";
+import { UserVestingContext } from "../../contexts/UserVestingContext";
 
 
 
 const TokenDashboard = () => {
-    const { handlers } = useContext(HandlersContext)
-    const { nftsG, loading, error, repeatRequest } = useContext(NftsContext)
+    const { error, repeatRequest, handlers, nftsG, loading } = useContext(UserVestingContext)
 
     return (
         <>
@@ -28,7 +28,6 @@ const TokenDashboard = () => {
                     <NftTable
                         nfts={nftsG}
                         onClaim={(nftId) => {
-                            console.log(nftId)
                             handlers.onClaim(nftId)
                                 .then(() => {
                                     console.log('confirmed')
