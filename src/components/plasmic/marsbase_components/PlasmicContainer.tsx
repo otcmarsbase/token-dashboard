@@ -48,6 +48,7 @@ export type PlasmicContainer__VariantMembers = {
   borderRadius: "_4" | "_8";
   margin: "_5" | "_10";
   mb: "_5" | "_10" | "_15" | "_20" | "_25" | "_30";
+  gapRow: "_5" | "_10" | "_30";
 };
 
 export type PlasmicContainer__VariantsArgs = {
@@ -61,6 +62,7 @@ export type PlasmicContainer__VariantsArgs = {
   borderRadius?: SingleChoiceArg<"_4" | "_8">;
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
+  gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
 };
 
 type VariantPropType = keyof PlasmicContainer__VariantsArgs;
@@ -74,7 +76,8 @@ export const PlasmicContainer__VariantProps = new Array<VariantPropType>(
   "backgroud",
   "borderRadius",
   "margin",
-  "mb"
+  "mb",
+  "gapRow"
 );
 
 export type PlasmicContainer__ArgsType = {
@@ -100,6 +103,7 @@ export interface DefaultContainerProps {
   borderRadius?: SingleChoiceArg<"_4" | "_8">;
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
+  gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
   className?: string;
 }
 
@@ -145,6 +149,9 @@ function PlasmicContainer__RenderFunc(props: {
             "direction",
             "horizontal"
           ),
+          [sty.rootgapRow__10]: hasVariant(variants, "gapRow", "_10"),
+          [sty.rootgapRow__30]: hasVariant(variants, "gapRow", "_30"),
+          [sty.rootgapRow__5]: hasVariant(variants, "gapRow", "_5"),
           [sty.rootgap__10]: hasVariant(variants, "gap", "_10"),
           [sty.rootgap__15]: hasVariant(variants, "gap", "_15"),
           [sty.rootgap__5]: hasVariant(variants, "gap", "_5"),

@@ -14,7 +14,7 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
     const isTablet = useMediaQuery(Queries.tablet);
 
     return (
-        <Container gap={'_10'} mb={'_10'}>
+        <Container mb={'_10'} auto>
             <Container justify={'start'} direction={'horizontal'}>
                 <Text title={isMobile ? '_2' : '_1'}>{title}</Text>
                 {isMobile

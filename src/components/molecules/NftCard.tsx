@@ -11,7 +11,7 @@ const NftCard: FC<NftCardProps> = (props) => {
         const isMobile = useMediaQuery(Queries.mobile);
         const isTablet = useMediaQuery(Queries.tablet);
 
-        const isDesktop = (!isMobile || !isTablet);
+        const isDesktop = (!isMobile && !isTablet);
 
         return (
             <Container

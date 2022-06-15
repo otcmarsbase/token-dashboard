@@ -8,6 +8,8 @@ import {NftsContext} from "../../contexts/NftsContext";
 import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
 import {NftTable} from "../organisms/NftTable";
 import RootContainer from "../RootContainer";
+import Container from "../Container";
+import {HowIsLocalized} from "../molecules/HowIsDistributionDone";
 
 const TokenDashboard = () => {
     const { handlers } = useContext(AppStateContext)
@@ -17,12 +19,17 @@ const TokenDashboard = () => {
         <>
             <MemoHeader/>
             <RootContainer>
-                <MemoTableSummary/>
-                <NftTable
-                    nfts={nftsG}
-                    onClaim={handlers.onClaim}
-                    onActions={handlers.onActions}
-                />
+                <Container gapRow={'_30'}>
+                    <Container>
+                        <MemoTableSummary/>
+                        <NftTable
+                            nfts={nftsG}
+                            onClaim={handlers.onClaim}
+                            onActions={handlers.onActions}
+                        />
+                    </Container>
+                    <HowIsLocalized/>
+                </Container>
                 <TokenDashboardNavbar/>
             </RootContainer>
         </>

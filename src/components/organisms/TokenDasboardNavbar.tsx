@@ -68,12 +68,13 @@ const TokenDashboardNavbar = () => {
     const modalsRoot = document.getElementById('modals');
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = (!isMobile && !isTablet)
 
     if (!modalsRoot) {
         return null;
     }
 
-    if(!isMobile || !isTablet) {
+    if(isDesktop) {
         return null
     }
 

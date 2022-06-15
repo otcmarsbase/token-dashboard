@@ -3,7 +3,7 @@ import {style} from "typestyle";
 import {Text} from '../atoms/Text';
 import cosmonaut from '../../assets/cosmonautpng.png';
 import {DictionaryContext} from "../../contexts/DictionaryContext";
-import Container from "../Container";
+import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface HowIsProps {
     title: ReactNode;
@@ -11,6 +11,15 @@ interface HowIsProps {
 }
 
 const HowIsDistributionDone: FC<HowIsProps> = ({title, subTitle}) => {
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
+
+    const isDesktop = (!isMobile && !isTablet);
+
+    if (!isDesktop) {
+        return null;
+    }
+
     return (
         <div className={wrapper}>
             <div className={container}>
@@ -31,7 +40,7 @@ const HowIsDistributionDone: FC<HowIsProps> = ({title, subTitle}) => {
 
 const wrapper = style({
     // padding: '20px',
-    marginBottom: '80px'
+    // marginBottom: '80px'
 })
 
 const imageContainer = style({

@@ -17,10 +17,11 @@
   width: 100%;
   height: auto;
   min-width: 0;
-  padding: 8px;
+  padding: 20px;
 }
 @media (min-width: 1024px) {
   .freeBox {
     max-width: 1488px;
+    padding: 0px;
   }
 }

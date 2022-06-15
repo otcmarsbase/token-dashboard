@@ -110,6 +110,74 @@
 .rootmb__30 {
   margin-bottom: 30px;
 }
+.rootgapRow__5 {
+  display: flex;
+  flex-direction: row;
+}
+.rootgapRow__5 > :global(.__wab_flex-container) {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: calc(0px - 5px);
+  width: calc(100% + 5px);
+  margin-top: calc(0px - 0px);
+  height: calc(100% + 0px);
+}
+.rootgapRow__5 > :global(.__wab_flex-container) > *,
+.rootgapRow__5 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.rootgapRow__5 > :global(.__wab_flex-container) > picture > img,
+.rootgapRow__5
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 5px;
+  margin-top: 0px;
+}
+.rootgapRow__10 {
+  display: flex;
+  flex-direction: row;
+}
+.rootgapRow__10 > :global(.__wab_flex-container) {
+  flex-direction: row;
+  margin-left: calc(0px - 10px);
+  width: calc(100% + 10px);
+  margin-top: calc(0px - 0px);
+  height: calc(100% + 0px);
+}
+.rootgapRow__10 > :global(.__wab_flex-container) > *,
+.rootgapRow__10 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.rootgapRow__10 > :global(.__wab_flex-container) > picture > img,
+.rootgapRow__10
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 10px;
+  margin-top: 0px;
+}
+.rootgapRow__30 {
+  display: flex;
+  flex-direction: row;
+}
+.rootgapRow__30 > :global(.__wab_flex-container) {
+  flex-direction: row;
+  margin-left: calc(0px - 30px);
+  width: calc(100% + 30px);
+  margin-top: calc(0px - 0px);
+  height: calc(100% + 0px);
+}
+.rootgapRow__30 > :global(.__wab_flex-container) > *,
+.rootgapRow__30 > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.rootgapRow__30 > :global(.__wab_flex-container) > picture > img,
+.rootgapRow__30
+  > :global(.__wab_flex-container)
+  > :global(.__wab_slot)
+  > picture
+  > img {
+  margin-left: 30px;
+  margin-top: 0px;
+}
 .rootpadding__10 {
   padding: 10px;
 }

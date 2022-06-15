@@ -1,11 +1,9 @@
 import React, {FC} from "react"
 
 import {SummaryDestributionWrapper} from "../molecules/SummaryDestribution"
-import {style} from "typestyle"
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {SummaryTotalUnclaimedWrapper} from "../stateful/SummaryTotalUnclaimedWrapper";
 import Container from "../Container";
-import {useModal} from "../../hooks/modal";
 
 interface INftTableSummary {
     distributionAmount: number;

@@ -12,23 +12,22 @@ export const NftTable: FC<NftTableProps> = ({nfts, onClaim, onActions}) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
 
-    const isNotDesktop = (isMobile || isTablet);
+    const isDesktop = (!isMobile && !isTablet);
 
     return (
-        <Container direction={'horizontal'} align={'start'} gap={'_15'}>
+        <Container align={'start'} gapRow={'_30'}>
             <Container
-                backgroud={isNotDesktop ? undefined : 'dark2'}
+                backgroud={isDesktop ? 'dark2': undefined  }
                 padding={'_10'}
                 borderRadius={'_8'}
             >
-                {!isNotDesktop && <TableSorterState/>}
+                {isDesktop && <TableSorterState/>}
                 <NftsContainer
                     nfts={nfts}
                     onClaim={onClaim}
                     onActions={onActions}
                 />
             </Container>
-            <HowIsLocalized/>
         </Container>
 
     )

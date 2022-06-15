@@ -17,13 +17,15 @@ export const HeaderActions: FC<HeaderActionsProps> = (
     }) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = (!isMobile && !isTablet)
 
     return (
         <Container
-            auto={!isMobile && !isTablet}
-            gap={'_15'}
+            auto={isDesktop}
             direction={isMobile ? undefined : 'horizontal'}
+            gapRow={isDesktop ? '_10' : undefined}
             justify={isTablet ? 'start' : undefined}
+            gap={'_15'}
         >
             <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>
                 <Text title={'_4'} noWrap>{btnText}</Text>
