@@ -30,7 +30,7 @@ const HowIsDistributionDone: FC<HowIsProps> = ({title, subTitle}) => {
 };
 
 const wrapper = style({
-    padding: '20px',
+    // padding: '20px',
     marginBottom: '80px'
 })
 
