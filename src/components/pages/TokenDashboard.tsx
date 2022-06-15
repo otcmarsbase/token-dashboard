@@ -2,7 +2,6 @@ import React from "react"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
 import {TokenDashboardHeader} from "../molecules/TokenDashboardHeader"
 import {useContext} from "react"
-import {AppStateContext} from "../../contexts/AppStateContext"
 import {ConnectWithMetamask} from "../organisms/ConnectWithMetamask"
 import {NftsContext} from "../../contexts/NftsContext";
 import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
@@ -10,15 +9,16 @@ import {NftTable} from "../organisms/NftTable";
 import RootContainer from "../RootContainer";
 import Container from "../Container";
 import {HowIsLocalized} from "../molecules/HowIsDistributionDone";
+import {HandlersContext} from "../../contexts/HandlersContext";
 
 const TokenDashboard = () => {
-    const { handlers } = useContext(AppStateContext)
+    const { handlers } = useContext(HandlersContext)
     const { nftsG } = useContext(NftsContext)
 
     return (
         <>
             <MemoHeader/>
-            <RootContainer>
+            <RootContainer mb={'_110'}>
                 <Container gapRow={'_30'}>
                     <Container>
                         <MemoTableSummary/>

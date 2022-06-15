@@ -3,7 +3,7 @@ const chainIdToHex = (chainId: number) => `0x${chainId.toString(16)}`
 
 const mbaseTokenAddress = '0x765Eb9A1518C2906D11D330a11dBA294a7673E84'
 
-const mbaseVestingAddress = '0xd37A38DC1BE88c33033821025A7CC5664d2b7328'
+const mbaseVestingAddress = '0x9184B801B148838436E15B399681B40A37F7f009'
 
 export const NETWORKS = ([
 	{

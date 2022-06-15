@@ -6,7 +6,6 @@ import TableSorterState from "../stateful/TableSorterState";
 import {NftsContainer} from "../stateful/NftContainer";
 import Container from "../Container";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-import {HowIsLocalized} from "../molecules/HowIsDistributionDone";
 
 export const NftTable: FC<NftTableProps> = ({nfts, onClaim, onActions}) => {
     const isMobile = useMediaQuery(Queries.mobile);
@@ -17,9 +16,9 @@ export const NftTable: FC<NftTableProps> = ({nfts, onClaim, onActions}) => {
     return (
         <Container align={'start'} gapRow={'_30'}>
             <Container
-                backgroud={isDesktop ? 'dark2': undefined  }
-                padding={'_10'}
+                backgroud={!isMobile ? 'dark2': undefined  }
                 borderRadius={'_8'}
+                padding={!isMobile ? '_10' : undefined}
             >
                 {isDesktop && <TableSorterState/>}
                 <NftsContainer

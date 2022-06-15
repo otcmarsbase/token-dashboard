@@ -17,22 +17,22 @@ const NftCardActions: FC<NftCardActionsProps> = (
 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
-    const isOther = (!isMobile && !isTablet);
+    const isDesktop = (!isMobile && !isTablet);
 
     return (
-        <Container direction={isOther ? 'horizontal' : undefined}>
-            <Container direction={'horizontal'} justify={'between'}>
-                {!isOther && (
+        <Container direction={isDesktop ? 'horizontal' : undefined}>
+            <Container direction={'horizontal'} justify={'between'} mr={isDesktop ? '_15' : undefined}>
+                {!isDesktop && (
                     <Text colors={'gray'} size={'_12'}>
                         <b>Available for claim</b>
                     </Text>
                 )}
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
+                <Container align={'end'}>
                     <Text colors={'red'}>{unclaimed} {token}</Text>
                     <Text colors={'gray'} size={'_11'}>~{availableUsd}$</Text>
-                </div>
+                </Container>
             </Container>
-            <Container direction={'horizontal'} gap={'_10'}>
+            <Container gapRow={'_10'}>
                 <Button onClick={() => onClaim(id)} auto size={'sm'}>
                     <span style={{fontWeight: 600}}>Claim</span>
                 </Button>

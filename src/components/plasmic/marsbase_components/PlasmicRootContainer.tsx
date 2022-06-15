@@ -37,11 +37,18 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_marsbase_components.module.css"; // plasmic-import: ujWBNnbL2n4RZDdiZiYFdw/projectcss
 import sty from "./PlasmicRootContainer.module.css"; // plasmic-import: OWF7fqE1kH/css
 
-export type PlasmicRootContainer__VariantMembers = {};
+export type PlasmicRootContainer__VariantMembers = {
+  mb: "_110";
+};
 
-export type PlasmicRootContainer__VariantsArgs = {};
+export type PlasmicRootContainer__VariantsArgs = {
+  mb?: SingleChoiceArg<"_110">;
+};
+
 type VariantPropType = keyof PlasmicRootContainer__VariantsArgs;
-export const PlasmicRootContainer__VariantProps = new Array<VariantPropType>();
+export const PlasmicRootContainer__VariantProps = new Array<VariantPropType>(
+  "mb"
+);
 
 export type PlasmicRootContainer__ArgsType = {
   children?: React.ReactNode;
@@ -59,6 +66,7 @@ export type PlasmicRootContainer__OverridesType = {
 
 export interface DefaultRootContainerProps {
   children?: React.ReactNode;
+  mb?: SingleChoiceArg<"_110">;
   className?: string;
 }
 
@@ -95,7 +103,9 @@ function PlasmicRootContainer__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox)}
+        className={classNames(projectcss.all, sty.freeBox, {
+          [sty.freeBoxmb__110]: hasVariant(variants, "mb", "_110")
+        })}
       >
         {p.renderPlasmicSlot({
           defaultContents: null,

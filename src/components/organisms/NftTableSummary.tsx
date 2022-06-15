@@ -23,7 +23,7 @@ export const NftTableSummary: FC<INftTableSummary> = (
 
     return (
         <Container
-            mb={"_10"}
+            mb={"_25"}
             direction={isMobile ? undefined : 'horizontal'}
             justify={'between'}
             gap={'_15'}

@@ -24,8 +24,8 @@ export const NftCardOverview: FC<NftCardOverviewProps> = (
     return (
         <Container>
             <Container direction={'horizontal'} justify={'start'}>
-                <img style={{height: '52px'}} src={colors[kind].icon} alt=""/>
-                <Container align={'start'} auto gap={'_10'}>
+                <img style={{height: '52px'}} src={colors[kind].icon} alt={`${kind} nft`}/>
+                <Container align={'start'} auto>
                     {isDesktop && (
                         <Container direction={'horizontal'} justify={'start'}>
                             <Text>{amount} MBase</Text>

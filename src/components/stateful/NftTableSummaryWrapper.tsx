@@ -5,7 +5,7 @@ import {useModal} from "../../hooks/modal";
 import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
 
 export const NftTableSummaryWrapper = () => {
-    const {data, handlers} = useContext(AppStateContext);
+    const {data} = useContext(AppStateContext);
     const [Modal, visible, setVisible] = useModal('claimAllRewards')
 
     return (

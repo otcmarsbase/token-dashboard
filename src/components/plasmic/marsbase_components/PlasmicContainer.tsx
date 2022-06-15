@@ -49,6 +49,7 @@ export type PlasmicContainer__VariantMembers = {
   margin: "_5" | "_10";
   mb: "_5" | "_10" | "_15" | "_20" | "_25" | "_30";
   gapRow: "_5" | "_10" | "_30";
+  mr: "_5" | "_10" | "_15";
 };
 
 export type PlasmicContainer__VariantsArgs = {
@@ -63,6 +64,7 @@ export type PlasmicContainer__VariantsArgs = {
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
   gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
+  mr?: SingleChoiceArg<"_5" | "_10" | "_15">;
 };
 
 type VariantPropType = keyof PlasmicContainer__VariantsArgs;
@@ -77,7 +79,8 @@ export const PlasmicContainer__VariantProps = new Array<VariantPropType>(
   "borderRadius",
   "margin",
   "mb",
-  "gapRow"
+  "gapRow",
+  "mr"
 );
 
 export type PlasmicContainer__ArgsType = {
@@ -104,6 +107,7 @@ export interface DefaultContainerProps {
   margin?: SingleChoiceArg<"_5" | "_10">;
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
   gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
+  mr?: SingleChoiceArg<"_5" | "_10" | "_15">;
   className?: string;
 }
 
@@ -166,6 +170,9 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootmb__25]: hasVariant(variants, "mb", "_25"),
           [sty.rootmb__30]: hasVariant(variants, "mb", "_30"),
           [sty.rootmb__5]: hasVariant(variants, "mb", "_5"),
+          [sty.rootmr__10]: hasVariant(variants, "mr", "_10"),
+          [sty.rootmr__15]: hasVariant(variants, "mr", "_15"),
+          [sty.rootmr__5]: hasVariant(variants, "mr", "_5"),
           [sty.rootpadding__0]: hasVariant(variants, "padding", "_0"),
           [sty.rootpadding__10]: hasVariant(variants, "padding", "_10"),
           [sty.rootpadding__15]: hasVariant(variants, "padding", "_15"),

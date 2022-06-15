@@ -12,9 +12,10 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = (!isMobile && !isTablet)
 
     return (
-        <Container mb={'_10'} auto>
+        <Container mb={'_10'} auto={isDesktop}>
             <Container justify={'start'} direction={'horizontal'}>
                 <Text title={isMobile ? '_2' : '_1'}>{title}</Text>
                 {isMobile

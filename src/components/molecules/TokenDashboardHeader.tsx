@@ -7,6 +7,7 @@ import Container from "../Container";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import RootContainer from "../RootContainer";
 import {style} from "typestyle";
+import {AppStateContext} from "../../contexts/AppStateContext";
 
 export const TokenDashboardHeader = () => {
     const { data } = useContext(AppStateContext)

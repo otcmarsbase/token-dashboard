@@ -15,11 +15,12 @@ const NftCard: FC<NftCardProps> = (props) => {
 
         return (
             <Container
+                gap={'_10'}
                 padding={'_15'}
-                gap={'_15'}
                 backgroud={"dark1"}
                 borderRadius={'_8'}
                 direction={isDesktop ? 'horizontal' : undefined}
+                gapRow={isDesktop ? '_10' : undefined}
             >
                 <NftCardOverviewLocalized
                     kind={props.kind}
