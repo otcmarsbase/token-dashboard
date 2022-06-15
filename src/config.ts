@@ -42,3 +42,5 @@ export const TOKEN_THRESHOLD = [
 	{ color: "cyan", threshold: 100_000_000 },
 	{ color: "silver", threshold: undefined }, 
 ] as const
+
+export const NFTS_PER_TRANSACTION = 5
