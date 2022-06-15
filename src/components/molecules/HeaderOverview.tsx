@@ -6,14 +6,16 @@ import {DictionaryContext} from "../../contexts/DictionaryContext"
 import question from '../../assets/question.png';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {HeaderOverviewProps} from "./types";
+import Container from "../Container";
 
 const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
 
-    const isMobile = useMediaQuery(Queries.mobile)
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
 
     return (
-        <div>
-            <div style={{display: "flex", alignItems: 'center'}}>
+        <Container mb={'_10'} auto>
+            <Container justify={'start'} direction={'horizontal'}>
                 <Text title={isMobile ? '_2' : '_1'}>{title}</Text>
                 {isMobile
                     ? <img style={{height: '18px', width: '18px', marginLeft: '6px'}} src={question} alt=""/>
@@ -27,12 +29,11 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
                             <span style={{whiteSpace: 'nowrap'}}>How to use?</span>
                         </Text>
                     )}
-
-            </div>
-            <div style={{marginBottom: '8px'}}/>
-            <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
-            <div style={{marginBottom: '24px'}}/>
-        </div>
+            </Container>
+            <Container align={'start'}>
+                <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
+            </Container>
+        </Container>
     )
 }
 

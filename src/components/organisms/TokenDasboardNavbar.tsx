@@ -11,6 +11,7 @@ import {createPortal} from "react-dom";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 interface INavbarMenu {
+    id: number;
     text: string;
     icon: string;
     alt: string;
@@ -21,6 +22,7 @@ interface INavbarMenu {
 
 const navbarMenu: INavbarMenu[] = [
     {
+        id: 1,
         text: 'Create Offer',
         icon: plusIcon,
         alt: 'Create Offer Menu Item',
@@ -29,6 +31,7 @@ const navbarMenu: INavbarMenu[] = [
         active: false
     },
     {
+        id: 2,
         text: 'OTC desk',
         icon: otcDeskIcon,
         alt: 'OTC desk Menu Item',
@@ -36,6 +39,7 @@ const navbarMenu: INavbarMenu[] = [
         active: false,
     },
     {
+        id: 3,
         text: 'Dashboard',
         icon: dashboardIcon,
         alt: 'Dashboard Menu Item',
@@ -43,6 +47,7 @@ const navbarMenu: INavbarMenu[] = [
         active: true
     },
     {
+        id: 4,
         text: 'Profile',
         icon: profileIcon,
         alt: 'Profile Menu Item',
@@ -50,6 +55,7 @@ const navbarMenu: INavbarMenu[] = [
         active: false
     },
     {
+        id: 5,
         text: 'More',
         icon: moreIcon,
         alt: 'More Menu Item',
@@ -62,12 +68,13 @@ const TokenDashboardNavbar = () => {
     const modalsRoot = document.getElementById('modals');
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = (!isMobile && !isTablet)
 
     if (!modalsRoot) {
         return null;
     }
 
-    if(!isMobile || !isTablet) {
+    if(isDesktop) {
         return null
     }
 
@@ -75,7 +82,7 @@ const TokenDashboardNavbar = () => {
         <div className={navbar}>
             <div className={navbarContent}>
                 {navbarMenu.map(menuItem => (
-                    <div onClick={menuItem.onClick} className={navbarItem}>
+                    <div key={menuItem.id} onClick={menuItem.onClick} className={navbarItem}>
                         <img src={menuItem.icon} style={{marginBottom: '9px', height: '20px'}} alt={menuItem.alt}/>
                         <Text
                             colors={menuItem.color ? menuItem.color : menuItem.active ? 'white' : 'gray'}

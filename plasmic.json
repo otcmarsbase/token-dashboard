@@ -160,6 +160,19 @@
           "cssFilePath": "plasmic/marsbase_components/PlasmicContainer.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "OWF7fqE1kH",
+          "name": "RootContainer",
+          "type": "managed",
+          "projectId": "ujWBNnbL2n4RZDdiZiYFdw",
+          "renderModuleFilePath": "plasmic/marsbase_components/PlasmicRootContainer.tsx",
+          "importSpec": {
+            "modulePath": "RootContainer.tsx"
+          },
+          "cssFilePath": "plasmic/marsbase_components/PlasmicRootContainer.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -248,6 +261,6 @@
     ]
   },
   "wrapPagesWithGlobalContexts": true,
-  "cliVersion": "0.1.178",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.178/dist/plasmic.schema.json"
+  "cliVersion": "0.1.182",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.182/dist/plasmic.schema.json"
 }

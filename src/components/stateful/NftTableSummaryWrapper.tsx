@@ -1,23 +1,32 @@
-import { BigNumber, utils } from "ethers";
-import React, { FC, ReactNode, useContext } from "react";
-import { NFTS_PER_TRANSACTION } from "../../config";
-import { AppStateContext } from "../../contexts/AppStateContext";
-import { HandlersContext } from "../../contexts/HandlersContext";
-import { NftsContext } from "../../contexts/NftsContext";
-import { TxSasResult, useCurrentUser } from "../../hooks/jrpc-provider";
-import { useMarsbaseContracts } from "../../hooks/mbase-contract";
-import { NftTableSummary } from "../organisms/NftTableSummary";
+import React, {FC, ReactNode, useContext} from "react";
+import {AppStateContext} from "../../contexts/AppStateContext";
+import {NftTableSummary} from "../organisms/NftTableSummary";
+import {useModal} from "../../hooks/modal";
+import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
 
 export const NftTableSummaryWrapper = () => {
-    const { data } = useContext(AppStateContext)
-    const { handlers } = useContext(HandlersContext);
+    const {data, handlers} = useContext(AppStateContext);
+    const [Modal, visible, setVisible] = useModal('claimAllRewards')
 
     return (
-        <NftTableSummary
-            distributionAmount={data.distributionAmount}
-            token={data.token}
-            unclaimedTotal={data.unclaimedTotal}
-            onClaimAll={handlers.onClaimAll}
-        />
+        <>
+            <NftTableSummary
+                distributionAmount={data.distributionAmount}
+                token={data.token}
+                unclaimedTotal={data.unclaimedTotal}
+                onClaimAll={() => setVisible(true)}
+            />
+            <Modal>
+                <ClaimRewardsModalLocalized
+                    all
+                    onClose={() => setVisible(false)}
+                    token={'MBase'}
+                    amount={3600000}
+                    availableForClaim={123123123}
+                    onClaim={() => console.log('on claim click')}
+                    btnClaimLoad={false}
+                />
+            </Modal>
+        </>
     )
 }

@@ -19,20 +19,20 @@ export const NftCardOverview: FC<NftCardOverviewProps> = (
     }) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
-    const isOther = (!isMobile && !isTablet);
+    const isDesktop = (!isMobile && !isTablet);
 
     return (
         <Container>
             <Container direction={'horizontal'} justify={'start'}>
                 <img style={{height: '52px'}} src={colors[kind].icon} alt=""/>
                 <Container align={'start'} auto gap={'_10'}>
-                    {isOther && (
+                    {isDesktop && (
                         <Container direction={'horizontal'} justify={'start'}>
                             <Text>{amount} MBase</Text>
                             <Text colors={'gray'} size={'_11'}>~{amountUsd}$</Text>
                         </Container>
                     )}
-                    <Container direction={isOther ? 'horizontal' : undefined}>
+                    <Container direction={isDesktop ? 'horizontal' : undefined}>
                         <Label colors={colors[kind].label}>
                             <span>{priceText}</span>
                             <span style={{fontWeight: '500'}}>{price}</span>
@@ -45,12 +45,12 @@ export const NftCardOverview: FC<NftCardOverviewProps> = (
                 </Container>
             </Container>
             <Container direction={'horizontal'} justify={'between'}>
-                {!isOther && (
+                {!isDesktop && (
                     <Text colors={'gray'} size={'_12'}>
                         <b>Lot of NFT</b>
                     </Text>
                 )}
-                {!isOther && (
+                {!isDesktop && (
                     <Container auto align={'end'}>
                         <Text>{amount} MBase</Text>
                         <Text colors={'gray'} size={'_11'}>~{amountUsd}$</Text>

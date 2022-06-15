@@ -39,24 +39,30 @@ import sty from "./PlasmicContainer.module.css"; // plasmic-import: 514gf0jdxr/c
 
 export type PlasmicContainer__VariantMembers = {
   direction: "horizontal";
-  padding: "_0" | "_10" | "_15";
+  padding: "_0" | "_10" | "_15" | "_20";
   gap: "_5" | "_10" | "_15";
   align: "start" | "end";
   justify: "between" | "start" | "end";
   auto: "auto";
-  backgroud: "mobileCard";
-  border: "_4" | "_8";
+  backgroud: "dark1" | "dark2";
+  borderRadius: "_4" | "_8";
+  margin: "_5" | "_10";
+  mb: "_5" | "_10" | "_15" | "_20" | "_25" | "_30";
+  gapRow: "_5" | "_10" | "_30";
 };
 
 export type PlasmicContainer__VariantsArgs = {
   direction?: SingleChoiceArg<"horizontal">;
-  padding?: SingleChoiceArg<"_0" | "_10" | "_15">;
+  padding?: SingleChoiceArg<"_0" | "_10" | "_15" | "_20">;
   gap?: SingleChoiceArg<"_5" | "_10" | "_15">;
   align?: SingleChoiceArg<"start" | "end">;
   justify?: SingleChoiceArg<"between" | "start" | "end">;
   auto?: SingleBooleanChoiceArg<"auto">;
-  backgroud?: SingleChoiceArg<"mobileCard">;
-  border?: SingleChoiceArg<"_4" | "_8">;
+  backgroud?: SingleChoiceArg<"dark1" | "dark2">;
+  borderRadius?: SingleChoiceArg<"_4" | "_8">;
+  margin?: SingleChoiceArg<"_5" | "_10">;
+  mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
+  gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
 };
 
 type VariantPropType = keyof PlasmicContainer__VariantsArgs;
@@ -68,7 +74,10 @@ export const PlasmicContainer__VariantProps = new Array<VariantPropType>(
   "justify",
   "auto",
   "backgroud",
-  "border"
+  "borderRadius",
+  "margin",
+  "mb",
+  "gapRow"
 );
 
 export type PlasmicContainer__ArgsType = {
@@ -85,13 +94,16 @@ export type PlasmicContainer__OverridesType = {
 export interface DefaultContainerProps {
   children?: React.ReactNode;
   direction?: SingleChoiceArg<"horizontal">;
-  padding?: SingleChoiceArg<"_0" | "_10" | "_15">;
+  padding?: SingleChoiceArg<"_0" | "_10" | "_15" | "_20">;
   gap?: SingleChoiceArg<"_5" | "_10" | "_15">;
   align?: SingleChoiceArg<"start" | "end">;
   justify?: SingleChoiceArg<"between" | "start" | "end">;
   auto?: SingleBooleanChoiceArg<"auto">;
-  backgroud?: SingleChoiceArg<"mobileCard">;
-  border?: SingleChoiceArg<"_4" | "_8">;
+  backgroud?: SingleChoiceArg<"dark1" | "dark2">;
+  borderRadius?: SingleChoiceArg<"_4" | "_8">;
+  margin?: SingleChoiceArg<"_5" | "_10">;
+  mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
+  gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
   className?: string;
 }
 
@@ -128,27 +140,36 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootalign_end]: hasVariant(variants, "align", "end"),
           [sty.rootalign_start]: hasVariant(variants, "align", "start"),
           [sty.rootauto]: hasVariant(variants, "auto", "auto"),
-          [sty.rootbackgroud_mobileCard]: hasVariant(
-            variants,
-            "backgroud",
-            "mobileCard"
-          ),
-          [sty.rootborder__4]: hasVariant(variants, "border", "_4"),
-          [sty.rootborder__8]: hasVariant(variants, "border", "_8"),
+          [sty.rootbackgroud_dark1]: hasVariant(variants, "backgroud", "dark1"),
+          [sty.rootbackgroud_dark2]: hasVariant(variants, "backgroud", "dark2"),
+          [sty.rootborderRadius__4]: hasVariant(variants, "borderRadius", "_4"),
+          [sty.rootborderRadius__8]: hasVariant(variants, "borderRadius", "_8"),
           [sty.rootdirection_horizontal]: hasVariant(
             variants,
             "direction",
             "horizontal"
           ),
+          [sty.rootgapRow__10]: hasVariant(variants, "gapRow", "_10"),
+          [sty.rootgapRow__30]: hasVariant(variants, "gapRow", "_30"),
+          [sty.rootgapRow__5]: hasVariant(variants, "gapRow", "_5"),
           [sty.rootgap__10]: hasVariant(variants, "gap", "_10"),
           [sty.rootgap__15]: hasVariant(variants, "gap", "_15"),
           [sty.rootgap__5]: hasVariant(variants, "gap", "_5"),
           [sty.rootjustify_between]: hasVariant(variants, "justify", "between"),
           [sty.rootjustify_end]: hasVariant(variants, "justify", "end"),
           [sty.rootjustify_start]: hasVariant(variants, "justify", "start"),
+          [sty.rootmargin__10]: hasVariant(variants, "margin", "_10"),
+          [sty.rootmargin__5]: hasVariant(variants, "margin", "_5"),
+          [sty.rootmb__10]: hasVariant(variants, "mb", "_10"),
+          [sty.rootmb__15]: hasVariant(variants, "mb", "_15"),
+          [sty.rootmb__20]: hasVariant(variants, "mb", "_20"),
+          [sty.rootmb__25]: hasVariant(variants, "mb", "_25"),
+          [sty.rootmb__30]: hasVariant(variants, "mb", "_30"),
+          [sty.rootmb__5]: hasVariant(variants, "mb", "_5"),
           [sty.rootpadding__0]: hasVariant(variants, "padding", "_0"),
           [sty.rootpadding__10]: hasVariant(variants, "padding", "_10"),
-          [sty.rootpadding__15]: hasVariant(variants, "padding", "_15")
+          [sty.rootpadding__15]: hasVariant(variants, "padding", "_15"),
+          [sty.rootpadding__20]: hasVariant(variants, "padding", "_20")
         }
       )}
     >

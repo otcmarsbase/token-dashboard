@@ -112,6 +112,10 @@ export interface ClaimRewardsModalProps {
     btnClaim: ReactNode
     token: ReactNode
     amount: ReactNode
+    onClose: () => void
+    availableForClaim: ReactNode;
+    onClaim: () => void
+    btnClaimLoad: boolean
 }
 
 export type ClaimRewardsModalLocalizedProps = Omit<ClaimRewardsModalProps,

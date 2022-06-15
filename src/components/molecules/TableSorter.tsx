@@ -8,7 +8,7 @@ interface TableSorterProps {
 
 const TableSorter: FC<TableSorterProps> = ({sorters}) => {
     return (
-        <Container direction={'horizontal'}>
+        <Container direction={'horizontal'} padding={'_10'}>
             {sorters.map((name, index) => (
                 <ColumnSorter key={index} text={name} onSort={() => null}/>
             ))}

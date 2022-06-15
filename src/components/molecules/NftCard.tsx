@@ -11,15 +11,15 @@ const NftCard: FC<NftCardProps> = (props) => {
         const isMobile = useMediaQuery(Queries.mobile);
         const isTablet = useMediaQuery(Queries.tablet);
 
-        const isNotDesktop = (isMobile || isTablet);
+        const isDesktop = (!isMobile && !isTablet);
 
         return (
             <Container
-                direction={isNotDesktop ? undefined : 'horizontal'}
                 padding={'_15'}
                 gap={'_15'}
-                backgroud={isNotDesktop ? 'mobileCard' : undefined}
-                border={'_8'}
+                backgroud={"dark1"}
+                borderRadius={'_8'}
+                direction={isDesktop ? 'horizontal' : undefined}
             >
                 <NftCardOverviewLocalized
                     kind={props.kind}

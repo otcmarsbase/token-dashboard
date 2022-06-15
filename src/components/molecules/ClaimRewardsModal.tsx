@@ -9,12 +9,9 @@ import Input from "../Input";
 import questionIcon from '../../assets/question.png';
 import {ClaimRewardsModalProps, ClaimRewardsModalLocalizedProps} from "./types";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
+import Container from "../Container";
 
 const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
-    const modalsRoot = document.getElementById('modals');
-
-    if (!modalsRoot) return null;
-
     const isMobile = useMediaQuery(Queries.mobile)
     const isTablet = useMediaQuery(Queries.tablet)
 
@@ -26,46 +23,53 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
         }
     }, [])
 
-    return createPortal(
-        <div className={container(isMobile)}>
-            <div className={modalContainer}>
-                <div className={modalWrapper(isMobile)}>
-                    <div className={modal(isMobile, isTablet)}>
-                        <div className={modalContent}>
-                            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
-                                <Text title={'_2'}>{props.headerTitle}</Text>
-                                <Text colors={'gray'} size={'_12'}>{props.headerTitle}</Text>
-                            </div>
-                            <span style={{textAlign: 'start'}}>
+    return <div className={container(isMobile)}>
+        <div className={modalContainer}>
+            <div className={modalWrapper(isMobile)}>
+                <div className={modal(isMobile, isTablet)}>
+                    <div className={modalContent}>
+                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
+                            <Text title={'_2'}>{props.headerTitle}</Text>
+                            <Text colors={'gray'} size={'_12'}>{props.headerTitle}</Text>
+                        </div>
+                        <span style={{textAlign: 'start'}}>
                                 <Text title={'_3'}>
                                     {props.bodyTitle}
                                 </Text>
                             </span>
-                            {!all && (
-                                <div className={vestingAssetCard}>
-                                    <img src={purpleNftIcon} style={{marginRight: '10px', height: '60px'}} alt=""/>
-                                    <Text>{props.amount} {props.token}</Text>
-                                </div>
-                            )}
-                            <Input
-                                upLabel={
-                                    <Text
-                                        iconRight={<img src={questionIcon} style={{height: '9px'}} alt=""/>}
-                                        withIconRight
-                                    >
-                                        <span style={{whiteSpace: 'nowrap'}}>{props.inputLabelUp}</span>
-                                    </Text>}
-                                showUpLabel
-                                color={'whiteStroke'}
-                            />
-                            <Button onClick={() => null} size={'lg'} auto>
+                        {!all && (
+                            <div className={vestingAssetCard}>
+                                <img src={purpleNftIcon} style={{marginRight: '10px', height: '60px'}} alt=""/>
+                                <Text>{props.amount} {props.token}</Text>
+                            </div>
+                        )}
+                        <Input
+                            upLabel={
+                                <Text
+                                    iconRight={<img src={questionIcon} style={{height: '9px'}} alt=""/>}
+                                    withIconRight
+                                >
+                                    <span style={{whiteSpace: 'nowrap'}}>{props.inputLabelUp}</span>
+                                </Text>}
+                            showUpLabel
+                            color={'whiteStroke'}
+                            value={props.availableForClaim}
+                        />
+                        <Container direction={'horizontal'} gap={'_10'}>
+                            <Button colors={'defaultStroke'} onClick={props.onClose} size={'lg'} auto>
+                                <Text weight={'medium'} size={'_14'}>Close</Text>
+                            </Button>
+                            <Button disabled={props.btnClaimLoad} onClick={props.onClaim} size={'lg'} auto>
                                 <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
                             </Button>
-                        </div>
+                        </Container>
+
                     </div>
                 </div>
             </div>
-        </div>, modalsRoot)
+        </div>
+    </div>
+
 };
 
 export const ClaimRewardsModalLocalized: FC<ClaimRewardsModalLocalizedProps> = (props) => {

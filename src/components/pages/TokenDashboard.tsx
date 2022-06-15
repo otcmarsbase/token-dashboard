@@ -1,58 +1,50 @@
 import React from "react"
-
-import { TokenDashboardTemplate } from "../templates/TokenDashboardTemplate"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
-import { useContext } from "react"
-import { HandlersContext } from "../../contexts/HandlersContext"
-import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
-import { Header } from "../templates"
-import { NftsContext } from "../../contexts/NftsContext";
-import { NftTableSummaryWrapper } from "../stateful/NftTableSummaryWrapper";
-import { NftTable } from "../organisms/NftTable";
-import { TokenDashboardHeader } from "../molecules/TokenDashboardHeader";
-import TableLoading from "../molecules/TableLoading";
-
-
+import {TokenDashboardHeader} from "../molecules/TokenDashboardHeader"
+import {useContext} from "react"
+import {AppStateContext} from "../../contexts/AppStateContext"
+import {ConnectWithMetamask} from "../organisms/ConnectWithMetamask"
+import {NftsContext} from "../../contexts/NftsContext";
+import {NftTableSummaryWrapper} from "../stateful/NftTableSummaryWrapper";
+import {NftTable} from "../organisms/NftTable";
+import RootContainer from "../RootContainer";
+import Container from "../Container";
+import {HowIsLocalized} from "../molecules/HowIsDistributionDone";
 
 const TokenDashboard = () => {
-    const { handlers } = useContext(HandlersContext)
-    const { nftsG, loading, error, repeatRequest } = useContext(NftsContext)
+    const { handlers } = useContext(AppStateContext)
+    const { nftsG } = useContext(NftsContext)
 
     return (
         <>
-            <MemoHeader />
-            {error ? <button onClick={repeatRequest}>Try again</button> : ''}
-            <TokenDashboardTemplate>
-                <MemoTableSummary />
-                {loading ? <TableLoading /> :
-                    <NftTable
-                        nfts={nftsG}
-                        onClaim={(nftId) => {
-                            console.log(nftId)
-                            handlers.onClaim(nftId)
-                                .then(() => {
-                                    console.log('confirmed')
-                                    repeatRequest()
-                                })
-                        }}
-                        onActions={handlers.onActions}
-                    />
-                }
-            </TokenDashboardTemplate>
-            <TokenDashboardNavbar />
+            <MemoHeader/>
+            <RootContainer>
+                <Container gapRow={'_30'}>
+                    <Container>
+                        <MemoTableSummary/>
+                        <NftTable
+                            nfts={nftsG}
+                            onClaim={handlers.onClaim}
+                            onActions={handlers.onActions}
+                        />
+                    </Container>
+                    <HowIsLocalized/>
+                </Container>
+                <TokenDashboardNavbar/>
+            </RootContainer>
         </>
     )
 }
 
 const MemoHeader = React.memo(() => (
-    <Header>
-        <ConnectWithMetamask />
-        <TokenDashboardHeader />
-    </Header>
+    <>
+        <ConnectWithMetamask/>
+        <TokenDashboardHeader/>
+    </>
 ))
 
 const MemoTableSummary = React.memo(() => (
-    <NftTableSummaryWrapper />
+    <NftTableSummaryWrapper/>
 ))
 
 export default TokenDashboard
