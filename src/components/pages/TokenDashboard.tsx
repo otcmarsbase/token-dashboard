@@ -3,7 +3,7 @@ import React from "react"
 import { TokenDashboardTemplate } from "../templates/TokenDashboardTemplate"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
 import { useContext } from "react"
-import { AppStateContext } from "../../contexts/AppStateContext"
+import { HandlersContext } from "../../contexts/HandlersContext"
 import { ConnectWithMetamask } from "../organisms/ConnectWithMetamask"
 import { Header } from "../templates"
 import { NftsContext } from "../../contexts/NftsContext";
@@ -15,7 +15,7 @@ import TableLoading from "../molecules/TableLoading";
 
 
 const TokenDashboard = () => {
-    const { handlers } = useContext(AppStateContext)
+    const { handlers } = useContext(HandlersContext)
     const { nftsG, loading, error, repeatRequest } = useContext(NftsContext)
 
     return (
