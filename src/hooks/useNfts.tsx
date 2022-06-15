@@ -1,5 +1,5 @@
 import { useConnectedMetaMask } from "metamask-react"
-import useSWR from "swr"
+import useSWR, { useSWRConfig } from "swr"
 import { getNftList } from "../api"
 import { useMarsbaseContracts } from "./mbase-contract"
 
@@ -8,6 +8,6 @@ export const useNfts = () => {
     const {vesting} = useMarsbaseContracts()
     
 	const response = useSWR(account, () => getNftList(account, vesting))
-
+    
     return response
 }

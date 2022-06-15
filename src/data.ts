@@ -119,7 +119,7 @@ export const DICT = {
 	// }
 }
 export const HANDLERS = {
-	onClaim: (nftId: string) => console.log(`claimed ${nftId}`),
+	onClaim: (nftId: string) => Promise.resolve(),
 	onActions: (nftId: string) => console.log(`clicked Actions on ${nftId}`),
 	onClaimAll: () => console.log(`claimed all!`),
 	onSellWithPremium: () => console.log(`sell with premium`),

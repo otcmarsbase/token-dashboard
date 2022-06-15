@@ -1,16 +1,17 @@
 import React from "react"
-import {useContext} from "react"
-import {AppStateContext} from "../../contexts/AppStateContext"
-import {NftOverviewLocalized} from "./HeaderOverview";
-import {HeaderActionsLocalized} from "./HeaderActions";
+import { useContext } from "react"
+import { HandlersContext } from "../../contexts/HandlersContext"
+import { NftOverviewLocalized } from "./HeaderOverview";
+import { HeaderActionsLocalized } from "./HeaderActions";
 import Container from "../Container";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import RootContainer from "../RootContainer";
 import {style} from "typestyle";
 
 export const TokenDashboardHeader = () => {
-    const {data, handlers} = useContext(AppStateContext)
-    const {onSellWithPremium, onBuyNow} = handlers
+    const { data } = useContext(AppStateContext)
+    const { handlers } = useContext(HandlersContext)
+    const { onSellWithPremium, onBuyNow } = handlers
 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
@@ -31,7 +32,6 @@ export const TokenDashboardHeader = () => {
                 />
             </Container>
         </RootContainer>
-
     )
 }
 
