@@ -62,7 +62,6 @@ export const PlasmicCount__ArgProps = new Array<ArgPropType>("children");
 
 export type PlasmicCount__OverridesType = {
   root?: p.Flex<"div">;
-  freeBox?: p.Flex<"div">;
 };
 
 export interface DefaultCountProps {
@@ -110,43 +109,29 @@ function PlasmicCount__RenderFunc(props: {
         }
       )}
     >
-      <div
-        data-plasmic-name={"freeBox"}
-        data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox, {
-          [sty.freeBoxdistribution]: hasVariant(
+      {p.renderPlasmicSlot({
+        defaultContents: null,
+        value: args.children,
+        className: classNames(sty.slotTargetChildren, {
+          [sty.slotTargetChildrendistribution]: hasVariant(
             variants,
             "distribution",
             "distribution"
           )
-        })}
-      >
-        {p.renderPlasmicSlot({
-          defaultContents: null,
-          value: args.children,
-          className: classNames(sty.slotTargetChildren, {
-            [sty.slotTargetChildrendistribution]: hasVariant(
-              variants,
-              "distribution",
-              "distribution"
-            )
-          })
-        })}
-      </div>
+        })
+      })}
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root", "freeBox"],
-  freeBox: ["freeBox"]
+  root: ["root"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  freeBox: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -206,7 +191,6 @@ export const PlasmicCount = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicCount
     internalVariantProps: PlasmicCount__VariantProps,

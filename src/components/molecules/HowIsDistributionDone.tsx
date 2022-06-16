@@ -21,27 +21,20 @@ const HowIsDistributionDone: FC<HowIsProps> = ({title, subTitle}) => {
     }
 
     return (
-        <div className={wrapper}>
-            <div className={container}>
-                <div className={imageContainer}>
-                    <div className={content}>
-                        <Text title={'_2'}>{title}</Text>
-                        <span style={{display: 'block',marginBottom: '6px'}}/>
-                        <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
-                        <video controls className={styledVideo}>
-                            <source src=""/>
-                        </video>
-                    </div>
+        <div className={container}>
+            <div className={imageContainer}>
+                <div className={content}>
+                    <Text title={'_2'}>{title}</Text>
+                    <span style={{display: 'block',marginBottom: '6px'}}/>
+                    <Text colors={'gray'} size={'_12'}>{subTitle}</Text>
+                    <video controls className={styledVideo}>
+                        <source src=""/>
+                    </video>
                 </div>
             </div>
         </div>
     );
 };
-
-const wrapper = style({
-    // padding: '20px',
-    // marginBottom: '80px'
-})
 
 const imageContainer = style({
     backgroundImage: `url(${cosmonaut})`,

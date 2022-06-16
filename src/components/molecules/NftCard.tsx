@@ -3,9 +3,9 @@ import React, {FC} from 'react';
 import {NftCardProps} from "./types";
 import {NftCardOverviewLocalized} from "./NftCardOverview";
 import Container from "../Container";
-import NftCardActions from "./NftCardActions";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-import {NftCardMobileProgressBar} from "./NftMobileProgressBar";
+import {NftCardActionsLocalized} from "./NftCardActions";
+import {NftCardProgressLocalized} from "./NftCardProgress";
 
 const NftCard: FC<NftCardProps> = (props) => {
         const isMobile = useMediaQuery(Queries.mobile);
@@ -21,6 +21,7 @@ const NftCard: FC<NftCardProps> = (props) => {
                 borderRadius={'_8'}
                 direction={isDesktop ? 'horizontal' : undefined}
                 gapRow={isDesktop ? '_10' : undefined}
+                borderTop={isDesktop ? undefined : props.kind}
             >
                 <NftCardOverviewLocalized
                     kind={props.kind}
@@ -29,14 +30,14 @@ const NftCard: FC<NftCardProps> = (props) => {
                     amount={props.amount}
                     amountUsd={props.amountUsd}
                 />
-                <NftCardMobileProgressBar
+                <NftCardProgressLocalized
                     token={props.token}
                     timeLeft={props.timeLeft}
                     timePassed={props.timePassed}
                     percentComplete={props.percentComplete}
                     locked={props.locked}
                 />
-                <NftCardActions
+                <NftCardActionsLocalized
                     onClaim={props.onClaim}
                     onActions={props.onActions}
                     id={props.id}

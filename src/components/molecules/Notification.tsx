@@ -1,29 +1,24 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 import {style} from "typestyle";
-import {createPortal} from "react-dom";
 import {Text} from '../atoms/Text';
 import doneIcon from '../../assets/doneIcon.png'
 import errorIcon from '../../assets/errorIcon.png'
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-
-interface NotificationsProps {
-    type: 'success' | 'error'
-}
+import {NotificationsProps} from "./types";
+import Container from "../Container";
+import {DictionaryContext} from "../../contexts/DictionaryContext";
 
 const Notification: FC<NotificationsProps> = ({type}) => {
-    const modalsRoot = document.getElementById('modals');
-
-    if (!modalsRoot) return null;
-
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet)
     const isPc = (!isMobile && !isTablet);
 
-    return createPortal(
+    return (
         <div className={container(type, isMobile)}>
-            <div className={content}>
-                <div style={{marginRight: '12px'}}>{type === 'success' ? <img style={{height: '24px'}} src={doneIcon}/> :
-                    <img style={{height: '24px'}} src={errorIcon}/>}</div>
+            <Container>
+                <div style={{marginRight: '12px'}}>
+                    <img style={{height: '24px'}} src={type === 'success' ? doneIcon : errorIcon}/>
+                </div>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'start', flex: 1}}>
                     <Text weight={'semiBold'}>Done</Text>
                     {isPc && (
@@ -33,10 +28,22 @@ const Notification: FC<NotificationsProps> = ({type}) => {
                 <div>
                     <Text weight={'semiBold'}>X</Text>
                 </div>
-            </div>
+            </Container>
         </div>
-        , modalsRoot);
+    );
 };
+
+type NotificationLocalizedProps = Omit<NotificationsProps, "title" | "subTitle">
+
+export const NotificationLocalized: FC<NotificationLocalizedProps> = (props) => {
+    const {nft} = useContext(DictionaryContext);
+
+    return <Notification
+        type={props.type}
+        title={nft.dashboard.notifications[props.type].title}
+        subTitle={nft.dashboard.notifications[props.type].subTitle}
+    />
+}
 
 const container = (type: string, isMobile: boolean) => style({
     position: 'absolute',
@@ -48,9 +55,4 @@ const container = (type: string, isMobile: boolean) => style({
     borderRadius: '6px',
     padding: '16px 26px 16px 20px',
     width: isMobile ? 'unset' : '368px',
-})
-
-const content = style({
-    display: 'flex',
-    alignItems: 'center'
 })

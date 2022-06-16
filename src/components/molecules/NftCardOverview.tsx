@@ -15,7 +15,8 @@ export const NftCardOverview: FC<NftCardOverviewProps> = (
         startedText,
         priceText,
         amount,
-        amountUsd
+        amountUsd,
+        lotOfNftText
     }) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
@@ -32,7 +33,7 @@ export const NftCardOverview: FC<NftCardOverviewProps> = (
                             <Text colors={'gray'} size={'_11'}>~{amountUsd}$</Text>
                         </Container>
                     )}
-                    <Container direction={isDesktop ? 'horizontal' : undefined}>
+                    <Container gap={'_10'} direction={isDesktop ? 'horizontal' : undefined} align={'start'}>
                         <Label colors={colors[kind].label}>
                             <span>{priceText}</span>
                             <span style={{fontWeight: '500'}}>{price}</span>
@@ -47,7 +48,7 @@ export const NftCardOverview: FC<NftCardOverviewProps> = (
             <Container direction={'horizontal'} justify={'between'}>
                 {!isDesktop && (
                     <Text colors={'gray'} size={'_12'}>
-                        <b>Lot of NFT</b>
+                        <b>{lotOfNftText}</b>
                     </Text>
                 )}
                 {!isDesktop && (
@@ -67,6 +68,7 @@ export const NftCardOverviewLocalized: FC<NftCardOverviewLocalizedProps> = (prop
     return <NftCardOverview
         startedText={nft.dashboard.nft_table.nft_card.unvest_start_date_label}
         priceText={nft.dashboard.nft_table.nft_card.price_label}
+        lotOfNftText={nft.dashboard.nft_table.headers[0]}
         {...props}
     />
 }

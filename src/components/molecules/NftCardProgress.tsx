@@ -1,10 +1,10 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 import {Text} from "../atoms/Text";
 import {style} from "typestyle";
-import {NftCardProps} from "./types";
+import {NftCardProgressProps} from "./types";
+import {DictionaryContext} from "../../contexts/DictionaryContext";
 
-export const NftCardMobileProgressBar: FC<Pick<NftCardProps,
-    'locked' | 'token' | 'percentComplete' | 'timePassed' | 'timeLeft'>> = (
+const NftCardProgress: FC<NftCardProgressProps> = (
     {
         locked,
         token,
@@ -37,6 +37,16 @@ export const NftCardMobileProgressBar: FC<Pick<NftCardProps,
         </div>
     );
 };
+
+type NftCardProgressLocalizedProps = Omit<NftCardProgressProps, "claim_btn">
+
+export const NftCardProgressLocalized: FC<NftCardProgressLocalizedProps> = (props) => {
+    const {nft}  = useContext(DictionaryContext);
+
+    return <NftCardProgress
+        claim_btn={nft.dashboard.nft_table.nft_card.claim_btn}
+        {...props}/>
+}
 
 const progressContainer = style({
     backgroundColor: 'rgba(104, 106, 110, 1)',

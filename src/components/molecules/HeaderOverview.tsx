@@ -8,7 +8,7 @@ import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {HeaderOverviewProps} from "./types";
 import Container from "../Container";
 
-const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
+const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle, howToUseText}) => {
 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
@@ -27,7 +27,7 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
                             iconLeft={<img style={{height: '18px', width: '18px', marginLeft: '16px'}} src={question} alt=""/>}
                             withIconLeft
                         >
-                            <span style={{whiteSpace: 'nowrap'}}>How to use?</span>
+                            <span style={{whiteSpace: 'nowrap'}}>{howToUseText}</span>
                         </Text>
                     )}
             </Container>
@@ -41,5 +41,9 @@ const HeaderOverviewVisual: FC<HeaderOverviewProps> = ({title, subTitle}) => {
 export const NftOverviewLocalized: React.FC = () => {
     const {nft} = useContext(DictionaryContext);
 
-    return <HeaderOverviewVisual title={nft.dashboard.page_title} subTitle={nft.dashboard.page_description}/>
+    return <HeaderOverviewVisual
+        title={nft.dashboard.page_title}
+        subTitle={nft.dashboard.page_description}
+        howToUseText={nft.dashboard.how_to_use}
+    />
 }

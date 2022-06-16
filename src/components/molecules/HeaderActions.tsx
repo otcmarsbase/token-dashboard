@@ -25,7 +25,7 @@ export const HeaderActions: FC<HeaderActionsProps> = (
             direction={isMobile ? undefined : 'horizontal'}
             gapRow={isDesktop ? '_10' : undefined}
             justify={isTablet ? 'start' : undefined}
-            gap={'_15'}
+            gap={isDesktop ? undefined : '_15'}
         >
             <Button auto={isMobile} onClick={onSellWithPremium} size={"md"} colors={'defaultStroke'}>
                 <Text title={'_4'} noWrap>{btnText}</Text>

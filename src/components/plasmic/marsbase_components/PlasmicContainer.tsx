@@ -50,6 +50,8 @@ export type PlasmicContainer__VariantMembers = {
   mb: "_5" | "_10" | "_15" | "_20" | "_25" | "_30";
   gapRow: "_5" | "_10" | "_30";
   mr: "_5" | "_10" | "_15";
+  reverse: "reverse";
+  borderTop: "cyan" | "yellow" | "red" | "silver";
 };
 
 export type PlasmicContainer__VariantsArgs = {
@@ -65,6 +67,8 @@ export type PlasmicContainer__VariantsArgs = {
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
   gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
   mr?: SingleChoiceArg<"_5" | "_10" | "_15">;
+  reverse?: SingleBooleanChoiceArg<"reverse">;
+  borderTop?: SingleChoiceArg<"cyan" | "yellow" | "red" | "silver">;
 };
 
 type VariantPropType = keyof PlasmicContainer__VariantsArgs;
@@ -80,7 +84,9 @@ export const PlasmicContainer__VariantProps = new Array<VariantPropType>(
   "margin",
   "mb",
   "gapRow",
-  "mr"
+  "mr",
+  "reverse",
+  "borderTop"
 );
 
 export type PlasmicContainer__ArgsType = {
@@ -108,6 +114,8 @@ export interface DefaultContainerProps {
   mb?: SingleChoiceArg<"_5" | "_10" | "_15" | "_20" | "_25" | "_30">;
   gapRow?: MultiChoiceArg<"_5" | "_10" | "_30">;
   mr?: SingleChoiceArg<"_5" | "_10" | "_15">;
+  reverse?: SingleBooleanChoiceArg<"reverse">;
+  borderTop?: SingleChoiceArg<"cyan" | "yellow" | "red" | "silver">;
   className?: string;
 }
 
@@ -148,6 +156,18 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootbackgroud_dark2]: hasVariant(variants, "backgroud", "dark2"),
           [sty.rootborderRadius__4]: hasVariant(variants, "borderRadius", "_4"),
           [sty.rootborderRadius__8]: hasVariant(variants, "borderRadius", "_8"),
+          [sty.rootborderTop_cyan]: hasVariant(variants, "borderTop", "cyan"),
+          [sty.rootborderTop_red]: hasVariant(variants, "borderTop", "red"),
+          [sty.rootborderTop_silver]: hasVariant(
+            variants,
+            "borderTop",
+            "silver"
+          ),
+          [sty.rootborderTop_yellow]: hasVariant(
+            variants,
+            "borderTop",
+            "yellow"
+          ),
           [sty.rootdirection_horizontal]: hasVariant(
             variants,
             "direction",
@@ -159,6 +179,9 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootgap__10]: hasVariant(variants, "gap", "_10"),
           [sty.rootgap__15]: hasVariant(variants, "gap", "_15"),
           [sty.rootgap__5]: hasVariant(variants, "gap", "_5"),
+          [sty.rootgap__5_direction_horizontal]:
+            hasVariant(variants, "gap", "_5") &&
+            hasVariant(variants, "direction", "horizontal"),
           [sty.rootjustify_between]: hasVariant(variants, "justify", "between"),
           [sty.rootjustify_end]: hasVariant(variants, "justify", "end"),
           [sty.rootjustify_start]: hasVariant(variants, "justify", "start"),
@@ -176,7 +199,8 @@ function PlasmicContainer__RenderFunc(props: {
           [sty.rootpadding__0]: hasVariant(variants, "padding", "_0"),
           [sty.rootpadding__10]: hasVariant(variants, "padding", "_10"),
           [sty.rootpadding__15]: hasVariant(variants, "padding", "_15"),
-          [sty.rootpadding__20]: hasVariant(variants, "padding", "_20")
+          [sty.rootpadding__20]: hasVariant(variants, "padding", "_20"),
+          [sty.rootreverse]: hasVariant(variants, "reverse", "reverse")
         }
       )}
     >

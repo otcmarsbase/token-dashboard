@@ -55,6 +55,16 @@ export const DICT = {
 						title: 'NFT is being splitted',
 						subTitle: 'Please wait for a few moments. Colonizing Mars make take a while...'
 					}
+				},
+				notifications: {
+					success: {
+						title: 'Done',
+						subTitle: 'Every time after using Mars Base, we recommend you to disconnect.'
+					},
+					error: {
+						title: 'Error',
+						subTitle: 'Every time after using Mars Base, we recommend you to disconnect.'
+					}
 				}
 			},
 			vestingSplit: {

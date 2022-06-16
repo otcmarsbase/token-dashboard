@@ -1,9 +1,10 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 import {Button} from "../atoms/Button";
-import {NftCardActionsProps} from "./types";
+import {NftCardActionsLocalizedProps, NftCardActionsProps} from "./types";
 import {Text} from "../atoms/Text";
 import Container from "../Container";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {DictionaryContext} from "../../contexts/DictionaryContext";
 
 const NftCardActions: FC<NftCardActionsProps> = (
     {
@@ -44,4 +45,10 @@ const NftCardActions: FC<NftCardActionsProps> = (
     );
 };
 
-export default NftCardActions;
+export const NftCardActionsLocalized: FC<NftCardActionsLocalizedProps> = (props) => {
+    const {nft} = useContext(DictionaryContext);
+    return <NftCardActions
+        claim_btn={nft.dashboard.nft_table.nft_card.claim_btn}
+        actions_btn={nft.dashboard.nft_table.nft_card.actions_btn}
+        {...props}/>
+}

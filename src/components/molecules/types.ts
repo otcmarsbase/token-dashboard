@@ -15,6 +15,7 @@ export type HeaderActionsLocalizedProps = Omit<HeaderActionsProps, 'btnText' | '
 export interface HeaderOverviewProps {
     title: ReactNode
     subTitle: ReactNode
+    howToUseText: ReactNode
 }
 
 export interface LearningBlockProps {
@@ -142,7 +143,14 @@ export interface NftCardProps extends INft {
 
 export type IColors = { [color in TagLabelColors]: { border: string; icon: string, label: TagLabelColors } };
 
-export type NftCardActionsProps = Pick<NftCardProps, 'id' | 'onClaim' | 'onActions' | 'unclaimed' | 'token' | 'availableUsd'>
+export type NftCardActionsProps =
+    Pick<NftCardProps, 'id' | 'onClaim' | 'onActions' | 'unclaimed' | 'token' | 'availableUsd'>
+    & { claim_btn: ReactNode, actions_btn: ReactNode }
+
+export type NftCardActionsLocalizedProps = Omit<NftCardActionsProps, 'claim_btn' | 'actions_btn'>
+
+export type NftCardProgressProps = Pick<NftCardProps,
+'locked' | 'token' | 'percentComplete' | 'timePassed' | 'timeLeft'> & {claim_btn: ReactNode}
 
 export type NftOverviewProps = {
     amount: React.ReactNode
@@ -155,8 +163,10 @@ export type NftOverviewProps = {
 
 export type NftCardOverviewProps =
     Pick<NftCardProps, 'kind' | 'price' | 'started' | 'amount' | 'amountUsd'>
-    & { startedText: string, priceText: string }
+    & { startedText: ReactNode, priceText: ReactNode, lotOfNftText: ReactNode }
 
-export type NftCardOverviewLocalizedProps = Omit<NftCardOverviewProps, "startedText" | 'priceText'>
+export type NftCardOverviewLocalizedProps = Omit<NftCardOverviewProps, "startedText" | 'priceText' | 'lotOfNftText'>
 
-export type NftCardMobileProgressProps = Omit<NftCardProps, "">
+export type NotificationsProps = {
+    type: 'success' | 'error'
+} & {title: ReactNode, subTitle: ReactNode}

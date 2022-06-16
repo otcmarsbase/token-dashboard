@@ -11,28 +11,29 @@ import {SummaryDestributionProps} from "./types";
 import Container from "../Container";
 
 const SummaryDestribution: FC<SummaryDestributionProps> = ({title, subTitle, count}) => {
-    const isMobile = useMediaQuery(Queries.mobile)
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = (!isMobile && !isTablet)
 
     return (
-        <div className={container(isMobile)}>
+        <Container direction={'horizontal'} auto={!isMobile} justify={'start'}>
             <img style={{height: '36px', marginRight: '12px'}} src={flyUsdIcon} alt=""/>
             <Container align={'start'}>
                 <Container gap={'_5'} justify={'start'} direction={'horizontal'}>
                     <Text title={'_3'}>{title}</Text>
                     <Count distribution>
-                        <Text title={'_4'} colors={'red'}>{count}</Text>
+                        <Text title={'_4'} colors={'red'}>
+                            <div>
+                                {count}
+                            </div>
+                           </Text>
                     </Count>
                 </Container>
                 <Text size={'_12'} colors={'gray'}>{subTitle}</Text>
             </Container>
-        </div>
+        </Container>
     )
 }
-
-const container = (isMobile: boolean) => style({
-    display: "flex",
-    width: isMobile ? '100%' : "300px"
-})
 
 type SummaryDestributionLocalizedProps = Pick<SummaryDestributionProps, "count" | "icon">
 

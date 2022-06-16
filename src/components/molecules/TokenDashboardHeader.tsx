@@ -39,6 +39,6 @@ export const TokenDashboardHeader = () => {
 const styledRootContainer = style({
     borderBottom: '1px solid rgba(104,106,110,0.6)',
     background: 'linear-gradient(97deg, rgba(0,0,0,1) 0%, rgba(26,1,47,1) 100%)',
-    marginBottom: '40px'
+    marginBottom: '32px'
 })
 

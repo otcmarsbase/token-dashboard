@@ -27,6 +27,7 @@ export const NftTableSummary: FC<INftTableSummary> = (
             direction={isMobile ? undefined : 'horizontal'}
             justify={'between'}
             gap={'_15'}
+            reverse={isMobile}
         >
             <SummaryDestributionWrapper count={distributionAmount}/>
             <SummaryTotalUnclaimedWrapper
