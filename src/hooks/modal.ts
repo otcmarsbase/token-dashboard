@@ -14,7 +14,7 @@ export const useModal = (id: string): [FC<PropsWithChildren<{}>>, boolean, Dispa
         const element = document.createElement("div");
         element.setAttribute("id", id);
 
-        const modalRoot = document.getElementById('modals');
+        const modalRoot = document.getElementById('modal-root');
 
         if (!modalRoot) {
             throw new Error('modalRoot not exist')

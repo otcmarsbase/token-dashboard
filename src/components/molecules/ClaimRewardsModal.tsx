@@ -10,6 +10,7 @@ import questionIcon from '../../assets/question.png';
 import {ClaimRewardsModalProps, ClaimRewardsModalLocalizedProps} from "./types";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
 import Container from "../Container";
+import {colors} from "./CONSTANTS";
 
 const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
     const isMobile = useMediaQuery(Queries.mobile)
@@ -38,8 +39,8 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
                                 </Text>
                             </span>
                         {!all && (
-                            <div className={vestingAssetCard}>
-                                <img src={purpleNftIcon} style={{marginRight: '10px', height: '60px'}} alt=""/>
+                            <div className={vestingAssetCard(colors[props.kind].border)}>
+                                <img src={colors[props.kind].icon} style={{marginRight: '10px', height: '60px'}} alt=""/>
                                 <Text>{props.amount} {props.token}</Text>
                             </div>
                         )}
@@ -131,9 +132,9 @@ const modalContent = style({
     padding: '23px'
 })
 
-const vestingAssetCard = style({
+const vestingAssetCard = (color: string) => style({
     backgroundColor: 'rgba(42,42,44,0.4)',
-    borderLeft: '6px solid rgba(152, 81, 255, 1)',
+    borderLeft: '6px solid ' + color,
     padding: '14px',
     display: 'flex',
     alignItems: 'center',

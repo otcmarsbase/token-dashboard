@@ -112,11 +112,12 @@ export interface ClaimRewardsModalProps {
     inputLabelUp: ReactNode
     btnClaim: ReactNode
     token: ReactNode
-    amount: ReactNode
+    amount?: ReactNode
     onClose: () => void
     availableForClaim: ReactNode;
     onClaim: () => void
-    btnClaimLoad: boolean
+    btnClaimLoad?: boolean
+    kind: TagLabelColors;
 }
 
 export type ClaimRewardsModalLocalizedProps = Omit<ClaimRewardsModalProps,
@@ -144,13 +145,13 @@ export interface NftCardProps extends INft {
 export type IColors = { [color in TagLabelColors]: { border: string; icon: string, label: TagLabelColors } };
 
 export type NftCardActionsProps =
-    Pick<NftCardProps, 'id' | 'onClaim' | 'onActions' | 'unclaimed' | 'token' | 'availableUsd'>
+    Pick<NftCardProps, 'id' | 'onClaim' | 'onActions' | 'unclaimed' | 'token' | 'availableUsd' | 'amount' | 'kind'>
     & { claim_btn: ReactNode, actions_btn: ReactNode }
 
 export type NftCardActionsLocalizedProps = Omit<NftCardActionsProps, 'claim_btn' | 'actions_btn'>
 
 export type NftCardProgressProps = Pick<NftCardProps,
-'locked' | 'token' | 'percentComplete' | 'timePassed' | 'timeLeft'> & {claim_btn: ReactNode}
+    'locked' | 'token' | 'percentComplete' | 'timePassed' | 'timeLeft'> & { claim_btn: ReactNode }
 
 export type NftOverviewProps = {
     amount: React.ReactNode
@@ -169,4 +170,4 @@ export type NftCardOverviewLocalizedProps = Omit<NftCardOverviewProps, "startedT
 
 export type NotificationsProps = {
     type: 'success' | 'error'
-} & {title: ReactNode, subTitle: ReactNode}
+} & { title: ReactNode, subTitle: ReactNode }

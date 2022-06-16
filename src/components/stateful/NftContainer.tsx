@@ -4,6 +4,7 @@ import {style} from "typestyle";
 import {IMobileNftsContainer} from "../organisms/types";
 import NftCard from "../molecules/NftCard";
 import React from "react";
+import TableSorterState from "./TableSorterState";
 
 export const NftsContainer: FC<PropsWithChildren<IMobileNftsContainer>> = (
     {
@@ -13,18 +14,22 @@ export const NftsContainer: FC<PropsWithChildren<IMobileNftsContainer>> = (
     }) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = (!isMobile && !isTablet);
 
     return (
-        <div className={nftContainer(isMobile, isTablet)}>
-            {nfts.map((nft) =>
-                <NftCard
-                    key={nft.id}
-                    onClaim={onClaim}
-                    onActions={onActions}
-                    {...nft}
-                />
-            )}
-        </div>
+        <>
+            {isDesktop && <TableSorterState/>}
+            <div className={nftContainer(isMobile, isTablet)}>
+                {nfts.map((nft) =>
+                    <NftCard
+                        key={nft.id}
+                        onClaim={onClaim}
+                        onActions={onActions}
+                        {...nft}
+                    />
+                )}
+            </div>
+        </>
     )
 }
 

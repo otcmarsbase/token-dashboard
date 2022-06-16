@@ -5,6 +5,8 @@ import {Text} from "../atoms/Text";
 import Container from "../Container";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
+import {useModal} from "../../hooks/modal";
+import {ClaimRewardsModalLocalized} from "./ClaimRewardsModal";
 
 const NftCardActions: FC<NftCardActionsProps> = (
     {
@@ -13,35 +15,51 @@ const NftCardActions: FC<NftCardActionsProps> = (
         id,
         unclaimed,
         availableUsd,
-        token
+        token,
+        amount,
+        kind
     }) => {
 
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
     const isDesktop = (!isMobile && !isTablet);
+    const [Modal, , setModal] = useModal('claimRewards');
 
     return (
-        <Container direction={isDesktop ? 'horizontal' : undefined}>
-            <Container direction={'horizontal'} justify={'between'} mr={isDesktop ? '_15' : undefined}>
-                {!isDesktop && (
-                    <Text colors={'gray'} size={'_12'}>
-                        <b>Available for claim</b>
-                    </Text>
-                )}
-                <Container align={'end'}>
-                    <Text colors={'red'}>{unclaimed} {token}</Text>
-                    <Text colors={'gray'} size={'_11'}>~{availableUsd}$</Text>
+        <>
+            <Container direction={isDesktop ? 'horizontal' : undefined}>
+                <Container direction={'horizontal'} justify={'between'} mr={isDesktop ? '_15' : undefined}>
+                    {!isDesktop && (
+                        <Text colors={'gray'} size={'_12'}>
+                            <b>Available for claim</b>
+                        </Text>
+                    )}
+                    <Container align={'end'}>
+                        <Text colors={'red'}>{unclaimed} {token}</Text>
+                        <Text colors={'gray'} size={'_11'}>~{availableUsd}$</Text>
+                    </Container>
+                </Container>
+                <Container gapRow={'_10'}>
+                    <Button onClick={() => setModal(true)} auto size={'sm'}>
+                        <span style={{fontWeight: 600}}>Claim</span>
+                    </Button>
+                    <Button onClick={() => onActions(id)} auto size={'sm'} colors={'defaultStroke'}>
+                        <span style={{fontWeight: 600}}>Actions</span>
+                    </Button>
                 </Container>
             </Container>
-            <Container gapRow={'_10'}>
-                <Button onClick={() => onClaim(id)} auto size={'sm'}>
-                    <span style={{fontWeight: 600}}>Claim</span>
-                </Button>
-                <Button onClick={() => onActions(id)} auto size={'sm'} colors={'defaultStroke'}>
-                    <span style={{fontWeight: 600}}>Actions</span>
-                </Button>
-            </Container>
-        </Container>
+            <Modal>
+                <ClaimRewardsModalLocalized
+                    token={token}
+                    amount={amount}
+                    onClose={() => setModal(false)}
+                    availableForClaim={unclaimed}
+                    onClaim={() => onClaim(id)}
+                    kind={kind}
+                />
+            </Modal>
+        </>
+
     );
 };
 

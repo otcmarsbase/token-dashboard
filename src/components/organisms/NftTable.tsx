@@ -9,9 +9,6 @@ import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 
 export const NftTable: FC<NftTableProps> = ({nfts, onClaim, onActions}) => {
     const isMobile = useMediaQuery(Queries.mobile);
-    const isTablet = useMediaQuery(Queries.tablet);
-
-    const isDesktop = (!isMobile && !isTablet);
 
     return (
         <Container align={'start'} gapRow={'_30'}>
@@ -20,7 +17,6 @@ export const NftTable: FC<NftTableProps> = ({nfts, onClaim, onActions}) => {
                 borderRadius={'_8'}
                 padding={!isMobile ? '_10' : undefined}
             >
-                {isDesktop && <TableSorterState/>}
                 <NftsContainer
                     nfts={nfts}
                     onClaim={onClaim}

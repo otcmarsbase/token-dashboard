@@ -6,6 +6,7 @@ import { NftsContextProvider } from "../../contexts/NftsContext"
 import { RoundingContext, RoundingContextProvider } from "../../contexts/RoundingsContext"
 import { MarsbaseTokenProvider, MarsbaseVestingProvider } from "../../hooks/mbase-contract"
 import TokenDashboard from "../pages/TokenDashboard"
+import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
 
 export const MetamaskConnected: React.FC<{ network: EvmNetwork }> = props => (
 	<MarsbaseTokenProvider address={props.network.mbaseTokenAddress}>

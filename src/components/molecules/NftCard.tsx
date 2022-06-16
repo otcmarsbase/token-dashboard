@@ -38,12 +38,14 @@ const NftCard: FC<NftCardProps> = (props) => {
                     locked={props.locked}
                 />
                 <NftCardActionsLocalized
+                    amount={props.amount}
                     onClaim={props.onClaim}
                     onActions={props.onActions}
                     id={props.id}
                     unclaimed={props.unclaimed}
                     availableUsd={props.availableUsd}
                     token={props.token}
+                    kind={props.kind}
                 />
             </Container>
         );
