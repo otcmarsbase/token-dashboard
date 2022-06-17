@@ -87,15 +87,13 @@ export interface ColumnSorterProps {
 
 export interface INftSelectCard {
     active?: boolean;
-    color: ColorTypes;
-    amount: number;
-    token: string;
-    usd: number;
-    price: number;
-    started: number;
+    kind: TagLabelColors;
+    amount: ReactNode;
+    token: ReactNode;
+    usd: ReactNode;
+    price: ReactNode;
+    started: ReactNode;
 }
-
-export type ColorTypes = 'gold' | 'goldDark' | 'red' | 'silver' | 'purple';
 
 export interface SummaryDestributionProps {
     icon?: ReactNode
@@ -136,7 +134,7 @@ export interface IsBeingSplittedProps {
     subTitle: ReactNode;
 }
 
-export type IsBeingSplittedLocalizedProps = Omit<IsBeingSplittedProps, ''>
+export type IsBeingSplittedLocalizedProps = Omit<IsBeingSplittedProps, 'title' | 'subTitle'>
 
 export interface NftCardProps extends INft {
     onClaim: (nftId: string) => void;
@@ -172,3 +170,7 @@ export type NftCardOverviewLocalizedProps = Omit<NftCardOverviewProps, "startedT
 export type NotificationsProps = {
     type: 'success' | 'error'
 } & { title: ReactNode, subTitle: ReactNode }
+
+export interface SelectNftModalProps {
+    nfts: INft[]
+}

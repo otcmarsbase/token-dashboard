@@ -1,94 +1,55 @@
-import React, {useEffect} from 'react';
+import React, {FC} from 'react';
 import {style} from "typestyle";
 
 import changeViewIcon from '../../assets/changeViewIcon.svg';
 import sortIcon from '../../assets/sortIcon.svg';
-import X from '../../assets/X.png';
 
 import {Text} from '../atoms/Text'
 import NftSelectCard from "../molecules/NftSelectCard";
-import {createPortal} from "react-dom";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {SelectNftModalProps} from "../molecules/types";
 
-const SelectNftModal = () => {
-    const modalsRoot = document.getElementById('modals');
-
-    if (!modalsRoot) return null;
-
+const SelectNftModal: FC<SelectNftModalProps> = ({nfts}) => {
     const isMobile = useMediaQuery(Queries.mobile)
     const isTablet = useMediaQuery(Queries.tablet)
 
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-
-        return () => {
-            document.body.style.overflow = 'unset';
-        }
-    }, [])
-
-    return createPortal(<div className={container}>
-        <div className={modalContainer}>
-            <div className={modalWrapper(isMobile)}>
-                <div className={modal(isMobile, isTablet)}>
-                    <div className={modalContent}>
-                        <div className={modalContentHeader}>
-                            <div>
-                                <Text title={'_2'}>Select nft</Text>
-                            </div>
-                            <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-                                <div className={iconContainer}>
-                                    <img src={changeViewIcon} alt="changeViewIcon"/>
+    return (
+        <div className={container}>
+            <div className={modalContainer}>
+                <div className={modalWrapper(isMobile)}>
+                    <div className={modal(isMobile, isTablet)}>
+                        <div className={modalContent}>
+                            <div className={modalContentHeader}>
+                                <div>
+                                    <Text title={'_2'}>Select nft</Text>
                                 </div>
-                                <div className={iconContainer}>
-                                    <img src={sortIcon} alt=""/>
+                                <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+                                    <div className={iconContainer}>
+                                        <img src={changeViewIcon} alt="changeViewIcon"/>
+                                    </div>
+                                    <div className={iconContainer}>
+                                        <img src={sortIcon} alt=""/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={modalContentBody(isMobile, isTablet)}>
-                            <NftSelectCard
-                                color={'purple'}
-                                amount={36000000000}
-                                usd={56000}
-                                price={0.0035}
-                                started={12340097087234}
-                                token={'MBase'}
-                            />
-                            <NftSelectCard color={'gold'} amount={36000000000}
-                                           usd={56000}
-                                           price={0.0035}
-                                           started={12340097087234}
-                                           token={'MBase'}/>
-                            <NftSelectCard color={'red'} amount={36000000000}
-                                           usd={56000}
-                                           price={0.0035}
-                                           started={12340097087234}
-                                           token={'MBase'}/>
-                            <NftSelectCard color={'silver'} amount={36000000000}
-                                           usd={56000}
-                                           price={0.0035}
-                                           started={12340097087234}
-                                           token={'MBase'}/>
-                            <NftSelectCard active color={'goldDark'} amount={36000000000}
-                                           usd={56000}
-                                           price={0.0035}
-                                           started={12340097087234}
-                                           token={'MBase'}/>
-                            <NftSelectCard color={'red'} amount={36000000000}
-                                           usd={56000}
-                                           price={0.0035}
-                                           started={12340097087234}
-                                           token={'MBase'}/>
-                            <NftSelectCard color={'gold'} amount={36000000000}
-                                           usd={56000}
-                                           price={0.0035}
-                                           started={12340097087234}
-                                           token={'MBase'}/>
+                            <div className={modalContentBody(isMobile, isTablet)}>
+                                {nfts.map(nft => (
+                                    <NftSelectCard
+                                        kind={nft.kind}
+                                        amount={nft.amount}
+                                        usd={nft.availableUsd}
+                                        price={nft.price}
+                                        started={nft.started}
+                                        token={nft.token}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>, modalsRoot)
+    )
 };
 
 const container = style({

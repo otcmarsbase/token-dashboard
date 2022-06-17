@@ -10,10 +10,16 @@ import RootContainer from "../RootContainer";
 import Container from "../Container";
 import {HowIsLocalized} from "../molecules/HowIsDistributionDone";
 import {HandlersContext} from "../../contexts/HandlersContext";
+import {IsBeingSplittedLocalized} from "../molecules/IsBeingSplitted";
+import {NftAvailableClaimLocalized} from "../molecules/NftAvailableClaim";
+import {useModal} from "../../hooks/modal";
+import SelectNftModal from "../organisms/SelectNftModal";
 
 const TokenDashboard = () => {
     const {handlers} = useContext(HandlersContext)
     const {nftsG} = useContext(NftsContext);
+
+    const [SelectModal, , setVisible] = useModal();
 
     return (
         <>
@@ -32,6 +38,10 @@ const TokenDashboard = () => {
                 </Container>
                 <TokenDashboardNavbar/>
             </RootContainer>
+            <button onClick={() => setVisible(true)}>CLICK</button>
+            <SelectModal>
+                <SelectNftModal nfts={nftsG}/>
+            </SelectModal>
         </>
     )
 }

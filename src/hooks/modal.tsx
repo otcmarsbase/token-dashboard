@@ -5,8 +5,7 @@ import {
     useState
 } from "react";
 import Modal from "react-modal";
-import React from "react";
-import {Queries, useMediaQuery} from "./mediaQuery";
+import React from "react"
 
 Modal.setAppElement('#modals');
 
@@ -22,7 +21,6 @@ export const useModal = (): [FC<PropsWithChildren<{}>>, boolean, Dispatch<SetSta
             border: 'unset',
             borderRadius: 'unset',
             backgroundColor: 'unset',
-
         },
     };
 
