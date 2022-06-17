@@ -114,7 +114,7 @@ const VestingSplitDetails: React.FC<VestingSplitDetailsProps> = props => {
                             <Button auto size={'lg'} onClick={() => null}>
                                 <Text title={'_3'}>APPROVE</Text>
                             </Button>
-                            <Button isDisable auto size={'lg'} onClick={() => null}>
+                            <Button disabled auto size={'lg'} onClick={() => null}>
                                 <Text title={'_3'}>ACCEPT</Text>
                             </Button>
                         </div>

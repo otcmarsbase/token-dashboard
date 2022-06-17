@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import TokenDashboardNavbar from "../organisms/TokenDasboardNavbar";
 import {TokenDashboardHeader} from "../molecules/TokenDashboardHeader"
 import {useContext} from "react"
@@ -10,13 +10,10 @@ import RootContainer from "../RootContainer";
 import Container from "../Container";
 import {HowIsLocalized} from "../molecules/HowIsDistributionDone";
 import {HandlersContext} from "../../contexts/HandlersContext";
-import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
-import {useModal} from "../../hooks/modal";
 
 const TokenDashboard = () => {
-    const { handlers } = useContext(HandlersContext)
-    const { nftsG } = useContext(NftsContext);
-    const [Modal, ,setModal] = useModal('false');
+    const {handlers} = useContext(HandlersContext)
+    const {nftsG} = useContext(NftsContext);
 
     return (
         <>
@@ -33,20 +30,8 @@ const TokenDashboard = () => {
                     </Container>
                     <HowIsLocalized/>
                 </Container>
-                <TokenDashboardNavbar/>
-                <button onClick={() => setModal(true)}>OPEN MODAL</button>
+                {/*<TokenDashboardNavbar/>*/}
             </RootContainer>
-
-            <Modal>
-                <ClaimRewardsModalLocalized
-                    token={''}
-                    amount={0}
-                    onClose={() => setModal(false)}
-                    availableForClaim={0}
-                    onClaim={() =>  null}
-                    kind={'silver'}
-                />
-            </Modal>
         </>
     )
 }

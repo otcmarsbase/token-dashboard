@@ -1,12 +1,12 @@
 import React, {FC, ReactNode, useContext} from "react";
 import {AppStateContext} from "../../contexts/AppStateContext";
 import {NftTableSummary} from "../organisms/NftTableSummary";
-import {useModal} from "../../hooks/modal";
 import {ClaimRewardsModalLocalized} from "../molecules/ClaimRewardsModal";
+import {useModal} from "../../hooks/modal";
 
 export const NftTableSummaryWrapper = () => {
     const {data} = useContext(AppStateContext);
-    const [Modal, visible, setVisible] = useModal('claimAllRewards')
+    const [Modal, visible, setVisible] = useModal();
 
     return (
         <>
@@ -25,6 +25,7 @@ export const NftTableSummaryWrapper = () => {
                     availableForClaim={123123123}
                     onClaim={() => console.log('on claim click')}
                     btnClaimLoad={false}
+                    kind={'silver'}
                 />
             </Modal>
         </>

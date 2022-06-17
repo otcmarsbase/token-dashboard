@@ -5,8 +5,9 @@ import {Text} from "../atoms/Text";
 import Container from "../Container";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
-import {useModal} from "../../hooks/modal";
+import Modal from 'react-modal';
 import {ClaimRewardsModalLocalized} from "./ClaimRewardsModal";
+import {useModal} from "../../hooks/modal";
 
 const NftCardActions: FC<NftCardActionsProps> = (
     {
@@ -23,7 +24,7 @@ const NftCardActions: FC<NftCardActionsProps> = (
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
     const isDesktop = (!isMobile && !isTablet);
-    const [Modal, , setModal] = useModal('claimRewards');
+    const [Modal, ,setModal] = useModal();
 
     return (
         <>

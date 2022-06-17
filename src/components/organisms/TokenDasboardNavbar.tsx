@@ -78,7 +78,7 @@ const TokenDashboardNavbar = () => {
         return null
     }
 
-    return createPortal(
+    return (
         <div className={navbar}>
             <div className={navbarContent}>
                 {navbarMenu.map(menuItem => (
@@ -94,7 +94,7 @@ const TokenDashboardNavbar = () => {
                 ))}
             </div>
         </div>
-        , modalsRoot);
+    )
 };
 
 const navbar = style({

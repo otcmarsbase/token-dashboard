@@ -1,4 +1,4 @@
-import React, {FC, useContext, useEffect} from 'react';
+import React, {FC, memo, useContext, useEffect} from 'react';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {createPortal} from "react-dom";
 import {style} from "typestyle";
@@ -24,53 +24,46 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
         }
     }, [])
 
-    return <div className={container(isMobile)}>
-        <div className={modalContainer}>
-            <div className={modalWrapper(isMobile)}>
-                <div className={modal(isMobile, isTablet)}>
-                    <div className={modalContent}>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
-                            <Text title={'_2'}>{props.headerTitle}</Text>
-                            <Text colors={'gray'} size={'_12'}>{props.headerTitle}</Text>
-                        </div>
-                        <span style={{textAlign: 'start'}}>
+    return (
+        <div className={container(isMobile)}>
+            <div className={modalContainer}>
+                <div className={modalWrapper(isMobile)}>
+                    <div className={modal(isMobile, isTablet)}>
+                        <div className={modalContent}>
+                            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
+                                <Text title={'_2'}>{props.headerTitle}</Text>
+                                <Text colors={'gray'} size={'_12'}>{props.headerTitle}</Text>
+                            </div>
+                            <span style={{textAlign: 'start'}}>
                                 <Text title={'_3'}>
                                     {props.bodyTitle}
                                 </Text>
                             </span>
-                        {!all && (
-                            <div className={vestingAssetCard(colors[props.kind].border)}>
-                                <img src={colors[props.kind].icon} style={{marginRight: '10px', height: '60px'}} alt=""/>
-                                <Text>{props.amount} {props.token}</Text>
-                            </div>
-                        )}
-                        <Input
-                            upLabel={
-                                <Text
-                                    iconRight={<img src={questionIcon} style={{height: '9px'}} alt=""/>}
-                                    withIconRight
-                                >
-                                    <span style={{whiteSpace: 'nowrap'}}>{props.inputLabelUp}</span>
-                                </Text>}
-                            showUpLabel
-                            color={'whiteStroke'}
-                            value={props.availableForClaim}
-                        />
-                        <Container direction={'horizontal'} gap={'_10'}>
-                            <Button colors={'defaultStroke'} onClick={props.onClose} size={'lg'} auto>
-                                <Text weight={'medium'} size={'_14'}>Close</Text>
-                            </Button>
-                            <Button disabled={props.btnClaimLoad} onClick={props.onClaim} size={'lg'} auto>
-                                <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
-                            </Button>
-                        </Container>
+                            {!all && (
+                                <div className={vestingAssetCard(colors[props.kind].border)}>
+                                    <img src={colors[props.kind].icon} style={{marginRight: '10px', height: '60px'}} alt=""/>
+                                    <Text>{props.amount} {props.token}</Text>
+                                </div>
+                            )}
+                            <Container>
+                                <Text>{props.availableForClaim}</Text>
+                            </Container>
 
+                            <Container direction={'horizontal'} gapRow={'_10'}>
+                                <Button colors={'defaultStroke'} onClick={props.onClose} size={'lg'} auto>
+                                    <Text weight={'medium'} size={'_14'}>Close</Text>
+                                </Button>
+                                <Button disabled={props.btnClaimLoad} onClick={props.onClaim} size={'lg'} auto>
+                                    <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
+                                </Button>
+                            </Container>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    )
 };
 
 export const ClaimRewardsModalLocalized: FC<ClaimRewardsModalLocalizedProps> = (props) => {
@@ -106,7 +99,6 @@ const modalContainer = style({
     display: 'flex',
     width: '100%',
     justifyContent: 'center',
-    marginBottom: '83px',
 })
 
 const modalWrapper = (isMobile: boolean) => style({

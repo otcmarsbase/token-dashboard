@@ -1,4 +1,4 @@
-import {FC, PropsWithChildren} from "react";
+import {FC, PropsWithChildren, useMemo} from "react";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {style} from "typestyle";
 import {IMobileNftsContainer} from "../organisms/types";
@@ -15,6 +15,8 @@ export const NftsContainer: FC<PropsWithChildren<IMobileNftsContainer>> = (
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet);
     const isDesktop = (!isMobile && !isTablet);
+
+
 
     return (
         <>
