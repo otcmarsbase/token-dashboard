@@ -26,7 +26,7 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
 
     return (
         <div className={container(isMobile)}>
-            <div className={modalContainer}>
+            <div className={modalContainer(isMobile)}>
                 <div className={modalWrapper(isMobile)}>
                     <div className={modal(isMobile, isTablet)}>
                         <div className={modalContent}>
@@ -45,10 +45,19 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
                                     <Text>{props.amount} {props.token}</Text>
                                 </div>
                             )}
-                            <Container>
-                                <Text>{props.availableForClaim}</Text>
-                            </Container>
-
+                            <Input
+                                upLabel={
+                                    <Text
+                                        iconRight={<img src={questionIcon} style={{height: '9px'}} alt=""/>}
+                                        withIconRight
+                                    >
+                                        <span style={{whiteSpace: 'nowrap'}}>{props.inputLabelUp}</span>
+                                    </Text>}
+                                showUpLabel
+                                color={'whiteStroke'}
+                                value={props.availableForClaim}
+                                onChange={props.onAvailableForClaimChange}
+                            />
                             <Container direction={'horizontal'} gapRow={'_10'}>
                                 <Button colors={'defaultStroke'} onClick={props.onClose} size={'lg'} auto>
                                     <Text weight={'medium'} size={'_14'}>Close</Text>
@@ -95,10 +104,11 @@ const container = (isMobile: boolean) => style({
     backdropFilter: `blur(15px)`
 })
 
-const modalContainer = style({
+const modalContainer = (isMobile: boolean) => style({
     display: 'flex',
     width: '100%',
     justifyContent: 'center',
+    marginBottom: isMobile ? '80px' : 'unset'
 })
 
 const modalWrapper = (isMobile: boolean) => style({

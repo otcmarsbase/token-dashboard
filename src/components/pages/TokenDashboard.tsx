@@ -30,7 +30,7 @@ const TokenDashboard = () => {
                     </Container>
                     <HowIsLocalized/>
                 </Container>
-                {/*<TokenDashboardNavbar/>*/}
+                <TokenDashboardNavbar/>
             </RootContainer>
         </>
     )

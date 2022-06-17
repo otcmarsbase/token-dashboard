@@ -118,6 +118,7 @@ export interface ClaimRewardsModalProps {
     onClaim: () => void
     btnClaimLoad?: boolean
     kind: TagLabelColors;
+    onAvailableForClaimChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export type ClaimRewardsModalLocalizedProps = Omit<ClaimRewardsModalProps,

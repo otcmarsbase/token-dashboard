@@ -6,6 +6,7 @@ import {
 } from "react";
 import Modal from "react-modal";
 import React from "react";
+import {Queries, useMediaQuery} from "./mediaQuery";
 
 Modal.setAppElement('#modals');
 
@@ -14,13 +15,14 @@ export const useModal = (): [FC<PropsWithChildren<{}>>, boolean, Dispatch<SetSta
 
     const customStyles = {
         overlay: {
-            backgroundColor: 'unset'
+            backgroundColor: 'unset',
         },
         content: {
             inset: 0,
             border: 'unset',
             borderRadius: 'unset',
-            backgroundColor: 'unset'
+            backgroundColor: 'unset',
+
         },
     };
 

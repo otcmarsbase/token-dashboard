@@ -57,6 +57,7 @@ const NftCardActions: FC<NftCardActionsProps> = (
                     availableForClaim={unclaimed}
                     onClaim={() => onClaim(id)}
                     kind={kind}
+                    onAvailableForClaimChange={e => console.log(e.target.value)}
                 />
             </Modal>
         </>
