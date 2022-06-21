@@ -93,6 +93,8 @@ export interface INftSelectCard {
     usd: ReactNode;
     price: ReactNode;
     started: ReactNode;
+    priceText: ReactNode;
+    startedText: ReactNode;
 }
 
 export interface SummaryDestributionProps {
@@ -174,3 +176,18 @@ export type NotificationsProps = {
 export interface SelectNftModalProps {
     nfts: INft[]
 }
+
+export interface SplitDetailsSectionProps {
+    amount?: ReactNode
+    token?: ReactNode
+    usd?: ReactNode
+    percent?: ReactNode
+    partIndex?: ReactNode
+    totalFee?: ReactNode
+    totalParts?: ReactNode
+    totalFeeLabel: ReactNode
+    totalPartsLabel: ReactNode
+    partsLabel: ReactNode
+}
+
+export type SplitDetailsSectionLocalizedProps = Omit<SplitDetailsSectionProps, "totalFeeLabel" | "totalPartsLabel" | "partsLabel">

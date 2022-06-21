@@ -8,7 +8,7 @@ import {NotificationsProps} from "./types";
 import Container from "../Container";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
 
-const Notification: FC<NotificationsProps> = ({type}) => {
+const Notification: FC<NotificationsProps> = ({type, title, subTitle}) => {
     const isMobile = useMediaQuery(Queries.mobile);
     const isTablet = useMediaQuery(Queries.tablet)
     const isPc = (!isMobile && !isTablet);
@@ -20,9 +20,9 @@ const Notification: FC<NotificationsProps> = ({type}) => {
                     <img style={{height: '24px'}} src={type === 'success' ? doneIcon : errorIcon}/>
                 </div>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'start', flex: 1}}>
-                    <Text weight={'semiBold'}>Done</Text>
+                    <Text weight={'semiBold'}>{title}</Text>
                     {isPc && (
-                        <Text>Every time after using Mars Base, we recommend you to disconnect.</Text>
+                        <Text>{subTitle}</Text>
                     )}
                 </div>
                 <div>

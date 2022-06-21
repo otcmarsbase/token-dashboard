@@ -74,6 +74,11 @@ export const DICT = {
 					"without slippage or market price impact",
 				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
 				buy_now_btn: (token: string) => `Buy ${token} now`,
+				splitDetails: {
+					totalFeeLabel: 'Total fee',
+					partsLabel: 'Part',
+					totalPartsLabel: 'Total parts'
+				}
 			}
 		}
 	},

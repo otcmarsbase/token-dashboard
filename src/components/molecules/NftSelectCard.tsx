@@ -1,10 +1,11 @@
-import React, {FC} from 'react';
+import React, {FC, useContext} from 'react';
 
 import {Text} from '../atoms/Text'
 import {Label} from '../atoms/Label'
 import {style} from "typestyle";
 import {INftSelectCard} from "./types";
-import { colors } from './CONSTANTS';
+import {colors} from './CONSTANTS';
+import {DictionaryContext} from "../../contexts/DictionaryContext";
 
 const NftSelectCard: FC<INftSelectCard> = (
     {
@@ -14,7 +15,9 @@ const NftSelectCard: FC<INftSelectCard> = (
         token,
         usd,
         price,
-        started
+        started,
+        priceText,
+        startedText
     }) => {
 
     return (
@@ -27,16 +30,30 @@ const NftSelectCard: FC<INftSelectCard> = (
                 </div>
                 <div>
                     <Label colors={colors[kind].label}>
-                        <span>Price <b>{price}</b></span>
+                        <span>{priceText} <b>{price}</b></span>
                     </Label>
                     <Label disabled>
-                        <span>Started <b>{Date.parse(started as string)}</b></span>
+                        <span>{startedText} <b>{Date.parse(started as string)}</b></span>
                     </Label>
                 </div>
             </div>
         </div>
     );
 };
+
+type NftSelectCardLocalizedProps = Omit<INftSelectCard, "startedText" | "priceText">
+
+export const NftSelectCardLocalized: FC<NftSelectCardLocalizedProps> = (props) => {
+    const {nft} = useContext(DictionaryContext);
+
+    return (
+        <NftSelectCard
+            priceText={nft.dashboard.nft_table.nft_card.price_label}
+            startedText={nft.dashboard.nft_table.nft_card.unvest_start_date_label}
+            {...props}
+        />
+    )
+}
 
 const container = style({
     display: 'flex',

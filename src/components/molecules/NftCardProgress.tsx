@@ -3,6 +3,7 @@ import {Text} from "../atoms/Text";
 import {style} from "typestyle";
 import {NftCardProgressProps} from "./types";
 import {DictionaryContext} from "../../contexts/DictionaryContext";
+import Container from "../Container";
 
 const NftCardProgress: FC<NftCardProgressProps> = (
     {
@@ -13,18 +14,16 @@ const NftCardProgress: FC<NftCardProgressProps> = (
         timeLeft
     }) => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column', width: '100%', gap: '5px'}}>
+        <Container gap={'_5'}>
             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
                 <Text colors={'gray'} size={'_10'}>
                     <b>{locked} {token} Locked</b>
                 </Text>
             </div>
-            <div>
-                <div className={progressContainer}>
-                    <div className={progressLine(percentComplete)}/>
-                </div>
+            <div className={progressContainer}>
+                <div className={progressLine(percentComplete)}/>
             </div>
-            <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
+            <Container justify={'between'}>
                 <div>
                     <Text size={'_10'}>{100 - percentComplete}%</Text>
                     <Text size={'_10'} colors={'gray'}>{timePassed}</Text>
@@ -33,8 +32,8 @@ const NftCardProgress: FC<NftCardProgressProps> = (
                     <Text size={'_10'}>{percentComplete}%</Text>
                     <Text size={'_10'} colors={'gray'}>{timeLeft}</Text>
                 </div>
-            </div>
-        </div>
+            </Container>
+        </Container>
     );
 };
 
