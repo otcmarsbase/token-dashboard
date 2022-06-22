@@ -21,8 +21,8 @@ const NftSelectCard: FC<INftSelectCard> = (
     }) => {
 
     return (
-        <div className={active ? containerActive : container}>
-            <img style={{height: '100%'}} src={colors[kind].icon} alt=""/>
+        <div className={container(active)}>
+            <img style={{height: '100%'}} src={colors[kind].icon} alt={`${colors[kind].icon} nft icon`}/>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
                 <div>
                     <Text size={'_14'}>{`${amount} ${token}`}</Text>
@@ -55,15 +55,8 @@ export const NftSelectCardLocalized: FC<NftSelectCardLocalizedProps> = (props) =
     )
 }
 
-const container = style({
-    display: 'flex',
-    padding: '12px 24px 12px 24px'
-})
-
-const containerActive = style({
+const container = (active?: boolean) => style({
     display: 'flex',
     padding: '12px 24px 12px 24px',
-    backgroundColor: 'rgba(173, 54, 19, 0.2)'
-});
-
-export default NftSelectCard;
+    backgroundColor: active ? 'rgba(173, 54, 19, 0.2)' : 'unset'
+})

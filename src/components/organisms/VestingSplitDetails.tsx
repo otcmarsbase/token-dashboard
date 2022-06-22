@@ -12,7 +12,7 @@ import infoIcon from "../../assets/info.png";
 
 import {style} from "typestyle";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-import SplitDetailsSection from "../molecules/SplitDetailsSection";
+import {SplitDetailsSectionLocalized} from "../molecules/SplitDetailsSection";
 
 const VestingSplitDetailsExample: React.FC = () =>
 {
@@ -53,24 +53,24 @@ const VestingSplitDetails: React.FC<VestingSplitDetailsProps> = props => {
                     </div>
                 </div>
                 <div className={body}>
-                    <SplitDetailsSection
+                    <SplitDetailsSectionLocalized
                         totalParts={2}
                     />
-                    <SplitDetailsSection
+                    <SplitDetailsSectionLocalized
                         amount={1800000.00}
                         token={'MBase'}
                         percent={33}
                         partIndex={1}
                         usd={20000}
                     />
-                    <SplitDetailsSection
+                    <SplitDetailsSectionLocalized
                         amount={1800000.00}
                         token={'MBase'}
                         percent={33}
                         partIndex={2}
                         usd={20000}
                     />
-                    <SplitDetailsSection
+                    <SplitDetailsSectionLocalized
                         amount={36000}
                         token={'MBase'}
                         percent={1}

@@ -78,7 +78,24 @@ export const DICT = {
 					totalFeeLabel: 'Total fee',
 					partsLabel: 'Part',
 					totalPartsLabel: 'Total parts'
-				}
+				},
+				steps: [
+					{
+						active: false,
+						title: 'Parameters',
+						subTitle: 'Set suitable conditions'
+					},
+					{
+						active: true,
+						title: 'Split details',
+						subTitle: 'Verify and approve the offer'
+					},
+					{
+						active: false,
+						title: 'Publication',
+						subTitle: 'Send the offer to the market'
+					}
+				]
 			}
 		}
 	},

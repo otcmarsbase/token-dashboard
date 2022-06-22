@@ -37,7 +37,7 @@ const VestingActions: FC<VestingActionsProps> = (props) => {
 
 type VestingActionsLocalizedProps = Omit<VestingActionsProps, 'sellWithPremiumBtn' | 'buyNowBtn'>
 
-const VestingActionsLocalized: FC<VestingActionsLocalizedProps> = (props) => {
+export const VestingActionsLocalized: FC<VestingActionsLocalizedProps> = (props) => {
     const {nft} = useContext(DictionaryContext);
 
     return (
@@ -49,15 +49,6 @@ const VestingActionsLocalized: FC<VestingActionsLocalizedProps> = (props) => {
     )
 }
 
-interface VestingActionsWrapperProps {
-    token: string;
-    onSellWithPremium: () => void;
-    onBuyNow: () => void
-}
-
-export const VestingActionsWrapper: FC<VestingActionsWrapperProps> = (props) => {
-    return <VestingActionsLocalized {...props}/>
-}
 
 const container = (isMobile: boolean) => style({
     display: 'flex',

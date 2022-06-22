@@ -1,9 +1,9 @@
 import React from 'react';
-import {VestingSplitOverviewWrapper} from "../molecules/VestingSplitOverview";
 
 import {style} from 'typestyle';
-import {VestingActionsWrapper} from "../molecules/VestingActions";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {VestingSplitOverviewLocalized} from "../molecules/VestingSplitOverview";
+import {VestingActionsLocalized} from "../molecules/VestingActions";
 
 const VestingSplitHeader = () => {
     const isMobile = useMediaQuery(Queries.mobile)
@@ -11,8 +11,8 @@ const VestingSplitHeader = () => {
 
     return (
         <div className={container(isMobile, isTablet)}>
-            <VestingSplitOverviewWrapper/>
-            <VestingActionsWrapper token={'MBase'} onBuyNow={() => null} onSellWithPremium={() => null}/>
+            <VestingSplitOverviewLocalized/>
+            <VestingActionsLocalized token={'MBase'} onBuyNow={() => null} onSellWithPremium={() => null}/>
         </div>
     );
 };

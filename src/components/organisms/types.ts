@@ -28,4 +28,16 @@ export interface NftTableProps {
     onActions: (nftId: string) => void
 }
 
-export type IMobileNftsContainer = Pick<NftTableProps, 'nfts' | 'onClaim' | 'onActions'>
+export type IMobileNftsContainer = Pick<NftTableProps, 'nfts' | 'onClaim' | 'onActions'>;
+
+export interface VestingSplitOverviewProps {
+    title: ReactNode
+    howToUse: ReactNode;
+    subTitle: ReactNode
+}
+
+export interface VestingSplitStepsProps {
+    steps: { title: string, subTitle: string }[]
+}
+
+export type VestingSplitStepsLocalizedProps = Omit<VestingSplitStepsProps, "steps">;

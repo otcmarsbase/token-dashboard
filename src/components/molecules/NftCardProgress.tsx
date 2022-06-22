@@ -13,6 +13,7 @@ const NftCardProgress: FC<NftCardProgressProps> = (
         timePassed,
         timeLeft
     }) => {
+
     return (
         <Container gap={'_5'}>
             <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
@@ -23,7 +24,7 @@ const NftCardProgress: FC<NftCardProgressProps> = (
             <div className={progressContainer}>
                 <div className={progressLine(percentComplete)}/>
             </div>
-            <Container justify={'between'}>
+            <Container direction={'horizontal'} justify={'between'}>
                 <div>
                     <Text size={'_10'}>{100 - percentComplete}%</Text>
                     <Text size={'_10'} colors={'gray'}>{timePassed}</Text>
@@ -51,7 +52,8 @@ const progressContainer = style({
     backgroundColor: 'rgba(104, 106, 110, 1)',
     borderRadius: '4px',
     position: 'relative',
-    height: '6px'
+    height: '6px',
+    width: '100%'
 })
 
 const progressLine = (progress: number) => style({

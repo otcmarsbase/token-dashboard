@@ -41,7 +41,8 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
                             </span>
                             {!all && (
                                 <div className={vestingAssetCard(colors[props.kind].border)}>
-                                    <img src={colors[props.kind].icon} style={{marginRight: '10px', height: '60px'}} alt=""/>
+                                    <img src={colors[props.kind].icon} style={{marginRight: '10px', height: '60px'}}
+                                         alt=""/>
                                     <Text>{props.amount} {props.token}</Text>
                                 </div>
                             )}
@@ -66,7 +67,6 @@ const ClaimRewardsModal: FC<ClaimRewardsModalProps> = ({all, ...props}) => {
                                     <Text weight={'medium'} size={'_14'}>{props.btnClaim}</Text>
                                 </Button>
                             </Container>
-
                         </div>
                     </div>
                 </div>

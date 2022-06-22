@@ -4,12 +4,7 @@ import {style} from 'typestyle';
 import {DictionaryContext} from "../../contexts/DictionaryContext";
 import q from '../../assets/question.png';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
-
-interface VestingSplitOverviewProps {
-    title: ReactNode
-    howToUse: ReactNode;
-    subTitle: ReactNode
-}
+import {VestingSplitOverviewProps} from "../organisms/types";
 
 const VestingSplitOverview: FC<VestingSplitOverviewProps> = (
     {
@@ -17,8 +12,8 @@ const VestingSplitOverview: FC<VestingSplitOverviewProps> = (
         howToUse,
         subTitle
     }) => {
-    const isMobile = useMediaQuery(Queries.mobile)
-    const isTablet = useMediaQuery(Queries.tablet)
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
 
     return (
         <div className={container(isMobile)}>
@@ -37,7 +32,7 @@ const VestingSplitOverview: FC<VestingSplitOverviewProps> = (
     );
 };
 
-const VestingSplitOverviewLocalized = () => {
+export const VestingSplitOverviewLocalized = () => {
     const {nft} = useContext(DictionaryContext);
 
     return <VestingSplitOverview
@@ -50,7 +45,3 @@ const VestingSplitOverviewLocalized = () => {
 const container = (isMobile: boolean) => style({
     width: isMobile ? '100%' : '500px'
 })
-
-export const VestingSplitOverviewWrapper = () => <VestingSplitOverviewLocalized/>
-
-export default VestingSplitOverview;

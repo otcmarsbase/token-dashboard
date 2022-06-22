@@ -19,8 +19,6 @@ const TokenDashboard = () => {
     const {handlers} = useContext(HandlersContext)
     const {nftsG} = useContext(NftsContext);
 
-    const [SelectModal, , setVisible] = useModal();
-
     return (
         <>
             <MemoHeader/>
@@ -38,10 +36,6 @@ const TokenDashboard = () => {
                 </Container>
                 <TokenDashboardNavbar/>
             </RootContainer>
-            <button onClick={() => setVisible(true)}>CLICK</button>
-            <SelectModal>
-                <SelectNftModal nfts={nftsG}/>
-            </SelectModal>
         </>
     )
 }

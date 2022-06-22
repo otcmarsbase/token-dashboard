@@ -93,7 +93,7 @@ const container = (isMobile: boolean, isTablet: boolean) => style({
     width: isTablet ? 'unset' : '822px',
     padding: '16px',
     borderRadius: '20px',
-    background: `linear-gradient(34deg, rgba(27, 27, 28,100%) 48%, rgba(255,227,161,40%) 100%)`
+    background: `linear-gradient(34deg, rgba(27, 27, 28,100%) 48%, rgba(255,227,161,40%) 100%)`,
 })
 
 const containerBody = (isMobile: boolean) => style({

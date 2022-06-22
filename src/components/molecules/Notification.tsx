@@ -17,7 +17,8 @@ const Notification: FC<NotificationsProps> = ({type, title, subTitle}) => {
         <div className={container(type, isMobile)}>
             <Container>
                 <div style={{marginRight: '12px'}}>
-                    <img style={{height: '24px'}} src={type === 'success' ? doneIcon : errorIcon}/>
+                    <img style={{height: '24px'}} src={type === 'success' ? doneIcon : errorIcon}
+                         alt={'notification icon'}/>
                 </div>
                 <div style={{display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'start', flex: 1}}>
                     <Text weight={'semiBold'}>{title}</Text>

@@ -1,43 +1,37 @@
 import React from 'react';
 
 import VestingSplitHeader from "../organisms/VestingSplitHeader";
-import VestingSplitSteps from "../organisms/VestingSplitSteps";
 import {style} from "typestyle";
 import NftView from "../organisms/NftView";
-import VestingSplitDetails from "../organisms/VestingSplitDetails";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import VestingSplitNavbar from "../organisms/TokenDasboardNavbar";
+import RootContainer from "../RootContainer";
+import VestingToSplit from "../organisms/VestingToSplit";
+import {VestingSplitStepsLocalized} from '../organisms/VestingSplitSteps';
+import Container from "../Container";
 
-const VestingSplit = () => {
-    const isMobile = useMediaQuery(Queries.mobile)
-    const isTablet = useMediaQuery(Queries.tablet)
+export const VestingSplit = () => {
+    const isMobile = useMediaQuery(Queries.mobile);
+    const isTablet = useMediaQuery(Queries.tablet);
+    const isDesktop = (!isMobile || !isTablet)
 
     return (
-        <div className={container}>
+        <RootContainer>
             <VestingSplitHeader/>
-            <VestingSplitSteps/>
+            <VestingSplitStepsLocalized/>
             {/*<IsBeingSplitted/>*/}
             {/*<SplitError/>*/}
             {/*<SuccessfullySplitted/>*/}
             <div className={body(isTablet)}>
                 <NftView/>
-                {/*<VestingToSplit/>*/}
-                <VestingSplitDetails title="test title"/>
+                <VestingToSplit/>
+                {/*<VestingSplitDetails title="test title"/>*/}
             </div>
-            {(isTablet || isMobile) && <VestingSplitNavbar/>}
+            <VestingSplitNavbar/>
             {/*<SelectNftModal/>*/}
-        </div>
+        </RootContainer>
     );
 };
-
-const container = style({
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '1433px',
-    width: '100%',
-    margin: 'auto',
-    position: 'relative',
-})
 
 const body = (isTablet: boolean) => style({
     display: 'flex',

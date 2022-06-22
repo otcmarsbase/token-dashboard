@@ -5,7 +5,7 @@ import changeViewIcon from '../../assets/changeViewIcon.svg';
 import sortIcon from '../../assets/sortIcon.svg';
 
 import {Text} from '../atoms/Text'
-import NftSelectCard from "../molecules/NftSelectCard";
+import {NftSelectCardLocalized} from "../molecules/NftSelectCard";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
 import {SelectNftModalProps} from "../molecules/types";
 
@@ -34,7 +34,7 @@ const SelectNftModal: FC<SelectNftModalProps> = ({nfts}) => {
                             </div>
                             <div className={modalContentBody(isMobile, isTablet)}>
                                 {nfts.map(nft => (
-                                    <NftSelectCard
+                                    <NftSelectCardLocalized
                                         kind={nft.kind}
                                         amount={nft.amount}
                                         usd={nft.availableUsd}

@@ -1,47 +1,37 @@
-import React from 'react';
+import React, {FC, useContext} from 'react';
 import VestingStepCard from "../molecules/VestingStepCard";
-import {style} from "typestyle";
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import Container from "../Container";
+import {DictionaryContext} from "../../contexts/DictionaryContext";
+import {VestingSplitStepsLocalizedProps, VestingSplitStepsProps} from "./types";
 
-const container = style({
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    gap: '32px',
-    marginBottom: '66px'
-})
+const VestingSplitSteps: FC<VestingSplitStepsProps> = ({steps}) => {
+    const isMobile = useMediaQuery(Queries.mobile);
 
-const VestingSplitSteps = () => {
-    const steps = [
-        {
-            active: false,
-            title: 'Parameters',
-            subTitle: 'Set suitable conditions'
-        },
-        {
-            active: true,
-            title: 'Split details',
-            subTitle: 'Verify and approve the offer'
-        },
-        {
-            active: false,
-            title: 'Publication',
-            subTitle: 'Send the offer to the market'
-        }
-    ]
+    const formattedSteps = () => {
+        return steps.map((step, idx) => ({active: idx === 1, ...step}));
+    };
 
-    const isMobile = useMediaQuery(Queries.mobile)
-    const isTablet = useMediaQuery(Queries.tablet)
+    const getActiveStep = () => formattedSteps().filter(s => s.active);
 
     return (
-        <div className={container}>
-            {(isMobile ? steps.filter(s => s.active) : steps).map((step, index) => (
+        <Container gapRow={'_30'} mb={'_30'}>
+            {(isMobile ? getActiveStep() : steps).map((step, index) => (
                 <VestingStepCard
                     key={index}
-                    index={index + 1} {...step}/>
+                    index={index + 1}
+                    {...step}
+                />
             ))}
-        </div>
+        </Container>
     );
 };
 
-export default VestingSplitSteps;
+export const VestingSplitStepsLocalized: FC<VestingSplitStepsLocalizedProps> = (props) => {
+    const {nft} = useContext(DictionaryContext);
+
+    return <VestingSplitSteps
+        steps={nft.vestingSplit.steps}
+        {...props}
+    />
+}

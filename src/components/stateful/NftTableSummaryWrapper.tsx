@@ -26,6 +26,7 @@ export const NftTableSummaryWrapper = () => {
                     onClaim={() => console.log('on claim click')}
                     btnClaimLoad={false}
                     kind={'silver'}
+                    onAvailableForClaimChange={e => console.log(e)}
                 />
             </Modal>
         </>
