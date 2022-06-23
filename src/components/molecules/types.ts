@@ -191,3 +191,21 @@ export interface SplitDetailsSectionProps {
 }
 
 export type SplitDetailsSectionLocalizedProps = Omit<SplitDetailsSectionProps, "totalFeeLabel" | "totalPartsLabel" | "partsLabel">
+
+export type NftViewHeaderProps = {
+    viewText: ReactNode;
+    nftDetailsText: ReactNode;
+    buyPriceText: ReactNode;
+    usd: ReactNode;
+}
+
+export type NftViewHeaderLocalizedProps = Omit<NftViewHeaderProps, "viewText" | "nftDetailsText" | "buyPriceText">;
+
+export type SplitErrorProps = {
+    title: ReactNode;
+    subTitle: ReactNode;
+    backText: ReactNode;
+    tryAgainText: ReactNode;
+}
+
+export type SplitErrorPropsLocalized = Omit<SplitErrorProps, "title" | "subTitle" | "backText" | "tryAgainText">

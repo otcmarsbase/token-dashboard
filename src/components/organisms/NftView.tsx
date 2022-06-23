@@ -5,6 +5,7 @@ import {Label} from '../atoms/Label'
 import {style} from 'typestyle';
 import gold2 from '../../assets/gold-2.svg';
 import {Queries, useMediaQuery} from "../../hooks/mediaQuery";
+import {NftViewHeaderLocalized} from "../molecules/NftViewHeader";
 
 const NftView = () => {
     const isMobile = useMediaQuery(Queries.mobile)
@@ -44,17 +45,7 @@ const NftView = () => {
         <div className={container(isMobile, isTablet)}>
             <div className={containerBody(isMobile)}>
                 <div className={body}>
-                    <div style={{display: 'flex', width: '100%', justifyContent: 'space-between'}}>
-                        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '5px'}}>
-                            <Text title={isMobile ? '_4' : '_3'} colors={'blue'}>VIEW</Text>
-                            <Text title={isMobile ? '_2' : "_1"} colors={'red'}>NFT Details</Text>
-                            <Label colors={'yellow'}>
-                                <span>Buy price </span>
-                                <span style={{fontWeight: '600'}}>0.0035</span>
-                            </Label>
-                        </div>
-                        {isMobile && <img style={{height: '75px'}} src={gold2} alt="nft gold"/>}
-                    </div>
+                    <NftViewHeaderLocalized usd={1234}/>
                     {nftDetails.map((nftDetail, index) =>
                         <div key={index} className={itemContainer(isMobile)}>
                             <Text colors={'gray'} size={isMobile ? '_12' : undefined}>

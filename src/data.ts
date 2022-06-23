@@ -1,5 +1,6 @@
 import { FixedNumber } from "ethers"
 import {INft} from "./components/organisms/types";
+import {ReactNode} from "react";
 
 export type LocalizedDictionary = typeof DICT[keyof typeof DICT]
 export const DICT = {
@@ -74,10 +75,10 @@ export const DICT = {
 					"without slippage or market price impact",
 				sell_with_premium_btn: (token: string) => `Sell ${token} with premium`,
 				buy_now_btn: (token: string) => `Buy ${token} now`,
-				splitDetails: {
-					totalFeeLabel: 'Total fee',
-					partsLabel: 'Part',
-					totalPartsLabel: 'Total parts'
+				split_details: {
+					total_fee_label: 'Total fee',
+					parts_label: 'Part',
+					total_parts_label: 'Total parts'
 				},
 				steps: [
 					{
@@ -95,7 +96,18 @@ export const DICT = {
 						title: 'Publication',
 						subTitle: 'Send the offer to the market'
 					}
-				]
+				],
+				nft_view_card: {
+					view_text: "View",
+					nft_details_text: "NFT Details",
+					buy_price_text: "Buy price "
+				},
+				split_error: {
+					title: "",
+					sub_title: "",
+					back_text: "Back to dashboard",
+					try_again_text: ""
+				}
 			}
 		}
 	},

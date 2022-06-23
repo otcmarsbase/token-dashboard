@@ -44,9 +44,9 @@ export const SplitDetailsSectionLocalized: FC<SplitDetailsSectionLocalizedProps>
     const {nft} = useContext(DictionaryContext);
 
     return <SplitDetailsSection
-        totalPartsLabel={nft.vestingSplit.splitDetails.totalPartsLabel}
-        totalFeeLabel={nft.vestingSplit.splitDetails.totalFeeLabel}
-        partsLabel={nft.vestingSplit.splitDetails.partsLabel}
+        totalPartsLabel={nft.vestingSplit.split_details.total_parts_label}
+        totalFeeLabel={nft.vestingSplit.split_details.total_fee_label}
+        partsLabel={nft.vestingSplit.split_details.parts_label}
         {...props}
     />
 }
